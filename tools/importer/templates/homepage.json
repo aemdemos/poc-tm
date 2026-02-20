@@ -1,0 +1,64 @@
+{
+  "name": "homepage",
+  "description": "Homepage template - single page with hero, platform capabilities tabs, stats, testimonials, meeting CTA, company values, and industry awards",
+  "urlPatterns": ["/"],
+  "estimatedPages": 1,
+  "selectors": {
+    "hero": {
+      "container": ".block--hero",
+      "title": "h1",
+      "description": ".block--hero p",
+      "ctas": ".wp-block-buttons a"
+    },
+    "capabilities": {
+      "container": ".block--capabilities",
+      "subtitle": ".leader",
+      "heading": "h2",
+      "description": "p",
+      "tabs": ".capability",
+      "seeAll": ".wp-block-button__link"
+    },
+    "whyZelis": {
+      "subtitle": ".has-lead-font-size",
+      "heading": "h2",
+      "description": ".has-body-large-font-size",
+      "stats": ".block--stats .stat",
+      "cta": ".wp-block-button__link"
+    },
+    "testimonials": {
+      "heading": "h2",
+      "image": ".wp-block-image img",
+      "quotes": ".testimonial blockquote",
+      "authors": ".blockquote-footer"
+    },
+    "meetingCta": {
+      "container": ".block--media-callout",
+      "subtitle": ".leader",
+      "heading": "h2",
+      "description": "p",
+      "cta": ".btn",
+      "image": ".image-wrapper img"
+    },
+    "weAreZelis": {
+      "subtitle": ".has-lead-font-size",
+      "heading": "h2",
+      "cards": ".block--icon-cards .icon-card"
+    },
+    "awards": {
+      "heading": "h2",
+      "description": "p",
+      "badges": ".block--image-awards-carousel img"
+    }
+  },
+  "blocks": [
+    { "name": "columns", "variant": "columns", "purpose": "Hero layout and meeting CTA" },
+    { "name": "tabs", "variant": "tabs", "purpose": "Platform capabilities slider" },
+    { "name": "cards", "variant": "cards", "purpose": "Stats, company values" },
+    { "name": "carousel", "variant": "carousel", "purpose": "Testimonial quotes" }
+  ],
+  "sectionStyles": {
+    "hero": "dark",
+    "capabilities": "dark",
+    "awards": "dark"
+  }
+}

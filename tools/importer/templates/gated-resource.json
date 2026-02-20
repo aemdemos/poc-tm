@@ -1,0 +1,58 @@
+{
+  "name": "Gated Resource",
+  "description": "White papers, webinars, playbooks, and analyst reports with HubSpot lead generation form. Two-column hero (description + form), tags, share links, related posts.",
+  "template": "gated-resource",
+  "urlPatterns": [
+    "https://www.zelis.com/white-papers/*/",
+    "https://www.zelis.com/webinars/*/",
+    "https://www.zelis.com/playbooks/*/",
+    "https://www.zelis.com/analyst-report/*/"
+  ],
+  "estimatedPages": 55,
+  "sections": {
+    "hero-form": {
+      "selector": ".block--resource-hero",
+      "layout": "two-column",
+      "leftColumn": {
+        "title": { "selector": "h1.post-title" },
+        "subtitle": { "selector": "h3 b span" },
+        "description": { "selector": ".col-12.col-lg-6:first-child p span" },
+        "bulletList": { "selector": ".col-12.col-lg-6:first-child ul li span" }
+      },
+      "rightColumn": {
+        "formHeading": { "selector": ".gated-wrapper h2" },
+        "hubspotForm": { "selector": ".hbspt-form", "attribute": "id" }
+      }
+    },
+    "tags": {
+      "selector": ".resource-tags",
+      "tags": { "selector": ".tags .tag a" }
+    },
+    "share": {
+      "selector": ".share-post",
+      "links": { "selector": ".d-flex a" }
+    },
+    "relatedPosts": {
+      "selector": ".related-posts",
+      "heading": { "selector": "h2.text-white" },
+      "viewAllLink": { "selector": ".btn.btn-primary" },
+      "cards": {
+        "selector": ".resource",
+        "category": { "selector": ".leader" },
+        "image": { "selector": ".wp-post-image", "attribute": "src" },
+        "title": { "selector": "h3" },
+        "description": { "selector": "p" },
+        "cta": { "selector": "a.mt-auto" }
+      }
+    }
+  },
+  "metadata": {
+    "title": { "source": "og:title", "fallback": "h1.post-title" },
+    "description": { "source": "meta[name='description']" },
+    "date": { "source": "meta[property='article:published_time']", "transform": "dateOnly" },
+    "image": { "source": "meta[property='og:image']" },
+    "tags": { "source": ".resource-tags .tag a", "transform": "commaSeparated" },
+    "category": { "source": ".hentry", "transform": "extractCategory" },
+    "template": { "value": "gated-resource" }
+  }
+}

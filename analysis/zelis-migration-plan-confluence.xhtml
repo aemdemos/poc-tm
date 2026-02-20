@@ -1,0 +1,1056 @@
+<ac:structured-macro ac:name="toc" ac:schema-version="1">
+  <ac:parameter ac:name="maxLevel">3</ac:parameter>
+  <ac:parameter ac:name="style">disc</ac:parameter>
+  <ac:parameter ac:name="outline">false</ac:parameter>
+</ac:structured-macro>
+
+<h1>Zelis.com &rarr; Adobe Edge Delivery Services Migration Plan</h1>
+
+<ac:structured-macro ac:name="info" ac:schema-version="1">
+  <ac:rich-text-body>
+    <p><strong>Source Site:</strong> <a href="https://www.zelis.com/">https://www.zelis.com/</a><br />
+    <strong>Target Platform:</strong> Adobe Edge Delivery Services (AEM Sites)<br />
+    <strong>Source CMS:</strong> WordPress (Gutenberg + ACF custom blocks)<br />
+    <strong>Total Pages:</strong> ~789 across 6 sitemaps<br />
+    <strong>Distinct Templates:</strong> 8<br />
+    <strong>Date Created:</strong> February 20, 2026</p>
+  </ac:rich-text-body>
+</ac:structured-macro>
+
+<hr />
+
+<h2>1. Site Inventory</h2>
+
+<p>The Zelis sitemap index (<a href="https://www.zelis.com/sitemap_index.xml">sitemap_index.xml</a>) contains 6 sub-sitemaps. The full URL inventory is summarized below.</p>
+
+<h3>1.1 Sitemap Breakdown</h3>
+
+<table>
+  <colgroup>
+    <col style="width: 200px;" />
+    <col style="width: 80px;" />
+    <col style="width: 300px;" />
+    <col style="width: 150px;" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Sitemap</th>
+      <th>Pages</th>
+      <th>URL Patterns</th>
+      <th>Last Modified</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Post Sitemap</strong></td>
+      <td>~567</td>
+      <td><code>/blog/*</code>, <code>/white-papers/*</code>, <code>/news/*</code>, <code>/podcasts/*</code>, <code>/case-studies/*</code>, <code>/videos/*</code>, <code>/webinars/*</code>, <code>/playbooks/*</code>, <code>/analyst-report/*</code>, <code>/legislative-highlights/*</code>, <code>/infographics/*</code></td>
+      <td>2026-02-20</td>
+    </tr>
+    <tr>
+      <td><strong>Page Sitemap</strong></td>
+      <td>124</td>
+      <td><code>/solutions/*</code>, <code>/built-for/*</code>, <code>/company/*</code>, <code>/providers/*</code>, <code>/resources/</code>, various utility pages</td>
+      <td>2026-02-17</td>
+    </tr>
+    <tr>
+      <td><strong>Leadership Sitemap</strong></td>
+      <td>2</td>
+      <td><code>/company/leadership/*</code></td>
+      <td>2025-12-04</td>
+    </tr>
+    <tr>
+      <td><strong>Category Sitemap</strong></td>
+      <td>11</td>
+      <td><code>/category/*</code></td>
+      <td>2026-02-20</td>
+    </tr>
+    <tr>
+      <td><strong>Post Tag Sitemap</strong></td>
+      <td>81</td>
+      <td><code>/tag/*</code></td>
+      <td>2026-02-20</td>
+    </tr>
+    <tr>
+      <td><strong>Use Case Sitemap</strong></td>
+      <td>4</td>
+      <td><code>/use-case/*</code></td>
+      <td>2026-02-20</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>1.2 Content Type Breakdown</h3>
+
+<table>
+  <colgroup>
+    <col style="width: 200px;" />
+    <col style="width: 80px;" />
+    <col style="width: 200px;" />
+    <col style="width: 250px;" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Content Type</th>
+      <th>Count</th>
+      <th>URL Pattern</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Blog Posts</td>
+      <td>~250</td>
+      <td><code>/blog/*</code></td>
+      <td>Largest content set; uniform template</td>
+    </tr>
+    <tr>
+      <td>News / Press Releases</td>
+      <td>~40</td>
+      <td><code>/news/*</code></td>
+      <td>Very similar to blog template</td>
+    </tr>
+    <tr>
+      <td>White Papers</td>
+      <td>~35</td>
+      <td><code>/white-papers/*</code></td>
+      <td>Gated content with HubSpot form</td>
+    </tr>
+    <tr>
+      <td>Podcasts</td>
+      <td>~20</td>
+      <td><code>/podcasts/*</code></td>
+      <td>Blog variant + audio embed</td>
+    </tr>
+    <tr>
+      <td>Solutions Pages</td>
+      <td>~30</td>
+      <td><code>/solutions/*</code></td>
+      <td>Complex; accordions, stats, video</td>
+    </tr>
+    <tr>
+      <td>Built-For / Audience Pages</td>
+      <td>~16</td>
+      <td><code>/built-for/*</code></td>
+      <td>Audience-specific with segment accordion</td>
+    </tr>
+    <tr>
+      <td>Provider Pages</td>
+      <td>~12</td>
+      <td><code>/providers/*</code></td>
+      <td>May share solutions template</td>
+    </tr>
+    <tr>
+      <td>Case Studies</td>
+      <td>~10</td>
+      <td><code>/case-studies/*</code></td>
+      <td>Open access; stats + narrative</td>
+    </tr>
+    <tr>
+      <td>Playbooks</td>
+      <td>~10</td>
+      <td><code>/playbooks/*</code></td>
+      <td>Gated content template</td>
+    </tr>
+    <tr>
+      <td>Company Pages</td>
+      <td>~9</td>
+      <td><code>/company/*</code></td>
+      <td>Mixed; careers, partnerships, press</td>
+    </tr>
+    <tr>
+      <td>Category Archives</td>
+      <td>11</td>
+      <td><code>/category/*</code></td>
+      <td>Can be replaced by query-index</td>
+    </tr>
+    <tr>
+      <td>Tag Archives</td>
+      <td>81</td>
+      <td><code>/tag/*</code></td>
+      <td>Can be replaced by query-index</td>
+    </tr>
+    <tr>
+      <td>Utility / Legal</td>
+      <td>~6</td>
+      <td>Various</td>
+      <td>Privacy, terms, login</td>
+    </tr>
+    <tr>
+      <td>Videos</td>
+      <td>~5</td>
+      <td><code>/videos/*</code></td>
+      <td>Gated or open video content</td>
+    </tr>
+    <tr>
+      <td>Webinars</td>
+      <td>~5</td>
+      <td><code>/webinars/*</code></td>
+      <td>Gated content template</td>
+    </tr>
+    <tr>
+      <td>Use Case Pages</td>
+      <td>4</td>
+      <td><code>/use-case/*</code></td>
+      <td>Content hub per audience</td>
+    </tr>
+    <tr>
+      <td>Landing / Thank-You Pages</td>
+      <td>~5</td>
+      <td>Various</td>
+      <td>Form confirmation pages</td>
+    </tr>
+    <tr>
+      <td>Leadership Profiles</td>
+      <td>2</td>
+      <td><code>/company/leadership/*</code></td>
+      <td>Bio pages</td>
+    </tr>
+    <tr>
+      <td>Analyst Reports</td>
+      <td>2</td>
+      <td><code>/analyst-report/*</code></td>
+      <td>Gated content template</td>
+    </tr>
+    <tr>
+      <td>Legislative Highlights</td>
+      <td>~5</td>
+      <td><code>/legislative-highlights/*</code></td>
+      <td>Similar to blog template</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2>2. Page Template Analysis</h2>
+
+<p>After examining representative pages from each category via screenshots and DOM analysis, 8 distinct page templates have been identified. These templates cover all 789 pages on the site.</p>
+
+<h3>2.1 Template 1: Homepage</h3>
+
+<ac:structured-macro ac:name="expand" ac:schema-version="1">
+  <ac:parameter ac:name="title">Homepage Template Details (1 page)</ac:parameter>
+  <ac:rich-text-body>
+    <p><strong>URL:</strong> <a href="https://www.zelis.com/">https://www.zelis.com/</a></p>
+    <p><strong>Sections (top to bottom):</strong></p>
+    <ol>
+      <li><strong>Promo Banner</strong> &ndash; Sticky top bar with announcement text + CTA link</li>
+      <li><strong>Hero Slider</strong> &ndash; Full-width banner with H1 headline, description, dual CTAs (&ldquo;Start now&rdquo; + &ldquo;Learn how&rdquo;), Lottie animation on right</li>
+      <li><strong>Platform Capabilities (Icon Cards)</strong> &ndash; Section heading + 5-column grid with icons, titles, descriptions, &ldquo;Learn more&rdquo; links (Build Better Networks, Engage Members, Optimize Claims, Send Payments, Orchestrate Communications)</li>
+      <li><strong>Stats Counter</strong> &ndash; &ldquo;Why Zelis?&rdquo; section with 3 animated counter stats (750+ payer clients, 850k+ providers, 225M+ members) + CTA</li>
+      <li><strong>Testimonials Carousel</strong> &ndash; 4-slide carousel with blockquote, headshot, name/title, optional case study link</li>
+      <li><strong>Media Callout CTA</strong> &ndash; &ldquo;Request a Meeting&rdquo; section with decorative background + CTA button</li>
+      <li><strong>Values Carousel</strong> &ndash; &ldquo;We Are Zelis&rdquo; with 3-slide image+text carousel + Lottie animation</li>
+      <li><strong>Awards Carousel</strong> &ndash; Logo carousel (11 award/recognition badges)</li>
+      <li><strong>Careers CTA</strong> &ndash; &ldquo;Find your purpose in ours&rdquo; with dual CTAs + Lottie animation</li>
+      <li><strong>Footer</strong> &ndash; Featured resources (3 cards) + 5-column link grid + social icons + legal</li>
+    </ol>
+    <p><strong>WordPress Block Classes:</strong> <code>.block--hero-slider</code>, <code>.block--icon-cards</code>, <code>.block--stats</code>, <code>.block--testimonials</code>, <code>.block--media-callout</code>, <code>.block--values</code>, <code>.block--resources</code></p>
+  </ac:rich-text-body>
+</ac:structured-macro>
+
+<h3>2.2 Template 2: Blog / Article</h3>
+
+<ac:structured-macro ac:name="expand" ac:schema-version="1">
+  <ac:parameter ac:name="title">Blog/Article Template Details (~315 pages: blog, news, podcasts, legislative highlights, infographics)</ac:parameter>
+  <ac:rich-text-body>
+    <p><strong>Sample URL:</strong> <a href="https://www.zelis.com/blog/revolutionizing-provider-payments-with-ai/">https://www.zelis.com/blog/revolutionizing-provider-payments-with-ai/</a></p>
+    <p><strong>Sections (top to bottom):</strong></p>
+    <ol>
+      <li><strong>Article Header</strong> &ndash; Publication date + H1 title</li>
+      <li><strong>Featured Image</strong> &ndash; Full-width hero image (1200&times;628px standard)</li>
+      <li><strong>Author Bio</strong> &ndash; &ldquo;By:&rdquo; linked author name + avatar + bio paragraph</li>
+      <li><strong>Article Body</strong> &ndash; Paragraphs + H4 subheadings + bold text + inline links. No embedded images in body for most posts.</li>
+      <li><strong>Tags</strong> &ndash; Linked category/topic tags (e.g., &ldquo;Digital Healthcare Payments&rdquo;, &ldquo;Healthcare Payments&rdquo;)</li>
+      <li><strong>Social Sharing</strong> &ndash; Share bar with LinkedIn, Twitter, Facebook, Email links</li>
+      <li><strong>Related Posts</strong> &ndash; H2 heading + &ldquo;View all resources&rdquo; link + 3-card grid (category badge, H3 title, description, &ldquo;View [Type]&rdquo; CTA)</li>
+    </ol>
+    <p><strong>Coverage:</strong> Blog (~250), News (~40), Podcasts (~20, adds audio embed), Legislative Highlights (~5), Infographics (~5)</p>
+  </ac:rich-text-body>
+</ac:structured-macro>
+
+<h3>2.3 Template 3: Gated Resource</h3>
+
+<ac:structured-macro ac:name="expand" ac:schema-version="1">
+  <ac:parameter ac:name="title">Gated Resource Template Details (~55 pages: white papers, webinars, playbooks, analyst reports)</ac:parameter>
+  <ac:rich-text-body>
+    <p><strong>Sample URL:</strong> <a href="https://www.zelis.com/white-papers/ai-human-insight-smarter-healthcare-pricing-and-payment-accuracy/">https://www.zelis.com/white-papers/ai-human-insight-smarter-healthcare-pricing-and-payment-accuracy/</a></p>
+    <p><strong>Sections (top to bottom):</strong></p>
+    <ol>
+      <li><strong>Hero / Title</strong> &ndash; H1 title + featured image</li>
+      <li><strong>Description Block</strong> &ndash; Tagline + 2-3 paragraph overview</li>
+      <li><strong>Value Proposition</strong> &ndash; Bulleted list of 3 key benefits</li>
+      <li><strong>Gated Form</strong> &ndash; HubSpot embedded form (&ldquo;Read now&rdquo; CTA)</li>
+      <li><strong>Social Sharing</strong> &ndash; LinkedIn, Twitter, Facebook, Email</li>
+      <li><strong>Related Resources</strong> &ndash; 6-card grid with thumbnails, titles, category badges</li>
+    </ol>
+    <p><strong>Key Difference from Blog:</strong> Emphasizes lead generation over narrative. Form replaces body content. No author bio.</p>
+  </ac:rich-text-body>
+</ac:structured-macro>
+
+<h3>2.4 Template 4: Case Study</h3>
+
+<ac:structured-macro ac:name="expand" ac:schema-version="1">
+  <ac:parameter ac:name="title">Case Study Template Details (~10 pages)</ac:parameter>
+  <ac:rich-text-body>
+    <p><strong>Sample URL:</strong> <a href="https://www.zelis.com/case-studies/tpa-reduced-operational-costs-with-zelis/">https://www.zelis.com/case-studies/tpa-reduced-operational-costs-with-zelis/</a></p>
+    <p><strong>Sections (top to bottom):</strong></p>
+    <ol>
+      <li><strong>Hero</strong> &ndash; Banner image + headline + primary outcome stat</li>
+      <li><strong>Key Results</strong> &ndash; 3 prominent metric cards (cost savings, consolidation, satisfaction)</li>
+      <li><strong>Narrative Body</strong> &ndash; Challenge &rarr; Solution &rarr; Results structure with &ldquo;Deeper Dive&rdquo; sections</li>
+      <li><strong>CTA</strong> &ndash; &ldquo;Find out how much you can save&rdquo; meeting request link</li>
+    </ol>
+    <p><strong>Access Model:</strong> Open access (no gating)</p>
+  </ac:rich-text-body>
+</ac:structured-macro>
+
+<h3>2.5 Template 5: Solutions Page</h3>
+
+<ac:structured-macro ac:name="expand" ac:schema-version="1">
+  <ac:parameter ac:name="title">Solutions Page Template Details (~30 pages)</ac:parameter>
+  <ac:rich-text-body>
+    <p><strong>Sample URL:</strong> <a href="https://www.zelis.com/solutions/payments-optimization/">https://www.zelis.com/solutions/payments-optimization/</a></p>
+    <p><strong>Sections (top to bottom):</strong></p>
+    <ol>
+      <li><strong>Hero</strong> &ndash; H1 headline + description + CTA button + background video/animation</li>
+      <li><strong>Product Introduction</strong> &ndash; H2 heading + body text + &ldquo;Key benefits&rdquo; bulleted list</li>
+      <li><strong>Capabilities Accordion</strong> &ndash; H2 heading + expandable sections (e.g., Provider payments B2B, Premium payments C2B, Member disbursements B2C, Intelligent communications)</li>
+      <li><strong>Stats Carousel</strong> &ndash; 4 KPI metrics in carousel (850k+ providers, $285B payments, 225M transactions, 1B communications)</li>
+      <li><strong>Partnership Section</strong> &ndash; Image + text (columns layout) describing ecosystem</li>
+      <li><strong>Media Callout CTA</strong> &ndash; Yellow/gold background section with heading + CTA + Lottie animation</li>
+    </ol>
+    <p><strong>Sub-pages:</strong> Each solution area has sub-pages for specific products + &ldquo;request-meeting&rdquo; form pages</p>
+  </ac:rich-text-body>
+</ac:structured-macro>
+
+<h3>2.6 Template 6: Built-For / Audience Page</h3>
+
+<ac:structured-macro ac:name="expand" ac:schema-version="1">
+  <ac:parameter ac:name="title">Built-For / Audience Page Template Details (~16 pages)</ac:parameter>
+  <ac:rich-text-body>
+    <p><strong>Sample URL:</strong> <a href="https://www.zelis.com/built-for/payers/">https://www.zelis.com/built-for/payers/</a></p>
+    <p><strong>Sections (top to bottom):</strong></p>
+    <ol>
+      <li><strong>Hero</strong> &ndash; Banner with headline, subheadline, CTA button, background image</li>
+      <li><strong>Audience Accordion</strong> &ndash; Expandable sections by payer type (Health Plans, P&amp;C, TPAs, Brokers, Dental) with AJAX-loaded content</li>
+      <li><strong>Key Use Cases</strong> &ndash; Static bulleted feature points</li>
+      <li><strong>Capability Cards</strong> &ndash; 3 equal-width cards (Modernize, Drive Savings, Balance Risk)</li>
+      <li><strong>Testimonials Carousel</strong> &ndash; 3 rotating quote blocks with headshots</li>
+      <li><strong>Resources Grid</strong> &ndash; 6-card grid of related resources</li>
+      <li><strong>Media Callout CTA</strong> &ndash; &ldquo;Request a Meeting&rdquo; with decorative elements</li>
+    </ol>
+  </ac:rich-text-body>
+</ac:structured-macro>
+
+<h3>2.7 Template 7: Archive / Hub</h3>
+
+<ac:structured-macro ac:name="expand" ac:schema-version="1">
+  <ac:parameter ac:name="title">Archive / Hub Template Details (~96 pages: categories, tags, resources, use-cases)</ac:parameter>
+  <ac:rich-text-body>
+    <p><strong>Sample URLs:</strong> <a href="https://www.zelis.com/resources/">https://www.zelis.com/resources/</a>, <a href="https://www.zelis.com/category/blog/">https://www.zelis.com/category/blog/</a></p>
+    <p><strong>Sections (top to bottom):</strong></p>
+    <ol>
+      <li><strong>Page Header</strong> &ndash; Title + tagline</li>
+      <li><strong>Newsletter Signup</strong> &ndash; HubSpot form (resources hub only)</li>
+      <li><strong>Filters</strong> &ndash; Two filter categories: Type (Blog, Video, Case Study, etc.) + Topic (50+ topics). Includes &ldquo;Filter Reset&rdquo; button</li>
+      <li><strong>Content Grid</strong> &ndash; Resource cards (featured image, title, type indicator, topic tags, &ldquo;Read more&rdquo; link)</li>
+      <li><strong>Load More</strong> &ndash; AJAX-based &ldquo;Load More&rdquo; button (not numbered pagination)</li>
+    </ol>
+    <ac:structured-macro ac:name="note" ac:schema-version="1">
+      <ac:rich-text-body>
+        <p>The 92 category + tag archive pages can potentially be replaced with Edge Delivery Services&rsquo; query-index mechanism + search block, significantly reducing migration scope.</p>
+      </ac:rich-text-body>
+    </ac:structured-macro>
+  </ac:rich-text-body>
+</ac:structured-macro>
+
+<h3>2.8 Template 8: Company / Utility</h3>
+
+<ac:structured-macro ac:name="expand" ac:schema-version="1">
+  <ac:parameter ac:name="title">Company / Utility Template Details (~20 pages)</ac:parameter>
+  <ac:rich-text-body>
+    <p><strong>Includes:</strong> Company overview, careers, partnerships, press, philanthropy, diversity, privacy policy, terms of use, login, leadership profiles, thank-you pages, landing pages</p>
+    <p><strong>Structure:</strong> These pages are mixed and do not follow a single uniform template. They will be migrated individually or in small groups. Leadership profiles use a headshot + bio layout. Legal pages are primarily long-form text. Landing pages use hero + form patterns.</p>
+  </ac:rich-text-body>
+</ac:structured-macro>
+
+<hr />
+
+<h2>3. Block Mapping</h2>
+
+<p>The following table maps Zelis WordPress components to their Edge Delivery Services block equivalents. Blocks marked <ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">EXISTS</ac:parameter><ac:parameter ac:name="colour">Green</ac:parameter></ac:structured-macro> are already available in the project. Blocks marked <ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">NEW</ac:parameter><ac:parameter ac:name="colour">Red</ac:parameter></ac:structured-macro> or <ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">VARIANT</ac:parameter><ac:parameter ac:name="colour">Yellow</ac:parameter></ac:structured-macro> need to be created.</p>
+
+<table>
+  <colgroup>
+    <col style="width: 200px;" />
+    <col style="width: 80px;" />
+    <col style="width: 180px;" />
+    <col style="width: 100px;" />
+    <col style="width: 200px;" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Zelis Component</th>
+      <th>Frequency</th>
+      <th>EDS Block</th>
+      <th>Status</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Navigation / Header (mega menu, promo banner, mobile hamburger)</td>
+      <td>All pages</td>
+      <td><code>header</code></td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">EXISTS</ac:parameter><ac:parameter ac:name="colour">Green</ac:parameter></ac:structured-macro></td>
+      <td>Needs customization for mega menu + promo banner</td>
+    </tr>
+    <tr>
+      <td>Footer (featured resources, link columns, social, legal)</td>
+      <td>All pages</td>
+      <td><code>footer</code></td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">EXISTS</ac:parameter><ac:parameter ac:name="colour">Green</ac:parameter></ac:structured-macro></td>
+      <td>Needs customization for 5-column layout + featured resources</td>
+    </tr>
+    <tr>
+      <td>Hero (standard, with video, slider)</td>
+      <td>All pages</td>
+      <td><code>hero</code></td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">VARIANT</ac:parameter><ac:parameter ac:name="colour">Yellow</ac:parameter></ac:structured-macro></td>
+      <td>Exists; needs variants for video background + slider</td>
+    </tr>
+    <tr>
+      <td>Resource Cards (image + category badge + title + CTA)</td>
+      <td>~90%</td>
+      <td><code>cards (resource-cards)</code></td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">VARIANT</ac:parameter><ac:parameter ac:name="colour">Yellow</ac:parameter></ac:structured-macro></td>
+      <td>Cards block exists; variant needed for category badge styling</td>
+    </tr>
+    <tr>
+      <td>Media Callout CTA (decorative background + heading + CTA)</td>
+      <td>~70%</td>
+      <td><code>media-callout</code></td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">NEW</ac:parameter><ac:parameter ac:name="colour">Red</ac:parameter></ac:structured-macro></td>
+      <td>Yellow/gold CTA section with Lottie animation or pattern</td>
+    </tr>
+    <tr>
+      <td>Stats Counter (animated numbers + labels)</td>
+      <td>~30%</td>
+      <td><code>stats</code></td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">NEW</ac:parameter><ac:parameter ac:name="colour">Red</ac:parameter></ac:structured-macro></td>
+      <td>Animated number counter with accent bars</td>
+    </tr>
+    <tr>
+      <td>Testimonials Carousel (quotes + headshot + attribution)</td>
+      <td>~25%</td>
+      <td><code>carousel (testimonials)</code></td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">VARIANT</ac:parameter><ac:parameter ac:name="colour">Yellow</ac:parameter></ac:structured-macro></td>
+      <td>Carousel exists; variant needed for quote styling</td>
+    </tr>
+    <tr>
+      <td>Icon Cards (icon + title + description + link)</td>
+      <td>~20%</td>
+      <td><code>cards (icon-cards)</code></td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">VARIANT</ac:parameter><ac:parameter ac:name="colour">Yellow</ac:parameter></ac:structured-macro></td>
+      <td>Cards block exists; variant for icon-based layout</td>
+    </tr>
+    <tr>
+      <td>Accordion (expandable sections)</td>
+      <td>~20%</td>
+      <td><code>accordion</code></td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">EXISTS</ac:parameter><ac:parameter ac:name="colour">Green</ac:parameter></ac:structured-macro></td>
+      <td>Direct match; uses native details/summary</td>
+    </tr>
+    <tr>
+      <td>Social Sharing (LinkedIn, Twitter, Facebook, Email)</td>
+      <td>~50%</td>
+      <td><code>social-share</code></td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">NEW</ac:parameter><ac:parameter ac:name="colour">Red</ac:parameter></ac:structured-macro></td>
+      <td>Sharing bar with platform-specific share URLs</td>
+    </tr>
+    <tr>
+      <td>Author Bio (avatar + name + bio text)</td>
+      <td>~40%</td>
+      <td>Default content (columns)</td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">EXISTS</ac:parameter><ac:parameter ac:name="colour">Green</ac:parameter></ac:structured-macro></td>
+      <td>Can be implemented with default content + columns block</td>
+    </tr>
+    <tr>
+      <td>HubSpot Form (gated content)</td>
+      <td>~10%</td>
+      <td><code>embed</code> or custom <code>form</code></td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">VARIANT</ac:parameter><ac:parameter ac:name="colour">Yellow</ac:parameter></ac:structured-macro></td>
+      <td>Embed block can handle HubSpot iframe; custom form for native</td>
+    </tr>
+    <tr>
+      <td>Video Embed (YouTube, Vimeo, background video)</td>
+      <td>~15%</td>
+      <td><code>video</code> / <code>embed</code></td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">EXISTS</ac:parameter><ac:parameter ac:name="colour">Green</ac:parameter></ac:structured-macro></td>
+      <td>Both video and embed blocks already support YouTube/Vimeo</td>
+    </tr>
+    <tr>
+      <td>Awards / Logo Carousel</td>
+      <td>~5%</td>
+      <td><code>carousel (logos)</code></td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">VARIANT</ac:parameter><ac:parameter ac:name="colour">Yellow</ac:parameter></ac:structured-macro></td>
+      <td>Carousel with image-only slides for logos</td>
+    </tr>
+    <tr>
+      <td>Tabs (tabbed content)</td>
+      <td>~10%</td>
+      <td><code>tabs</code></td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">EXISTS</ac:parameter><ac:parameter ac:name="colour">Green</ac:parameter></ac:structured-macro></td>
+      <td>Direct match with ARIA roles</td>
+    </tr>
+    <tr>
+      <td>Columns (text + image side by side)</td>
+      <td>~25%</td>
+      <td><code>columns</code></td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">EXISTS</ac:parameter><ac:parameter ac:name="colour">Green</ac:parameter></ac:structured-macro></td>
+      <td>Direct match</td>
+    </tr>
+    <tr>
+      <td>Search / Filter</td>
+      <td>~5%</td>
+      <td><code>search</code></td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">EXISTS</ac:parameter><ac:parameter ac:name="colour">Green</ac:parameter></ac:structured-macro></td>
+      <td>Uses query-index.json</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Summary:</strong> 8 blocks exist and can be used directly, 5 blocks need new variants (CSS-only changes), 3 blocks are entirely new.</p>
+
+<hr />
+
+<h2>4. Design System</h2>
+
+<h3>4.1 Brand Colors (observed from zelis.com)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Usage</th>
+      <th>Approximate Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Primary Purple/Blue</td>
+      <td>Hero backgrounds, header, navigation</td>
+      <td>Deep purple-blue (#2B1F6B range)</td>
+    </tr>
+    <tr>
+      <td>Accent Purple</td>
+      <td>Buttons, links, hover states</td>
+      <td>Bright purple (#6C3FE5 range)</td>
+    </tr>
+    <tr>
+      <td>Accent Yellow/Gold</td>
+      <td>CTA sections, decorative elements</td>
+      <td>Warm gold (#F5A623 range)</td>
+    </tr>
+    <tr>
+      <td>Dark Navy</td>
+      <td>Footer, dark sections</td>
+      <td>Near-black navy (#1A1A3E range)</td>
+    </tr>
+    <tr>
+      <td>Light Gray</td>
+      <td>Backgrounds, alternating sections</td>
+      <td>#F5F5F5 range</td>
+    </tr>
+    <tr>
+      <td>White</td>
+      <td>Default page background, text on dark</td>
+      <td>#FFFFFF</td>
+    </tr>
+    <tr>
+      <td>Text Dark</td>
+      <td>Body text</td>
+      <td>#333333 range</td>
+    </tr>
+  </tbody>
+</table>
+
+<ac:structured-macro ac:name="note" ac:schema-version="1">
+  <ac:rich-text-body>
+    <p>Exact color values will be extracted programmatically during Phase 1 via computed style inspection of the live site.</p>
+  </ac:rich-text-body>
+</ac:structured-macro>
+
+<h3>4.2 Typography</h3>
+
+<ul>
+  <li><strong>Body Font:</strong> Custom sans-serif (to be extracted)</li>
+  <li><strong>Heading Font:</strong> Custom sans-serif condensed variant (to be extracted)</li>
+  <li><strong>Heading Weight:</strong> 600-700</li>
+  <li><strong>Body Weight:</strong> 400</li>
+  <li><strong>Line Height:</strong> ~1.25 for headings, ~1.6 for body</li>
+</ul>
+
+<h3>4.3 Layout</h3>
+
+<ul>
+  <li><strong>Max Content Width:</strong> ~1200px (sections), ~1248px (header/nav)</li>
+  <li><strong>Section Padding:</strong> 24px mobile, 32px desktop</li>
+  <li><strong>Section Margin:</strong> ~40px vertical</li>
+  <li><strong>Desktop Breakpoint:</strong> ~900px</li>
+  <li><strong>Button Style:</strong> Pill-shaped (large border-radius), primary purple/white + secondary outlined</li>
+</ul>
+
+<h3>4.4 Decorative Patterns</h3>
+
+<ul>
+  <li><strong>Skewed Accent Backgrounds:</strong> Uses <code>transform: skewX(-30deg)</code> with striped gradients</li>
+  <li><strong>Lottie Animations:</strong> Used on hero, careers CTA, and values sections (scroll-triggered)</li>
+  <li><strong>Responsive Typography:</strong> Uses CSS <code>clamp()</code> functions</li>
+</ul>
+
+<hr />
+
+<h2>5. Execution Plan</h2>
+
+<ac:structured-macro ac:name="warning" ac:schema-version="1">
+  <ac:rich-text-body>
+    <p><strong>Critical Success Factor:</strong> The 8 templates cover all 789 pages. The blog/article template alone covers ~40% of all pages. Maximizing template reuse and building robust import infrastructure is the key to efficient migration of 600+ pages.</p>
+  </ac:rich-text-body>
+</ac:structured-macro>
+
+<h3>5.1 Phase 1: Foundation (Design System + Global Components)</h3>
+
+<ac:structured-macro ac:name="panel" ac:schema-version="1">
+  <ac:parameter ac:name="title">Phase 1 Objectives</ac:parameter>
+  <ac:parameter ac:name="borderStyle">solid</ac:parameter>
+  <ac:rich-text-body>
+    <p><strong>Goal:</strong> Extract design tokens and build the header/footer/navigation that appear on every page, plus shared block components.</p>
+  </ac:rich-text-body>
+</ac:structured-macro>
+
+<table>
+  <colgroup>
+    <col style="width: 40px;" />
+    <col style="width: 250px;" />
+    <col style="width: 400px;" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Task</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1.1</td>
+      <td><strong>Design System Extraction</strong></td>
+      <td>Extract colors, typography, spacing, button styles, and decorative patterns from zelis.com into CSS custom properties in <code>styles/styles.css</code></td>
+    </tr>
+    <tr>
+      <td>1.2</td>
+      <td><strong>Header / Navigation</strong></td>
+      <td>Build mega menu with promo banner, audience selector (For Payers / For Providers / Client Login), solutions dropdown, mobile hamburger. Fragment-based: <code>/nav.md</code></td>
+    </tr>
+    <tr>
+      <td>1.3</td>
+      <td><strong>Footer</strong></td>
+      <td>Featured resources row (3 cards), 5-column link grid (Claims Management, Payments Optimization, Member Engagement, Connected Platform, Trending Topics), social icons, legal links. Fragment-based: <code>/footer.md</code></td>
+    </tr>
+    <tr>
+      <td>1.4</td>
+      <td><strong>Hero Block Variants</strong></td>
+      <td>Standard hero (existing) + <code>hero (video)</code> variant with background video + <code>hero (slider)</code> variant for homepage</td>
+    </tr>
+    <tr>
+      <td>1.5</td>
+      <td><strong>Media Callout Block</strong> <ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">NEW</ac:parameter><ac:parameter ac:name="colour">Red</ac:parameter></ac:structured-macro></td>
+      <td>CTA section with decorative background pattern. Used on ~70% of pages. Columns: heading, description, CTA link, optional image/animation</td>
+    </tr>
+    <tr>
+      <td>1.6</td>
+      <td><strong>Stats Block</strong> <ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">NEW</ac:parameter><ac:parameter ac:name="colour">Red</ac:parameter></ac:structured-macro></td>
+      <td>Animated number counters with labels. Used on homepage, solutions pages, case studies</td>
+    </tr>
+    <tr>
+      <td>1.7</td>
+      <td><strong>Card Variants</strong></td>
+      <td><code>cards (resource-cards)</code> with category badge + <code>cards (icon-cards)</code> with icon layout</td>
+    </tr>
+    <tr>
+      <td>1.8</td>
+      <td><strong>Carousel Variants</strong></td>
+      <td><code>carousel (testimonials)</code> with quote/headshot styling + <code>carousel (logos)</code> for awards</td>
+    </tr>
+    <tr>
+      <td>1.9</td>
+      <td><strong>Social Share Block</strong> <ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">NEW</ac:parameter><ac:parameter ac:name="colour">Red</ac:parameter></ac:structured-macro></td>
+      <td>Sharing bar (LinkedIn, Twitter, Facebook, Email) with platform-specific share URL generation</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>5.2 Phase 2: Template Development (Single-Page Migrations)</h3>
+
+<ac:structured-macro ac:name="panel" ac:schema-version="1">
+  <ac:parameter ac:name="title">Phase 2 Objectives</ac:parameter>
+  <ac:parameter ac:name="borderStyle">solid</ac:parameter>
+  <ac:rich-text-body>
+    <p><strong>Goal:</strong> Migrate one representative page per template to establish import patterns, block parsers, and page transformers for bulk import.</p>
+  </ac:rich-text-body>
+</ac:structured-macro>
+
+<table>
+  <colgroup>
+    <col style="width: 50px;" />
+    <col style="width: 150px;" />
+    <col style="width: 350px;" />
+    <col style="width: 100px;" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Order</th>
+      <th>Template</th>
+      <th>Sample URL</th>
+      <th>Bulk Impact</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2.1</td>
+      <td><strong>Blog Post</strong></td>
+      <td><a href="https://www.zelis.com/blog/revolutionizing-provider-payments-with-ai/">/blog/revolutionizing-provider-payments-with-ai/</a></td>
+      <td>~315 pages</td>
+    </tr>
+    <tr>
+      <td>2.2</td>
+      <td><strong>Gated Resource</strong></td>
+      <td><a href="https://www.zelis.com/white-papers/ai-human-insight-smarter-healthcare-pricing-and-payment-accuracy/">/white-papers/ai-human-insight-smarter-healthcare-pricing-and-payment-accuracy/</a></td>
+      <td>~55 pages</td>
+    </tr>
+    <tr>
+      <td>2.3</td>
+      <td><strong>Case Study</strong></td>
+      <td><a href="https://www.zelis.com/case-studies/tpa-reduced-operational-costs-with-zelis/">/case-studies/tpa-reduced-operational-costs-with-zelis/</a></td>
+      <td>~10 pages</td>
+    </tr>
+    <tr>
+      <td>2.4</td>
+      <td><strong>Solutions Page</strong></td>
+      <td><a href="https://www.zelis.com/solutions/payments-optimization/">/solutions/payments-optimization/</a></td>
+      <td>~30 pages</td>
+    </tr>
+    <tr>
+      <td>2.5</td>
+      <td><strong>Built-For Page</strong></td>
+      <td><a href="https://www.zelis.com/built-for/payers/">/built-for/payers/</a></td>
+      <td>~16 pages</td>
+    </tr>
+    <tr>
+      <td>2.6</td>
+      <td><strong>Homepage</strong></td>
+      <td><a href="https://www.zelis.com/">https://www.zelis.com/</a></td>
+      <td>1 page</td>
+    </tr>
+    <tr>
+      <td>2.7</td>
+      <td><strong>Archive Page</strong></td>
+      <td><a href="https://www.zelis.com/resources/">/resources/</a></td>
+      <td>~96 pages</td>
+    </tr>
+    <tr>
+      <td>2.8</td>
+      <td><strong>Company / Utility</strong></td>
+      <td><a href="https://www.zelis.com/company/">/company/</a></td>
+      <td>~20 pages</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>For each template migration:</strong></p>
+<ol>
+  <li>Migrate the sample page using single-page migration workflow</li>
+  <li>Build block parsers and page transformers for the template pattern</li>
+  <li>Validate rendering in local preview</li>
+  <li>Critique and refine block styling against original</li>
+  <li>Create import infrastructure for bulk use</li>
+</ol>
+
+<h3>5.3 Phase 3: Bulk Import (Content at Scale)</h3>
+
+<ac:structured-macro ac:name="panel" ac:schema-version="1">
+  <ac:parameter ac:name="title">Phase 3 Objectives</ac:parameter>
+  <ac:parameter ac:name="borderStyle">solid</ac:parameter>
+  <ac:rich-text-body>
+    <p><strong>Goal:</strong> Use the import infrastructure from Phase 2 to bulk-import all remaining pages by template type. This is the highest-throughput phase.</p>
+  </ac:rich-text-body>
+</ac:structured-macro>
+
+<table>
+  <colgroup>
+    <col style="width: 60px;" />
+    <col style="width: 250px;" />
+    <col style="width: 80px;" />
+    <col style="width: 300px;" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Batch</th>
+      <th>Content Type</th>
+      <th>Count</th>
+      <th>Import Script Approach</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3a</td>
+      <td>Blog Posts</td>
+      <td>~250</td>
+      <td>Bulk import using blog template. Most uniform structure; highest ROI.</td>
+    </tr>
+    <tr>
+      <td>3b</td>
+      <td>News / Press Releases</td>
+      <td>~40</td>
+      <td>Reuse blog import script (nearly identical template)</td>
+    </tr>
+    <tr>
+      <td>3c</td>
+      <td>Podcasts + Legislative Highlights + Infographics</td>
+      <td>~30</td>
+      <td>Blog variant import (adds audio embed for podcasts)</td>
+    </tr>
+    <tr>
+      <td>3d</td>
+      <td>White Papers + Webinars + Playbooks + Analyst Reports</td>
+      <td>~55</td>
+      <td>Gated content template import (form + description + resources)</td>
+    </tr>
+    <tr>
+      <td>3e</td>
+      <td>Case Studies + Videos</td>
+      <td>~15</td>
+      <td>Case study template import</td>
+    </tr>
+    <tr>
+      <td>3f</td>
+      <td>Solutions Pages</td>
+      <td>~30</td>
+      <td>Solutions template import (more complex; may need sub-batching)</td>
+    </tr>
+    <tr>
+      <td>3g</td>
+      <td>Built-For + Provider Pages</td>
+      <td>~28</td>
+      <td>Audience page template import</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>5.4 Phase 4: Archive &amp; Taxonomy Pages</h3>
+
+<ac:structured-macro ac:name="panel" ac:schema-version="1">
+  <ac:parameter ac:name="title">Phase 4 Objectives</ac:parameter>
+  <ac:parameter ac:name="borderStyle">solid</ac:parameter>
+  <ac:rich-text-body>
+    <p><strong>Goal:</strong> Build filtered listing pages. Consider replacing WordPress archives with Edge Delivery Services query-index approach.</p>
+  </ac:rich-text-body>
+</ac:structured-macro>
+
+<table>
+  <thead>
+    <tr>
+      <th>Page Type</th>
+      <th>Count</th>
+      <th>Approach</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Category Archives</td>
+      <td>11</td>
+      <td>Replace with query-index + search/filter block OR migrate individually</td>
+    </tr>
+    <tr>
+      <td>Tag Archives</td>
+      <td>81</td>
+      <td>Replace with query-index + search/filter block (recommended)</td>
+    </tr>
+    <tr>
+      <td>Resources Hub</td>
+      <td>1</td>
+      <td>Custom archive page with type + topic filtering via query-index</td>
+    </tr>
+    <tr>
+      <td>Use Case Pages</td>
+      <td>4</td>
+      <td>Content hub pages; may use archive template or individual migration</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>5.5 Phase 5: Utility &amp; Special Pages</h3>
+
+<ac:structured-macro ac:name="panel" ac:schema-version="1">
+  <ac:parameter ac:name="title">Phase 5 Objectives</ac:parameter>
+  <ac:parameter ac:name="borderStyle">solid</ac:parameter>
+  <ac:rich-text-body>
+    <p><strong>Goal:</strong> Handle remaining one-off pages that do not fit standard templates.</p>
+  </ac:rich-text-body>
+</ac:structured-macro>
+
+<table>
+  <thead>
+    <tr>
+      <th>Page Type</th>
+      <th>Count</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Company Pages</td>
+      <td>~9</td>
+      <td>Company overview, careers, careers-india, partnerships, press, philanthropy, diversity, analyst-reports hub</td>
+    </tr>
+    <tr>
+      <td>Legal Pages</td>
+      <td>~6</td>
+      <td>Privacy policy, terms of use, payment terms, cookie preferences, login</td>
+    </tr>
+    <tr>
+      <td>Landing / Thank-You Pages</td>
+      <td>~5</td>
+      <td>Form confirmation pages; simple hero + message</td>
+    </tr>
+    <tr>
+      <td>Leadership Profiles</td>
+      <td>2</td>
+      <td>Bio pages with headshot + text</td>
+    </tr>
+    <tr>
+      <td>Special Pages</td>
+      <td>~5</td>
+      <td>healthcare-financial-experience, payment-harmonization-index, find-a-provider, connect-with-zelis, let-care-flow</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2>6. Efficiency Optimizations</h2>
+
+<ac:structured-macro ac:name="tip" ac:schema-version="1">
+  <ac:rich-text-body>
+    <p><strong>Key Insight:</strong> 8 templates cover all 789 pages. Investing in robust template infrastructure upfront dramatically reduces per-page migration effort.</p>
+  </ac:rich-text-body>
+</ac:structured-macro>
+
+<ol>
+  <li><strong>Template Reuse:</strong> The blog/article template alone covers ~40% of all pages (~315 pages). Blog, news, podcasts, and legislative highlights all share the same basic article structure, enabling ~330 pages to use the same import script.</li>
+  <li><strong>Block Variant System:</strong> Rather than creating new blocks for each visual pattern, use CSS-only variants of core blocks (cards, hero, carousel). This reduces JavaScript development and maintenance burden.</li>
+  <li><strong>Skip Taxonomy Archives:</strong> The 92 category + tag archive pages can be replaced with Edge Delivery Services&rsquo; query-index mechanism + search block. This eliminates them from the migration scope entirely.</li>
+  <li><strong>Batch by Similarity:</strong> Group content types that share templates (blog + news + podcasts + legislative highlights) into single bulk import runs with minor conditional logic.</li>
+  <li><strong>Effective Page Count:</strong> After removing taxonomy archives (92) and grouping by template, the actual migration work is: 8 template setups + ~690 content pages through bulk import.</li>
+  <li><strong>Import Infrastructure Investment:</strong> Phase 2 builds block parsers and page transformers once per template. Phase 3 reuses these across hundreds of pages with minimal manual intervention.</li>
+</ol>
+
+<hr />
+
+<h2>7. Technical Notes</h2>
+
+<h3>7.1 Source Site Technology Stack</h3>
+
+<ul>
+  <li><strong>CMS:</strong> WordPress with custom Gutenberg blocks</li>
+  <li><strong>Block Naming:</strong> BEM-inspired <code>.block--{feature}</code> + WordPress standard <code>.wp-block-{type}</code></li>
+  <li><strong>JavaScript:</strong> Slick Carousel, Lottie animations, custom AJAX handlers, HubSpot forms, Google Tag Manager</li>
+  <li><strong>CSS:</strong> Utility classes (<code>.has-{color}-background-color</code>), responsive clamp() functions, skewed decorative backgrounds</li>
+  <li><strong>Analytics/Consent:</strong> Ketch consent management, Google Tag Manager</li>
+</ul>
+
+<h3>7.2 EDS Project Blocks (Already Available)</h3>
+
+<p>The target EDS project already contains 17 blocks:</p>
+<p><code>header</code>, <code>footer</code>, <code>hero</code>, <code>cards</code>, <code>columns</code>, <code>tabs</code>, <code>accordion</code>, <code>carousel</code>, <code>search</code>, <code>embed</code>, <code>video</code>, <code>modal</code>, <code>form</code>, <code>fragment</code>, <code>table</code>, <code>quote</code></p>
+
+<h3>7.3 Block Library (Remote)</h3>
+
+<p>The remote EDS block library provides reference implementations for: Table (5 variants), Columns, Cards (2 variants), Video, Accordion, Hero, Carousel, Tabs, Search, Embed (video + social).</p>
+
+<h3>7.4 Images</h3>
+
+<p>During migration, images reference their source URLs on zelis.com (not downloaded locally). Image optimization and hosting decisions will be addressed post-migration.</p>
+
+<h3>7.5 Forms</h3>
+
+<p>Zelis uses HubSpot forms for gated content and meeting requests. These can be embedded via the <code>embed</code> block (iframe approach) or replaced with native EDS forms if desired.</p>
+
+<hr />
+
+<h2>8. Risk Considerations</h2>
+
+<table>
+  <colgroup>
+    <col style="width: 200px;" />
+    <col style="width: 100px;" />
+    <col style="width: 350px;" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Risk</th>
+      <th>Severity</th>
+      <th>Mitigation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Lottie animations cannot be directly replicated</td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">MEDIUM</ac:parameter><ac:parameter ac:name="colour">Yellow</ac:parameter></ac:structured-macro></td>
+      <td>Replace with static images or CSS animations. Lottie library can be loaded as delayed script if required.</td>
+    </tr>
+    <tr>
+      <td>HubSpot form integration complexity</td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">LOW</ac:parameter><ac:parameter ac:name="colour">Green</ac:parameter></ac:structured-macro></td>
+      <td>HubSpot forms can be embedded via iframe. Embed block supports this pattern.</td>
+    </tr>
+    <tr>
+      <td>AJAX-loaded content in audience accordions</td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">MEDIUM</ac:parameter><ac:parameter ac:name="colour">Yellow</ac:parameter></ac:structured-macro></td>
+      <td>Content will need to be pre-loaded during scraping or fetched from source during import.</td>
+    </tr>
+    <tr>
+      <td>Mega menu complexity</td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">MEDIUM</ac:parameter><ac:parameter ac:name="colour">Yellow</ac:parameter></ac:structured-macro></td>
+      <td>EDS navigation supports multi-level menus. May require custom header decoration for mega-menu dropdowns.</td>
+    </tr>
+    <tr>
+      <td>Animated number counters</td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">LOW</ac:parameter><ac:parameter ac:name="colour">Green</ac:parameter></ac:structured-macro></td>
+      <td>Implement with IntersectionObserver + requestAnimationFrame in stats block JS.</td>
+    </tr>
+    <tr>
+      <td>Cookie consent management</td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">LOW</ac:parameter><ac:parameter ac:name="colour">Green</ac:parameter></ac:structured-macro></td>
+      <td>Ketch or equivalent can be loaded as delayed script in EDS.</td>
+    </tr>
+    <tr>
+      <td>Search/filter on archive pages</td>
+      <td><ac:structured-macro ac:name="status" ac:schema-version="1"><ac:parameter ac:name="title">MEDIUM</ac:parameter><ac:parameter ac:name="colour">Yellow</ac:parameter></ac:structured-macro></td>
+      <td>EDS search block + query-index provides base. Custom filtering (by type + topic) may need additional JS.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2>9. Recommended Starting Point</h2>
+
+<ac:structured-macro ac:name="info" ac:schema-version="1">
+  <ac:rich-text-body>
+    <p>Begin with <strong>Phase 1</strong>: Design system extraction to establish the visual foundation, followed by header/footer since they appear on every page. Then proceed to migrate the first blog post (Phase 2.1) to establish the highest-volume template and unlock Phase 3 bulk import for ~315 pages.</p>
+  </ac:rich-text-body>
+</ac:structured-macro>

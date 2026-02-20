@@ -1,0 +1,75 @@
+{
+  "name": "blog-article",
+  "description": "Blog/Article template for Zelis blog posts. Covers ~315 pages including blog, news, podcasts, legislative highlights, and infographics.",
+  "sourceUrlPattern": "https://www.zelis.com/(blog|news|podcasts|legislative-highlights|infographics)/*/",
+  "representativePage": "https://www.zelis.com/blog/accelerating-progress-in-healthcare-finance-a-call-to-action/",
+  "sections": [
+    {
+      "id": "hero",
+      "type": "default-content",
+      "description": "Featured image, H1 title, and date",
+      "selectors": {
+        "container": "article .hero",
+        "date": ".hero .leader",
+        "title": ".hero .post-title",
+        "image": ".hero .featured-img img"
+      }
+    },
+    {
+      "id": "author-bio",
+      "type": "block",
+      "blockName": "columns",
+      "description": "Author avatar, name (linked), and biographical text",
+      "selectors": {
+        "container": ".post-author",
+        "avatar": ".post-author .author-image",
+        "name": ".post-author strong a",
+        "bio": ".post-author .has-small-font-size"
+      }
+    },
+    {
+      "id": "article-body",
+      "type": "default-content",
+      "description": "Main article body with headings, paragraphs, and inline links",
+      "selectors": {
+        "container": ".post-content .acf-innerblocks-container > .wp-block-column"
+      }
+    },
+    {
+      "id": "tags-share",
+      "type": "default-content",
+      "description": "Article tags and social sharing links",
+      "selectors": {
+        "tags": ".resource-tags .tags li a",
+        "share": ".share-post a"
+      }
+    },
+    {
+      "id": "related-posts",
+      "type": "block",
+      "blockName": "cards",
+      "sectionMetadata": { "style": "dark" },
+      "description": "Three related resource cards on dark background",
+      "selectors": {
+        "container": ".related-posts",
+        "heading": ".related-posts h2",
+        "ctaButton": ".related-posts .btn-primary",
+        "cards": ".related-posts .resource",
+        "cardCategory": ".resource .leader",
+        "cardImage": ".resource .wrapper img",
+        "cardTitle": ".resource .wrapper h3",
+        "cardDescription": ".resource .wrapper p",
+        "cardLink": ".resource .wrapper a"
+      }
+    }
+  ],
+  "metadata": {
+    "title": { "selector": "meta[property='og:title']", "attribute": "content" },
+    "description": { "selector": "meta[property='og:description']", "attribute": "content" },
+    "author": { "selector": "meta[name='author']", "attribute": "content" },
+    "date": { "selector": "meta[property='article:published_time']", "attribute": "content", "transform": "dateOnly" },
+    "image": { "selector": "meta[property='og:image']", "attribute": "content" },
+    "tags": { "selector": ".resource-tags .tags li a", "collect": "textContent", "join": ", " },
+    "template": { "value": "blog-article" }
+  }
+}

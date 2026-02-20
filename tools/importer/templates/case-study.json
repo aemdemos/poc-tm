@@ -1,0 +1,54 @@
+{
+  "name": "case-study",
+  "description": "Case study template - customer success stories with challenge/solution narrative, key stats, and CTA",
+  "urlPatterns": [
+    "/case-studies/*"
+  ],
+  "estimatedPages": 10,
+  "selectors": {
+    "hero": {
+      "title": ".block--resource-hero .post-title",
+      "image": ".block--resource-hero .featured-wrapper img"
+    },
+    "summary": {
+      "heading": "section.block--section-wrapper:nth-of-type(2) h2",
+      "challengeColumn": "section.block--section-wrapper:nth-of-type(2) .wp-block-columns:nth-of-type(2) .wp-block-column:nth-child(1)",
+      "solutionColumn": "section.block--section-wrapper:nth-of-type(2) .wp-block-columns:nth-of-type(2) .wp-block-column:nth-child(2)"
+    },
+    "stats": {
+      "container": "section.has-gold-background-color .block--stats",
+      "items": ".stat"
+    },
+    "narrative": {
+      "subtitle": "section.block--section-wrapper:nth-of-type(4) .has-lead-font-size",
+      "heading": "section.block--section-wrapper:nth-of-type(4) h2",
+      "challengeColumn": "section.block--section-wrapper:nth-of-type(4) .wp-block-columns:nth-of-type(2) .wp-block-column:nth-child(1)",
+      "solutionColumn": "section.block--section-wrapper:nth-of-type(4) .wp-block-columns:nth-of-type(2) .wp-block-column:nth-child(2)",
+      "cta": "section.block--section-wrapper:nth-of-type(4) .wp-block-button__link"
+    },
+    "tags": ".resource-tags .tag a",
+    "share": ".share-post a[href]",
+    "relatedPosts": {
+      "container": ".related-posts",
+      "heading": ".related-posts h2",
+      "viewAllLink": ".related-posts .btn-primary",
+      "cards": ".related-posts .resource"
+    }
+  },
+  "blocks": [
+    {
+      "name": "columns",
+      "variant": "columns",
+      "purpose": "Challenge/Solution two-column layouts"
+    },
+    {
+      "name": "cards",
+      "variant": "cards",
+      "purpose": "Stats display and related posts grid"
+    }
+  ],
+  "sectionStyles": {
+    "stats": "highlight",
+    "relatedPosts": "dark"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "name": "built-for-audience",
+  "description": "Built-for/audience template - audience-specific landing pages with hero, use cases accordion, capabilities, testimonials, resources, and meeting CTA",
+  "urlPatterns": [
+    "/built-for/*"
+  ],
+  "estimatedPages": 16,
+  "selectors": {
+    "hero": {
+      "container": ".block--hero",
+      "title": ".block--hero h1",
+      "description": ".block--hero p",
+      "cta": ".block--hero .btn",
+      "image": ".block--hero .wrapper img"
+    },
+    "useCases": {
+      "subtitle": ".has-lead-font-size",
+      "heading": "h2",
+      "accordion": ".block--accordion",
+      "accordionItems": ".accordion-item",
+      "keyPoints": ".block--key-points"
+    },
+    "capabilities": {
+      "subtitle": ".leader",
+      "heading": "h2",
+      "iconCards": ".block--icon-cards .icon-card"
+    },
+    "testimonials": {
+      "container": ".block--testimonials",
+      "image": ".wp-block-image img",
+      "quotes": ".testimonial blockquote",
+      "authors": ".blockquote-footer"
+    },
+    "resources": {
+      "container": ".block--resources",
+      "heading": "h2",
+      "viewAll": ".wp-block-button__link",
+      "cards": ".resource"
+    },
+    "meetingCta": {
+      "container": ".block--media-callout",
+      "subtitle": ".leader",
+      "heading": "h2",
+      "description": "p",
+      "cta": ".btn",
+      "image": ".image-wrapper img"
+    }
+  },
+  "blocks": [
+    { "name": "columns", "variant": "columns", "purpose": "Hero layout, testimonials, meeting CTA" },
+    { "name": "accordion", "variant": "accordion", "purpose": "Audience-specific use cases" },
+    { "name": "cards", "variant": "cards", "purpose": "Capabilities cards and resource grid" },
+    { "name": "carousel", "variant": "carousel", "purpose": "Testimonial quotes" }
+  ],
+  "sectionStyles": {
+    "resources": "dark"
+  }
+}

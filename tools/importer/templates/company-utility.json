@@ -1,0 +1,71 @@
+{
+  "name": "company-utility",
+  "description": "Company and utility pages - informational pages with mixed content: hero, stats, case studies, milestones timeline, awards, leadership CTAs",
+  "urlPatterns": [
+    "/company/",
+    "/company/*",
+    "/about/",
+    "/about/*",
+    "/privacy-policy/",
+    "/terms-of-use/",
+    "/cookie-policy/",
+    "/sitemap/"
+  ],
+  "estimatedPages": 20,
+  "selectors": {
+    "hero": {
+      "heading": ".block--section-wrapper:first-of-type h1, .entry-header h1",
+      "description": ".block--section-wrapper:first-of-type .has-large-font-size, .block--section-wrapper:first-of-type > .wp-block-group > p",
+      "cta": ".block--section-wrapper:first-of-type .wp-block-button__link"
+    },
+    "modernCare": {
+      "heading": "h2",
+      "bodyText": ".wp-block-group p",
+      "image": ".wp-block-image img",
+      "stats": ".block--stats .stat, .wp-block-columns .has-title-font-family"
+    },
+    "storiesOfImpact": {
+      "subtitle": ".has-lead-font-size",
+      "heading": "h2",
+      "viewAllLink": ".wp-block-button__link, a.btn-primary",
+      "caseStudyCard": ".resource, .wp-block-media-text"
+    },
+    "clientPledge": {
+      "subtitle": ".has-lead-font-size",
+      "heading": "h2",
+      "cards": ".wp-block-column, .wp-block-group"
+    },
+    "milestones": {
+      "subtitle": ".has-lead-font-size",
+      "heading": "h2",
+      "timeline": ".slick-slide, .swiper-slide, .milestone-item"
+    },
+    "awards": {
+      "heading": "h2",
+      "description": "p",
+      "badges": "img"
+    },
+    "leadership": {
+      "subtitle": ".has-lead-font-size",
+      "heading": "h2",
+      "description": "p",
+      "ctas": ".wp-block-button__link"
+    }
+  },
+  "blocks": [
+    {
+      "name": "cards",
+      "variant": "cards",
+      "purpose": "Stats display, case study cards, client pledge principles"
+    },
+    {
+      "name": "accordion",
+      "variant": "accordion",
+      "purpose": "Milestones timeline with year entries"
+    }
+  ],
+  "sectionStyles": {
+    "hero": "dark",
+    "awards": "dark"
+  }
+}

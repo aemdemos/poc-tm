@@ -1,27 +1,102 @@
+/*
+ * Cards Block - Zelis Design
+ * Grid layout for card items with Zelis styling
+ */
+
+/* ---- Card Grid ---- */
 .cards > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-m);
 }
 
 .cards > ul > li {
-  border: 1px solid #dadada;
   background-color: var(--background-color);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
 }
 
-.cards .cards-card-body {
-  margin: 16px;
+.cards > ul > li:hover {
+  box-shadow: 0 8px 24px rgb(35 0 75 / 12%);
+  transform: translateY(-2px);
 }
 
+/* ---- Card Image ---- */
 .cards .cards-card-image {
   line-height: 0;
 }
 
 .cards > ul > li img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
+  display: block;
+}
+
+/* ---- Card Body ---- */
+.cards .cards-card-body {
+  padding: var(--spacing-m);
+}
+
+.cards .cards-card-body h4,
+.cards .cards-card-body h3 {
+  font-size: var(--heading-font-size-m);
+  font-weight: 500;
+  line-height: 1.19;
+  margin-bottom: var(--spacing-xs);
+}
+
+.cards .cards-card-body p {
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: var(--spacing-s);
+}
+
+.cards .cards-card-body a:any-link:not(.button) {
+  color: var(--color-gold);
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.cards .cards-card-body a:hover:not(.button) {
+  text-decoration: underline;
+}
+
+/* ---- Dark section card overrides ---- */
+.section.dark .cards > ul > li {
+  background-color: transparent;
+  border: 1px solid rgb(255 255 255 / 15%);
+}
+
+.section.dark .cards > ul > li:hover {
+  border-color: rgb(255 255 255 / 30%);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 30%);
+}
+
+.section.dark .cards .cards-card-body h4,
+.section.dark .cards .cards-card-body h3 {
+  color: var(--color-white);
+}
+
+.section.dark .cards .cards-card-body p {
+  color: rgb(248 249 250 / 90%);
+}
+
+/* ---- Responsive Grid ---- */
+@media (width >= 600px) {
+  .cards > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards > ul {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-l);
+  }
 }

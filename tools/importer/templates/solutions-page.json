@@ -1,0 +1,69 @@
+{
+  "name": "Solutions Page",
+  "description": "Product/solution pages with hero, product introduction, capabilities accordion, stats, partnership section, and CTA. Complex pages with multiple block types.",
+  "template": "solutions-page",
+  "urlPatterns": [
+    "https://www.zelis.com/solutions/*/"
+  ],
+  "estimatedPages": 30,
+  "sections": {
+    "hero": {
+      "selector": "section.block--section-wrapper:first-of-type",
+      "title": { "selector": "h1.wp-block-heading" },
+      "description": { "selector": ".has-body-large-font-size" },
+      "cta": { "selector": ".wp-block-button__link" },
+      "video": { "selector": ".block--video iframe", "attribute": "src" }
+    },
+    "productIntro": {
+      "selector": "section.has-ink-blue-5-background-color:first-of-type",
+      "heading": { "selector": "h2.wp-block-heading" },
+      "description": { "selector": ".has-body-large-font-size" },
+      "keyBenefits": {
+        "selector": ".block--key-points",
+        "heading": { "selector": "h3" },
+        "items": { "selector": ".items .item" }
+      }
+    },
+    "capabilities": {
+      "selector": "section.has-white-background-color",
+      "heading": { "selector": "h2.wp-block-heading" },
+      "accordion": {
+        "selector": ".block--accordion",
+        "items": {
+          "selector": ".accordion-item",
+          "title": { "selector": ".accordion-button" },
+          "body": { "selector": ".accordion-body" }
+        }
+      }
+    },
+    "stats": {
+      "selector": ".block--cards",
+      "heading": { "selector": "h2.wp-block-heading" },
+      "cards": {
+        "selector": ".icon-card",
+        "stat": { "selector": ".title" },
+        "description": { "selector": "p" }
+      },
+      "cta": { "selector": ".wp-block-button__link" }
+    },
+    "partnership": {
+      "selector": "section.has-gold-background-color",
+      "heading": { "selector": "h2.wp-block-heading" },
+      "description": { "selector": "p" },
+      "image": { "selector": "figure img", "attribute": "src" }
+    },
+    "meetingCta": {
+      "selector": "section.has-ink-blue-5-background-color:last-of-type",
+      "subtitle": { "selector": ".has-lead-font-size" },
+      "heading": { "selector": "h2.wp-block-heading" },
+      "description": { "selector": "p:not(.has-lead-font-size)" },
+      "cta": { "selector": ".wp-block-button__link" }
+    }
+  },
+  "metadata": {
+    "title": { "source": "og:title" },
+    "description": { "source": "meta[name='description']" },
+    "image": { "source": "meta[property='og:image']" },
+    "template": { "value": "solutions-page" }
+  }
+}

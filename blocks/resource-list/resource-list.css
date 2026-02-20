@@ -1,0 +1,262 @@
+/*
+ * Resource List Block - Zelis Design
+ * Filterable resource grid with type/topic filters
+ */
+
+/* ---- Filters ---- */
+.resource-list .resource-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-m);
+  align-items: center;
+  margin-bottom: var(--spacing-l);
+  padding-bottom: var(--spacing-m);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.resource-list .filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.resource-list .filter-label {
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-blue);
+  margin-right: var(--spacing-xs);
+}
+
+.resource-list .filter-btn {
+  background: var(--color-light-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-family: var(--body-font-family);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.resource-list .filter-btn:hover {
+  border-color: var(--color-ink-blue);
+  color: var(--color-ink-blue);
+}
+
+.resource-list .filter-btn.active {
+  background: var(--color-ink-blue);
+  border-color: var(--color-ink-blue);
+  color: var(--color-white);
+}
+
+.resource-list .filter-select {
+  padding: 8px 32px 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: var(--body-font-family);
+  color: var(--color-text);
+  background: var(--color-white);
+  cursor: pointer;
+  appearance: auto;
+  min-width: 180px;
+}
+
+.resource-list .filter-search-input {
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: var(--body-font-family);
+  color: var(--color-text);
+  min-width: 200px;
+}
+
+.resource-list .filter-search-input:focus {
+  outline: none;
+  border-color: var(--color-ink-blue);
+  box-shadow: 0 0 0 2px rgb(35 0 75 / 10%);
+}
+
+/* ---- Resource Count ---- */
+.resource-list .resource-count {
+  font-size: 14px;
+  color: var(--color-text-light, #666);
+  margin-bottom: var(--spacing-m);
+}
+
+/* ---- Resource Grid ---- */
+.resource-list .resource-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-m);
+}
+
+.resource-list .resource-card {
+  background: var(--background-color);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--color-border, #e5e5e5);
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.resource-list .resource-card:hover {
+  box-shadow: 0 8px 24px rgb(35 0 75 / 12%);
+  transform: translateY(-2px);
+}
+
+.resource-list .resource-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* ---- Card Image ---- */
+.resource-list .resource-card-image {
+  line-height: 0;
+}
+
+.resource-list .resource-card-image img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- Card Body ---- */
+.resource-list .resource-card-body {
+  padding: var(--spacing-m);
+}
+
+.resource-list .resource-card-type {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-gold);
+  margin-bottom: var(--spacing-xs);
+}
+
+.resource-list .resource-card-body h3 {
+  font-size: var(--heading-font-size-m, 18px);
+  font-weight: 500;
+  line-height: 1.25;
+  margin: 0 0 var(--spacing-xs);
+  color: var(--color-ink-blue);
+}
+
+.resource-list .resource-card-body p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-s);
+}
+
+.resource-list .resource-card-cta {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-gold);
+}
+
+.resource-list .resource-card:hover .resource-card-cta {
+  text-decoration: underline;
+}
+
+/* ---- Load More ---- */
+.resource-list .resource-footer {
+  text-align: center;
+  margin-top: var(--spacing-l);
+}
+
+.resource-list .load-more {
+  background: var(--color-ink-blue);
+  color: var(--color-white);
+  border: none;
+  border-radius: 28px;
+  padding: 12px 32px;
+  font-size: 16px;
+  font-family: var(--body-font-family);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--transition-base);
+}
+
+.resource-list .load-more:hover {
+  background: var(--color-deep-purple, #1a0036);
+}
+
+/* ---- No Results ---- */
+.resource-list .no-results {
+  text-align: center;
+  color: var(--color-text-light, #666);
+  padding: var(--spacing-xl) 0;
+  font-size: 16px;
+}
+
+/* ---- Loading ---- */
+.resource-list .loading {
+  text-align: center;
+  color: var(--color-text-light, #666);
+  padding: var(--spacing-xl) 0;
+}
+
+/* ---- Responsive ---- */
+@media (width >= 600px) {
+  .resource-list .resource-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .resource-list .filter-search {
+    margin-left: auto;
+  }
+}
+
+@media (width >= 900px) {
+  .resource-list .resource-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-l);
+  }
+}
+
+/* ---- Dark section overrides ---- */
+.section.dark .resource-list .filter-btn {
+  background: transparent;
+  border-color: rgb(255 255 255 / 30%);
+  color: var(--color-white);
+}
+
+.section.dark .resource-list .filter-btn:hover {
+  border-color: var(--color-white);
+}
+
+.section.dark .resource-list .filter-btn.active {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-ink-blue);
+}
+
+.section.dark .resource-list .resource-card {
+  background: transparent;
+  border-color: rgb(255 255 255 / 15%);
+}
+
+.section.dark .resource-list .resource-card-body h3 {
+  color: var(--color-white);
+}
+
+.section.dark .resource-list .resource-card-body p {
+  color: rgb(248 249 250 / 90%);
+}
+
+.section.dark .resource-list .resource-count {
+  color: rgb(248 249 250 / 70%);
+}

@@ -1,17 +1,20 @@
+/*
+ * Quote Block - Zelis Design
+ * Testimonial/blockquote styling
+ */
+
+/* ---- Blockquote Container ---- */
 .quote blockquote {
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--spacing-m);
   max-width: 900px;
+  border-left: none;
 }
 
-@media (width >= 900px) {
-  .quote blockquote {
-    padding: 0 32px;
-  }
-}
-
+/* ---- Quotation Text ---- */
 .quote blockquote .quote-quotation {
-  font-size: 120%;
+  font-size: var(--body-font-size-xl);
+  line-height: 1.5;
 }
 
 .quote blockquote .quote-quotation > :first-child {
@@ -21,21 +24,67 @@
 .quote blockquote .quote-quotation p:first-child::before,
 .quote blockquote .quote-quotation p:last-child::after {
   line-height: 0;
+  font-size: 1.4em;
+  color: var(--color-gold);
 }
 
 .quote blockquote .quote-quotation p:first-child::before {
-  content: '“';
+  content: '\201C';
 }
 
 .quote blockquote .quote-quotation p:last-child::after {
-  content: '”';
+  content: '\201D';
 }
 
+/* ---- Attribution ---- */
 .quote blockquote .quote-attribution {
-  text-align: right;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-s);
+  margin-top: var(--spacing-m);
+}
+
+.quote blockquote .quote-attribution p {
+  margin: 0;
+  font-size: var(--body-font-size-m);
+  font-weight: 500;
+  color: var(--text-color);
 }
 
 .quote blockquote .quote-attribution p:first-child::before {
-  content: '—';
-  padding-right: 0.5ch;
+  content: '';
+  padding-right: 0;
+}
+
+.quote blockquote .quote-attribution img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ---- Dark Section Overrides ---- */
+.section.dark .quote blockquote .quote-quotation {
+  color: var(--color-white);
+}
+
+.section.dark .quote blockquote .quote-quotation p:first-child::before,
+.section.dark .quote blockquote .quote-quotation p:last-child::after {
+  color: var(--color-gold);
+}
+
+.section.dark .quote blockquote .quote-attribution p {
+  color: rgb(248 249 250 / 90%);
+}
+
+/* ---- Responsive ---- */
+@media (width >= 900px) {
+  .quote blockquote {
+    padding: 0 var(--spacing-l);
+  }
+
+  .quote blockquote .quote-quotation {
+    font-size: 1.25rem;
+  }
 }

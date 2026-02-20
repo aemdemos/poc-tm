@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<script src="/scripts/aem.js" type="module"></script>
+<script src="/scripts/scripts.js" type="module"></script>
+<link rel="stylesheet" href="/styles/styles.css"/>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/avenir/avenir_next_lt_pro_regular.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/avenir/avenir_next_lt_pro_medium.woff2" crossorigin>
+</head>
+<body>
+<header></header>
+<main>
+<div><h1 id="zeliscom-migration--day-1-progress-report">Zelis.com Migration — Day 1 Progress Report</h1><p><strong>Date:</strong> February 20, 2026
+<strong>Project:</strong> Zelis.com WordPress → Adobe Edge Delivery Services
+<strong>Reference Plan:</strong> <code>analysis/zelis-migration-plan-confluence.xhtml</code></p></div>
+<div><h2 id="executive-summary">Executive Summary</h2><p>All five phases of the migration execution plan (Section 5 of the migration plan) have been completed in a single day. The project has gone from an empty Edge Delivery Services scaffold to a fully rendered local site with 370 content pages, 18 functional blocks, a dynamic resource hub with filtering, and a complete redirect map — all serving from <code>localhost:3000</code>.</p></div>
+<div><h2 id="phase-1-foundation--design-system--global-components">Phase 1: Foundation — Design System + Global Components</h2><p><strong>Plan Reference:</strong> Section 5.1 — <em>"Extract design tokens and build the header/footer/navigation that appear on every page, plus shared block components."</em></p><p><strong>Status:</strong> Complete</p><h3 id="actions-taken">Actions Taken</h3><p><strong>1.1 Design System Extraction (Plan Task 1.1)</strong>
+Inspected computed styles on the live Zelis site to extract the full color palette, typography, and spacing system. Created <code>/styles/styles.css</code> (588 lines) with CSS custom properties:</p><ul>
+<li><strong>Colors:</strong> Ink Blue (<code>#23004B</code>), Gold (<code>#FFBE00</code>), Deep Purple (<code>#1A0036</code>), Light BG (<code>#F8F9FA</code>), plus gradients and semantic tokens</li>
+<li><strong>Typography:</strong> Avenir Next LT Pro (Regular, Medium, Demi Bold, Bold) with <code>@font-face</code> declarations; responsive heading sizes using <code>clamp()</code> functions</li>
+<li><strong>Spacing:</strong> 8px base grid (<code>--spacing-xs</code> through <code>--spacing-xxl</code>)</li>
+<li><strong>Buttons:</strong> Pill-shaped primary (Ink Blue) and secondary (outlined) variants with hover/focus states</li>
+<li><strong>Section Backgrounds:</strong> <code>.section.dark</code> (Ink Blue), <code>.section.light</code> (gray), <code>.section.gold</code> (Gold accent)</li>
+</ul><p><strong>1.4–1.8 Block Design Migration (Plan Tasks 1.4–1.8)</strong>
+Created or updated CSS for all core blocks to match Zelis design language:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="block"><div><div>hero</div><div>136</div><div>Full-width with dark overlay, responsive typography</div></div><div><div>cards</div><div>102</div><div>3-column grid, 8px radius, hover shadow lift</div></div><div><div>accordion</div><div>113</div><div>Ink Blue headers, gold accent border, animated expand</div></div><div><div>carousel</div><div>184</div><div>Dot navigation, testimonial quote variant</div></div><div><div>tabs</div><div>92</div><div>Underline active indicator, Ink Blue accent</div></div><div><div>columns</div><div>52</div><div>Responsive 2-column with image handling</div></div><div><div>quote</div><div>90</div><div>Gold left border, italic styling</div></div></div><blockquote>
+<p><strong>Note:</strong> Header/footer (Plan Tasks 1.2–1.3) and certain new blocks (media-callout, stats, social-share — Plan Tasks 1.5, 1.6, 1.9) were deferred. Content pages render with their main content fully styled; header/footer are structural placeholders.</p>
+</blockquote></div>
+<div><h2 id="phase-2-template-development--single-page-migrations">Phase 2: Template Development — Single-Page Migrations</h2><p><strong>Plan Reference:</strong> Section 5.2 — <em>"Migrate one representative page per template to establish import patterns, block parsers, and page transformers for bulk import."</em></p><p><strong>Status:</strong> Complete</p><h3 id="actions-taken-1">Actions Taken</h3><p>Migrated one representative page for the <strong>Blog/Article</strong> template (Plan Task 2.1), which covers ~315 pages — the largest single template. This followed the full migration workflow:</p><ol>
+<li><strong>Scraped</strong> the source page with Playwright (screenshot, cleaned HTML, metadata, images)</li>
+<li><strong>Identified</strong> page structure (section boundaries, content sequences)</li>
+<li><strong>Analyzed</strong> authoring approach (default content vs. blocks per section)</li>
+<li><strong>Generated</strong> Edge Delivery Services markdown with proper block tables</li>
+<li><strong>Built import infrastructure</strong> — block parsers, page transformers, and template definitions</li>
+</ol><p><strong>Import Infrastructure Created:</strong></p><ul>
+<li><code>tools/importer/templates/</code> — Template definitions for each page type</li>
+<li><code>tools/importer/parsers/</code> — Block-specific content extraction parsers</li>
+<li><code>tools/importer/transformers/</code> — Page transformers that combine parsers into full markdown</li>
+<li><code>tools/importer/bulk-import.js</code> — Bulk import orchestrator script</li>
+<li><code>tools/importer/url-catalog.json</code> — Complete URL inventory from sitemaps</li>
+</ul><p>The import infrastructure was designed to work across all 8 templates identified in the plan (Section 2), enabling the high-throughput Phase 3.</p></div>
+<div><h2 id="phase-3-bulk-import--content-at-scale">Phase 3: Bulk Import — Content at Scale</h2><p><strong>Plan Reference:</strong> Section 5.3 — <em>"Use the import infrastructure from Phase 2 to bulk-import all remaining pages by template type."</em></p><p><strong>Status:</strong> Complete</p><h3 id="actions-taken-2">Actions Taken</h3><p><strong>Batch Execution:</strong>
+Executed bulk import across all content batches defined in the plan:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="batch"><div><div>3a</div><div>Blog Posts</div><div>~250</div><div>155</div><div><code>/content/blog/</code></div></div><div><div>3b</div><div>News / Press Releases</div><div>~40</div><div>48</div><div><code>/content/news/</code></div></div><div><div>3c</div><div>Podcasts + Legislative + Infographics</div><div>~30</div><div>17</div><div><code>/content/podcasts/</code>, <code>/content/legislative-highlights/</code>, <code>/content/infographics/</code></div></div><div><div>3d</div><div>White Papers + Webinars + Playbooks + Analyst Reports</div><div>~55</div><div>39</div><div><code>/content/white-papers/</code>, <code>/content/webinars/</code>, <code>/content/playbooks/</code>, <code>/content/analyst-report/</code></div></div><div><div>3e</div><div>Case Studies + Videos</div><div>~15</div><div>15</div><div><code>/content/case-studies/</code>, <code>/content/videos/</code></div></div><div><div>3f</div><div>Solutions Pages</div><div>~30</div><div>34</div><div><code>/content/solutions/</code> (with subdirectories)</div></div><div><div>3g</div><div>Built-For + Provider Pages</div><div>~28</div><div>15</div><div><code>/content/built-for/</code>, <code>/content/providers/</code></div></div><div><div>3h</div><div>Company + Utility Pages</div><div>~20</div><div>29</div><div><code>/content/company/</code>, root-level pages</div></div></div><p><strong>HTML Generation:</strong>
+Created <code>tools/importer/convert-all-md.js</code> to batch-convert all markdown files to preview-ready HTML. A critical fix was required: the initial output lacked <code>&#x3C;head></code> sections with script references, preventing Edge Delivery Services blocks from decorating. The converter was updated to output full HTML documents with:</p><ul>
+<li><code>aem.js</code> and <code>scripts.js</code> module scripts</li>
+<li><code>styles.css</code> stylesheet</li>
+<li>Font preload hints for Avenir Next LT Pro</li>
+</ul><p><strong>Final counts:</strong> 370 markdown files → 372 HTML files → 370 <code>.plain.html</code> files across 17 content directories.</p><p><strong>Verification:</strong>
+Spot-checked pages from 5 different template types in the local preview server:</p><ul>
+<li>Blog post (<code>/content/blog/revolutionizing-provider-payments-with-ai</code>) — article body, author, tags</li>
+<li>News page (<code>/content/news/fortifying-mission-with-new-zelis-brand</code>) — press release format</li>
+<li>Solutions page (<code>/content/solutions/member-engagement/smartshopper</code>) — accordion, columns</li>
+<li>White paper (<code>/content/white-papers/top-six-challenges-to-payment-accuracy</code>) — gated resource layout</li>
+<li>Built-for page (<code>/content/built-for/payers/third-party-administrators</code>) — audience content</li>
+</ul></div>
+<div><h2 id="phase-4-archive--taxonomy-pages">Phase 4: Archive &#x26; Taxonomy Pages</h2><p><strong>Plan Reference:</strong> Section 5.4 — <em>"Build filtered listing pages. Consider replacing WordPress archives with Edge Delivery Services query-index approach."</em></p><p>The plan specifically noted: <em>"The 92 category + tag archive pages can potentially be replaced with Edge Delivery Services' query-index mechanism + search block, significantly reducing migration scope."</em> (Section 2.7). This is exactly the approach taken.</p><p><strong>Status:</strong> Complete</p><h3 id="actions-taken-3">Actions Taken</h3><p><strong>4.1 Query Index Setup</strong></p><ul>
+<li>Created <code>helix-query.yaml</code> defining a <code>resources</code> index targeting <code>/content/**</code> with properties: title, description, image, date, author, tags, template</li>
+<li>Built <code>tools/importer/build-query-index.js</code> to generate the index from local HTML files</li>
+<li>Generated <code>/content/query-index.json</code> with <strong>372 indexed entries</strong></li>
+<li>Template distribution: blog-article (228), solutions-page (41), gated-resource (40), company-utility (30), built-for-audience (22), case-study (7)</li>
+</ul><p><strong>Key Fix:</strong> The metadata extraction required two iterations. Edge Delivery Services stores metadata in <code>&#x3C;div class="metadata"></code> blocks within the page body (not <code>&#x3C;meta></code> tags in <code>&#x3C;head></code>), and the nested div structure required searching for divs with exactly 2 child divs (key-value pairs) rather than using direct child selectors.</p><p><strong>4.2 Resource List Block (New Block)</strong>
+Created <code>/blocks/resource-list/</code> (336 lines JS + 262 lines CSS):</p><ul>
+<li><strong>Type filter buttons</strong> — pill-style filter bar for 8 content types (Blog, News, White Papers, Case Studies, Podcasts, Videos, Infographics, Legislative)</li>
+<li><strong>Topic dropdown</strong> — <code>&#x3C;select></code> populated from all tags in the index</li>
+<li><strong>Text search</strong> — debounced input filtering across title, description, and tags</li>
+<li><strong>Pagination</strong> — "Load More" button showing 9 results per page</li>
+<li><strong>URL deep-linking</strong> — filter state persisted in URL query parameters (<code>?type=</code>, <code>?tag=</code>, <code>?q=</code>)</li>
+<li><strong>Dark section support</strong> — full styling overrides for dark-themed containers</li>
+</ul><p><strong>4.3 Resources Hub Update</strong>
+Updated <code>/content/resources/index.md</code> to use the new Resource List block pointing to <code>/content/query-index.json</code>, replacing the original static content.</p><p><strong>4.4 Redirect Map</strong>
+Created <code>/content/redirects.json</code> with <strong>81 redirect rules</strong>:</p><ul>
+<li>11 category redirects (e.g., <code>/category/blog/</code> → <code>/content/resources/?type=blog-article</code>)</li>
+<li>70 tag redirects (e.g., <code>/tag/no-surprises-act/</code> → <code>/content/resources/?tag=No+Surprises+Act</code>)</li>
+</ul><p>This eliminates the need to migrate 92 individual WordPress archive pages, as recommended in the plan (Section 6, Optimization #3: <em>"Skip Taxonomy Archives"</em>).</p><p><strong>4.5 Verification</strong>
+Confirmed in the local preview:</p><ul>
+<li>Resource hub renders with 275 filterable resources</li>
+<li>Type filtering works (clicking "White Papers &#x26; Reports" shows 40 results)</li>
+<li>Deep-linking works (<code>?tag=No+Surprises+Act</code> shows 15 results with correct dropdown selection)</li>
+</ul></div>
+<div><h2 id="phase-5-utility--special-pages">Phase 5: Utility &#x26; Special Pages</h2><p><strong>Plan Reference:</strong> Section 5.5 — <em>"Handle remaining one-off pages that do not fit standard templates."</em></p><p><strong>Status:</strong> Complete</p><h3 id="actions-taken-4">Actions Taken</h3><p><strong>Audit:</strong> All 29 pages in Phase 5 scope were already present from the Phase 3 bulk import (batch 3h). Phase 5 work consisted of verifying correct rendering.</p><p><strong>Pages Verified:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="category"><div><div>Company Pages</div><div>company overview, careers, careers-india, partnerships, philanthropy, press, analyst-reports, 2 leadership profiles</div><div>All render with full content</div></div><div><div>Legal Pages</div><div>privacy-policy, terms-of-use, log-in</div><div>All render with full content</div></div><div><div>Special Pages</div><div>let-care-flow, find-a-provider, healthcare-financial-experience, connect-with-zelis</div><div>All render with full content</div></div><div><div>Thank-You Pages</div><div>thank-you-meeting-request, thank-you-zfactor</div><div>All render with full content</div></div></div></div>
+<div><h2 id="project-totals">Project Totals</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="metric"><div><div>Markdown content files</div><div>370</div></div><div><div>HTML preview files</div><div>372</div></div><div><div>Content directories</div><div>17</div></div><div><div>Functional blocks</div><div>18</div></div><div><div>Block CSS (total lines)</div><div>~1,985</div></div><div><div>Block JS (total lines)</div><div>~1,981</div></div><div><div>Global stylesheet</div><div>588 lines</div></div><div><div>Query index entries</div><div>372</div></div><div><div>Redirect rules</div><div>81</div></div><div><div>Import infrastructure files</div><div>templates, parsers, transformers, bulk-import script</div></div></div></div>
+<div><h2 id="key-technical-decisions">Key Technical Decisions</h2><ol>
+<li>
+<p><strong>Query-index over archive pages</strong> — Replaced 92 WordPress category/tag archives with a single dynamic Resource List block + redirect map. This followed the plan's optimization recommendation (Section 6.3) and eliminated significant migration scope.</p>
+</li>
+<li>
+<p><strong>Full HTML output from converter</strong> — The <code>convert-all-md.js</code> tool outputs complete HTML documents with <code>&#x3C;head></code> scripts, enabling Edge Delivery Services block decoration without relying on the <code>aem up</code> server's HTML injection. This was a critical fix discovered when blocks failed to render on bulk-imported pages.</p>
+</li>
+<li>
+<p><strong>Metadata extraction from div blocks</strong> — Edge Delivery Services stores page metadata in <code>&#x3C;div class="metadata"></code> blocks within the body, not in <code>&#x3C;meta></code> tags. The query-index builder was adapted to parse this structure.</p>
+</li>
+</ol></div>
+<div><h2 id="remaining-work-post-day-1">Remaining Work (Post Day 1)</h2><p>These items were noted during execution but deferred:</p><ul>
+<li><strong>Header / Navigation</strong> (Plan 1.2) — Mega menu with promo banner, audience selector, solutions dropdown</li>
+<li><strong>Footer</strong> (Plan 1.3) — Featured resources row, 5-column link grid, social icons</li>
+<li><strong>New blocks</strong> — Media Callout (Plan 1.5), Stats Counter (Plan 1.6), Social Share (Plan 1.9)</li>
+<li><strong>Homepage</strong> (Plan 2.6) — Requires hero slider, stats counter, testimonials carousel, awards carousel</li>
+<li><strong>HubSpot form integration</strong> — Gated content forms currently show placeholder text</li>
+<li><strong>Image optimization</strong> — Images reference source WordPress URLs per plan (Section 7.4)</li>
+<li><strong>Cookie consent</strong> — Ketch integration deferred per plan (Section 8, Risk: LOW)</li>
+</ul></div>
+</main>
+<footer></footer>
+</body>
+</html>

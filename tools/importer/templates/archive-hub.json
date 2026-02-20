@@ -1,0 +1,47 @@
+{
+  "name": "archive-hub",
+  "description": "Archive/Hub template - resource listing pages with featured hero, search/filter, and paginated resource card grid",
+  "urlPatterns": [
+    "/resources/",
+    "/resources/?category=*",
+    "/blog/",
+    "/news/",
+    "/case-studies/",
+    "/infographics/",
+    "/white-papers/",
+    "/webinars/",
+    "/playbooks/"
+  ],
+  "estimatedPages": 96,
+  "notes": "Archive pages are dynamically populated from a query index in production. The static template captures the page structure; dynamic filtering/pagination requires custom block JavaScript.",
+  "selectors": {
+    "hero": {
+      "container": "section.block--section-wrapper:first-of-type",
+      "title": "h1",
+      "featuredResource": ".block--featured-resource"
+    },
+    "searchFilter": {
+      "container": ".block--resource-filter",
+      "typeDropdown": "select[name='type']",
+      "topicDropdown": "select[name='topic']",
+      "searchInput": "input[type='search']"
+    },
+    "resourceGrid": {
+      "container": ".block--resources",
+      "cards": ".resource",
+      "cardImage": ".wp-post-image",
+      "cardCategory": ".leader",
+      "cardTitle": "h3",
+      "cardDescription": "p",
+      "cardCta": "a.mt-auto",
+      "loadMore": ".load-more"
+    }
+  },
+  "blocks": [
+    { "name": "columns", "variant": "columns", "purpose": "Featured resource hero layout" },
+    { "name": "cards", "variant": "cards", "purpose": "Resource card grid" }
+  ],
+  "sectionStyles": {
+    "hero": "dark"
+  }
+}

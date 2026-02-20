@@ -1,37 +1,136 @@
+/*
+ * Hero Block - Zelis Design
+ * Two-column layout: text content left, image/animation right
+ * Matches https://www.zelis.com/ homepage hero pattern
+ */
+
+/* ---- Container Reset ---- */
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
 }
 
+/* ---- Block Layout ---- */
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  padding: var(--spacing-xl) var(--spacing-m);
 }
 
+/* Two-column row */
+.hero > div {
+  display: flex;
+  flex-direction: column;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+/* Text column (first child) */
+.hero > div > div:first-child {
+  order: 1;
+  padding-top: 0;
+}
+
+/* Image/media column (second child if exists) */
+.hero > div > div:nth-child(2) {
+  order: 0;
+  padding-bottom: var(--spacing-xl);
+}
+
+/* ---- Typography ---- */
 .hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
+  color: var(--text-color);
+  margin-bottom: var(--spacing-s);
 }
 
+.hero p {
+  font-size: var(--body-font-size-xl);
+  line-height: 1.5;
+  color: var(--text-color);
+  margin-bottom: var(--spacing-l);
+}
+
+/* ---- Buttons ---- */
+.hero .button-container {
+  display: flex;
+  gap: var(--spacing-s);
+  flex-wrap: wrap;
+}
+
+.hero a.button {
+  margin: 0;
+}
+
+/* ---- Images ---- */
 .hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+  display: block;
 }
 
 .hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---- Full-width background image hero ---- */
+.hero.has-background picture {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+}
+
+.hero.has-background img {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
+.hero.has-background {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  color: var(--color-white);
+}
+
+.hero.has-background h1 {
+  color: var(--color-white);
+}
+
+.hero.has-background p {
+  color: var(--color-white);
+}
+
+/* ---- Desktop (two-column side-by-side) ---- */
 @media (width >= 900px) {
   .hero {
-    padding: 40px 32px;
+    padding: var(--section-spacing) 32px 0;
+  }
+
+  .hero > div {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-m);
+  }
+
+  .hero > div > div:first-child {
+    flex: 0 0 50%;
+    order: 0;
+    padding-top: var(--spacing-xl);
+    padding-right: var(--spacing-m);
+  }
+
+  .hero > div > div:nth-child(2) {
+    flex: 0 0 50%;
+    order: 1;
+    padding-bottom: 0;
+  }
+
+  .hero.has-background {
+    min-height: 600px;
+  }
+}
+
+@media (width >= 1200px) {
+  .hero > div > div:first-child {
+    padding-right: var(--spacing-xl);
   }
 }
