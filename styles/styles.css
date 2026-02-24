@@ -121,7 +121,7 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: var(--body-font-family);
-  font-size: var(--body-font-size-m);
+  font-size: var(--body-font-size-xl);
   font-weight: 400;
   line-height: 1.5;
 }
@@ -164,7 +164,7 @@ h6 {
 
 h1 {
   font-size: var(--heading-font-size-xxl);
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.18;
 }
 
@@ -485,31 +485,6 @@ main .section.dark a:hover:not(.button) {
   color: var(--color-white);
 }
 
-/* Dark section button overrides */
-main .section.dark a.button:any-link {
-  background-color: var(--color-white);
-  border-color: var(--color-white);
-  color: var(--color-bright-blue);
-}
-
-main .section.dark a.button:hover {
-  background-color: var(--color-ink-blue-5);
-  border-color: var(--color-ink-blue-5);
-  color: var(--color-bright-blue);
-}
-
-main .section.dark a.button.secondary {
-  background-color: transparent;
-  border-color: var(--color-white);
-  color: var(--color-white);
-}
-
-main .section.dark a.button.secondary:hover {
-  background-color: var(--color-white);
-  border-color: var(--color-white);
-  color: var(--color-bright-blue);
-}
-
 /* Gold/accent section */
 main .section.accent {
   background-color: var(--color-gold);
@@ -543,15 +518,16 @@ main .section.dark-alt h6 {
 }
 
 /* ---- Eyebrow / Kicker text ---- */
-main .section .default-content-wrapper > p:first-child {
+main .section > .default-content-wrapper:first-child > p:first-child {
   font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(18px, 1.125rem + ((1vw - 3.2px) * 0.114), 19px);
   font-weight: 400;
+  line-height: 22px;
   color: var(--text-color);
   margin-bottom: var(--spacing-xs);
 }
 
-main .section.dark .default-content-wrapper > p:first-child {
+main .section.dark > .default-content-wrapper:first-child > p:first-child {
   color: #f8f9fa;
 }
 
@@ -591,6 +567,7 @@ main .section .eyebrow {
   font-style: normal;
   font-size: clamp(18px, 1.125rem + ((1vw - 3.2px) * 0.114), 19px);
   font-weight: 400;
+  line-height: 22px;
   margin-bottom: var(--spacing-xs);
   color: inherit;
 }
