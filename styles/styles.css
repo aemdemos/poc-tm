@@ -653,6 +653,19 @@ main .section.center {
   text-align: center;
 }
 
+/* Award badges in accent section - horizontal row */
+main .section.accent.center .default-content-wrapper > p:last-child picture {
+  display: inline-block;
+  width: 220px;
+  margin: var(--spacing-s);
+  vertical-align: middle;
+}
+
+main .section.accent.center .default-content-wrapper > p:last-child img {
+  width: 100%;
+  height: auto;
+}
+
 /* Narrow content width */
 main .section.narrow > div {
   max-width: 800px;

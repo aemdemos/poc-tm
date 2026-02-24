@@ -107,6 +107,40 @@
   box-shadow: 0 2px 8px rgb(35 0 75 / 6%);
 }
 
+/* ---- Stats Cards (center section - large numbers) ---- */
+/* stylelint-disable-next-line no-descending-specificity */
+.section.center .cards .cards-card-body > p:first-child strong {
+  display: block;
+  font-size: 68px;
+  font-weight: 500;
+  line-height: 1.39;
+  color: var(--text-color);
+  margin-bottom: 0;
+}
+
+.section.center .cards .cards-card-body > p:first-child {
+  font-family: var(--heading-font-family);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.section.center .cards > ul > li {
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.section.center .cards > ul > li:hover {
+  box-shadow: none;
+  transform: none;
+}
+
 /* ---- Responsive Grid ---- */
 @media (width >= 600px) {
   .cards > ul {

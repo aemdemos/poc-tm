@@ -40,7 +40,7 @@
 /* ---- Typography ---- */
 .hero h1 {
   color: var(--text-color);
-  font-weight: 700;
+  font-weight: 500;
   margin-bottom: var(--spacing-s);
 }
 
@@ -63,9 +63,8 @@
 
 /* ---- Buttons ---- */
 .hero .button-container {
-  display: flex;
-  gap: var(--spacing-s);
-  flex-wrap: wrap;
+  display: inline-block;
+  margin: 0 var(--spacing-s) var(--spacing-s) 0;
 }
 
 .hero a.button {
