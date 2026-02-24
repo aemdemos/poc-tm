@@ -1,6 +1,7 @@
 /*
  * Tabs Block - Zelis Design
  * Horizontal tabs with underline indicator
+ * Matches zelis.com tab patterns (solutions pages)
  */
 
 /* ---- Tab List ---- */
@@ -24,7 +25,7 @@
   background-color: transparent;
   color: var(--text-color);
   font-family: var(--body-font-family);
-  font-weight: 500;
+  font-weight: 400;
   font-size: var(--body-font-size-m);
   line-height: 1.5;
   text-align: center;
@@ -47,6 +48,7 @@
   color: var(--link-color);
   background-color: transparent;
   cursor: default;
+  font-weight: 500;
 }
 
 .tabs .tabs-list button:focus-visible {
@@ -64,6 +66,11 @@
 
 .tabs .tabs-panel[aria-hidden='true'] {
   display: none;
+}
+
+/* Panel content with columns layout */
+.tabs .tabs-panel .columns > div {
+  gap: var(--spacing-l);
 }
 
 /* ---- Dark Section Overrides ---- */
@@ -84,9 +91,20 @@
   color: var(--color-white);
 }
 
+/* ---- Light Section Overrides ---- */
+.section.light .tabs .tabs-list {
+  border-bottom-color: var(--color-ink-blue-8);
+}
+
 /* ---- Responsive ---- */
 @media (width >= 600px) {
   .tabs .tabs-list button {
     padding: var(--spacing-s) var(--spacing-l);
+  }
+}
+
+@media (width >= 900px) {
+  .tabs .tabs-list button {
+    font-size: var(--body-font-size-xl);
   }
 }

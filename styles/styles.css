@@ -268,7 +268,7 @@ button {
   padding: var(--button-padding);
   font-family: var(--body-font-family);
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   font-size: var(--button-font-size);
   line-height: 1.5;
   text-align: center;
@@ -445,7 +445,6 @@ main > .section > div {
 
 main > .section:first-of-type {
   margin-top: 0;
-  padding-top: 0;
 }
 
 @media (width >= 900px) {
@@ -562,15 +561,86 @@ main .section.angled::after {
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 100%);
 }
 
-/* ---- Eyebrow text (Georgia italic) ---- */
+/* ---- Eyebrow text (Georgia serif) ---- */
 main .eyebrow,
 main .section .eyebrow {
   font-family: Georgia, 'Times New Roman', serif;
-  font-style: italic;
-  font-size: 19px;
+  font-style: normal;
+  font-size: clamp(18px, 1.125rem + ((1vw - 3.2px) * 0.114), 19px);
   font-weight: 400;
   margin-bottom: var(--spacing-xs);
   color: inherit;
+}
+
+/* Dark section eyebrow */
+main .section.dark .eyebrow {
+  color: var(--color-ink-blue-8);
+}
+
+/* ---- dark-alt section link colors ---- */
+main .section.dark-alt a:any-link:not(.button) {
+  color: var(--color-gold);
+}
+
+main .section.dark-alt a:hover:not(.button) {
+  color: var(--color-white);
+}
+
+/* ---- Gold/accent section buttons ---- */
+main .section.accent a.button:any-link {
+  background-color: var(--color-ink-blue-100);
+  border-color: var(--color-ink-blue-100);
+  color: var(--color-white);
+}
+
+main .section.accent a.button:hover {
+  background-color: var(--color-ink-blue-90);
+  border-color: var(--color-ink-blue-90);
+}
+
+main .section.accent a.button.secondary {
+  background-color: transparent;
+  border-color: var(--color-ink-blue-100);
+  color: var(--color-ink-blue-100);
+}
+
+main .section.accent a.button.secondary:hover {
+  background-color: var(--color-ink-blue-100);
+  color: var(--color-white);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+footer {
+  background-color: var(--color-ink-blue-100);
+  color: var(--color-white);
+  font-size: 14px;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+footer a:any-link {
+  color: var(--color-white);
+  font-weight: 400;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+footer a:hover {
+  color: var(--color-gold);
+  text-decoration: none;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+footer h5 {
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: var(--spacing-s);
+}
+
+footer li {
+  padding-bottom: 8px;
 }
 
 /* ============================================================
@@ -585,4 +655,36 @@ main .section.center {
 /* Narrow content width */
 main .section.narrow > div {
   max-width: 800px;
+}
+
+/* ============================================================
+   BLOG / ARTICLE LAYOUT
+   ============================================================ */
+
+/* Constrain blog body content for readability */
+body.blog main > .section:not(:first-of-type) > div,
+body.article main > .section:not(:first-of-type) > div {
+  max-width: 800px;
+}
+
+/* Blog featured image */
+body.blog main img.hero-image,
+body.article main img.hero-image {
+  border-radius: 5px;
+}
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================ */
+
+@media (width >= 768px) {
+  :root {
+    --nav-height: 104px;
+  }
+}
+
+@media (width >= 1200px) {
+  main > .section > div {
+    padding: 0 32px;
+  }
 }

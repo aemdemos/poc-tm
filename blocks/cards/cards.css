@@ -1,6 +1,6 @@
 /*
  * Cards Block - Zelis Design
- * Grid layout for card items with Zelis styling
+ * Grid layout for card items matching zelis.com patterns
  */
 
 /* ---- Card Grid ---- */
@@ -42,6 +42,14 @@
   padding: var(--spacing-m);
 }
 
+.cards .cards-card-body > p:first-child {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-ink-blue-30);
+  margin-bottom: 4px;
+}
+
 .cards .cards-card-body h4,
 .cards .cards-card-body h3 {
   font-size: var(--heading-font-size-m);
@@ -50,6 +58,7 @@
   margin-bottom: var(--spacing-xs);
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .cards .cards-card-body p {
   font-size: 15px;
   line-height: 1.5;
@@ -85,6 +94,17 @@
 
 .section.dark .cards .cards-card-body p {
   color: rgb(248 249 250 / 90%);
+}
+
+.section.dark .cards .cards-card-body > p:first-child {
+  color: var(--color-ink-blue-8);
+}
+
+/* ---- Light section card overrides ---- */
+/* stylelint-disable-next-line no-descending-specificity */
+.section.light .cards > ul > li {
+  background-color: var(--color-white);
+  box-shadow: 0 2px 8px rgb(35 0 75 / 6%);
 }
 
 /* ---- Responsive Grid ---- */

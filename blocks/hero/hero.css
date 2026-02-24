@@ -1,7 +1,7 @@
 /*
  * Hero Block - Zelis Design
  * Two-column layout: text content left, image/animation right
- * Matches https://www.zelis.com/ homepage hero pattern
+ * Matches https://www.zelis.com/ hero patterns
  */
 
 /* ---- Container Reset ---- */
@@ -22,6 +22,7 @@
   flex-direction: column;
   max-width: var(--content-width);
   margin: 0 auto;
+  padding: 0 24px;
 }
 
 /* Text column (first child) */
@@ -39,6 +40,7 @@
 /* ---- Typography ---- */
 .hero h1 {
   color: var(--text-color);
+  font-weight: 700;
   margin-bottom: var(--spacing-s);
 }
 
@@ -47,6 +49,16 @@
   line-height: 1.5;
   color: var(--text-color);
   margin-bottom: var(--spacing-l);
+}
+
+/* Eyebrow text in hero */
+.hero .eyebrow,
+.hero > div > div:first-child > p:first-child:not(:last-child) {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: normal;
+  font-size: clamp(18px, 1.125rem + ((1vw - 3.2px) * 0.114), 19px);
+  font-weight: 400;
+  margin-bottom: var(--spacing-xs);
 }
 
 /* ---- Buttons ---- */
@@ -95,20 +107,34 @@
   color: var(--color-white);
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .hero.has-background p {
   color: var(--color-white);
+}
+
+/* ---- Dark section hero ---- */
+.section.dark .hero h1,
+/* stylelint-disable-next-line no-descending-specificity */
+.section.dark .hero p {
+  color: var(--color-white);
+}
+
+.section.dark .hero .eyebrow,
+.section.dark .hero > div > div:first-child > p:first-child:not(:last-child) {
+  color: var(--color-ink-blue-8);
 }
 
 /* ---- Desktop (two-column side-by-side) ---- */
 @media (width >= 900px) {
   .hero {
-    padding: var(--section-spacing) 32px 0;
+    padding: var(--section-spacing) 0 0;
   }
 
   .hero > div {
     flex-direction: row;
     align-items: center;
-    gap: var(--spacing-m);
+    gap: var(--spacing-xl);
+    padding: 0 32px;
   }
 
   .hero > div > div:first-child {

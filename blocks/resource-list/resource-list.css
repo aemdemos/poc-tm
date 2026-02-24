@@ -11,7 +11,7 @@
   align-items: center;
   margin-bottom: var(--spacing-l);
   padding-bottom: var(--spacing-m);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-warm-gray);
 }
 
 .resource-list .filter-group {
@@ -26,41 +26,41 @@
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-ink-blue);
+  color: var(--color-ink-blue-100);
   margin-right: var(--spacing-xs);
 }
 
 .resource-list .filter-btn {
-  background: var(--color-light-bg);
-  border: 1px solid var(--color-border);
+  background: var(--color-ink-blue-5);
+  border: 1px solid var(--color-warm-gray);
   border-radius: 20px;
   padding: 6px 16px;
   font-size: 14px;
   font-family: var(--body-font-family);
   cursor: pointer;
   transition: all var(--transition-base);
-  color: var(--color-text);
+  color: var(--text-color);
   white-space: nowrap;
 }
 
 .resource-list .filter-btn:hover {
-  border-color: var(--color-ink-blue);
-  color: var(--color-ink-blue);
+  border-color: var(--color-ink-blue-100);
+  color: var(--color-ink-blue-100);
 }
 
 .resource-list .filter-btn.active {
-  background: var(--color-ink-blue);
-  border-color: var(--color-ink-blue);
+  background: var(--color-ink-blue-100);
+  border-color: var(--color-ink-blue-100);
   color: var(--color-white);
 }
 
 .resource-list .filter-select {
   padding: 8px 32px 8px 12px;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-warm-gray);
   border-radius: 8px;
   font-size: 14px;
   font-family: var(--body-font-family);
-  color: var(--color-text);
+  color: var(--text-color);
   background: var(--color-white);
   cursor: pointer;
   appearance: auto;
@@ -69,24 +69,24 @@
 
 .resource-list .filter-search-input {
   padding: 8px 12px;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-warm-gray);
   border-radius: 8px;
   font-size: 14px;
   font-family: var(--body-font-family);
-  color: var(--color-text);
+  color: var(--text-color);
   min-width: 200px;
 }
 
 .resource-list .filter-search-input:focus {
   outline: none;
-  border-color: var(--color-ink-blue);
+  border-color: var(--color-ink-blue-100);
   box-shadow: 0 0 0 2px rgb(35 0 75 / 10%);
 }
 
 /* ---- Resource Count ---- */
 .resource-list .resource-count {
   font-size: 14px;
-  color: var(--color-text-light, #666);
+  color: var(--color-dark-gray);
   margin-bottom: var(--spacing-m);
 }
 
@@ -104,7 +104,7 @@
   background: var(--background-color);
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid var(--color-border, #e5e5e5);
+  border: 1px solid var(--color-warm-gray);
   transition: box-shadow var(--transition-base), transform var(--transition-base);
 }
 
@@ -151,13 +151,13 @@
   font-weight: 500;
   line-height: 1.25;
   margin: 0 0 var(--spacing-xs);
-  color: var(--color-ink-blue);
+  color: var(--color-ink-blue-100);
 }
 
 .resource-list .resource-card-body p {
   font-size: 14px;
   line-height: 1.5;
-  color: var(--color-text);
+  color: var(--text-color);
   margin: 0 0 var(--spacing-s);
 }
 
@@ -178,26 +178,27 @@
 }
 
 .resource-list .load-more {
-  background: var(--color-ink-blue);
+  background: var(--color-bright-blue);
   color: var(--color-white);
-  border: none;
-  border-radius: 28px;
-  padding: 12px 32px;
-  font-size: 16px;
+  border: 2px solid var(--color-bright-blue);
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
+  font-size: var(--button-font-size);
   font-family: var(--body-font-family);
-  font-weight: 500;
+  font-weight: 400;
   cursor: pointer;
-  transition: background var(--transition-base);
+  transition: var(--button-transition);
 }
 
 .resource-list .load-more:hover {
-  background: var(--color-deep-purple, #1a0036);
+  background: var(--button-primary-hover-bg);
+  border-color: var(--button-primary-hover-border);
 }
 
 /* ---- No Results ---- */
 .resource-list .no-results {
   text-align: center;
-  color: var(--color-text-light, #666);
+  color: var(--color-dark-gray);
   padding: var(--spacing-xl) 0;
   font-size: 16px;
 }
@@ -205,7 +206,7 @@
 /* ---- Loading ---- */
 .resource-list .loading {
   text-align: center;
-  color: var(--color-text-light, #666);
+  color: var(--color-dark-gray);
   padding: var(--spacing-xl) 0;
 }
 
@@ -241,7 +242,7 @@
 .section.dark .resource-list .filter-btn.active {
   background: var(--color-gold);
   border-color: var(--color-gold);
-  color: var(--color-ink-blue);
+  color: var(--color-ink-blue-100);
 }
 
 .section.dark .resource-list .resource-card {

@@ -1,6 +1,7 @@
 /*
  * Columns Block - Zelis Design
- * Flexible multi-column layout with Zelis spacing
+ * Flexible multi-column layout matching zelis.com patterns
+ * Supports 2-column (text+image, text+text) and multi-column layouts
  */
 
 /* ---- Mobile: Stack columns ---- */
@@ -29,12 +30,41 @@
 }
 
 /* ---- Column text styling ---- */
+.columns h2 {
+  margin-bottom: var(--spacing-s);
+}
+
+.columns h3 {
+  margin-bottom: var(--spacing-xs);
+}
+
 .columns p {
   line-height: 1.5;
 }
 
 .columns a:any-link:not(.button) {
   font-weight: 500;
+}
+
+/* ---- Key Points / Bullet list styling ---- */
+.columns ul {
+  padding-left: var(--spacing-m);
+}
+
+.columns li {
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.5;
+}
+
+/* ---- Dark section overrides ---- */
+.section.dark .columns h2,
+.section.dark .columns h3,
+.section.dark .columns h4 {
+  color: var(--color-white);
+}
+
+.section.dark .columns p {
+  color: rgb(248 249 250 / 90%);
 }
 
 /* ---- Desktop: Side-by-side ---- */
@@ -48,5 +78,20 @@
   .columns > div > div {
     flex: 1;
     order: unset;
+  }
+
+  /* When columns has exactly 2 children, use 58/42 split like original */
+  .columns > div > div:first-child:nth-last-child(2) {
+    flex: 0 0 58%;
+  }
+
+  .columns > div > div:last-child:nth-child(2) {
+    flex: 0 0 calc(42% - var(--spacing-xl));
+  }
+
+  /* Equal columns when 3+ children */
+  .columns > div > div:first-child:nth-last-child(n+3),
+  .columns > div > div:first-child:nth-last-child(n+3) ~ div {
+    flex: 1;
   }
 }
