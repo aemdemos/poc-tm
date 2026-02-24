@@ -166,11 +166,11 @@ header nav[aria-expanded='true'] .nav-sections {
 header nav .nav-sections ul {
   list-style: none;
   padding-left: 0;
-  font-size: var(--body-font-size-s);
+  font-size: var(--heading-font-size-s);
 }
 
 header nav .nav-sections ul > li {
-  font-weight: 500;
+  font-weight: 400;
 }
 
 header nav .nav-sections ul > li > ul {
@@ -266,14 +266,63 @@ header nav .nav-sections ul > li > ul > li {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+  display: none;
 }
 
+header nav .nav-tools .default-content-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+header nav .nav-tools .button-container {
+  margin: 0;
+}
+
+/* Plain text links for secondary nav items (For Providers, Client Login) */
 header nav .nav-tools .button {
   margin: 0;
   border: none;
-  padding: 0.5em;
+  padding: 0;
   background: none;
-  line-height: 0;
+  color: var(--color-dark-gray);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: normal;
+  text-decoration: none;
+  border-radius: 0;
+}
+
+header nav .nav-tools .button:hover {
+  background: none;
+  color: var(--text-color);
+  text-decoration: underline;
+}
+
+/* "Connect with us" CTA - last button in tools */
+header nav .nav-tools .button-container:last-child .button {
+  background-color: var(--color-bright-blue);
+  color: var(--color-white);
+  font-size: 18px;
+  font-weight: 700;
+  padding: 10px 23px;
+  border-radius: 3px;
+  border: none;
+  line-height: 1.5;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+header nav .nav-tools .button-container:last-child .button:hover {
+  background-color: var(--button-primary-hover-bg);
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+@media (width >= 900px) {
+  header nav .nav-tools {
+    display: block;
+  }
 }
 
 /* breadcrumbs */
