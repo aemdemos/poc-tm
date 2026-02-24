@@ -51,7 +51,7 @@
   --body-font-size-xs: 11px;
 
   /* Heading sizes (responsive via clamp) */
-  --heading-font-size-xxl: clamp(48px, 3rem + ((1vw - 3.2px) * 1.932), 65px);
+  --heading-font-size-xxl: clamp(40px, 2.5rem + ((1vw - 3.2px) * 1.705), 55px);
   --heading-font-size-xl: clamp(33px, 2.063rem + ((1vw - 3.2px) * 1.25), 44px);
   --heading-font-size-l: clamp(22px, 1.375rem + ((1vw - 3.2px) * 1.586), 36px);
   --heading-font-size-m: 21px;
@@ -222,8 +222,7 @@ pre {
 }
 
 /* Lead / large body text */
-.lead,
-main > .section > div > p:first-child {
+.lead {
   font-size: var(--body-font-size-xl);
   line-height: 1.5;
 }
@@ -486,6 +485,31 @@ main .section.dark a:hover:not(.button) {
   color: var(--color-white);
 }
 
+/* Dark section button overrides */
+main .section.dark a.button:any-link {
+  background-color: var(--color-white);
+  border-color: var(--color-white);
+  color: var(--color-bright-blue);
+}
+
+main .section.dark a.button:hover {
+  background-color: var(--color-ink-blue-5);
+  border-color: var(--color-ink-blue-5);
+  color: var(--color-bright-blue);
+}
+
+main .section.dark a.button.secondary {
+  background-color: transparent;
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+
+main .section.dark a.button.secondary:hover {
+  background-color: var(--color-white);
+  border-color: var(--color-white);
+  color: var(--color-bright-blue);
+}
+
 /* Gold/accent section */
 main .section.accent {
   background-color: var(--color-gold);
@@ -520,16 +544,15 @@ main .section.dark-alt h6 {
 
 /* ---- Eyebrow / Kicker text ---- */
 main .section .default-content-wrapper > p:first-child {
-  color: var(--color-ink-blue-30);
-  font-weight: 600;
-  font-size: var(--body-font-size-s);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(18px, 1.125rem + ((1vw - 3.2px) * 0.114), 19px);
+  font-weight: 400;
+  color: var(--text-color);
   margin-bottom: var(--spacing-xs);
 }
 
 main .section.dark .default-content-wrapper > p:first-child {
-  color: var(--color-ink-blue-10);
+  color: #f8f9fa;
 }
 
 /* ---- Angled Section Variant ---- */
@@ -574,7 +597,7 @@ main .section .eyebrow {
 
 /* Dark section eyebrow */
 main .section.dark .eyebrow {
-  color: var(--color-ink-blue-8);
+  color: #f8f9fa;
 }
 
 /* ---- dark-alt section link colors ---- */
@@ -598,6 +621,7 @@ main .section.accent a.button:hover {
   border-color: var(--color-ink-blue-90);
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 main .section.accent a.button.secondary {
   background-color: transparent;
   border-color: var(--color-ink-blue-100);
