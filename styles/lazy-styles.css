@@ -1,1 +1,69 @@
 /* add global styles that can be loaded post LCP here */
+
+/* ============================================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================================ */
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-reveal.reveal-fade {
+  transform: none;
+}
+
+.scroll-reveal.reveal-left {
+  transform: translateX(-24px);
+}
+
+.scroll-reveal.reveal-right {
+  transform: translateX(24px);
+}
+
+.scroll-reveal.reveal-scale {
+  transform: scale(0.95);
+}
+
+/* Stagger support */
+.scroll-reveal.stagger {
+  --stagger-index: 0;
+
+  transition-delay: calc(var(--stagger-index) * 0.1s);
+}
+
+/* Visible state */
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ============================================================
+   LOTTIE CONTAINERS
+   ============================================================ */
+
+[data-lottie-path] {
+  position: relative;
+}
+
+[data-lottie-path] svg {
+  width: 100%;
+  height: auto;
+}
+
+/* ============================================================
+   COUNTER ANIMATION
+   ============================================================ */
+
+.counter-animate {
+  transition: none;
+}

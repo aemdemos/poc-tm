@@ -139,6 +139,33 @@ async function loadEager(doc) {
 }
 
 /**
+ * Initializes scroll-reveal animations on sections below the fold.
+ * Sections fade in as they enter the viewport. First section is skipped
+ * since it's above-fold and already visible.
+ * @param {Element} main The main element
+ */
+function initScrollReveal(main) {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const sections = main.querySelectorAll('.section');
+  sections.forEach((section, i) => {
+    if (i === 0) return; // skip first section (above-fold)
+    section.classList.add('scroll-reveal');
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  main.querySelectorAll('.scroll-reveal').forEach((el) => observer.observe(el));
+}
+
+/**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
  */
@@ -155,6 +182,7 @@ async function loadLazy(doc) {
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
 
+  initScrollReveal(main);
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
 }
