@@ -37,6 +37,8 @@ These rules are non-negotiable. They protect journal integrity across sessions:
 
 6. **Record failures equally.** Failed attempts and dead ends are valuable context. Don't skip them.
 
+7. **Be concise.** Short bullets and one-line resolutions. Avoid long prose in journal entries — save narrative for Key Decisions where rationale matters.
+
 ## Purpose
 
 Maintain a structured, running journal for any project that tracks session activity, task outcomes, problems, resolutions, and time investment. The journal serves as the primary context-recovery mechanism between sessions, enabling any new session to quickly understand: what was done, what's pending, what problems exist, and where to resume work.
