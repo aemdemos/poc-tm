@@ -461,7 +461,7 @@
 - `skills/excat-project-time-tracking/time-report-format.md` — Updated with per-session subtotals and time display rules
 
 ### Commits
-- (pending)
+- `5dc8417` — Refine time tracking skill v1.1: add date-scoping, dual output mode, session subtotals
 
 ### Carry-Forward
 > Time tracking skill v1.1 complete. All three supporting skills now operational. Next priorities: design token extraction from zelis.com, navigation setup, or begin bulk page migration.
