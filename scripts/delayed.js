@@ -8,7 +8,6 @@ async function initLottie() {
 
   document.querySelectorAll('[data-lottie-path]').forEach((container) => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const fallbackImg = container.querySelector('img');
 
     const anim = window.lottie.loadAnimation({
       container,
@@ -16,11 +15,6 @@ async function initLottie() {
       loop: container.dataset.lottieLoop !== 'false',
       autoplay: !reducedMotion,
       path: container.dataset.lottiePath,
-    });
-
-    // Remove fallback image once Lottie renders
-    anim.addEventListener('DOMLoaded', () => {
-      if (fallbackImg) fallbackImg.style.display = 'none';
     });
 
     // If reduced motion, show first frame only
