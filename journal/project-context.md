@@ -1,6 +1,6 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-02-26 (Session 005)
+**Last updated:** 2026-02-26 (Session 006)
 **Branch:** `issue-1-styles-bulk`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (~789 URLs, WordPress)
@@ -17,7 +17,7 @@
 - All skill files reconciled — .md, .html, .plain.html in sync (Session 003)
 - Journaling skill created and project journal initialized (Session 003)
 - Journaling skill v1.1: merged best practices, added rules, examples, portable template (Session 004)
-- Problem tracker skill created, initial knowledge base populated with 6 problems (Session 005)
+- Problem tracker skill created (Session 005), rewritten to v2.0 with table format + append-and-merge (Session 006)
 
 ## What's In Progress
 - (nothing actively in progress — between sessions)
@@ -43,8 +43,9 @@
 - `skills/excat-animate-migration/animation-verification.md` — Verification criteria
 - `skills/excat-journaling/SKILL.md` — Journaling skill (v1.1)
 - `skills/excat-journaling/journal-format.md` — Portable quick-reference template
-- `skills/excat-problem-tracker/SKILL.md` — Problem tracker skill (v1.0)
-- `journal/problem-kb.md` — Problem knowledge base (6 problems, 4 categories, 1 pattern)
+- `skills/excat-problem-tracker/SKILL.md` — Problem tracker skill (v2.0)
+- `skills/excat-problem-tracker/problems-reference-format.md` — Portable schema template
+- `journal/problems-reference.md` — Problems reference (6 problems, 4 categories)
 - `journal/` — Project journal directory
 
 ## Git Notes
@@ -53,4 +54,4 @@
 - GitHub PAT provided by user at runtime (do not store in committed files)
 
 ## Resume Point
-> Problem tracker skill v1.0 complete. Next priorities: design token extraction from zelis.com, navigation structure setup, or begin bulk page migration.
+> Problem tracker skill v2.0 complete. Next priorities: design token extraction from zelis.com, navigation structure setup, or begin bulk page migration.

@@ -327,7 +327,59 @@
 - `journal/metrics.md` — Updated cumulative stats
 
 ### Commits
+- `e599ea8` — Add problem tracker skill and initial knowledge base
+
+### Carry-Forward
+> Problem tracker skill v1.0 created and initial knowledge base populated. Next: rewrite to v2.0 merging best practices from journal-problems-review skill.
+
+---
+
+## Session 006 — 2026-02-26 — Rewrite Problem Tracker Skill (best-of-both merge)
+
+**Branch:** `issue-1-styles-bulk`
+**Duration:** ~25m (agent) + 10% user overhead = ~28m total
+**Session goal:** Compare excat-problem-tracker with journal-problems-review skill, rewrite using the best from both
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Read and compare both problem tracker skills | new | 1 | pass | 5m |
+| 2 | Rewrite SKILL.md: problems-only scope, append-and-merge, table format, 5-step workflow | new | 1 | pass | 8m |
+| 3 | Create `problems-reference-format.md` portable schema template | new | 1 | pass | 3m |
+| 4 | Rewrite reference file as `problems-reference.md` (table-based, with prevention checklists) | new | 1 | pass | 5m |
+| 5 | Remove old `problem-kb.md` and its HTML variants from git | new | 1 | pass | 1m |
+| 6 | Update journal files (session entry, index, context, metrics) | new | 1 | pass | 3m |
+| 7 | Commit and push | new | 1 | pass | 2m |
+
+### Outcomes
+- **Completed:** Problem tracker skill v2.0 with merged improvements, new table-based reference format, portable schema template
+- **Partial:** None
+- **Deferred:** None
+
+### Problems Encountered
+
+(none)
+
+### Key Decisions
+- Switched from "overwrite" to "append and merge" — preserves manual annotations, matches journal's append-only philosophy
+- Table-based format per category (from journal-problems-review) — denser and more scannable than individual multi-line blocks
+- Kept prevention checklists at top (from v1.0) — primary use case is pre-work scanning
+- Kept stable problem IDs (from v1.0) — enables cross-referencing
+- Renamed output from `problem-kb.md` to `problems-reference.md` — clearer name
+- Added "Scope: Problems Only" section — explicit about what the skill does and doesn't do
+- Dropped Statistics section — metrics.md already tracks this
+- Added `problems-reference-format.md` as portable schema (parallels journal-format.md)
+- Descriptive category names ("DA / URL and path mangling") instead of generic labels
+
+### Files Changed
+- `skills/excat-problem-tracker/SKILL.md` — Rewritten to v2.0
+- `skills/excat-problem-tracker/problems-reference-format.md` — New portable schema template
+- `journal/problems-reference.md` — New table-based reference (replaces problem-kb.md)
+- `journal/problem-kb.md` — Removed (replaced by problems-reference.md)
+
+### Commits
 - (pending)
 
 ### Carry-Forward
-> Problem tracker skill v1.0 created and initial knowledge base populated. Next priorities: design token extraction from zelis.com, navigation setup, or begin bulk page migration.
+> Problem tracker v2.0 complete. Next priorities: design token extraction from zelis.com, navigation setup, or begin bulk page migration.

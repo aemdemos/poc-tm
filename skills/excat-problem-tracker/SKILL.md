@@ -1,193 +1,181 @@
 ---
 name: excat-problem-tracker
-description: Review project journal problem tables and build a knowledge base of problems encountered, root causes, resolutions, and prevention strategies. Identifies recurring patterns and generates actionable prevention checklists. Invoke when user says "update problem tracker", "analyze problems", "what problems have we seen", "check knowledge base", "problem patterns", or when closing a session that had problems.
+description: Review the project journal for problems, issues, roadblocks, and failed attempts. Extracts recurring patterns, tracks how issues were resolved, and documents how to avoid them in the future. Builds a referential problems reference for quick lookup. Invoke when user says "update problem tracker", "review problems", "analyze problems", "what problems have we seen", "how did we fix X", "check knowledge base", "extract lessons learned", or when closing a session that had problems.
 ---
 
 # EXECUTION MINDSET
 
-**You are an ANALYST. Your job is to extract patterns from raw problem data and produce a scannable, actionable knowledge base that prevents the team from repeating mistakes.**
+**You are an ANALYST. Your job is to extract patterns from raw problem data and produce a scannable, actionable reference that prevents the team from repeating mistakes.**
 
 - DO: Read every problem table in journal.md — do not skip sessions
-- DO: Identify root causes, not just symptoms
-- DO: Write prevention advice that is specific and actionable ("use `a.textContent`" not "be careful with links")
-- DO: Preserve existing problem IDs when regenerating the knowledge base
+- DO: Identify causes, not just symptoms
+- DO: Write avoidance advice that is specific and actionable ("use `a.textContent`" not "be careful with links")
+- DO: Preserve existing problem IDs and category groupings when updating
+- DON'T: Summarize successes, actions, or time — this skill tracks **problems only**
 - DON'T: Invent problems that are not in the journal — only track what actually happened
-- DON'T: Write vague prevention advice — if you cannot name the specific technique, the advice is not useful
-- DON'T: Duplicate the journal — the knowledge base is analysis and synthesis, not a copy
+- DON'T: Write vague avoidance advice — if you cannot name the specific technique, the advice is not useful
+- DON'T: Duplicate the journal — the reference is analysis and synthesis, not a copy
 
-**Your output should be a single file that a developer can search in 10 seconds to find "have we seen this before? how did we fix it?"**
+**Your output should be a single file that a developer can search in 10 seconds to find "have we seen this before? how did we fix it? how do we avoid it?"**
 
 ---
 
 # Problem Tracker Skill
 
-## Rules
+## Scope: Problems Only
 
-1. **Source of truth is journal.md.** The knowledge base is derived. If they conflict, journal.md wins. Never modify journal.md from this skill.
+This skill **does not** summarize actions, outcomes, or time. It focuses **only** on:
 
-2. **Stable IDs.** Once a problem gets an ID (e.g., `DA-001`), it keeps that ID forever. When regenerating the knowledge base, read the existing `problem-kb.md` first to preserve IDs.
+- **Problems Encountered** tables in the journal
+- Failed attempts (actions with result = `fail`, or attempts > 1) only insofar as they relate to a recorded problem
+- Recurring themes (same or similar problem across multiple sessions)
+- Resolution and **avoidance** guidance
 
-3. **Overwrite, don't append.** `problem-kb.md` is regenerated from scratch each run (like `project-context.md` and `metrics.md`). The structure may change as new problems are added.
-
-4. **Prevention must be actionable.** Every problem entry and every checklist item must contain a specific technique, value, or command — not generic advice.
-
-5. **Do not fabricate.** Only track problems that appear in journal.md problem tables or `project-context.md` active blockers. Do not speculate about potential problems.
+Ignore all other journal sections except to resolve session numbers or dates when citing a problem.
 
 ## Purpose
 
-Build and maintain a knowledge base of problems encountered during the project, organized for quick lookup. The knowledge base answers three questions:
+Review the journal produced by the journaling skill and maintain a **referential problems reference** so you can look up past issues, what caused them, how they were resolved, and how to avoid them in the future. This establishes a learning loop from encountered problems.
 
-1. **"Have we seen this problem before?"** — Search All Problems by category or keyword
-2. **"How did we fix it last time?"** — Read the Resolution field
-3. **"How do we avoid this in the future?"** — Scan the Prevention Checklists at the top
+The reference answers three questions:
 
-## Output
+1. **"Have we seen this problem before?"** — Search by category or keyword
+2. **"How did we fix it last time?"** — Read the Resolution column
+3. **"How do we avoid this in the future?"** — Scan the Prevention Checklists or the "How to avoid" column
 
-The skill produces one file:
+## When to Use
 
-```
-/workspace/journal/problem-kb.md
-```
+- **After sessions with problems** — Update the reference with new findings
+- **On request** — User asks to "review problems", "update problem tracker", "what issues have we seen", "how did we fix X"
+- **Before similar work** — Consult the reference when starting work that might repeat past failure modes (e.g., before DA-related changes, before Lottie work, before git operations in containers)
 
-This file is regenerated (overwritten) each time the skill runs. It is a derived view of problem data from `journal.md`, not an independent record.
+## Rules
+
+1. **Source of truth is journal.md.** The reference is derived. If they conflict, journal.md wins. Never modify journal.md from this skill.
+
+2. **Stable IDs.** Once a problem gets an ID (e.g., `DA-001`), it keeps that ID forever. Read the existing reference before updating to preserve IDs.
+
+3. **Append and merge.** Add new problems; merge into existing categories when it's the same or similar issue. Do not delete history. If you rename a category, keep the old session refs.
+
+4. **Avoidance must be actionable.** Every "How to avoid" entry and every checklist item must contain a specific technique, value, or command — not generic advice.
+
+5. **Do not fabricate.** Only track problems that appear in journal.md problem tables or `project-context.md` active blockers. Do not speculate about potential problems.
+
+6. **Portable.** The reference lives in the same directory as the journal so it travels with the project.
+
+## Locations
+
+- **Journal source:** Same as journaling skill. Default: `journal/journal.md` at workspace root. If the project uses `JOURNAL_DIR` or `journal-config.yaml`, use that path.
+- **Reference output:** Same directory as the journal. Default: `journal/problems-reference.md`.
+- **Schema template:** `skills/excat-problem-tracker/problems-reference-format.md`
 
 ## Problem Entry Schema
 
-Each unique problem gets an entry with these fields:
+Each problem captured in the reference has these fields:
 
-| Field | Required | Source | Example |
-|-------|----------|--------|---------|
-| **ID** | yes | Generated: `{PREFIX}-{NNN}` | `DA-001` |
-| **Title** | yes | Derived from journal problem description | DA converts dots to hyphens in href attributes |
-| **Category** | yes | From `metrics.md` categories or inferred | DA compatibility |
-| **Severity** | yes | From journal: `blocker` / `major` / `minor` | `blocker` |
-| **First seen** | yes | Session number + action number | Session 001, Action #2 |
-| **Occurrences** | yes | Count + session list | 1 (Session 001) |
-| **Root cause** | yes | Analysis of why it happened | DA's URL normalization replaces dots with hyphens |
-| **Resolution** | yes (if resolved) | From journal resolution column | Match by `textContent` instead of `href` |
-| **Status** | yes | `resolved` / `unresolved` / `workaround` | `resolved` |
-| **Prevention** | yes | Actionable advice to avoid recurrence | Never rely on `href` values in DA content; use link text |
-| **Related** | no | Cross-references to other problem IDs | `DA-002` |
+| Field | Required | Description |
+|-------|----------|-------------|
+| **Problem** | yes | Short, normalized description (use consistent wording for recurring issues) |
+| **ID** | yes | Stable identifier: `{PREFIX}-{NNN}` (e.g., `DA-001`) |
+| **Cause** | yes | What led to it — root cause or context |
+| **Resolution** | yes (if resolved) | How it was fixed (from journal or concise paraphrase) |
+| **How to avoid** | yes | Concrete, actionable guidance: checklists, patterns, "always X / never Y" |
+| **Sessions** | yes | Session numbers where this appeared (e.g., "001, 003") |
+| **Severity** | yes | `blocker` / `major` / `minor` (from journal) |
+| **Resolved?** | yes | `yes` / `no` / `workaround` |
 
-## Category Prefixes
+### Category Prefixes
 
 | Category | Prefix |
 |----------|--------|
-| DA compatibility | `DA` |
+| DA / URL and path mangling | `DA` |
 | Git / environment | `GIT` |
-| Performance | `PERF` |
-| File sync | `SYNC` |
+| Performance / loading | `PERF` |
+| File sync / auto-generation | `SYNC` |
 | Build / deployment | `BUILD` |
 | Content authoring | `AUTH` |
 | Block rendering | `BLOCK` |
 | (new categories) | Short uppercase prefix assigned on first encounter |
 
-IDs are stable — once assigned, a problem keeps its ID even if the category list changes.
-
-## Pattern Detection
-
-A **pattern** is identified when any of these conditions are met:
-
-1. **Same category + similar root cause** — Two problems in the same category caused by the same underlying issue
-2. **Recurrence across sessions** — The same problem appearing in 2+ sessions
-3. **Same root cause, different symptoms** — Problems in different categories that trace to one underlying cause
-
-**Pattern threshold:** 2+ occurrences = pattern. Deliberately low to catch issues early.
-
-**Pattern record structure:**
-
-```markdown
-### Pattern: [Descriptive Name]
-**Category:** [primary category]
-**Occurrences:** [N] across sessions [list]
-**Problem IDs:** [ID-001, ID-002, ...]
-**Root cause:** [The underlying reason this keeps happening]
-**General resolution:** [The proven approach that works]
-**Prevention:** [Steps to avoid ever hitting this again]
-**Severity trend:** [e.g., "blocker on first occurrence, now minor — workaround well-known"]
-**Status:** [Active | Resolved | Mitigated]
-```
+IDs are stable — once assigned, a problem keeps its ID even if the category is renamed.
 
 ## Workflow
 
-### Phase 1: Scan
+### Step 1: Read the journal
 
-**Goal:** Extract all problem data from journal files.
+- Open `journal/journal.md` (or configured path)
+- Locate every `### Problems Encountered` section and parse the markdown table:
+  ```
+  | Problem | Severity | Resolved? | Resolution | Related Action # |
+  ```
+- Note session headers (`## Session NNN — date — title`) so you can cite which session each problem came from
+- Also check `project-context.md` for `## Active Blockers` — any blockers not yet in the reference become new unresolved problems
 
-1. **Read `journal.md`** — Extract all `### Problems Encountered` tables:
-   - For each session, parse: problem description, severity, resolved status, resolution, related action #
-   - Note the session number for each problem
-   - Skip sessions with `(none)` in the problems section
+### Step 2: Extract and normalize
 
-2. **Read `metrics.md`** — Extract `## Problem Categories` table:
-   - Use as the starting category taxonomy
+For each problem row, capture all schema fields. Group problems that are **the same or clearly similar** into one category (e.g., "DA mangles hrefs" and "DA converts dots to hyphens" → same category). Recurring problems (2+ sessions) are highest value for the reference.
 
-3. **Read `project-context.md`** — Extract `## Active Blockers`:
-   - Any blockers not yet in the knowledge base become new unresolved problems
+### Step 3: Add cause and avoidance
 
-4. **If `problem-kb.md` already exists**, read it to:
-   - Preserve existing problem IDs
-   - Preserve existing pattern groupings
-   - Identify what is new since last run
+For each distinct problem or category:
+- **Cause** — What led to the problem (from resolution text, session context, or inference)
+- **How to avoid** — Concrete, actionable guidance. If the journal implies avoidance in the resolution, extract or paraphrase it. Use "always X / never Y" format when possible.
 
-### Phase 2: Analyze
+### Step 4: Update the reference
 
-**Goal:** Classify, deduplicate, and find patterns.
+Write or update `journal/problems-reference.md` using the schema in [problems-reference-format.md](problems-reference-format.md):
 
-1. **Deduplicate** — Merge identical or near-identical problems into single entries with occurrence counts
-2. **Assign IDs** — Preserve existing IDs, assign new IDs to new problems using `{PREFIX}-{NNN}` format
-3. **Classify** — Assign each problem to a category; create new categories if needed
-4. **Root-cause analysis** — For each problem, determine the underlying reason from resolution text and session context
-5. **Pattern detection** — Group problems by the three axes described above
-6. **Prevention generation** — Write one specific, actionable prevention statement per problem
+1. **Prevention Checklists** at the top — one subsection per category, checkbox format for pre-work scanning
+2. **Problems by category** — each category gets a table with all fields, plus Recurring flag and Notes
+3. **Unresolved / workaround-only** section — only if any exist
 
-### Phase 3: Generate
+Append new findings; merge new problems into existing categories when they match. Do not remove past entries.
 
-**Goal:** Write `problem-kb.md`.
+### Step 5: Quick lookup (on-demand)
 
-Write the file with these sections in order:
+When the user asks "how did we fix X?" or "have we seen this before?":
 
-1. **Header** — Title, last-updated timestamp, session reference
-2. **Quick Reference — Prevention Checklists** — One subsection per category, checkbox format. Each item starts with a verb, includes the specific technique, and references the problem ID.
-3. **Recurring Patterns** — Table summary + detailed entries (only for 2+ occurrence patterns). Omit section if no patterns detected.
-4. **All Problems** — Grouped by category. Each problem uses the full entry schema.
-5. **Unresolved Problems** — Only if any exist. Omit section if all problems are resolved.
-6. **Statistics** — Total problems, resolution rate, category distribution, pattern count.
+1. Read `journal/problems-reference.md`
+2. Match the user's issue to a category or entry
+3. Respond with: what the problem was, how it was resolved, and how to avoid it
+4. Cite the session(s) (e.g., "See Session 001, 002 in journal")
 
 ## When to Run
 
 | Trigger | Action |
 |---------|--------|
-| User says "update problem tracker" / "analyze problems" / "check knowledge base" | Full run (all 3 phases) |
-| Session close that had problems | Full run (all 3 phases) |
+| User requests ("update problem tracker", "review problems", etc.) | Full run (steps 1–4) |
+| Session close that had problems | Full run (steps 1–4) |
 | Session close with no problems | Skip — no new data to process |
-| Encountering a new problem mid-session | Read-only: consult existing `problem-kb.md` before attempting a fix |
-| User asks "have we seen this before?" | Read-only: search `problem-kb.md` |
+| Encountering a problem mid-session | Read-only: consult existing reference (step 5) |
+| User asks "have we seen this?" / "how did we fix X?" | Read-only: search reference (step 5) |
 
 ## Integration with Journaling Skill
 
 **Reads from:**
-- `journal.md` — `### Problems Encountered` tables (columns: Problem, Severity, Resolved?, Resolution, Related Action #)
-- `metrics.md` — `## Problem Categories` table (columns: Category, Count, Examples)
+- `journal.md` — `### Problems Encountered` tables
 - `project-context.md` — `## Active Blockers` section
 
 **Writes to:**
-- `problem-kb.md` only
+- `problems-reference.md` only
 
-**No circular dependency.** The problem tracker reads from journal files but does not write to them. The journaling skill does not need to know this skill exists. They share a data directory and operate independently.
+**No circular dependency.** This skill reads from journal files but does not write to them. The journaling skill does not need to know this skill exists. They share a data directory and operate independently.
 
 **Invocation sequence at session close:**
 1. Journaling skill finalizes session entry in `journal.md`
 2. Journaling skill updates `metrics.md` and `project-context.md`
-3. (If session had problems) Problem tracker runs, reads updated journal files, regenerates `problem-kb.md`
+3. (If session had problems) Problem tracker runs, reads updated journal, updates `problems-reference.md`
 
 ## Output File Structure
 
 ```markdown
-# Problem Knowledge Base
+# Problems Reference — [Project Name]
 
-> Derived from journal.md problem tables. Rebuilt each time the skill runs.
-> Last updated: [YYYY-MM-DD] (after Session [NNN])
+> Referential index of problems encountered (from the project journal), their
+> resolutions, and how to avoid them. Updated by the problem tracker skill.
+
+**Source:** `journal/journal.md`
+**Last review:** [YYYY-MM-DD] (after Session [NNN])
 
 ## Quick Reference — Prevention Checklists
 
@@ -195,55 +183,42 @@ Write the file with these sections in order:
 - [ ] [Verb] [specific technique/value] — [brief context] ([ID])
 - [ ] ...
 
-## Recurring Patterns
+## [Category Name]
 
-| Pattern | Category | Occurrences | Sessions | Status |
-|---------|----------|-------------|----------|--------|
-| [Name] | [Category] | [N] | [list] | [Active/Resolved/Mitigated] |
+| Problem | ID | Cause | Resolution | How to avoid | Sessions | Severity | Resolved? |
+|---------|----|-------|------------|--------------|----------|----------|-----------|
+| [Short desc] | [DA-001] | [What caused it] | [How fixed] | [Concrete guidance] | [001, 003] | [blocker] | [yes] |
 
-### Pattern: [Name]
-...
+**Recurring:** Yes/No
+**Notes:** [Optional: link to code, doc, or skill that encodes the fix]
 
-## All Problems
+## Unresolved or Workaround-Only
 
-### [Category Name]
-
-#### [ID]: [Title]
-- **Severity:** [blocker/major/minor]
-- **First seen:** Session [NNN] (Action #[N])
-- **Occurrences:** [N] (Sessions [list])
-- **Root cause:** [Why it happened]
-- **Resolution:** [How it was fixed]
-- **Prevention:** [How to avoid it]
-- **Related:** [other IDs, if any]
-
-## Unresolved Problems
-(only if any exist)
-
-## Statistics
-- **Total problems tracked:** [N]
-- **Resolved:** [N] ([%])
-- **Unresolved:** [N]
-- **Patterns identified:** [N]
-- **Categories:** [N] ([list])
-- **Most problematic category:** [name] ([count] occurrences)
+| Problem | ID | Sessions | Current state |
+|---------|----|----------|---------------|
+| [Desc] | [ID] | [001, 003] | Workaround: [brief]. Still open: [what's left]. |
 ```
 
 ## Troubleshooting
 
-**problem-kb.md seems out of date:**
-- Re-run the skill. It regenerates from journal.md each time.
-- If journal.md has been updated but problem-kb.md has not, the skill simply has not been invoked since the last session.
+**Reference seems out of date:**
+- Re-run the skill. It reads journal.md and merges new problems.
+- If journal.md has been updated but the reference has not, the skill simply hasn't been invoked.
 
-**Problem IDs changed between runs:**
-- This should not happen if the skill reads existing problem-kb.md before generating. Verify Phase 1 step 4 is being followed.
+**Problem IDs changed unexpectedly:**
+- The skill should read the existing reference before updating. Verify step 1 is reading `problems-reference.md`.
 
-**Category does not match metrics.md:**
-- The knowledge base may create more granular categories than metrics.md uses. This is acceptable — metrics.md is maintained by the journaling skill, not this skill.
+**Category names differ from metrics.md:**
+- The reference may use more descriptive category names (e.g., "DA / URL and path mangling" vs. "DA compatibility"). This is fine — they serve different purposes.
 
 **No problems to track:**
-- If journal.md has no problems, the knowledge base will have empty sections. This is expected — it means the project is running smoothly.
+- If journal.md has no problems, the reference will be minimal. This means the project is running smoothly.
+
+## Additional Resources
+
+- Reference file schema and example: [problems-reference-format.md](problems-reference-format.md)
+- Journal schema (for parsing Problems tables): `skills/excat-journaling/journal-format.md`
 
 ---
 
-*Problem Tracker Skill v1.0*
+*Problem Tracker Skill v2.0 — Merged from excat-problem-tracker v1.0 + journal-problems-review best practices*

@@ -726,9 +726,104 @@ Each session is appended chronologically. Read from bottom for most recent.</p>
 <li><code>journal/project-context.md</code> — Updated with current state</li>
 <li><code>journal/metrics.md</code> — Updated cumulative stats</li>
 </ul><h3 id="commits-5">Commits</h3><ul>
-<li>(pending)</li>
+<li><code>e599ea8</code> — Add problem tracker skill and initial knowledge base</li>
 </ul><h3 id="carry-forward-5">Carry-Forward</h3><blockquote>
-<p>Problem tracker skill v1.0 created and initial knowledge base populated. Next priorities: design token extraction from zelis.com, navigation setup, or begin bulk page migration.</p>
+<p>Problem tracker skill v1.0 created and initial knowledge base populated. Next: rewrite to v2.0 merging best practices from journal-problems-review skill.</p>
+</blockquote></div>
+<div><h2 id="session-006--2026-02-26--rewrite-problem-tracker-skill-best-of-both-merge">Session 006 — 2026-02-26 — Rewrite Problem Tracker Skill (best-of-both merge)</h2><p><strong>Branch:</strong> <code>issue-1-styles-bulk</code>
+<strong>Duration:</strong> ~25m (agent) + 10% user overhead = ~28m total
+<strong>Session goal:</strong> Compare excat-problem-tracker with journal-problems-review skill, rewrite using the best from both</p><h3 id="actions-6">Actions</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>1</div><div>Read and compare both problem tracker skills</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>2</div><div>Rewrite SKILL.md: problems-only scope, append-and-merge, table format, 5-step workflow</div><div>new</div><div>1</div><div>pass</div><div>8m</div></div><div><div>3</div><div>Create <code>problems-reference-format.md</code> portable schema template</div><div>new</div><div>1</div><div>pass</div><div>3m</div></div><div><div>4</div><div>Rewrite reference file as <code>problems-reference.md</code> (table-based, with prevention checklists)</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>5</div><div>Remove old <code>problem-kb.md</code> and its HTML variants from git</div><div>new</div><div>1</div><div>pass</div><div>1m</div></div><div><div>6</div><div>Update journal files (session entry, index, context, metrics)</div><div>new</div><div>1</div><div>pass</div><div>3m</div></div><div><div>7</div><div>Commit and push</div><div>new</div><div>1</div><div>pass</div><div>2m</div></div></div><h3 id="outcomes-6">Outcomes</h3><ul>
+<li><strong>Completed:</strong> Problem tracker skill v2.0 with merged improvements, new table-based reference format, portable schema template</li>
+<li><strong>Partial:</strong> None</li>
+<li><strong>Deferred:</strong> None</li>
+</ul><h3 id="problems-encountered-6">Problems Encountered</h3><p>(none)</p><h3 id="key-decisions-6">Key Decisions</h3><ul>
+<li>Switched from "overwrite" to "append and merge" — preserves manual annotations, matches journal's append-only philosophy</li>
+<li>Table-based format per category (from journal-problems-review) — denser and more scannable than individual multi-line blocks</li>
+<li>Kept prevention checklists at top (from v1.0) — primary use case is pre-work scanning</li>
+<li>Kept stable problem IDs (from v1.0) — enables cross-referencing</li>
+<li>Renamed output from <code>problem-kb.md</code> to <code>problems-reference.md</code> — clearer name</li>
+<li>Added "Scope: Problems Only" section — explicit about what the skill does and doesn't do</li>
+<li>Dropped Statistics section — metrics.md already tracks this</li>
+<li>Added <code>problems-reference-format.md</code> as portable schema (parallels journal-format.md)</li>
+<li>Descriptive category names ("DA / URL and path mangling") instead of generic labels</li>
+</ul><h3 id="files-changed-6">Files Changed</h3><ul>
+<li><code>skills/excat-problem-tracker/SKILL.md</code> — Rewritten to v2.0</li>
+<li><code>skills/excat-problem-tracker/problems-reference-format.md</code> — New portable schema template</li>
+<li><code>journal/problems-reference.md</code> — New table-based reference (replaces problem-kb.md)</li>
+<li><code>journal/problem-kb.md</code> — Removed (replaced by problems-reference.md)</li>
+</ul><h3 id="commits-6">Commits</h3><ul>
+<li>(pending)</li>
+</ul><h3 id="carry-forward-6">Carry-Forward</h3><blockquote>
+<p>Problem tracker v2.0 complete. Next priorities: design token extraction from zelis.com, navigation setup, or begin bulk page migration.</p>
 </blockquote></div>
 </main>
 <footer></footer>
