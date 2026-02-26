@@ -1,10 +1,10 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-02-26 (Session 003)
+**Last updated:** 2026-02-26 (Session 004)
 **Branch:** `issue-1-styles-bulk`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (~789 URLs, WordPress)
-**Overall status:** Early migration — homepage blocks functional, animation skill built, tooling in place
+**Overall status:** Early migration — homepage blocks functional, animation skill built, tooling refined
 
 ## What's Done
 - Repository initialized and configured (Session 000)
@@ -16,6 +16,7 @@
 - Animation verification framework: 45 criteria, automated check script (Session 002)
 - All skill files reconciled — .md, .html, .plain.html in sync (Session 003)
 - Journaling skill created and project journal initialized (Session 003)
+- Journaling skill v1.1: merged best practices, added rules, examples, portable template (Session 004)
 
 ## What's In Progress
 - (nothing actively in progress — between sessions)
@@ -39,7 +40,8 @@
 - `styles/styles.css` — Global styles (needs design token population)
 - `skills/excat-animate-migration/SKILL.md` — Animation migration skill
 - `skills/excat-animate-migration/animation-verification.md` — Verification criteria
-- `skills/excat-journaling/SKILL.md` — This journaling skill
+- `skills/excat-journaling/SKILL.md` — Journaling skill (v1.1)
+- `skills/excat-journaling/journal-format.md` — Portable quick-reference template
 - `journal/` — Project journal directory
 
 ## Git Notes
@@ -48,4 +50,4 @@
 - GitHub PAT provided by user at runtime (do not store in committed files)
 
 ## Resume Point
-> Journaling skill just created and journal initialized. Next priorities: design token extraction from zelis.com, navigation structure setup, or begin bulk page migration. User should indicate preferred next task.
+> Journaling skill v1.1 complete. Next priorities: design token extraction from zelis.com, navigation structure setup, or begin bulk page migration. User should indicate preferred next task.

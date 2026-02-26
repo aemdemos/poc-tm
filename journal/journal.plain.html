@@ -1,0 +1,633 @@
+<div><h1 id="project-journal--zeliscom-eds-migration">Project Journal — Zelis.com EDS Migration</h1><blockquote>
+<p>Running log of all sessions, actions, outcomes, and time tracking.
+Source site: https://www.zelis.com/ (~789 URLs) migrating from WordPress to Adobe Edge Delivery Services.
+Repository: https://github.com/aemdemos/poc-tm.git | Branch: <code>issue-1-styles-bulk</code>
+Each session is appended chronologically. Read from bottom for most recent.</p>
+</blockquote></div>
+<div><h2 id="session-000--2026-02-18-to-2026-02-25--backfill-project-setup-and-initial-migration">Session 000 — 2026-02-18 to 2026-02-25 — [BACKFILL] Project Setup and Initial Migration</h2><p><strong>Branch:</strong> <code>issue-1-styles-bulk</code>
+<strong>Duration:</strong> ~3h 0m (agent) + 10% user overhead = ~3h 18m total
+<strong>Session goal:</strong> [BACKFILL] Initial project setup, block imports, and early content migration</p><h3 id="actions">Actions</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>1</div><div>Initial commit and repo setup</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>2</div><div>Rename fstab.yaml and paths.json (archive originals)</div><div>new</div><div>1</div><div>pass</div><div>2m</div></div><div><div>3</div><div>Initial migration import — 9 blocks, importer setup</div><div>new</div><div>1</div><div>pass</div><div>45m</div></div><div><div>4</div><div>Add 8 blocks (bulk block creation)</div><div>new</div><div>1</div><div>pass</div><div>30m</div></div><div><div>5</div><div>Content file updates (multiple small commits)</div><div>new</div><div>1</div><div>pass</div><div>15m</div></div><div><div>6</div><div>Add cards and hero blocks</div><div>new</div><div>1</div><div>pass</div><div>20m</div></div><div><div>7</div><div>Add header block</div><div>new</div><div>1</div><div>pass</div><div>15m</div></div><div><div>8</div><div>Add cards block (refinement)</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div></div><h3 id="outcomes">Outcomes</h3><ul>
+<li><strong>Completed:</strong> Repository initialized, initial block set imported, basic page structure in place</li>
+<li><strong>Partial:</strong> Block styling not yet matching source site</li>
+<li><strong>Deferred:</strong> Full design token extraction, navigation setup, animation migration</li>
+</ul><h3 id="problems-encountered">Problems Encountered</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="problem"><div><div>(reconstructed from git — no detailed problem records available for this period)</div><div>—</div><div>—</div><div>—</div><div>—</div></div></div><h3 id="key-decisions">Key Decisions</h3><ul>
+<li>Used <code>issue-1-styles-bulk</code> branch for all migration work</li>
+<li>Archived original fstab.yaml and paths.json rather than deleting</li>
+</ul><h3 id="files-changed">Files Changed</h3><ul>
+<li>Multiple block directories created under <code>blocks/</code></li>
+<li><code>tools/importer/</code> setup for migration tooling</li>
+<li>Content files in <code>content/</code></li>
+</ul><h3 id="commits">Commits</h3><ul>
+<li><code>66d5f50</code> — Initial commit</li>
+<li><code>e88bef2</code> — Rename paths.json to oldpaths-json</li>
+<li><code>7d27f2c</code> — Rename fstab.yaml to oldfstab-yaml</li>
+<li><code>796e478</code> — Initial migration import. Add 9 blocks, update importer</li>
+<li><code>c418dd0</code> — Add 8 blocks</li>
+<li><code>f6e143a</code> — Update 2 files</li>
+<li><code>f708050</code> — Update 1 file</li>
+<li><code>b89ed4c</code> — Update 1 file</li>
+<li><code>9005827</code> — Add cards, hero blocks</li>
+<li><code>ca2206a</code> — Add header block</li>
+<li><code>9bdc190</code> — Add cards block</li>
+</ul><h3 id="carry-forward">Carry-Forward</h3><blockquote>
+<p>Basic block structure is in place. Needs design token extraction, hero Lottie animation support, and style refinement to match source site.</p>
+</blockquote></div>
+<div><h2 id="session-001--2026-02-26--hero-lottie-fix-da-compatibility-animation-speed">Session 001 — 2026-02-26 — Hero Lottie Fix, DA Compatibility, Animation Speed</h2><p><strong>Branch:</strong> <code>issue-1-styles-bulk</code>
+<strong>Duration:</strong> ~1h 30m (agent) + 10% user overhead = ~1h 39m total
+<strong>Session goal:</strong> Fix hero Lottie animation rendering, resolve DA URL mangling, improve animation load speed</p><h3 id="actions-1">Actions</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>1</div><div>Hero Lottie: implement link-based DA authoring pattern</div><div>new</div><div>2</div><div>pass</div><div>20m</div></div><div><div>2</div><div>Fix DA URL mangling — match by link text content, not href</div><div>new</div><div>1</div><div>pass</div><div>15m</div></div><div><div>3</div><div>Touch migration files to force sync with remote</div><div>new</div><div>1</div><div>pass</div><div>3m</div></div><div><div>4</div><div>Add cards block refinement</div><div>continuation</div><div>1</div><div>pass</div><div>10m</div></div><div><div>5</div><div>Fix hero Lottie detection to use <code>.textContent.trim().endsWith('.json')</code></div><div>retry</div><div>1</div><div>pass</div><div>10m</div></div><div><div>6</div><div>Reduce delayed.js load timeout from 3s to 1.5s</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div></div><h3 id="outcomes-1">Outcomes</h3><ul>
+<li><strong>Completed:</strong> Hero Lottie renders correctly, DA URL mangling bypassed, animation loads in 1.5s instead of 3s</li>
+<li><strong>Partial:</strong> None</li>
+<li><strong>Deferred:</strong> Full animation migration skill, verification framework</li>
+</ul><h3 id="problems-encountered-1">Problems Encountered</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="problem"><div><div>DA converts dots to hyphens in href attributes (<code>.json</code> → <code>-json</code>)</div><div>blocker</div><div>yes</div><div>Match Lottie links by <code>a.textContent</code> instead of <code>a.href</code></div><div>#2</div></div><div><div>Lottie animation loading too slowly (3s delay)</div><div>minor</div><div>yes</div><div>Reduced <code>delayed.js</code> timeout from 3000ms to 1500ms</div><div>#6</div></div></div><h3 id="key-decisions-1">Key Decisions</h3><ul>
+<li>Link-based Lottie authoring pattern: display text = JSON path, block JS converts to <code>data-lottie-path</code></li>
+<li>Always match animation file links by text content, never by href (DA mangles hrefs)</li>
+</ul><h3 id="files-changed-1">Files Changed</h3><ul>
+<li><code>blocks/hero/hero.js</code> — Lottie link detection and container creation</li>
+<li><code>scripts/delayed.js</code> — Lottie loader, timeout reduced to 1.5s</li>
+<li><code>blocks/cards/cards.js</code> — Cards block refinement</li>
+</ul><h3 id="commits-1">Commits</h3><ul>
+<li><code>f86bcc2</code> — Hero Lottie: use link-based approach for DA compatibility</li>
+<li><code>698e84b</code> — Update 1 file</li>
+<li><code>6f49f46</code> — Touch all migration files to ensure sync with remote</li>
+<li><code>1fa7d4a</code> — Add cards block</li>
+<li><code>48fc07f</code> — Fix hero Lottie detection to match by link text, not href</li>
+<li><code>aa6d658</code> — Reduce delayed.js load timeout from 3s to 1.5s</li>
+</ul><h3 id="carry-forward-1">Carry-Forward</h3><blockquote>
+<p>Hero animation working. Next: build a reusable animation migration skill and verification framework for the broader site migration.</p>
+</blockquote></div>
+<div><h2 id="session-002--2026-02-26--animation-migration-skill-and-verification-framework">Session 002 — 2026-02-26 — Animation Migration Skill and Verification Framework</h2><p><strong>Branch:</strong> <code>issue-1-styles-bulk</code>
+<strong>Duration:</strong> ~2h 15m (agent) + 10% user overhead = ~2h 29m total
+<strong>Session goal:</strong> Build animation migration skill, create verification criteria, merge with external skill version</p><h3 id="actions-2">Actions</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>1</div><div>Create animation migration SKILL.md (5-phase workflow, Pattern A-G)</div><div>new</div><div>1</div><div>pass</div><div>30m</div></div><div><div>2</div><div>Create detect-animations.js (Playwright-injectable detection script)</div><div>new</div><div>1</div><div>pass</div><div>15m</div></div><div><div>3</div><div>Create eds-animation-patterns.md (quick-reference cheat sheet)</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>4</div><div>Merge best parts of external LLM's animation skill into ours</div><div>new</div><div>1</div><div>pass</div><div>20m</div></div><div><div>5</div><div>Commit and push skill files (user couldn't access workspace filesystem)</div><div>new</div><div>2</div><div>pass</div><div>5m</div></div><div><div>6</div><div>Create animation-verification.md (45 criteria, 11 categories)</div><div>new</div><div>1</div><div>pass</div><div>25m</div></div><div><div>7</div><div>Create verify-animations.js (automated IIFE for browser_evaluate)</div><div>new</div><div>1</div><div>pass</div><div>15m</div></div><div><div>8</div><div>Merge external verification criteria into our framework</div><div>new</div><div>1</div><div>pass</div><div>20m</div></div><div><div>9</div><div>Commit and push verification files</div><div>new</div><div>1</div><div>pass</div><div>3m</div></div></div><h3 id="outcomes-2">Outcomes</h3><ul>
+<li><strong>Completed:</strong> Full animation migration skill with 5-phase workflow, Pattern A-G decision tree, comprehensive verification framework with 45 criteria, automated check script</li>
+<li><strong>Partial:</strong> None</li>
+<li><strong>Deferred:</strong> Applying the skill to actual page migrations beyond homepage</li>
+</ul><h3 id="problems-encountered-2">Problems Encountered</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="problem"><div><div>Git safe.directory error on first git operation</div><div>minor</div><div>yes</div><div>Set <code>HOME=/home/node</code> and added safe.directory config</div><div>#5</div></div><div><div>User couldn't access workspace filesystem to view skill files</div><div>minor</div><div>yes</div><div>Committed and pushed files to git for access via GitHub</div><div>#5</div></div></div><h3 id="key-decisions-2">Key Decisions</h3><ul>
+<li>Pattern A-G naming convention for animation types (A=Scroll Reveal through G=Parallax)</li>
+<li>Pattern-aligned criterion IDs (A-DOM, F-RENDER, GLOB-NO-LIB, etc.) for verification</li>
+<li>EDS-readable output formats for verification results (metadata block, table block, JSON-in-metadata)</li>
+<li>Merged best of both our verification framework and external LLM's version</li>
+</ul><h3 id="files-changed-2">Files Changed</h3><ul>
+<li><code>skills/excat-animate-migration/SKILL.md</code> — Full animation migration skill (656 lines)</li>
+<li><code>skills/excat-animate-migration/detect-animations.js</code> — Detection script (201 lines)</li>
+<li><code>skills/excat-animate-migration/eds-animation-patterns.md</code> — Quick reference (92 lines)</li>
+<li><code>skills/excat-animate-migration/animation-verification.md</code> — Verification framework (602 lines)</li>
+<li><code>skills/excat-animate-migration/verify-animations.js</code> — Automated checks (207 lines)</li>
+</ul><h3 id="commits-2">Commits</h3><ul>
+<li><code>a7f2729</code> — Add animation migration skill for EDS projects</li>
+<li><code>1c5ebee</code> — Add animation verification framework and automated check script</li>
+<li><code>0574cda</code> — Merge verification frameworks: pattern-aligned IDs + EDS output formats</li>
+</ul><h3 id="carry-forward-2">Carry-Forward</h3><blockquote>
+<p>Animation skill and verification framework complete. SKILL.md references <code>animation-verification-criteria.md</code> but the actual file is <code>animation-verification.md</code> — needs reconciliation. HTML variants of skill files are stale.</p>
+</blockquote></div>
+<div><h2 id="session-003--2026-02-26--reconcile-skill-files--create-journaling-skill">Session 003 — 2026-02-26 — Reconcile SKILL Files + Create Journaling Skill</h2><p><strong>Branch:</strong> <code>issue-1-styles-bulk</code>
+<strong>Duration:</strong> ~1h 15m (agent) + 10% user overhead = ~1h 23m total
+<strong>Session goal:</strong> Reconcile SKILL.md/html/plain.html differences, then create a new journaling skill</p><h3 id="actions-3">Actions</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>1</div><div>Read and compare SKILL.md, SKILL.html, SKILL.plain.html</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>2</div><div>Fix broken reference: <code>animation-verification-criteria.md</code> → <code>animation-verification.md</code></div><div>new</div><div>1</div><div>pass</div><div>3m</div></div><div><div>3</div><div>Verify auto-regeneration of HTML variants from markdown source</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>4</div><div>Verify animation-verification and eds-animation-patterns HTML variants in sync</div><div>new</div><div>1</div><div>pass</div><div>3m</div></div><div><div>5</div><div>Stage and commit all reconciled + new HTML variant files (7 files)</div><div>new</div><div>1</div><div>pass</div><div>3m</div></div><div><div>6</div><div>Push reconciled files to remote</div><div>new</div><div>1</div><div>pass</div><div>2m</div></div><div><div>7</div><div>Research existing skill structure and patterns</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>8</div><div>Design journaling skill schema and file structure</div><div>new</div><div>1</div><div>pass</div><div>15m</div></div><div><div>9</div><div>Create excat-journaling SKILL.md</div><div>new</div><div>1</div><div>pass</div><div>20m</div></div><div><div>10</div><div>Initialize journal with backfill and current session</div><div>new</div><div>1</div><div>pass</div><div>25m</div></div><div><div>11</div><div>Commit and push journaling skill + journal files</div><div>new</div><div>1</div><div>pending</div><div>3m</div></div></div><h3 id="outcomes-3">Outcomes</h3><ul>
+<li><strong>Completed:</strong> All SKILL file variants reconciled and in sync, broken file reference fixed, 6 HTML variants added to git, journaling skill created with full schema</li>
+<li><strong>Partial:</strong> Journal initialized with backfill — current session entry being finalized</li>
+<li><strong>Deferred:</strong> None</li>
+</ul><h3 id="problems-encountered-3">Problems Encountered</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="problem"><div><div>SKILL.md Phase 5 referenced non-existent file <code>animation-verification-criteria.md</code></div><div>major</div><div>yes</div><div>Updated reference to point to actual file <code>animation-verification.md</code></div><div>#2</div></div><div><div>SKILL.html write failed — file modified by linter since last read</div><div>minor</div><div>yes</div><div>File watcher auto-regenerated HTML when markdown was edited; no manual write needed</div><div>#3</div></div></div><h3 id="key-decisions-3">Key Decisions</h3><ul>
+<li>Journal files live in <code>/workspace/journal/</code> (separate from skills) for portability</li>
+<li>Four-file journal structure: journal.md (detail), journal-index.md (index), project-context.md (state), metrics.md (stats)</li>
+<li>Backfill protocol for existing projects: Session 000 with <code>[BACKFILL]</code> tag</li>
+<li>User overhead margin: 5-15% applied to agent time estimates</li>
+<li>File watcher auto-regenerates .html and .plain.html from .md — no need to manually maintain HTML variants</li>
+</ul><h3 id="files-changed-3">Files Changed</h3><ul>
+<li><code>skills/excat-animate-migration/SKILL.md</code> — Fixed <code>animation-verification-criteria.md</code> → <code>animation-verification.md</code></li>
+<li><code>skills/excat-animate-migration/SKILL.html</code> — Auto-regenerated (now in sync with .md)</li>
+<li><code>skills/excat-animate-migration/SKILL.plain.html</code> — Auto-regenerated (now in sync with .md)</li>
+<li><code>skills/excat-animate-migration/animation-verification.html</code> — Added to git</li>
+<li><code>skills/excat-animate-migration/animation-verification.plain.html</code> — Added to git</li>
+<li><code>skills/excat-animate-migration/eds-animation-patterns.html</code> — Added to git</li>
+<li><code>skills/excat-animate-migration/eds-animation-patterns.plain.html</code> — Added to git</li>
+<li><code>skills/excat-journaling/SKILL.md</code> — New journaling skill (created)</li>
+<li><code>journal/journal.md</code> — Project journal initialized with backfill</li>
+<li><code>journal/journal-index.md</code> — Session index created</li>
+<li><code>journal/project-context.md</code> — Current project context snapshot</li>
+<li><code>journal/metrics.md</code> — Cumulative project metrics</li>
+</ul><h3 id="commits-3">Commits</h3><ul>
+<li><code>d99d605</code> — Reconcile SKILL files: fix broken reference, sync HTML variants</li>
+<li>(pending) — Add journaling skill and initialize project journal</li>
+</ul><h3 id="carry-forward-3">Carry-Forward</h3><blockquote>
+<p>Journaling skill is operational. All animation skill files reconciled. Next priorities for the project: continue the Zelis.com migration — apply design tokens to global styles, migrate additional pages beyond homepage, set up navigation structure.</p>
+</blockquote></div>
+<div><h2 id="session-004--2026-02-26--merge-journaling-skills-best-of-both">Session 004 — 2026-02-26 — Merge Journaling Skills (best-of-both)</h2><p><strong>Branch:</strong> <code>issue-1-styles-bulk</code>
+<strong>Duration:</strong> ~25m (agent) + 10% user overhead = ~28m total
+<strong>Session goal:</strong> Compare excat-journaling skill with journaling-cursor skill, merge best practices from both</p><h3 id="actions-4">Actions</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>1</div><div>Read and analyze both journaling skills in detail</div><div>continuation</div><div>1</div><div>pass</div><div>5m</div></div><div><div>2</div><div>Add explicit Rules section (append-only, same-session updates, carry-forward currency)</div><div>new</div><div>1</div><div>pass</div><div>3m</div></div><div><div>3</div><div>Add portable path convention with override support</div><div>new</div><div>1</div><div>pass</div><div>2m</div></div><div><div>4</div><div>Add optional time range to session header, bullet format alternative for actions</div><div>new</div><div>1</div><div>pass</div><div>3m</div></div><div><div>5</div><div>Add example sessions (minimal bullet + detailed table-with-problems)</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>6</div><div>Enhance Reading the Journal and Troubleshooting sections</div><div>new</div><div>1</div><div>pass</div><div>2m</div></div><div><div>7</div><div>Create journal-format.md portable quick-reference template</div><div>new</div><div>1</div><div>pass</div><div>3m</div></div><div><div>8</div><div>Verify existing journal files — no schema changes needed (additive only)</div><div>new</div><div>1</div><div>pass</div><div>2m</div></div></div><h3 id="outcomes-4">Outcomes</h3><ul>
+<li><strong>Completed:</strong> SKILL.md merged with best practices from both skills, journal-format.md created as portable template</li>
+<li><strong>Partial:</strong> None</li>
+<li><strong>Deferred:</strong> None</li>
+</ul><h3 id="problems-encountered-4">Problems Encountered</h3><p>(none)</p><h3 id="key-decisions-4">Key Decisions</h3><ul>
+<li>All schema changes are additive — existing journal entries not modified (respects append-only rule)</li>
+<li>Bullet format offered as alternative for simple sessions, not a replacement for table format</li>
+<li>journal-format.md created as quick-reference separate from full SKILL.md</li>
+<li>Path convention supports override via JOURNAL_DIR env var or journal-config.yaml</li>
+</ul><h3 id="files-changed-4">Files Changed</h3><ul>
+<li><code>skills/excat-journaling/SKILL.md</code> — Added Rules section, path convention, optional time range, bullet format, example sessions, enhanced reading/troubleshooting sections, version note</li>
+<li><code>skills/excat-journaling/journal-format.md</code> — New portable quick-reference template</li>
+<li><code>journal/journal.md</code> — Added Session 004 entry</li>
+<li><code>journal/journal-index.md</code> — Added Session 004 row</li>
+<li><code>journal/project-context.md</code> — Updated with current state</li>
+<li><code>journal/metrics.md</code> — Updated cumulative stats</li>
+</ul><h3 id="commits-4">Commits</h3><ul>
+<li>(pending) — Merge journaling skills: add rules, examples, portable template</li>
+</ul><h3 id="carry-forward-4">Carry-Forward</h3><blockquote>
+<p>Journaling skill v1.1 complete with merged best practices. Next priorities for the project: design token extraction from zelis.com, navigation setup, or begin bulk page migration.</p>
+</blockquote></div>

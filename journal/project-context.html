@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<script src="/scripts/aem.js" type="module"></script>
+<script src="/scripts/scripts.js" type="module"></script>
+<link rel="stylesheet" href="/styles/styles.css"/>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/avenir/avenir_next_lt_pro_regular.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/avenir/avenir_next_lt_pro_medium.woff2" crossorigin>
+</head>
+<body>
+<header></header>
+<main>
+<div><h1 id="project-context--zeliscom-eds-migration">Project Context — Zelis.com EDS Migration</h1>
+<p><strong>Last updated:</strong> 2026-02-26 (Session 004)
+<strong>Branch:</strong> <code>issue-1-styles-bulk</code>
+<strong>Repository:</strong> https://github.com/aemdemos/poc-tm.git
+<strong>Source site:</strong> https://www.zelis.com/ (~789 URLs, WordPress)
+<strong>Overall status:</strong> Early migration — homepage blocks functional, animation skill built, tooling refined</p>
+<h2 id="whats-done">What's Done</h2>
+<ul>
+<li>Repository initialized and configured (Session 000)</li>
+<li>Initial block set imported: 9+ blocks including hero, cards, header (Session 000)</li>
+<li>Hero Lottie animation working with link-based DA authoring pattern (Session 001)</li>
+<li>DA URL mangling workaround: match by text content, not href (Session 001)</li>
+<li>Animation load time optimized: delayed.js at 1.5s (Session 001)</li>
+<li>Animation migration skill: 5-phase workflow, Pattern A-G, decision tree (Session 002)</li>
+<li>Animation verification framework: 45 criteria, automated check script (Session 002)</li>
+<li>All skill files reconciled — .md, .html, .plain.html in sync (Session 003)</li>
+<li>Journaling skill created and project journal initialized (Session 003)</li>
+<li>Journaling skill v1.1: merged best practices, added rules, examples, portable template (Session 004)</li>
+</ul>
+<h2 id="whats-in-progress">What's In Progress</h2>
+<ul>
+<li>(nothing actively in progress — between sessions)</li>
+</ul>
+<h2 id="whats-pending">What's Pending</h2>
+<ul>
+<li><strong>Design token extraction</strong> — Extract colors, fonts, spacing from zelis.com and apply to <code>styles/styles.css</code></li>
+<li><strong>Navigation setup</strong> — Build nav.md/nav.html from zelis.com site structure</li>
+<li><strong>Additional page migrations</strong> — Only homepage is migrated; ~789 URLs remain</li>
+<li><strong>Block styling refinement</strong> — Blocks exist but CSS doesn't match source site</li>
+<li><strong>Footer implementation</strong> — footer.html was created in a prior session</li>
+<li><strong>Bulk import workflow</strong> — Set up page templates and import scripts for remaining pages</li>
+</ul>
+<h2 id="active-blockers">Active Blockers</h2>
+<ul>
+<li>(none currently)</li>
+</ul>
+<h2 id="key-files">Key Files</h2>
+<ul>
+<li><code>blocks/hero/hero.js</code> — Hero block with Lottie link detection</li>
+<li><code>scripts/delayed.js</code> — Lottie loader (1.5s timeout)</li>
+<li><code>scripts/scripts.js</code> — Main scripts including scroll-reveal init</li>
+<li><code>styles/lazy-styles.css</code> — Scroll-reveal and animation CSS</li>
+<li><code>styles/styles.css</code> — Global styles (needs design token population)</li>
+<li><code>skills/excat-animate-migration/SKILL.md</code> — Animation migration skill</li>
+<li><code>skills/excat-animate-migration/animation-verification.md</code> — Verification criteria</li>
+<li><code>skills/excat-journaling/SKILL.md</code> — Journaling skill (v1.1)</li>
+<li><code>skills/excat-journaling/journal-format.md</code> — Portable quick-reference template</li>
+<li><code>journal/</code> — Project journal directory</li>
+</ul>
+<h2 id="git-notes">Git Notes</h2>
+<ul>
+<li>Remote: <code>https://github.com/aemdemos/poc-tm.git</code></li>
+<li>Must use <code>HOME=/home/node</code> prefix for git commands</li>
+<li>GitHub PAT provided by user at runtime (do not store in committed files)</li>
+</ul>
+<h2 id="resume-point">Resume Point</h2>
+<blockquote>
+<p>Journaling skill v1.1 complete. Next priorities: design token extraction from zelis.com, navigation structure setup, or begin bulk page migration. User should indicate preferred next task.</p>
+</blockquote></div>
+</main>
+<footer></footer>
+</body>
+</html>

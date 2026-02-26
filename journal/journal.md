@@ -231,3 +231,53 @@
 
 ### Carry-Forward
 > Journaling skill is operational. All animation skill files reconciled. Next priorities for the project: continue the Zelis.com migration — apply design tokens to global styles, migrate additional pages beyond homepage, set up navigation structure.
+
+---
+
+## Session 004 — 2026-02-26 — Merge Journaling Skills (best-of-both)
+
+**Branch:** `issue-1-styles-bulk`
+**Duration:** ~25m (agent) + 10% user overhead = ~28m total
+**Session goal:** Compare excat-journaling skill with journaling-cursor skill, merge best practices from both
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Read and analyze both journaling skills in detail | continuation | 1 | pass | 5m |
+| 2 | Add explicit Rules section (append-only, same-session updates, carry-forward currency) | new | 1 | pass | 3m |
+| 3 | Add portable path convention with override support | new | 1 | pass | 2m |
+| 4 | Add optional time range to session header, bullet format alternative for actions | new | 1 | pass | 3m |
+| 5 | Add example sessions (minimal bullet + detailed table-with-problems) | new | 1 | pass | 5m |
+| 6 | Enhance Reading the Journal and Troubleshooting sections | new | 1 | pass | 2m |
+| 7 | Create journal-format.md portable quick-reference template | new | 1 | pass | 3m |
+| 8 | Verify existing journal files — no schema changes needed (additive only) | new | 1 | pass | 2m |
+
+### Outcomes
+- **Completed:** SKILL.md merged with best practices from both skills, journal-format.md created as portable template
+- **Partial:** None
+- **Deferred:** None
+
+### Problems Encountered
+
+(none)
+
+### Key Decisions
+- All schema changes are additive — existing journal entries not modified (respects append-only rule)
+- Bullet format offered as alternative for simple sessions, not a replacement for table format
+- journal-format.md created as quick-reference separate from full SKILL.md
+- Path convention supports override via JOURNAL_DIR env var or journal-config.yaml
+
+### Files Changed
+- `skills/excat-journaling/SKILL.md` — Added Rules section, path convention, optional time range, bullet format, example sessions, enhanced reading/troubleshooting sections, version note
+- `skills/excat-journaling/journal-format.md` — New portable quick-reference template
+- `journal/journal.md` — Added Session 004 entry
+- `journal/journal-index.md` — Added Session 004 row
+- `journal/project-context.md` — Updated with current state
+- `journal/metrics.md` — Updated cumulative stats
+
+### Commits
+- (pending) — Merge journaling skills: add rules, examples, portable template
+
+### Carry-Forward
+> Journaling skill v1.1 complete with merged best practices. Next priorities for the project: design token extraction from zelis.com, navigation setup, or begin bulk page migration.
