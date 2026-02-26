@@ -1,6 +1,6 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-02-26 (Session 006)
+**Last updated:** 2026-02-26 (Session 007)
 **Branch:** `issue-1-styles-bulk`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (~789 URLs, WordPress)
@@ -18,6 +18,7 @@
 - Journaling skill created and project journal initialized (Session 003)
 - Journaling skill v1.1: merged best practices, added rules, examples, portable template (Session 004)
 - Problem tracker skill created (Session 005), rewritten to v2.0 with table format + append-and-merge (Session 006)
+- Project time tracking skill created with daily reports and action-level detail (Session 007)
 
 ## What's In Progress
 - (nothing actively in progress — between sessions)

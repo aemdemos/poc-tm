@@ -808,7 +808,31 @@ Each session is appended chronologically. Read from bottom for most recent.</p>
 <li><code>journal/problems-reference.md</code> — New table-based reference (replaces problem-kb.md)</li>
 <li><code>journal/problem-kb.md</code> — Removed (replaced by problems-reference.md)</li>
 </ul><h3 id="commits-6">Commits</h3><ul>
-<li>(pending)</li>
+<li><code>c9c07b9</code> — Rewrite problem tracker skill v2.0: merge best-of-both approaches</li>
 </ul><h3 id="carry-forward-6">Carry-Forward</h3><blockquote>
 <p>Problem tracker v2.0 complete. Next priorities: design token extraction from zelis.com, navigation setup, or begin bulk page migration.</p>
+</blockquote></div>
+<div><h2 id="session-007--2026-02-26--create-project-time-tracking-skill">Session 007 — 2026-02-26 — Create Project Time Tracking Skill</h2><p><strong>Branch:</strong> <code>issue-1-styles-bulk</code>
+<strong>Duration:</strong> ~20m (agent) + 10% user overhead = ~22m total
+<strong>Session goal:</strong> Create a new skill that compiles daily time reports from journal session data</p><h3 id="actions-7">Actions</h3><ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled> Create <code>skills/excat-project-time-tracking/SKILL.md</code> with 4-step workflow (~8m) — pass</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> Create <code>time-report-format.md</code> portable schema template (~3m) — pass</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> Generate initial <code>time-tracking.md</code> from all 7 existing sessions (~5m) — pass</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> Update journal files (session entry, index, context, metrics) (~3m) — pass</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> Commit and push (~1m) — pass</li>
+</ul><h3 id="outcomes-7">Outcomes</h3><ul>
+<li><strong>Completed:</strong> Time tracking skill created, initial daily time report generated with action-level detail for all sessions, cumulative summary</li>
+</ul><h3 id="problems-encountered-7">Problems Encountered</h3><p>(none)</p><h3 id="key-decisions-7">Key Decisions</h3><ul>
+<li>Used bullet format for this session's actions (simple, linear, &#x3C; 5 actions)</li>
+<li>Report shows most recent date first (reverse chronological) for quick access</li>
+<li>Overwrite convention (like metrics.md) since the report is fully derived</li>
+<li>Backfill session listed under start date with note about date range</li>
+</ul><h3 id="files-changed-7">Files Changed</h3><ul>
+<li><code>skills/excat-project-time-tracking/SKILL.md</code> — New time tracking skill</li>
+<li><code>skills/excat-project-time-tracking/time-report-format.md</code> — Portable schema template</li>
+<li><code>journal/time-tracking.md</code> — Initial time report with all sessions</li>
+</ul><h3 id="commits-7">Commits</h3><ul>
+<li>(pending)</li>
+</ul><h3 id="carry-forward-7">Carry-Forward</h3><blockquote>
+<p>Time tracking skill v1.0 complete. All three supporting skills now operational (journaling, problem tracker, time tracking). Next priorities: design token extraction from zelis.com, navigation setup, or begin bulk page migration.</p>
 </blockquote></div>

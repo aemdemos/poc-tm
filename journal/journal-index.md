@@ -9,3 +9,4 @@
 | 004 | 2026-02-26 | Merge journaling skills — add rules, examples, portable template | ~28m | 8 completed, 0 problems |
 | 005 | 2026-02-26 | Create problem tracker skill and initial knowledge base | ~33m | 6 completed, 0 problems |
 | 006 | 2026-02-26 | Rewrite problem tracker skill v2.0 (best-of-both merge) | ~28m | 7 completed, 0 problems |
+| 007 | 2026-02-26 | Create project time tracking skill and initial report | ~22m | 5 completed, 0 problems |

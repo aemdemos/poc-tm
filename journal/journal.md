@@ -379,7 +379,47 @@
 - `journal/problem-kb.md` — Removed (replaced by problems-reference.md)
 
 ### Commits
-- (pending)
+- `c9c07b9` — Rewrite problem tracker skill v2.0: merge best-of-both approaches
 
 ### Carry-Forward
 > Problem tracker v2.0 complete. Next priorities: design token extraction from zelis.com, navigation setup, or begin bulk page migration.
+
+---
+
+## Session 007 — 2026-02-26 — Create Project Time Tracking Skill
+
+**Branch:** `issue-1-styles-bulk`
+**Duration:** ~20m (agent) + 10% user overhead = ~22m total
+**Session goal:** Create a new skill that compiles daily time reports from journal session data
+
+### Actions
+
+- [x] Create `skills/excat-project-time-tracking/SKILL.md` with 4-step workflow (~8m) — pass
+- [x] Create `time-report-format.md` portable schema template (~3m) — pass
+- [x] Generate initial `time-tracking.md` from all 7 existing sessions (~5m) — pass
+- [x] Update journal files (session entry, index, context, metrics) (~3m) — pass
+- [x] Commit and push (~1m) — pass
+
+### Outcomes
+- **Completed:** Time tracking skill created, initial daily time report generated with action-level detail for all sessions, cumulative summary
+
+### Problems Encountered
+
+(none)
+
+### Key Decisions
+- Used bullet format for this session's actions (simple, linear, < 5 actions)
+- Report shows most recent date first (reverse chronological) for quick access
+- Overwrite convention (like metrics.md) since the report is fully derived
+- Backfill session listed under start date with note about date range
+
+### Files Changed
+- `skills/excat-project-time-tracking/SKILL.md` — New time tracking skill
+- `skills/excat-project-time-tracking/time-report-format.md` — Portable schema template
+- `journal/time-tracking.md` — Initial time report with all sessions
+
+### Commits
+- (pending)
+
+### Carry-Forward
+> Time tracking skill v1.0 complete. All three supporting skills now operational (journaling, problem tracker, time tracking). Next priorities: design token extraction from zelis.com, navigation setup, or begin bulk page migration.
