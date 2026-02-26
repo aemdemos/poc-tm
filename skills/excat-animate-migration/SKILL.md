@@ -576,7 +576,9 @@ function initParallax(main) {
 
 ### Phase 5: Verification
 
-**Goal:** Visually confirm all animations work correctly.
+**Goal:** Visually confirm all animations work correctly and record results in an EDS-readable format.
+
+**Full verification criteria and EDS output format:** See [animation-verification-criteria.md](./animation-verification-criteria.md) for criterion IDs (e.g. A-DOM, F-RENDER), pass/fail conditions per pattern, and how to output verification results as metadata blocks, table blocks, or JSON so EDS can read them.
 
 1. **Navigate to local preview** at `http://localhost:3000/content/{page}`
 
