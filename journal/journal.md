@@ -419,7 +419,49 @@
 - `journal/time-tracking.md` — Initial time report with all sessions
 
 ### Commits
-- (pending)
+- `fac4a7e` — Add project time tracking skill and initial daily time report
 
 ### Carry-Forward
 > Time tracking skill v1.0 complete. All three supporting skills now operational (journaling, problem tracker, time tracking). Next priorities: design token extraction from zelis.com, navigation setup, or begin bulk page migration.
+
+---
+
+## Session 008 — 2026-02-26 — Refine Time Tracking Skill v1.1 (best-of-both merge)
+
+**Branch:** `issue-1-styles-bulk`
+**Duration:** ~15m (agent) + 10% user overhead = ~17m total
+**Session goal:** Compare and merge improvements from an external time tracking skill into our v1.0
+
+### Actions
+
+- [x] Read and compare both time tracking skills in detail (~3m) — pass
+- [x] Rewrite SKILL.md v1.1: add date-scoping step, dual output mode, per-session subtotals, time display rules, graceful margin handling, explicit parsing columns (~7m) — pass
+- [x] Rewrite time-report-format.md: add per-session subtotals, time display rules section, improved example (~3m) — pass
+- [x] Update journal files (session entry, index, context, metrics) (~2m) — pass
+- [x] Commit and push (~1m) — pass
+
+### Outcomes
+- **Completed:** Time tracking skill refined to v1.1 with 6 improvements from external skill merged into our existing structure
+
+### Problems Encountered
+
+(none)
+
+### Key Decisions
+- Added explicit "Determine the date" step (Step 1) for date-scoped queries — theirs had this, ours didn't
+- Added dual output mode: (a) full report to file, (b) quick reply in chat — theirs supported both
+- Added per-session subtotals as standalone bold lines below action tables — more readable
+- Added time display rules (normalize to minutes for arithmetic, Xh Ym for display) — theirs was more explicit
+- Made margin handling graceful: when not recorded, note it instead of silently omitting — theirs was better
+- Added session header format parsing notes — theirs documented the date token matching
+- Kept our cumulative summary, execution mindset, scope, integration, troubleshooting sections — theirs lacked these
+
+### Files Changed
+- `skills/excat-project-time-tracking/SKILL.md` — Rewritten to v1.1
+- `skills/excat-project-time-tracking/time-report-format.md` — Updated with per-session subtotals and time display rules
+
+### Commits
+- (pending)
+
+### Carry-Forward
+> Time tracking skill v1.1 complete. All three supporting skills now operational. Next priorities: design token extraction from zelis.com, navigation setup, or begin bulk page migration.

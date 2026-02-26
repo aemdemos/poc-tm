@@ -1,14 +1,14 @@
 # Project Metrics
 
 ## Time
-- **Total sessions:** 8 (including backfill)
-- **Total agent time:** ~9h 40m
-- **Total with user margin (10%):** ~10h 40m
-- **Average session length:** ~1h 13m
+- **Total sessions:** 9 (including backfill)
+- **Total agent time:** ~9h 55m
+- **Total with user margin (10%):** ~10h 57m
+- **Average session length:** ~1h 7m
 
 ## Success Rates
-- **Actions attempted:** 60
-- **First-try success:** 58 (97%)
+- **Actions attempted:** 65
+- **First-try success:** 63 (97%)
 - **Required retry:** 2 (3%)
 - **Failed:** 0 (0%)
 
@@ -39,3 +39,4 @@
 | 005 | 2026-02-26 | ~30m | ~33m | 6 | 100% |
 | 006 | 2026-02-26 | ~25m | ~28m | 7 | 100% |
 | 007 | 2026-02-26 | ~20m | ~22m | 5 | 100% |
+| 008 | 2026-02-26 | ~15m | ~17m | 5 | 100% |

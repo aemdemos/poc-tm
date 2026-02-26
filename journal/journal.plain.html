@@ -832,7 +832,33 @@ Each session is appended chronologically. Read from bottom for most recent.</p>
 <li><code>skills/excat-project-time-tracking/time-report-format.md</code> — Portable schema template</li>
 <li><code>journal/time-tracking.md</code> — Initial time report with all sessions</li>
 </ul><h3 id="commits-7">Commits</h3><ul>
-<li>(pending)</li>
+<li><code>fac4a7e</code> — Add project time tracking skill and initial daily time report</li>
 </ul><h3 id="carry-forward-7">Carry-Forward</h3><blockquote>
 <p>Time tracking skill v1.0 complete. All three supporting skills now operational (journaling, problem tracker, time tracking). Next priorities: design token extraction from zelis.com, navigation setup, or begin bulk page migration.</p>
+</blockquote></div>
+<div><h2 id="session-008--2026-02-26--refine-time-tracking-skill-v11-best-of-both-merge">Session 008 — 2026-02-26 — Refine Time Tracking Skill v1.1 (best-of-both merge)</h2><p><strong>Branch:</strong> <code>issue-1-styles-bulk</code>
+<strong>Duration:</strong> ~15m (agent) + 10% user overhead = ~17m total
+<strong>Session goal:</strong> Compare and merge improvements from an external time tracking skill into our v1.0</p><h3 id="actions-8">Actions</h3><ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled> Read and compare both time tracking skills in detail (~3m) — pass</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> Rewrite SKILL.md v1.1: add date-scoping step, dual output mode, per-session subtotals, time display rules, graceful margin handling, explicit parsing columns (~7m) — pass</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> Rewrite time-report-format.md: add per-session subtotals, time display rules section, improved example (~3m) — pass</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> Update journal files (session entry, index, context, metrics) (~2m) — pass</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> Commit and push (~1m) — pass</li>
+</ul><h3 id="outcomes-8">Outcomes</h3><ul>
+<li><strong>Completed:</strong> Time tracking skill refined to v1.1 with 6 improvements from external skill merged into our existing structure</li>
+</ul><h3 id="problems-encountered-8">Problems Encountered</h3><p>(none)</p><h3 id="key-decisions-8">Key Decisions</h3><ul>
+<li>Added explicit "Determine the date" step (Step 1) for date-scoped queries — theirs had this, ours didn't</li>
+<li>Added dual output mode: (a) full report to file, (b) quick reply in chat — theirs supported both</li>
+<li>Added per-session subtotals as standalone bold lines below action tables — more readable</li>
+<li>Added time display rules (normalize to minutes for arithmetic, Xh Ym for display) — theirs was more explicit</li>
+<li>Made margin handling graceful: when not recorded, note it instead of silently omitting — theirs was better</li>
+<li>Added session header format parsing notes — theirs documented the date token matching</li>
+<li>Kept our cumulative summary, execution mindset, scope, integration, troubleshooting sections — theirs lacked these</li>
+</ul><h3 id="files-changed-8">Files Changed</h3><ul>
+<li><code>skills/excat-project-time-tracking/SKILL.md</code> — Rewritten to v1.1</li>
+<li><code>skills/excat-project-time-tracking/time-report-format.md</code> — Updated with per-session subtotals and time display rules</li>
+</ul><h3 id="commits-8">Commits</h3><ul>
+<li>(pending)</li>
+</ul><h3 id="carry-forward-8">Carry-Forward</h3><blockquote>
+<p>Time tracking skill v1.1 complete. All three supporting skills now operational. Next priorities: design token extraction from zelis.com, navigation setup, or begin bulk page migration.</p>
 </blockquote></div>

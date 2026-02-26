@@ -34,6 +34,13 @@ The report lives in the same directory as the journal (default: `journal/time-tr
 | 2 | [Action description] | [Xm] |
 | **Total** | | **[Xm]** |
 
+**Session subtotal (agent):** [Xh Ym]
+**Session total (with margin):** [Xh Ym]
+
+---
+
+*(Repeat for each session on this day.)*
+
 **Daily total:** [Xh Ym] (agent) / [Xh Ym] (with margin)
 ```
 
@@ -41,6 +48,7 @@ Notes:
 - Most recent date first
 - Multiple sessions per day get separate subsections
 - Each session shows action-level time breakdown
+- Per-session subtotals appear below each action table
 - Daily total sums all sessions for that date
 
 ---
@@ -58,6 +66,14 @@ Notes:
 | ...  | ...      | ...        | ...         | ...     |
 | **Total** | **[N]** | **[Xh Ym]** | **[Xh Ym]** | **[N]** |
 ```
+
+---
+
+## Time display rules
+
+- Per-action: keep as recorded in journal (`20m`, `1h 30m`) or normalize to minutes.
+- Subtotals and totals: use `Xh Ym` when >= 60m, else `Xm`.
+- If margin wasn't recorded in the journal, omit "Session total (with margin)" for that session and add a note: *"Margin not in journal; add 5-15% for user overhead if needed."*
 
 ---
 
@@ -87,6 +103,11 @@ Notes:
 | 6 | Reduce delayed.js load timeout from 3s to 1.5s | 5m |
 | **Total** | | **63m** |
 
+**Session subtotal (agent):** 1h 3m
+**Session total (with margin):** ~1h 39m
+
+---
+
 ### Session 002 — Animation Migration Skill (~2h 15m agent + 10% = ~2h 29m)
 
 | # | Action | Time |
@@ -95,6 +116,11 @@ Notes:
 | 2 | Create detect-animations.js | 15m |
 | ... | ... | ... |
 | **Total** | | **135m** |
+
+**Session subtotal (agent):** 2h 15m
+**Session total (with margin):** ~2h 29m
+
+---
 
 **Daily total:** ~3h 45m (agent) / ~4h 8m (with margin)
 
