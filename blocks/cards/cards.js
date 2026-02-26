@@ -1,6 +1,7 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
+
 function animateCounter(el, target, suffix, duration = 2000) {
   const start = performance.now();
   function update(now) {

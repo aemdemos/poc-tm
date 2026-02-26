@@ -1,4 +1,4 @@
-// Animation libraries loaded after page is interactive (3s delay).
+// Animation libraries loaded after page is interactive (3s delay via scripts.js).
 // Content is visible without these — animations are progressive enhancement.
 
 import { loadScript } from './aem.js';
