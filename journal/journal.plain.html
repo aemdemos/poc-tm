@@ -627,7 +627,93 @@ Each session is appended chronologically. Read from bottom for most recent.</p>
 <li><code>journal/project-context.md</code> — Updated with current state</li>
 <li><code>journal/metrics.md</code> — Updated cumulative stats</li>
 </ul><h3 id="commits-4">Commits</h3><ul>
-<li>(pending) — Merge journaling skills: add rules, examples, portable template</li>
+<li><code>cdd009c</code> — Merge journaling skills: add rules, examples, portable template</li>
+<li><code>d1339b3</code> — Add conciseness rule to journaling skill</li>
 </ul><h3 id="carry-forward-4">Carry-Forward</h3><blockquote>
 <p>Journaling skill v1.1 complete with merged best practices. Next priorities for the project: design token extraction from zelis.com, navigation setup, or begin bulk page migration.</p>
+</blockquote></div>
+<div><h2 id="session-005--2026-02-26--create-problem-tracker-skill">Session 005 — 2026-02-26 — Create Problem Tracker Skill</h2><p><strong>Branch:</strong> <code>issue-1-styles-bulk</code>
+<strong>Duration:</strong> ~30m (agent) + 10% user overhead = ~33m total
+<strong>Session goal:</strong> Create a new skill that reviews journal problems, identifies patterns, and builds a knowledge base for avoiding repeated issues</p><h3 id="actions-5">Actions</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>1</div><div>Explore existing skill structure and journal problem schema</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>2</div><div>Design problem tracker skill (schema, workflow, output structure)</div><div>new</div><div>1</div><div>pass</div><div>8m</div></div><div><div>3</div><div>Create <code>/workspace/skills/excat-problem-tracker/SKILL.md</code></div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>4</div><div>Generate initial <code>problem-kb.md</code> from 6 existing problems</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>5</div><div>Update journal files (session entry, index, context, metrics)</div><div>new</div><div>1</div><div>pass</div><div>3m</div></div><div><div>6</div><div>Commit and push</div><div>new</div><div>1</div><div>pass</div><div>2m</div></div></div><h3 id="outcomes-5">Outcomes</h3><ul>
+<li><strong>Completed:</strong> Problem tracker skill created with 3-phase workflow, initial knowledge base generated with all 6 problems cataloged, 1 recurring pattern identified, prevention checklists for all 4 categories</li>
+<li><strong>Partial:</strong> None</li>
+<li><strong>Deferred:</strong> None</li>
+</ul><h3 id="problems-encountered-5">Problems Encountered</h3><p>(none)</p><h3 id="key-decisions-5">Key Decisions</h3><ul>
+<li>Single output file (<code>problem-kb.md</code>) rather than multiple files — one place to search</li>
+<li>Prevention checklists placed at top of file for fastest access (primary use case is pre-work scanning)</li>
+<li>Stable problem IDs (<code>{PREFIX}-{NNN}</code>) that persist across regenerations</li>
+<li>Overwrite convention (same as <code>project-context.md</code> and <code>metrics.md</code>)</li>
+<li>Grouped DA-001, DA-002, SYNC-001 into a recurring pattern: "content platform transforms file references"</li>
+</ul><h3 id="files-changed-5">Files Changed</h3><ul>
+<li><code>skills/excat-problem-tracker/SKILL.md</code> — New problem tracker skill</li>
+<li><code>journal/problem-kb.md</code> — Initial knowledge base with 6 problems, 4 categories, 1 pattern</li>
+<li><code>journal/journal.md</code> — Added Session 005 entry</li>
+<li><code>journal/journal-index.md</code> — Added Session 005 row</li>
+<li><code>journal/project-context.md</code> — Updated with current state</li>
+<li><code>journal/metrics.md</code> — Updated cumulative stats</li>
+</ul><h3 id="commits-5">Commits</h3><ul>
+<li>(pending)</li>
+</ul><h3 id="carry-forward-5">Carry-Forward</h3><blockquote>
+<p>Problem tracker skill v1.0 created and initial knowledge base populated. Next priorities: design token extraction from zelis.com, navigation setup, or begin bulk page migration.</p>
 </blockquote></div>

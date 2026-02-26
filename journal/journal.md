@@ -277,7 +277,57 @@
 - `journal/metrics.md` — Updated cumulative stats
 
 ### Commits
-- (pending) — Merge journaling skills: add rules, examples, portable template
+- `cdd009c` — Merge journaling skills: add rules, examples, portable template
+- `d1339b3` — Add conciseness rule to journaling skill
 
 ### Carry-Forward
 > Journaling skill v1.1 complete with merged best practices. Next priorities for the project: design token extraction from zelis.com, navigation setup, or begin bulk page migration.
+
+---
+
+## Session 005 — 2026-02-26 — Create Problem Tracker Skill
+
+**Branch:** `issue-1-styles-bulk`
+**Duration:** ~30m (agent) + 10% user overhead = ~33m total
+**Session goal:** Create a new skill that reviews journal problems, identifies patterns, and builds a knowledge base for avoiding repeated issues
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Explore existing skill structure and journal problem schema | new | 1 | pass | 5m |
+| 2 | Design problem tracker skill (schema, workflow, output structure) | new | 1 | pass | 8m |
+| 3 | Create `/workspace/skills/excat-problem-tracker/SKILL.md` | new | 1 | pass | 10m |
+| 4 | Generate initial `problem-kb.md` from 6 existing problems | new | 1 | pass | 5m |
+| 5 | Update journal files (session entry, index, context, metrics) | new | 1 | pass | 3m |
+| 6 | Commit and push | new | 1 | pass | 2m |
+
+### Outcomes
+- **Completed:** Problem tracker skill created with 3-phase workflow, initial knowledge base generated with all 6 problems cataloged, 1 recurring pattern identified, prevention checklists for all 4 categories
+- **Partial:** None
+- **Deferred:** None
+
+### Problems Encountered
+
+(none)
+
+### Key Decisions
+- Single output file (`problem-kb.md`) rather than multiple files — one place to search
+- Prevention checklists placed at top of file for fastest access (primary use case is pre-work scanning)
+- Stable problem IDs (`{PREFIX}-{NNN}`) that persist across regenerations
+- Overwrite convention (same as `project-context.md` and `metrics.md`)
+- Grouped DA-001, DA-002, SYNC-001 into a recurring pattern: "content platform transforms file references"
+
+### Files Changed
+- `skills/excat-problem-tracker/SKILL.md` — New problem tracker skill
+- `journal/problem-kb.md` — Initial knowledge base with 6 problems, 4 categories, 1 pattern
+- `journal/journal.md` — Added Session 005 entry
+- `journal/journal-index.md` — Added Session 005 row
+- `journal/project-context.md` — Updated with current state
+- `journal/metrics.md` — Updated cumulative stats
+
+### Commits
+- (pending)
+
+### Carry-Forward
+> Problem tracker skill v1.0 created and initial knowledge base populated. Next priorities: design token extraction from zelis.com, navigation setup, or begin bulk page migration.

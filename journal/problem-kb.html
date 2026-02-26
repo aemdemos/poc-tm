@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<script src="/scripts/aem.js" type="module"></script>
+<script src="/scripts/scripts.js" type="module"></script>
+<link rel="stylesheet" href="/styles/styles.css"/>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/avenir/avenir_next_lt_pro_regular.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/avenir/avenir_next_lt_pro_medium.woff2" crossorigin>
+</head>
+<body>
+<header></header>
+<main>
+<div><h1 id="problem-knowledge-base">Problem Knowledge Base</h1>
+<blockquote>
+<p>Derived from journal.md problem tables. Rebuilt each time the skill runs.
+Last updated: 2026-02-26 (after Session 004)</p>
+</blockquote>
+<h2 id="quick-reference--prevention-checklists">Quick Reference — Prevention Checklists</h2>
+<h3 id="da-compatibility">DA Compatibility</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Match DA links by <code>a.textContent</code>, never by <code>a.href</code> — DA mangles dots to hyphens in href attributes (DA-001)</li>
+<li class="task-list-item"><input type="checkbox" disabled> Verify file references point to actual filenames — DA and file watchers may auto-generate variant names that don't match source (DA-002)</li>
+</ul>
+<h3 id="git--environment">Git / Environment</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Set <code>HOME=/home/node</code> before first git command in container environments (GIT-001)</li>
+<li class="task-list-item"><input type="checkbox" disabled> Commit and push files to git when workspace filesystem is not directly accessible to the user (GIT-002)</li>
+</ul>
+<h3 id="performance">Performance</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Set <code>delayed.js</code> timeout to 1.5s — the 3s default is too slow for perceived animation load (PERF-001)</li>
+</ul>
+<h3 id="file-sync">File Sync</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> After editing <code>.md</code> files, let the file watcher auto-regenerate <code>.html</code> variants — do not manually write them (SYNC-001)</li>
+</ul>
+<h2 id="recurring-patterns">Recurring Patterns</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pattern"><div><div>Content platform transforms file references</div><div>DA compatibility / File sync</div><div>3</div><div>001, 003</div><div>Mitigated — workarounds established</div></div></div>
+<h3 id="pattern-content-platform-transforms-file-references">Pattern: Content platform transforms file references</h3>
+<p><strong>Category:</strong> DA compatibility / File sync
+<strong>Occurrences:</strong> 3 across Sessions 001, 003
+<strong>Problem IDs:</strong> DA-001, DA-002, SYNC-001
+<strong>Root cause:</strong> Content authoring platforms (Document Authoring, file watchers) automatically transform file paths, URLs, and references in ways that break explicit filename dependencies. DA normalizes dots to hyphens in hrefs; file watchers regenerate HTML from markdown, invalidating manual writes; and skill references can point to filenames that don't match the actual generated files.
+<strong>General resolution:</strong> Never depend on auto-generated attributes or filenames. Use content-based matching (text content, not href) and let automated systems handle their own outputs.
+<strong>Prevention:</strong> Always verify file references against actual filesystem contents. For DA content, match by text content. For auto-generated files, let the generator own the output — don't manually write files the watcher manages.
+<strong>Severity trend:</strong> <code>blocker</code> on first encounter (DA-001), declining to <code>minor</code> as workarounds became known (SYNC-001)
+<strong>Status:</strong> Mitigated — workarounds established, prevention strategies documented</p>
+<h2 id="all-problems">All Problems</h2>
+<h3 id="da-compatibility-1">DA Compatibility</h3>
+<h4 id="da-001-da-converts-dots-to-hyphens-in-href-attributes">DA-001: DA converts dots to hyphens in href attributes</h4>
+<ul>
+<li><strong>Severity:</strong> blocker</li>
+<li><strong>First seen:</strong> Session 001 (Action #2)</li>
+<li><strong>Occurrences:</strong> 1 (Session 001)</li>
+<li><strong>Root cause:</strong> Document Authoring's URL normalization replaces dots with hyphens in <code>href</code> attributes, turning <code>.json</code> into <code>-json</code> and breaking Lottie animation file path detection.</li>
+<li><strong>Resolution:</strong> Match Lottie links by <code>a.textContent.trim().endsWith('.json')</code> instead of checking <code>a.href</code>.</li>
+<li><strong>Prevention:</strong> Never rely on <code>href</code> attribute values for file-type detection in DA-authored content. Always use <code>a.textContent</code> for path matching.</li>
+<li><strong>Related:</strong> DA-002</li>
+</ul>
+<h4 id="da-002-skillmd-referenced-non-existent-file">DA-002: SKILL.md referenced non-existent file</h4>
+<ul>
+<li><strong>Severity:</strong> major</li>
+<li><strong>First seen:</strong> Session 003 (Action #2)</li>
+<li><strong>Occurrences:</strong> 1 (Session 003)</li>
+<li><strong>Root cause:</strong> Phase 5 of the animation migration SKILL.md referenced <code>animation-verification-criteria.md</code>, but the actual file was named <code>animation-verification.md</code>. The mismatch likely originated from a name change during development that wasn't propagated to all references.</li>
+<li><strong>Resolution:</strong> Updated the reference in SKILL.md to point to the actual filename <code>animation-verification.md</code>.</li>
+<li><strong>Prevention:</strong> After creating or renaming files, grep for all references to the old name across the project. Verify cross-references in skill files point to actual filenames on disk.</li>
+<li><strong>Related:</strong> DA-001 (both involve file reference mismatches)</li>
+</ul>
+<h3 id="git--environment-1">Git / Environment</h3>
+<h4 id="git-001-git-safedirectory-error-on-first-git-operation">GIT-001: Git safe.directory error on first git operation</h4>
+<ul>
+<li><strong>Severity:</strong> minor</li>
+<li><strong>First seen:</strong> Session 002 (Action #5)</li>
+<li><strong>Occurrences:</strong> 1 (Session 002)</li>
+<li><strong>Root cause:</strong> Git's ownership check fails in container environments where the workspace directory is owned by a different user than the one running git commands.</li>
+<li><strong>Resolution:</strong> Set <code>HOME=/home/node</code> environment variable prefix for git commands and added safe.directory config.</li>
+<li><strong>Prevention:</strong> In container environments, always set <code>HOME=/home/node</code> before git commands. Add this to the project's Git Notes in <code>project-context.md</code>.</li>
+</ul>
+<h4 id="git-002-user-couldnt-access-workspace-filesystem-to-view-skill-files">GIT-002: User couldn't access workspace filesystem to view skill files</h4>
+<ul>
+<li><strong>Severity:</strong> minor</li>
+<li><strong>First seen:</strong> Session 002 (Action #5)</li>
+<li><strong>Occurrences:</strong> 1 (Session 002)</li>
+<li><strong>Root cause:</strong> The workspace filesystem is only accessible to the agent within the container — the user cannot browse it directly.</li>
+<li><strong>Resolution:</strong> Committed and pushed files to git so the user could view them via GitHub.</li>
+<li><strong>Prevention:</strong> When creating files the user needs to review, commit and push them immediately rather than assuming the user can see the workspace filesystem.</li>
+</ul>
+<h3 id="performance-1">Performance</h3>
+<h4 id="perf-001-lottie-animation-loading-too-slowly">PERF-001: Lottie animation loading too slowly</h4>
+<ul>
+<li><strong>Severity:</strong> minor</li>
+<li><strong>First seen:</strong> Session 001 (Action #6)</li>
+<li><strong>Occurrences:</strong> 1 (Session 001)</li>
+<li><strong>Root cause:</strong> The <code>delayed.js</code> timeout was set to 3000ms (3 seconds), which made Lottie animations appear sluggish even though the delay was intentional for performance.</li>
+<li><strong>Resolution:</strong> Reduced <code>delayed.js</code> timeout from 3000ms to 1500ms.</li>
+<li><strong>Prevention:</strong> When configuring animation load delays, use 1.5s as the baseline — long enough to protect LCP but short enough to feel responsive.</li>
+</ul>
+<h3 id="file-sync-1">File Sync</h3>
+<h4 id="sync-001-skillhtml-write-failed--file-modified-by-linter-since-last-read">SYNC-001: SKILL.html write failed — file modified by linter since last read</h4>
+<ul>
+<li><strong>Severity:</strong> minor</li>
+<li><strong>First seen:</strong> Session 003 (Action #3)</li>
+<li><strong>Occurrences:</strong> 1 (Session 003)</li>
+<li><strong>Root cause:</strong> The project file watcher auto-regenerates <code>.html</code> and <code>.plain.html</code> files when the corresponding <code>.md</code> file is edited. Attempting to manually write the HTML file after editing the markdown caused a conflict because the watcher had already regenerated it.</li>
+<li><strong>Resolution:</strong> Stopped manually writing HTML variants — let the file watcher handle auto-regeneration.</li>
+<li><strong>Prevention:</strong> Never manually write <code>.html</code> or <code>.plain.html</code> files that have a <code>.md</code> source. The file watcher owns these outputs. After editing markdown, verify the HTML was auto-regenerated by checking timestamps.</li>
+</ul>
+<h2 id="statistics">Statistics</h2>
+<ul>
+<li><strong>Total problems tracked:</strong> 6</li>
+<li><strong>Resolved:</strong> 6 (100%)</li>
+<li><strong>Unresolved:</strong> 0</li>
+<li><strong>Patterns identified:</strong> 1 (content platform transforms file references)</li>
+<li><strong>Categories:</strong> 4 (DA compatibility, Git/environment, Performance, File sync)</li>
+<li><strong>Most problematic category:</strong> DA compatibility (2 problems, highest severity: blocker)</li>
+</ul></div>
+</main>
+<footer></footer>
+</body>
+</html>
