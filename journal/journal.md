@@ -505,7 +505,66 @@
 - `skills/excat-daily-status-checkup/status-checkup-format.md` — Portable briefing template
 
 ### Commits
-- (pending)
+- `c601c32` — Add daily status checkup skill and update problems reference with verification bugs
 
 ### Carry-Forward
 > Daily status checkup skill v1.0 created. Animation verification has 2 test harness bugs (sync scroll, F-DELAYED false positive) — not blocking, can fix later. Four supporting skills now operational (journaling, problem tracker, time tracking, status checkup). Next priorities: design token extraction, navigation setup, or begin bulk page migration.
+
+---
+
+## Session 010 — 2026-02-26 — Refine daily status checkup skill v1.2
+
+**Branch:** `issue-1-styles-bulk`
+**Duration:** ~20m (agent) + 10% user overhead = ~22m total
+**Session goal:** Merge improvements from external status checkup skill into our excat-daily-status-checkup skill (two passes: v1.1 then v1.2)
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Read both our v1.0 files and analyze external skill files (first pass) | new | 1 | pass | 3m |
+| 2 | Rewrite SKILL.md to v1.1 with 7 merged improvements | refinement | 1 | pass | 4m |
+| 3 | Rewrite status-checkup-format.md to v1.1 | refinement | 1 | pass | 3m |
+| 4 | Re-analyze with updated attached files (second pass) | refinement | 1 | pass | 3m |
+| 5 | Rewrite SKILL.md to v1.2 with 6 additional improvements | refinement | 1 | pass | 3m |
+| 6 | Rewrite status-checkup-format.md to v1.2 | refinement | 1 | pass | 2m |
+| 7 | Update journal files (session entry, index, context, metrics) | routine | 1 | pass | 2m |
+| 8 | Commit and push | routine | 1 | pass | 2m |
+
+### Outcomes
+- **Completed:** Daily status checkup skill refined to v1.2 with two rounds of improvements merged from external skill
+
+### Problems Encountered
+
+(none)
+
+### Key Decisions
+
+**v1.1 improvements (first pass):**
+- Added Sources table mapping each data source to its file and what to extract
+- Added optional git status step (Step 5) — detect uncommitted work at session start
+- Added optional file-write step (Step 7) — writes `journal/status-checkup.md` as context anchor
+- Added "Resume Point and Carry-Forward are authoritative" as Rule 1
+- Adopted simpler section names: "Where we stand", "Where to begin", "Problems to keep in mind", "Recent time"
+- Combined unresolved problems and prevention reminders into single section
+- Added one-screen constraint as explicit rule (Rule 4)
+
+**v1.2 improvements (second pass):**
+- Enhanced Sources table with explicit per-file field extracts and journal directory config note
+- Improved Step 2 guidance: find `## Session NNN —` block, don't read full bodies
+- Added "recent daily totals" guidance to time step for multi-day context
+- Added category-level problem summaries and one-line health check to problems step
+- Revised section ordering to build context before action: Where we stand → What needs to be done → Problems → Where to begin → Recent time
+- Split "What needs to be done" into dedicated section (no longer folded into "Where we stand")
+- Changed format header to H1 with date + "Last journal update" metadata for staleness detection
+- Added `session-context.md` as alternative write target
+
+### Files Changed
+- `skills/excat-daily-status-checkup/SKILL.md` — v1.0 → v1.2 (13 improvements across 2 passes)
+- `skills/excat-daily-status-checkup/status-checkup-format.md` — Updated with dedicated sections, date-oriented header, category-level problems, richer example
+
+### Commits
+- `(pending)` — Refine daily status checkup skill v1.2
+
+### Carry-Forward
+> Daily status checkup skill v1.2 complete with 13 improvements across two refinement passes. All five supporting skills now fully refined (journaling v1.1, problem tracker v2.0, time tracking v1.1, status checkup v1.2). Next priorities: design token extraction, navigation setup, or begin bulk page migration.

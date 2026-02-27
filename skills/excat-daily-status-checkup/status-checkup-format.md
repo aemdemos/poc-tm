@@ -2,151 +2,100 @@
 
 > Portable template for the daily status checkup briefing. See `SKILL.md` for full rules and workflow.
 
-The briefing is always output directly in the reply. It is never written to a file.
+The briefing is output directly in the reply by default. Optionally written to `journal/status-checkup.md` or `journal/session-context.md` (overwritten each run).
+
+**Constraint:** Keep the briefing to **one screen** of scannable bullets. Cut the least urgent parts if it grows too long.
 
 ---
 
 ## Template
 
 ```markdown
-## Status Checkup — [Project Name]
-**As of:** [YYYY-MM-DD] (Session [NNN])
+# Status Checkup — [YYYY-MM-DD] [optional: time]
+
+**Project:** [name from project-context]
 **Branch:** `[branch-name]`
+**Last journal update:** [date/session from project-context]
 
 ---
 
-### Blockers & Open Problems
+## Where we stand
+- [1-2 sentence summary of overall status from project-context]
+- What's done: [2-4 bullets of major milestones]
+- In progress: [current work, or "nothing active — between sessions"]
 
-> Skip this section entirely if there are no blockers or unresolved problems.
+## What needs to be done
+- [Bullets from project-context "What's Pending" and/or last Carry-Forward priorities]
+- [Any explicit next priorities from Resume Point]
 
-- **[BLOCKER]** [description] — [status/impact]
+## Problems to keep in mind
+
+> Skip this section entirely if there are no blockers, unresolved problems,
+> or relevant prevention items.
+
+- **[category]:** [summary] (e.g. "DA: match links by text, not href")
 - **[PROBLEM-ID]** [title] — [severity], unresolved since Session [NNN]
+- [No unresolved problems in reference] (if all resolved)
 
----
+## Where to begin
+> [Resume Point from project-context, or Carry-Forward from last session — verbatim or lightly edited]
 
-### Resume Point
-
-> [Carry-forward from the most recent session — copy verbatim from journal.md]
-
----
-
-### Project Status
-
-- **Overall:** [one-line status from project-context.md]
-- **Done:** [N items completed] — [brief summary of major milestones]
-- **In progress:** [current work items, or "none — between sessions"]
-- **Pending:** [top 3-4 items from project-context.md pending list]
-
----
-
-### Recent Activity
-
-- **Session [NNN]** — [Title] ([duration]) — [1-line outcome summary]
-- **Session [NNN]** — [Title] ([duration]) — [1-line outcome summary]
-
----
-
-### Time & Metrics
-
-- **Sessions:** [N] total ([N] today)
-- **Time invested:** [Xh Ym] agent / [Xh Ym] with margin
-- **Success rate:** [N]% first-try ([N] actions total)
-- **Problems:** [N] encountered, [N] resolved, [N] open
-
----
-
-### Prevention Reminders
-
-> Include the 2-3 most relevant items from the prevention checklists in
-> problems-reference.md — pick items related to the pending work.
-
-- [checklist item] ([PROBLEM-ID])
-- [checklist item] ([PROBLEM-ID])
-
----
-
-### Suggested Next Steps
-
-1. [Concrete action derived from resume point and pending items]
-2. [Second priority action]
-3. [Third priority action or optional stretch goal]
+## Recent time (optional)
+- Project total: [from time-tracking header]
+- Recent days: [e.g. "Yesterday 2h 30m; today not yet logged"]
 ```
 
 ---
 
 ## Section Rules
 
-- **Blockers & Open Problems:** Only shown when problems exist with `Resolved? = no` or `workaround`, or when `project-context.md` has active blockers. Otherwise skip entirely — don't show an empty section.
-- **Resume Point:** Copy the carry-forward verbatim. This is the single most important line in the briefing.
-- **Project Status:** Keep the pending list to 3-4 items maximum. If there are more, pick the highest priority.
-- **Recent Activity:** Show last 1-2 sessions only. More than that is noise.
-- **Time & Metrics:** One line per metric. Pull from `metrics.md` and `time-tracking.md` header.
-- **Prevention Reminders:** Pick items relevant to what's coming next, not the full checklist.
-- **Suggested Next Steps:** Be specific. "Continue migration" is too vague. "Extract design tokens from zelis.com and populate styles/styles.css" is actionable.
+- **Where we stand:** Overall status from project-context.md. Keep "What's done" to major milestones only (2-4 bullets), not an exhaustive list. Note anything actively in progress.
+- **What needs to be done:** Dedicated section for pending items. Pull from project-context "What's Pending" AND the last Carry-Forward's explicit next priorities. Keep to 3-5 items maximum — pick highest priority if there are more.
+- **Problems to keep in mind:** Combines Quick Reference / Prevention Checklist categories AND unresolved problems into one section. Summarize by category (e.g. "DA: match links by text, not href") rather than listing every individual problem ID. Only shown when there are unresolved problems, active blockers, or prevention items relevant to pending work. Otherwise skip entirely.
+- **Where to begin:** Copy the carry-forward verbatim, or lightly edit for clarity. This is the canonical starting point (Rule 1 in SKILL.md). The Resume Point from project-context reinforces it.
+- **Recent time:** Optional. One or two lines. Pull from `time-tracking.md` header and `metrics.md`. Keep minimal — this is context, not a report. Include recent daily totals if spanning multiple days.
 
 ---
 
 ## Example
 
 ```markdown
-## Status Checkup — Zelis EDS Migration
-**As of:** 2026-02-26 (Session 008)
+# Status Checkup — 2026-02-27
+
+**Project:** Zelis.com EDS Migration
 **Branch:** `issue-1-styles-bulk`
+**Last journal update:** 2026-02-26 (Session 010)
 
 ---
 
-### Resume Point
+## Where we stand
+- Early migration: homepage blocks functional, animation skill and verification framework in place, journaling and supporting skills operational.
+- What's done: Repo and blocks set up; hero Lottie with DA workaround; animation migration skill (Pattern A-G) and verification criteria; journaling, problem tracker, time tracking, status checkup skills.
+- In progress: Nothing active (between sessions).
 
-> Time tracking skill v1.1 complete. All three supporting skills operational.
-> Next priorities: design token extraction from zelis.com, navigation structure
-> setup, or begin bulk page migration.
+## What needs to be done
+- Design token extraction from zelis.com (colors, fonts, spacing → styles/styles.css)
+- Navigation setup (nav.md/nav.html from zelis.com structure)
+- Block styling refinement to match source site
+- Footer implementation
+- Bulk import workflow for remaining ~789 pages
 
----
+## Problems to keep in mind
+- **DA:** Match links by `a.textContent`, never `a.href`; grep for references after renames.
+- **Git:** Use `HOME=/home/node` in container; commit/push when user needs to review files.
+- **Performance:** delayed.js at 1.5s for Lottie.
+- **Sync:** Don't manually write .html/.plain.html that have .md source.
+- **TEST-001** Sync scroll doesn't trigger IntersectionObservers — minor, unresolved since Session 009.
+- **TEST-002** F-DELAYED check false positive — minor, unresolved since Session 009.
 
-### Project Status
+## Where to begin
+> Daily status checkup skill v1.2 complete. All five supporting skills now refined. Next priorities: design token extraction, navigation setup, or begin bulk page migration.
 
-- **Overall:** Early migration — homepage blocks functional, animation skill built, tooling refined
-- **Done:** 11 items — repo setup, block imports, hero Lottie, animation skill, journaling, problem tracker, time tracking
-- **In progress:** none — between sessions
-- **Pending:**
-  - Design token extraction (colors, fonts, spacing → `styles/styles.css`)
-  - Navigation setup (nav.md/nav.html from zelis.com structure)
-  - Block styling refinement (CSS doesn't match source site)
-  - Additional page migrations (~789 URLs remain)
-
----
-
-### Recent Activity
-
-- **Session 008** — Refine time tracking skill v1.1 (~17m) — Merged 6 improvements from external skill
-- **Session 007** — Create time tracking skill (~22m) — Skill + initial report + format schema
-
----
-
-### Time & Metrics
-
-- **Sessions:** 9 total (8 today)
-- **Time invested:** ~9h 55m agent / ~10h 57m with margin
-- **Success rate:** 97% first-try (65 actions)
-- **Problems:** 6 encountered, 6 resolved, 0 open
-
----
-
-### Prevention Reminders
-
-- Match DA links by `a.textContent`, never by `a.href` (DA-001)
-- Set `HOME=/home/node` before git commands in container (GIT-001)
-- Never manually write `.html` files that have a `.md` source (SYNC-001)
-
----
-
-### Suggested Next Steps
-
-1. Extract design tokens from zelis.com — populate `styles/styles.css` with colors, fonts, spacing
-2. Set up navigation structure — build nav.md/nav.html from zelis.com site map
-3. Begin bulk page migration — set up page templates and import scripts for remaining ~789 URLs
+## Recent time
+- Project total: ~10h 35m agent / ~11h 35m with margin
+- 2026-02-26: ~8h across Sessions 001-010.
 ```
 
 ---
 
-Use the same format in any project; only the project name and data change.
+Same structure works for any project; only the content of each section changes. Keep the checkup to one screen so it's quick to scan at session start.

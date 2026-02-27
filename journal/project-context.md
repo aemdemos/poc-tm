@@ -1,6 +1,6 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-02-26 (Session 009)
+**Last updated:** 2026-02-26 (Session 010)
 **Branch:** `issue-1-styles-bulk`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (~789 URLs, WordPress)
@@ -19,7 +19,7 @@
 - Journaling skill v1.1: merged best practices, added rules, examples, portable template (Session 004)
 - Problem tracker skill created (Session 005), rewritten to v2.0 with table format + append-and-merge (Session 006)
 - Project time tracking skill created (Session 007), refined to v1.1 with best-of-both merge (Session 008)
-- Daily status checkup skill created as read-only context builder (Session 009)
+- Daily status checkup skill created (Session 009), refined to v1.2 with two-pass best-of-both merge (Session 010)
 - Animation verification tested on homepage — 2 test harness bugs identified (Session 009)
 
 ## What's In Progress
@@ -48,7 +48,11 @@
 - `skills/excat-journaling/journal-format.md` — Portable quick-reference template
 - `skills/excat-problem-tracker/SKILL.md` — Problem tracker skill (v2.0)
 - `skills/excat-problem-tracker/problems-reference-format.md` — Portable schema template
-- `journal/problems-reference.md` — Problems reference (6 problems, 4 categories)
+- `skills/excat-project-time-tracking/SKILL.md` — Time tracking skill (v1.1)
+- `skills/excat-project-time-tracking/time-report-format.md` — Time report template
+- `skills/excat-daily-status-checkup/SKILL.md` — Daily status checkup skill (v1.2)
+- `skills/excat-daily-status-checkup/status-checkup-format.md` — Status briefing template (v1.2)
+- `journal/problems-reference.md` — Problems reference (8 problems, 5 categories)
 - `journal/` — Project journal directory
 
 ## Git Notes
@@ -57,4 +61,4 @@
 - GitHub PAT provided by user at runtime (do not store in committed files)
 
 ## Resume Point
-> Daily status checkup skill v1.0 created. Four supporting skills now operational. Animation verification has 2 minor test harness bugs. Next priorities: design token extraction, navigation setup, or begin bulk page migration.
+> Daily status checkup skill v1.2 complete with 13 improvements across two refinement passes. All five supporting skills now fully refined (journaling v1.1, problem tracker v2.0, time tracking v1.1, status checkup v1.2). Next priorities: design token extraction, navigation setup, or begin bulk page migration.
