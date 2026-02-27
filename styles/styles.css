@@ -28,6 +28,7 @@
   --color-dark-gray: #797279;
   --color-warm-gray: #b5b3ba;
   --color-white: #fff;
+  --color-off-white: #f8f9fa;
 
   /* ---- Semantic Colors ---- */
   --background-color: var(--color-white);
@@ -108,7 +109,7 @@
   font-family: avenir-fallback;
   size-adjust: 100.3%;
   ascent-override: normal;
-  src: local('Arial');
+  src: local('Arial'), local('Helvetica Neue'), local('Helvetica'), local('sans-serif');
 }
 
 /* ============================================================
@@ -176,7 +177,7 @@ h2 {
 
 h3 {
   font-size: var(--heading-font-size-l);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.3;
 }
 
@@ -464,7 +465,7 @@ main .section.highlight {
 /* Dark section (deep purple) */
 main .section.dark {
   background-color: var(--color-ink-blue-100);
-  color: var(--color-white);
+  color: var(--color-off-white);
   padding: var(--section-spacing) 0;
 }
 
@@ -474,7 +475,7 @@ main .section.dark h3,
 main .section.dark h4,
 main .section.dark h5,
 main .section.dark h6 {
-  color: var(--color-white);
+  color: var(--color-off-white);
 }
 
 main .section.dark a:any-link:not(.button) {
@@ -504,7 +505,7 @@ main .section.accent h6 {
 /* Ink-blue-90 section (slightly lighter than dark) */
 main .section.dark-alt {
   background-color: var(--color-ink-blue-90);
-  color: var(--color-white);
+  color: var(--color-off-white);
   padding: var(--section-spacing) 0;
 }
 
@@ -514,7 +515,7 @@ main .section.dark-alt h3,
 main .section.dark-alt h4,
 main .section.dark-alt h5,
 main .section.dark-alt h6 {
-  color: var(--color-white);
+  color: var(--color-off-white);
 }
 
 /* ---- Eyebrow / Kicker text ---- */
@@ -528,7 +529,7 @@ main .section > .default-content-wrapper:first-child > p:first-child {
 }
 
 main .section.dark > .default-content-wrapper:first-child > p:first-child {
-  color: #f8f9fa;
+  color: var(--color-off-white);
 }
 
 /* ---- Angled Section Variant ---- */
@@ -574,7 +575,7 @@ main .section .eyebrow {
 
 /* Dark section eyebrow */
 main .section.dark .eyebrow {
-  color: #f8f9fa;
+  color: var(--color-off-white);
 }
 
 /* ---- dark-alt section link colors ---- */
@@ -624,6 +625,7 @@ footer {
 footer a:any-link {
   color: var(--color-white);
   font-weight: 400;
+  text-decoration: none;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */

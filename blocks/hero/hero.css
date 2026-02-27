@@ -5,6 +5,10 @@
  */
 
 /* ---- Container Reset ---- */
+.hero-container {
+  padding: 0;
+}
+
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
@@ -132,7 +136,7 @@
   .hero > div {
     flex-direction: row;
     align-items: center;
-    gap: var(--spacing-xl);
+    gap: 0;
     padding: 0 32px;
   }
 
@@ -140,12 +144,13 @@
     flex: 0 0 50%;
     order: 0;
     padding-top: var(--spacing-xl);
-    padding-right: var(--spacing-m);
+    padding-right: 24px;
   }
 
   .hero > div > div:nth-child(2) {
     flex: 0 0 50%;
     order: 1;
+    padding-left: 24px;
     padding-bottom: 0;
   }
 
