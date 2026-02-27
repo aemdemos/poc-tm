@@ -1,6 +1,6 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-02-26 (Session 008)
+**Last updated:** 2026-02-26 (Session 009)
 **Branch:** `issue-1-styles-bulk`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (~789 URLs, WordPress)
@@ -19,6 +19,8 @@
 - Journaling skill v1.1: merged best practices, added rules, examples, portable template (Session 004)
 - Problem tracker skill created (Session 005), rewritten to v2.0 with table format + append-and-merge (Session 006)
 - Project time tracking skill created (Session 007), refined to v1.1 with best-of-both merge (Session 008)
+- Daily status checkup skill created as read-only context builder (Session 009)
+- Animation verification tested on homepage — 2 test harness bugs identified (Session 009)
 
 ## What's In Progress
 - (nothing actively in progress — between sessions)
@@ -55,4 +57,4 @@
 - GitHub PAT provided by user at runtime (do not store in committed files)
 
 ## Resume Point
-> Time tracking skill v1.1 complete. All three supporting skills operational. Next priorities: design token extraction from zelis.com, navigation structure setup, or begin bulk page migration.
+> Daily status checkup skill v1.0 created. Four supporting skills now operational. Animation verification has 2 minor test harness bugs. Next priorities: design token extraction, navigation setup, or begin bulk page migration.

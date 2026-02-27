@@ -1,21 +1,21 @@
 # Project Metrics
 
 ## Time
-- **Total sessions:** 9 (including backfill)
-- **Total agent time:** ~9h 55m
-- **Total with user margin (10%):** ~10h 57m
-- **Average session length:** ~1h 7m
+- **Total sessions:** 10 (including backfill)
+- **Total agent time:** ~10h 20m
+- **Total with user margin (10%):** ~11h 25m
+- **Average session length:** ~1h 2m
 
 ## Success Rates
-- **Actions attempted:** 65
-- **First-try success:** 63 (97%)
+- **Actions attempted:** 71
+- **First-try success:** 69 (97%)
 - **Required retry:** 2 (3%)
 - **Failed:** 0 (0%)
 
 ## Problems
-- **Total encountered:** 6
-- **Resolved:** 6 (100%)
-- **Unresolved:** 0
+- **Total encountered:** 8
+- **Resolved:** 6 (75%)
+- **Unresolved:** 2
 - **Most common category:** DA compatibility / file reference issues
 
 ## Problem Categories
@@ -26,6 +26,7 @@
 | Git/environment | 2 | safe.directory error, filesystem access |
 | Performance | 1 | Animation load timeout too slow |
 | File sync | 1 | HTML variants stale after markdown edit |
+| Test harness | 2 | Sync scroll doesn't trigger IO, F-DELAYED false positive |
 
 ## Session Timeline
 
@@ -40,3 +41,4 @@
 | 006 | 2026-02-26 | ~25m | ~28m | 7 | 100% |
 | 007 | 2026-02-26 | ~20m | ~22m | 5 | 100% |
 | 008 | 2026-02-26 | ~15m | ~17m | 5 | 100% |
+| 009 | 2026-02-26 | ~25m | ~28m | 6 | 100% |

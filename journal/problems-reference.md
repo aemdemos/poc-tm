@@ -4,7 +4,7 @@
 > resolutions, and how to avoid them. Updated by the problem tracker skill.
 
 **Source:** `journal/journal.md`
-**Last review:** 2026-02-26 (after Session 005)
+**Last review:** 2026-02-26 (after Session 009)
 
 ---
 
@@ -23,6 +23,10 @@
 
 ### File Sync / Auto-Generation
 - [ ] Never manually write `.html` or `.plain.html` files that have a `.md` source — let the file watcher own them (SYNC-001)
+
+### Test Harness / Verification
+- [ ] Use async scroll with pauses (200-400ms per step) when testing IO-dependent animations — sync loops don't trigger observers (TEST-001)
+- [ ] Verify script load phase by timing or source attribution, not by DOM parent element (TEST-002)
 
 ---
 
@@ -69,3 +73,15 @@
 
 **Recurring:** No
 **Notes:** File watcher behavior documented in Session 003, Key Decisions.
+
+---
+
+## Test Harness / Verification
+
+| Problem | ID | Cause | Resolution | How to avoid | Sessions | Severity | Resolved? |
+|---------|----|-------|------------|--------------|----------|----------|-----------|
+| Verification sync scroll doesn't trigger IntersectionObservers | TEST-001 | Synchronous `for` loop scroll doesn't give IO callbacks time to fire; elements never receive `.is-visible` | (unresolved) — needs async scrolling with `await page.waitForTimeout()` between steps | Use async scroll with pauses (200-400ms per step) when testing IO-dependent animations. Never use synchronous scroll loops for verification. | 009 | minor | no |
+| F-DELAYED check false positive — dynamic scripts placed in `<head>` | TEST-002 | Check uses `lottieScript.closest('head')` but browsers may place dynamically injected `<script>` tags in `<head>` regardless of injection method | (unresolved) — should verify load timing or check `delayed.js` source, not DOM placement | When checking script load phase, verify by load timing or source attribution, not by DOM parent element. | 009 | minor | no |
+
+**Recurring:** No
+**Notes:** Both relate to the animation verification test harness (verify-animations.js). The underlying animations work correctly — these are false positives in the detection logic.
