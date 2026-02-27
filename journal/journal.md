@@ -564,7 +564,7 @@
 - `skills/excat-daily-status-checkup/status-checkup-format.md` — Updated with dedicated sections, date-oriented header, category-level problems, richer example
 
 ### Commits
-- `(pending)` — Refine daily status checkup skill v1.2
+- `7f40195` — Refine daily status checkup skill v1.2 (two-pass best-of-both merge)
 
 ### Carry-Forward
 > Daily status checkup skill v1.2 complete with 13 improvements across two refinement passes. All five supporting skills now fully refined (journaling v1.1, problem tracker v2.0, time tracking v1.1, status checkup v1.2). Next priorities: design token extraction, navigation setup, or begin bulk page migration.
