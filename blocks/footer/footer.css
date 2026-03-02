@@ -28,8 +28,8 @@ footer .footer > div:first-child > div {
   padding: var(--spacing-s) 0;
 }
 
-/* Thumbnail image */
-footer .footer > div:first-child picture {
+/* Thumbnail image (handles both <picture> wrapped and bare <img>) */
+footer .footer > div:first-child .featured-image {
   display: block;
   max-width: 220px;
   height: 80px;
@@ -38,7 +38,8 @@ footer .footer > div:first-child picture {
   margin-bottom: var(--spacing-s);
 }
 
-footer .footer > div:first-child picture img {
+/* stylelint-disable-next-line no-descending-specificity */
+footer .footer > div:first-child .featured-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;

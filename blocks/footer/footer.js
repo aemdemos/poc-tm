@@ -92,17 +92,26 @@ export default async function decorate(block) {
   });
 
   // Featured resources (first section): group flat elements into card divs.
-  // DA flattens the div structure, so we re-group by the "Featured Resource" label.
+  // DA flattens the div structure. Cards start with an image (if present)
+  // or the "Featured Resource" label (if images were stripped).
   const featured = block.children[0];
   if (featured && !featured.querySelector(':scope > div')) {
-    wrapGroups(featured, (el) => el.tagName === 'P' && el.textContent.trim() === 'Featured Resource');
+    const hasImages = featured.querySelector('img, picture');
+    if (hasImages) {
+      wrapGroups(featured, (el) => el.tagName === 'P' && !!el.querySelector('img, picture'));
+    } else {
+      wrapGroups(featured, (el) => el.tagName === 'P' && el.textContent.trim() === 'Featured Resource');
+    }
   }
 
-  // Add .featured-label class for CSS targeting (works with or without images)
+  // Add helper classes for CSS targeting (works with or without images)
   if (featured) {
     featured.querySelectorAll(':scope > div > p').forEach((p) => {
       if (p.textContent.trim() === 'Featured Resource') {
         p.classList.add('featured-label');
+      }
+      if (p.querySelector('img, picture')) {
+        p.classList.add('featured-image');
       }
     });
   }
