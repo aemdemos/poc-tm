@@ -13,8 +13,19 @@ export default async function decorate(block) {
 
   // decorate footer DOM
   block.textContent = '';
-  const footer = document.createElement('div');
-  while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
-  block.append(footer);
+  // Unwrap section wrappers so footer CSS selectors work correctly.
+  // Fragment loading wraps each top-level div in .section > .default-content-wrapper.
+  // We need: .footer > div (featured) + div (links) + div (bottom bar)
+  const sections = fragment.querySelectorAll('.section');
+  sections.forEach((section) => {
+    const wrapper = section.querySelector('.default-content-wrapper');
+    if (wrapper) {
+      const div = document.createElement('div');
+      while (wrapper.firstElementChild) {
+        div.append(wrapper.firstElementChild);
+      }
+      block.append(div);
+    }
+  });
 }

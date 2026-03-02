@@ -31,7 +31,7 @@ footer .footer > div:first-child > div {
 
 footer .footer > div:first-child p:first-child {
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 14px;
+  font-size: var(--body-font-size-s);
   font-weight: 400;
   color: var(--color-ink-blue-8);
   margin-bottom: 4px;
@@ -47,12 +47,18 @@ footer .footer > div:first-child h3 {
 
 footer .footer > div:first-child a:any-link {
   color: var(--color-gold);
-  font-size: 14px;
+  font-size: var(--body-font-size-s);
   font-weight: 500;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
 }
 
 footer .footer > div:first-child a:hover {
   color: var(--color-white);
+  background: none;
 }
 
 /* ---- Link Columns (second child) ---- */
@@ -68,7 +74,7 @@ footer .footer > div:nth-child(2) {
 
 footer .footer > div:nth-child(2) h5 {
   color: var(--color-white);
-  font-size: 16px;
+  font-size: var(--heading-font-size-xs);
   font-weight: 700;
   margin-bottom: var(--spacing-s);
 }
@@ -85,7 +91,7 @@ footer .footer > div:nth-child(2) li {
 
 footer .footer > div:nth-child(2) a:any-link {
   color: var(--color-white);
-  font-size: 14px;
+  font-size: var(--body-font-size-s);
   font-weight: 400;
   line-height: 1.5;
 }
@@ -100,31 +106,68 @@ footer .footer > div:nth-child(3) {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-s);
-  padding-top: var(--spacing-m);
+  padding-top: var(--spacing-l);
+  position: relative;
+}
+
+/* Colored divider line (red, gold, blue, white) above bottom bar */
+footer .footer > div:nth-child(3)::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 24px;
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    var(--color-red) 0%,
+    var(--color-red) 25%,
+    var(--color-gold) 25%,
+    var(--color-gold) 50%,
+    var(--color-bright-blue) 50%,
+    var(--color-bright-blue) 75%,
+    var(--color-white) 75%,
+    var(--color-white) 100%
+  );
 }
 
 /* Logo and social icons row */
 footer .footer > div:nth-child(3) > p:first-child {
   display: flex;
   align-items: center;
-  gap: var(--spacing-s);
+  gap: var(--spacing-m);
   margin-bottom: 0;
+  padding-top: var(--spacing-m);
 }
 
-footer .footer > div:nth-child(3) img {
-  height: 24px;
+/* Logo image */
+footer .footer > div:nth-child(3) > p:first-child > a:first-child img {
+  height: 32px;
   width: auto;
+  filter: brightness(0) invert(1);
 }
 
-/* Social icons */
+/* Social icon links */
+/* stylelint-disable-next-line no-descending-specificity */
+footer .footer > div:nth-child(3) > p:first-child a {
+  display: inline-flex;
+  align-items: center;
+}
+
 footer .footer > div:nth-child(3) .icon {
+  display: inline-block;
   height: 20px;
   width: 20px;
+}
+
+footer .footer > div:nth-child(3) .icon svg {
+  fill: var(--color-white);
   opacity: 0.7;
   transition: opacity var(--transition-base);
 }
 
-footer .footer > div:nth-child(3) .icon:hover {
+footer .footer > div:nth-child(3) a:hover .icon svg {
   opacity: 1;
 }
 
@@ -144,7 +187,7 @@ footer .footer > div:nth-child(3) li {
 
 /* stylelint-disable-next-line no-descending-specificity */
 footer .footer > div:nth-child(3) li a {
-  font-size: 12px;
+  font-size: var(--body-font-size-xs);
   color: rgb(255 255 255 / 70%);
 }
 
@@ -153,10 +196,18 @@ footer .footer > div:nth-child(3) li a:hover {
 }
 
 /* Copyright text */
-footer .footer > div:nth-child(3) > p:last-child,
-footer .footer > div:last-child > p:last-child {
-  font-size: 12px;
+/* stylelint-disable-next-line no-descending-specificity */
+footer .footer > div:nth-child(3) > p:nth-of-type(2) {
+  font-size: var(--body-font-size-xs);
   color: rgb(255 255 255 / 60%);
+  margin: 0;
+}
+
+/* FDIC disclaimer */
+/* stylelint-disable-next-line no-descending-specificity */
+footer .footer > div:nth-child(3) > p:last-child {
+  font-size: var(--body-font-size-xs);
+  color: rgb(255 255 255 / 45%);
   margin: 0;
 }
 
@@ -186,5 +237,21 @@ footer .footer p {
     flex-flow: row wrap;
     align-items: center;
     justify-content: space-between;
+  }
+
+  footer .footer > div:nth-child(3)::before {
+    left: 32px;
+  }
+
+  /* On desktop, legal links and copyright sit to the right */
+  footer .footer > div:nth-child(3) ul {
+    margin-left: auto;
+  }
+
+  /* FDIC disclaimer spans full width on its own line */
+  footer .footer > div:nth-child(3) > p:last-child {
+    flex-basis: 100%;
+    text-align: center;
+    padding-top: var(--spacing-s);
   }
 }
