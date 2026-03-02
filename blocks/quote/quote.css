@@ -1,6 +1,6 @@
 /*
  * Quote Block - Zelis Design
- * Testimonial/blockquote styling
+ * Testimonial/blockquote styling matching zelis.com
  */
 
 /* ---- Blockquote Container ---- */
@@ -13,8 +13,9 @@
 
 /* ---- Quotation Text ---- */
 .quote blockquote .quote-quotation {
-  font-size: var(--body-font-size-xl);
+  font-size: 16px;
   line-height: 1.5;
+  font-weight: 400;
 }
 
 .quote blockquote .quote-quotation > :first-child {
@@ -42,14 +43,14 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-s);
-  margin-top: var(--spacing-m);
+  margin-top: var(--spacing-s);
 }
 
 .quote blockquote .quote-attribution p {
   margin: 0;
-  font-size: var(--body-font-size-m);
-  font-weight: 500;
-  color: var(--text-color);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-dark-gray);
 }
 
 .quote blockquote .quote-attribution p:first-child::before {
@@ -58,10 +59,16 @@
 }
 
 .quote blockquote .quote-attribution img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+  width: 66px;
+  height: 66px;
   object-fit: cover;
+}
+
+/* Case study link within attribution */
+.quote blockquote .quote-attribution a:any-link {
+  color: var(--color-bright-blue);
+  font-size: 14px;
+  font-weight: 500;
 }
 
 /* ---- Dark Section Overrides ---- */
@@ -75,7 +82,16 @@
 }
 
 .section.dark .quote blockquote .quote-attribution p {
-  color: rgb(248 249 250 / 90%);
+  color: rgb(248 249 250 / 70%);
+}
+
+.section.dark .quote blockquote .quote-attribution a:any-link {
+  color: var(--color-gold);
+}
+
+/* ---- Light Section Overrides ---- */
+.section.light .quote blockquote .quote-attribution p {
+  color: var(--color-dark-gray);
 }
 
 /* ---- Responsive ---- */
@@ -85,6 +101,6 @@
   }
 
   .quote blockquote .quote-quotation {
-    font-size: 1.25rem;
+    font-size: 18px;
   }
 }
