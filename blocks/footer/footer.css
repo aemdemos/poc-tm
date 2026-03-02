@@ -13,16 +13,15 @@ footer .footer {
 footer .footer > div {
   margin: auto;
   max-width: var(--content-width);
-  padding: 52px 24px 24px;
+  padding: 48px 24px 24px;
 }
 
 /* ---- Featured Resources Row (first child) ---- */
 footer .footer > div:first-child {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--spacing-m);
-  border-bottom: 1px solid rgb(255 255 255 / 15%);
-  padding-bottom: var(--spacing-l);
+  gap: 0;
+  padding-bottom: 48px;
 }
 
 footer .footer > div:first-child > div {
@@ -32,6 +31,7 @@ footer .footer > div:first-child > div {
 /* Thumbnail image */
 footer .footer > div:first-child picture {
   display: block;
+  max-width: 220px;
   height: 80px;
   overflow: hidden;
   border-radius: 5px;
@@ -94,9 +94,8 @@ footer .footer > div:nth-child(2) {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-l) var(--spacing-m);
-  padding-top: var(--spacing-l);
-  padding-bottom: var(--spacing-l);
-  border-bottom: 1px solid rgb(255 255 255 / 15%);
+  padding-top: 0;
+  padding-bottom: 16px;
 }
 
 footer .footer > div:nth-child(2) h5 {
@@ -250,17 +249,29 @@ footer .footer p {
   footer .footer > div:first-child {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  footer .footer > div:first-child > div {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 
 @media (width >= 900px) {
   footer .footer > div {
-    padding: 52px 32px 24px;
+    padding: 48px 24px 24px;
   }
 
+  footer .footer > div:first-child > div {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
   footer .footer > div:nth-child(2) {
     grid-template-columns: repeat(5, 1fr);
   }
 
+  /* stylelint-disable-next-line no-descending-specificity */
   footer .footer > div:nth-child(3) {
     flex-flow: row wrap;
     align-items: center;
@@ -268,8 +279,8 @@ footer .footer p {
   }
 
   footer .footer > div:nth-child(3)::before {
-    left: 32px;
-    right: 32px;
+    left: 24px;
+    right: 24px;
   }
 
   /* On desktop, legal links and copyright sit to the right */
