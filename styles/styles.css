@@ -27,6 +27,7 @@
   --color-black: #000;
   --color-dark-gray: #797279;
   --color-warm-gray: #b5b3ba;
+  --color-light-gray: #dadada;
   --color-white: #fff;
 
   /* ---- Semantic Colors ---- */
@@ -43,12 +44,15 @@
   /* ---- Typography ---- */
   --body-font-family: 'Avenir Next LT Pro', avenir-fallback, sans-serif;
   --heading-font-family: 'Avenir Next LT Pro', avenir-fallback, sans-serif;
+  --serif-font-family: georgia, 'Times New Roman', serif;
 
   /* Body sizes (mobile-first, responsive via clamp) */
   --body-font-size-xl: clamp(18px, 1.125rem + ((1vw - 3.2px) * 0.227), 20px);
+  --body-font-size-l: clamp(15px, 0.938rem + ((1vw - 3.2px) * 0.341), 18px);
   --body-font-size-m: clamp(16px, 1rem + ((1vw - 3.2px) * 0.227), 18px);
   --body-font-size-s: 13px;
   --body-font-size-xs: 11px;
+  --eyebrow-font-size: 19px;
 
   /* Heading sizes (responsive via clamp) */
   --heading-font-size-xxl: clamp(48px, 3rem + ((1vw - 3.2px) * 1.932), 65px);
@@ -565,9 +569,9 @@ main .section.angled::after {
 /* ---- Eyebrow text (Georgia italic) ---- */
 main .eyebrow,
 main .section .eyebrow {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--serif-font-family);
   font-style: italic;
-  font-size: 19px;
+  font-size: var(--eyebrow-font-size);
   font-weight: 400;
   margin-bottom: var(--spacing-xs);
   color: inherit;

@@ -51,7 +51,7 @@
 }
 
 .cards .cards-card-body p {
-  font-size: 15px;
+  font-size: var(--body-font-size-l);
   line-height: 1.5;
   margin-bottom: var(--spacing-s);
 }
@@ -59,7 +59,7 @@
 .cards .cards-card-body a:any-link:not(.button) {
   color: var(--color-gold);
   font-weight: 500;
-  font-size: 15px;
+  font-size: var(--body-font-size-l);
   text-decoration: none;
 }
 
