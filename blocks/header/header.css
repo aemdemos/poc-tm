@@ -4,6 +4,8 @@ header .nav-wrapper {
   width: 100%;
   z-index: 2;
   position: fixed;
+  border-bottom: 1px solid rgb(185 177 220);
+  box-shadow: 0 2px 17px 0 rgb(35 0 75 / 15%);
 }
 
 header nav {
@@ -166,11 +168,11 @@ header nav[aria-expanded='true'] .nav-sections {
 header nav .nav-sections ul {
   list-style: none;
   padding-left: 0;
-  font-size: var(--heading-font-size-s);
+  font-size: 18px;
 }
 
 header nav .nav-sections ul > li {
-  font-weight: 400;
+  font-weight: 600;
 }
 
 header nav .nav-sections ul > li > ul {
@@ -275,11 +277,25 @@ header nav .nav-tools .default-content-wrapper {
   gap: 24px;
 }
 
+@media (width < 900px) {
+  header nav[aria-expanded='true'] .nav-tools {
+    display: block;
+  }
+
+  header nav[aria-expanded='true'] .nav-tools .default-content-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 16px 0;
+    border-top: 1px solid var(--color-warm-gray);
+  }
+}
+
 header nav .nav-tools .button-container {
   margin: 0;
 }
 
-/* Plain text links for secondary nav items (For Providers, Client Login) */
+/* Plain text links for secondary nav items (For Payers, For Providers, Client Login) */
 header nav .nav-tools .button {
   margin: 0;
   border: none;
