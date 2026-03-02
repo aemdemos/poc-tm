@@ -23,7 +23,7 @@
 
 .resource-list .filter-label {
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--body-font-size-s);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-ink-blue-100);
@@ -35,7 +35,7 @@
   border: 1px solid var(--color-warm-gray);
   border-radius: 20px;
   padding: 6px 16px;
-  font-size: 14px;
+  font-size: var(--body-font-size-s);
   font-family: var(--body-font-family);
   cursor: pointer;
   transition: all var(--transition-base);
@@ -58,7 +58,7 @@
   padding: 8px 32px 8px 12px;
   border: 1px solid var(--color-warm-gray);
   border-radius: 8px;
-  font-size: 14px;
+  font-size: var(--body-font-size-s);
   font-family: var(--body-font-family);
   color: var(--text-color);
   background: var(--color-white);
@@ -71,7 +71,7 @@
   padding: 8px 12px;
   border: 1px solid var(--color-warm-gray);
   border-radius: 8px;
-  font-size: 14px;
+  font-size: var(--body-font-size-s);
   font-family: var(--body-font-family);
   color: var(--text-color);
   min-width: 200px;
@@ -85,7 +85,7 @@
 
 /* ---- Resource Count ---- */
 .resource-list .resource-count {
-  font-size: 14px;
+  font-size: var(--body-font-size-s);
   color: var(--color-dark-gray);
   margin-bottom: var(--spacing-m);
 }
@@ -138,7 +138,7 @@
 
 .resource-list .resource-card-type {
   display: inline-block;
-  font-size: 11px;
+  font-size: var(--body-font-size-xs);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -155,14 +155,14 @@
 }
 
 .resource-list .resource-card-body p {
-  font-size: 14px;
+  font-size: var(--body-font-size-s);
   line-height: 1.5;
   color: var(--text-color);
   margin: 0 0 var(--spacing-s);
 }
 
 .resource-list .resource-card-cta {
-  font-size: 14px;
+  font-size: var(--body-font-size-s);
   font-weight: 500;
   color: var(--color-gold);
 }
@@ -200,7 +200,7 @@
   text-align: center;
   color: var(--color-dark-gray);
   padding: var(--spacing-xl) 0;
-  font-size: 16px;
+  font-size: var(--heading-font-size-xs);
 }
 
 /* ---- Loading ---- */
