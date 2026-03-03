@@ -23,6 +23,36 @@ function wrapGroups(container, isDelimiter) {
   if (group) container.append(group);
 }
 
+/* Featured resource thumbnail URLs keyed by slug from the "Read more" link. */
+const FEATURED_THUMBNAILS = {
+  'accelerating-progress-in-healthcare-finance-a-call-to-action': 'https://www.zelis.com/wp-content/uploads/2025/05/2025_forum_0400-300x200.jpg',
+  'cms-price-transparency-proposed-rule-payer': 'https://www.zelis.com/wp-content/uploads/2025/09/Zoom-Into-Price-Transparency_Thumbnail-300x170.jpg',
+  'advancing-the-healthcare-financial-experience': 'https://www.zelis.com/wp-content/uploads/2026/01/Resource-Page-Image-SOTFE-300x200.png',
+};
+
+/**
+ * Injects thumbnail images into featured resource cards when DA strips them.
+ * @param {Element} section Featured resources section
+ */
+function injectFeaturedImages(section) {
+  section.querySelectorAll(':scope > div').forEach((card) => {
+    if (card.querySelector('img, picture')) return; // already has an image
+    const link = card.querySelector('a');
+    if (!link) return;
+    const slug = link.getAttribute('href')?.split('/').filter(Boolean).pop();
+    const src = FEATURED_THUMBNAILS[slug];
+    if (!src) return;
+    const p = document.createElement('p');
+    p.classList.add('featured-image');
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = '';
+    img.loading = 'lazy';
+    p.append(img);
+    card.prepend(p);
+  });
+}
+
 /**
  * Restores the logo image and adds social-media icon links to the bottom bar.
  * @param {Element} section Bottom bar section element
@@ -102,6 +132,11 @@ export default async function decorate(block) {
     } else {
       wrapGroups(featured, (el) => el.tagName === 'P' && el.textContent.trim() === 'Featured Resource');
     }
+  }
+
+  // Inject thumbnail images when DA has stripped them
+  if (featured) {
+    injectFeaturedImages(featured);
   }
 
   // Add helper classes for CSS targeting (works with or without images)
