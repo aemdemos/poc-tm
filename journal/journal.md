@@ -568,3 +568,210 @@
 
 ### Carry-Forward
 > Daily status checkup skill v1.2 complete with 13 improvements across two refinement passes. All five supporting skills now fully refined (journaling v1.1, problem tracker v2.0, time tracking v1.1, status checkup v1.2). Next priorities: design token extraction, navigation setup, or begin bulk page migration.
+
+---
+
+## Session 011 — 2026-02-27 — [BACKFILL] Merge issue-1-styles-bulk to main (PR #9)
+
+**Branch:** `issue-1-styles-bulk` → merged to `main`
+**Duration:** ~30m (agent) + 10% user overhead = ~33m total
+**Session goal:** Finalize issue-1-styles-bulk branch with skill imports and merge to main via PR #9
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Add carousel, hero, tabs blocks | new | 1 | pass | 10m |
+| 2 | Add Claude adaptations for skills | new | 1 | pass | 5m |
+| 3 | Update journal entries and daily status skill docs | routine | 1 | pass | 3m |
+| 4 | Import skills from poc-ip: navigation orchestrator, get-general-styling, hooks | new | 1 | pass | 5m |
+| 5 | Update .CLAUDE.md with complete skills reference catalog | new | 1 | pass | 5m |
+
+### Outcomes
+- **Completed:** Branch merged to main via PR #9. Skills catalog and additional blocks added.
+
+### Problems Encountered
+
+(none)
+
+### Key Decisions
+- Imported skills from poc-ip project for reuse
+- Updated CLAUDE.md as central skills reference
+
+### Files Changed
+- `blocks/carousel/`, `blocks/hero/`, `blocks/tabs/` — New blocks
+- `.CLAUDE.md` — Skills reference catalog
+- Skills imported from poc-ip
+
+### Commits
+- `d39760a` — Add carousel, hero, tabs blocks
+- `887c197` — Adding claude adaptations for skills
+- `1d27904` — Update journal entries and daily status skill docs
+- `ee69c55` — Import skills from poc-ip
+- `66d33f9` — Update .CLAUDE.md with complete skills reference catalog
+- PR #9 merged as `bb49689`
+
+### Carry-Forward
+> issue-1-styles-bulk merged to main. Ready for issue-specific branches: design tokens, navigation, block styling, footer.
+
+---
+
+## Session 012 — 2026-03-02 — [BACKFILL] Design token extraction (Issue #2, PR #10)
+
+**Branch:** `issue-2-design-token-extraction` → merged to `main`
+**Duration:** ~20m (agent) + 10% user overhead = ~22m total
+**Session goal:** Extract design tokens from zelis.com and apply to styles/styles.css
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Update head.html with design token references | new | 1 | pass | 8m |
+| 2 | Update styles/styles.css with extracted color/font/spacing tokens | new | 1 | pass | 10m |
+
+### Outcomes
+- **Completed:** Design tokens extracted and applied. head.html and styles.css updated. PR #10 merged.
+
+### Problems Encountered
+
+(none)
+
+### Files Changed
+- `head.html` — Added design token references
+- `styles/styles.css` — Updated with extracted tokens (colors, fonts, spacing)
+
+### Commits
+- `241ec2e` — Update 2 files
+- PR #10 merged as `2c4151a`
+
+### Carry-Forward
+> Design tokens extracted and merged. Proceed to navigation setup and block styling.
+
+---
+
+## Session 013 — 2026-03-02 — [BACKFILL] Navigation setup (Issue #3, PR #11)
+
+**Branch:** `issue-3-nav` → merged to `main`
+**Duration:** ~25m (agent) + 10% user overhead = ~28m total
+**Session goal:** Build navigation structure from zelis.com and implement header block styling
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Update header block CSS with navigation styling | new | 1 | pass | 12m |
+| 2 | Rebuild nav.plain.html with zelis.com site structure | new | 1 | pass | 10m |
+
+### Outcomes
+- **Completed:** Navigation structure built, header CSS refined. PR #11 merged.
+
+### Problems Encountered
+
+(none)
+
+### Files Changed
+- `blocks/header/header.css` — Navigation styling updates (+22 lines)
+- `nav.plain.html` — Rebuilt navigation structure
+
+### Commits
+- `7c4f06b` — Add header block
+- PR #11 merged as `27fa9de`
+
+### Carry-Forward
+> Navigation merged. Proceed to block styling refinement and footer.
+
+---
+
+## Session 014 — 2026-03-02 — [BACKFILL] Block styling with design tokens (Issue #5, PR #12)
+
+**Branch:** `issue-5-block-styling` → merged to `main`
+**Duration:** ~20m (agent) + 10% user overhead = ~22m total
+**Session goal:** Replace hardcoded CSS values with design tokens across block stylesheets
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Replace hardcoded values in cards.css with design tokens | refinement | 1 | pass | 4m |
+| 2 | Replace hardcoded values in resource-list.css with design tokens | refinement | 1 | pass | 5m |
+| 3 | Replace hardcoded values in search.css with design tokens | refinement | 1 | pass | 3m |
+| 4 | Add new tokens to styles.css (--color-light-gray, --body-font-size-l, --serif-font-family, --eyebrow-font-size) | new | 1 | pass | 5m |
+
+### Outcomes
+- **Completed:** Hardcoded values replaced with design tokens across 4 files. Fixes #5. PR #12 merged.
+
+### Problems Encountered
+
+(none)
+
+### Files Changed
+- `blocks/cards/cards.css` — 15px → var(--body-font-size-l)
+- `blocks/resource-list/resource-list.css` — 14px/11px/16px → token equivalents
+- `blocks/search/search.css` — #dadada → var(--color-light-gray)
+- `styles/styles.css` — Added 4 new design tokens
+
+### Commits
+- `77779f5` — Replace hardcoded values with design tokens in block CSS
+- PR #12 merged as `9c919ff`
+
+### Carry-Forward
+> Block styling tokenized and merged. Footer implementation is the remaining major block task.
+
+---
+
+## Session 015 — 2026-03-02 to 2026-03-03 — [BACKFILL] Footer implementation (Issue #6, PR #13)
+
+**Branch:** `issue-6-footer` → merged to `main`
+**Duration:** ~2h 30m (agent) + 10% user overhead = ~2h 45m total
+**Session goal:** Implement footer block matching zelis.com design, handle DA content flattening
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Implement initial footer CSS matching zelis.com (dark purple, 3-section layout) | new | 1 | pass | 30m |
+| 2 | Add social media SVG icons (facebook, linkedin, x-twitter, youtube) | new | 1 | pass | 10m |
+| 3 | Refine footer CSS — section widths, featured resource sizing | refinement | 1 | pass | 20m |
+| 4 | Fix footer section widths and featured image dimensions | refinement | 1 | pass | 15m |
+| 5 | Rewrite footer.js — DOM reconstruction from DA flat content | new | 2 | pass | 30m |
+| 6 | Add wrapGroups() for card/column grouping from flat elements | new | 1 | pass | 10m |
+| 7 | Add decorateBottomBar() — logo image + social icon injection | new | 1 | pass | 10m |
+| 8 | Fix icon duplication bug (decorateIcons called twice) | bugfix | 1 | pass | 5m |
+| 9 | Add injectFeaturedImages() — JS-based image injection for DA-stripped thumbnails | new | 1 | pass | 15m |
+| 10 | Switch CSS selectors from positional to class-based (.featured-label, .featured-image) | refinement | 1 | pass | 10m |
+
+### Outcomes
+- **Completed:** Footer fully implemented with DA content handling. PR #13 merged.
+- **Key insight:** DA strips `<picture>`, external images, nested `<div>`s, and `<span class="icon">`. Footer.js reconstructs the entire DOM and injects missing assets via JavaScript.
+
+### Problems Encountered
+
+| Problem | Severity | Resolved? | Resolution | Related Action # |
+|---------|----------|-----------|------------|-----------------|
+| DA flattens footer HTML — strips images, icons, nested divs | blocker | yes | Rewrote footer.js to reconstruct DOM from flat content; inject images via slug-based lookup map | #5, #6, #7, #9 |
+| decorateIcons called twice causing duplicate SVG images | minor | yes | Track iconsAdded return value; only call decorateIcons when new icons were injected | #8 |
+| DA strips even plain `<img>` tags with external URLs | major | yes | Implemented JS-based injectFeaturedImages() with FEATURED_THUMBNAILS slug→URL map | #9 |
+
+### Key Decisions
+- Footer.js handles all DOM reconstruction — makes footer resilient to DA content simplification
+- FEATURED_THUMBNAILS map uses article slug (from "Read more" link href) as key
+- Class-based CSS selectors (.featured-label, .featured-image) instead of fragile positional selectors
+- decorateIcons only called when decorateBottomBar actually adds new icon spans
+
+### Files Changed
+- `blocks/footer/footer.js` — Major rewrite: wrapGroups, injectFeaturedImages, decorateBottomBar, FEATURED_THUMBNAILS
+- `blocks/footer/footer.css` — Switched to class-based selectors, refined layout for all 3 sections
+- `footer.plain.html` — Updated DA content file
+- `icons/facebook.svg`, `icons/linkedin.svg`, `icons/x-twitter.svg`, `icons/youtube.svg` — Social media icons
+
+### Commits
+- `09140d6` — Implement footer matching live zelis.com design (#6)
+- `0d07a2d` — Refine footer to match live zelis.com more closely
+- `d514f77` — Fix footer section widths and image sizes
+- `e999362` — Rewrite footer.js with DOM reconstruction
+- `777112e` — Fix icon duplication, refine CSS
+- `5656343` — Add injectFeaturedImages for DA-stripped thumbnails
+- PR #13 merged as `3057359`
+
+### Carry-Forward
+> Footer complete and merged. Open issues remaining: #1 (bulk page styles), #4 (bulk page migration), #7 (additional page migrations), #8 (test harness false-positives). Journal needs backfill for sessions 011-015.

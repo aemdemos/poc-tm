@@ -13,3 +13,8 @@
 | 008 | 2026-02-26 | Refine time tracking skill v1.1 (best-of-both merge) | ~17m | 5 completed, 0 problems |
 | 009 | 2026-02-26 | Animation verification test + create daily status checkup skill | ~28m | 6 completed, 2 problems found |
 | 010 | 2026-02-26 | Refine daily status checkup skill v1.2 (two-pass best-of-both merge) | ~22m | 8 completed, 0 problems |
+| 011 | 2026-02-27 | [BACKFILL] Merge issue-1-styles-bulk to main (PR #9) | ~33m | 5 completed, 0 problems |
+| 012 | 2026-03-02 | [BACKFILL] Design token extraction (Issue #2, PR #10) | ~22m | 2 completed, 0 problems |
+| 013 | 2026-03-02 | [BACKFILL] Navigation setup (Issue #3, PR #11) | ~28m | 2 completed, 0 problems |
+| 014 | 2026-03-02 | [BACKFILL] Block styling with design tokens (Issue #5, PR #12) | ~22m | 4 completed, 0 problems |
+| 015 | 2026-03-02 to 2026-03-03 | [BACKFILL] Footer implementation (Issue #6, PR #13) | ~2h 45m | 10 completed, 3 problems resolved |

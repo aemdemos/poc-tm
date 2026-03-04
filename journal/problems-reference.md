@@ -4,7 +4,7 @@
 > resolutions, and how to avoid them. Updated by the problem tracker skill.
 
 **Source:** `journal/journal.md`
-**Last review:** 2026-02-26 (after Session 009)
+**Last review:** 2026-03-04 (after Session 015 backfill)
 
 ---
 
@@ -13,6 +13,11 @@
 ### DA / URL and Path Mangling
 - [ ] Match DA links by `a.textContent`, never by `a.href` — DA mangles dots to hyphens in href attributes (DA-001)
 - [ ] After renaming files, grep for all references to the old name across the project (DA-002)
+- [ ] DA strips `<picture>`, external `<img>` URLs, nested `<div>`s, and `<span class="icon">` — reconstruct in JS (DA-003)
+- [ ] DA strips even plain `<img>` tags with external URLs — use JS-based image injection with slug lookup (DA-004)
+
+### DA / Icon and SVG Handling
+- [ ] Only call `decorateIcons()` when new icon spans are actually added — avoid duplicate SVG injection (DA-005)
 
 ### Git / Environment
 - [ ] Set `HOME=/home/node` before first git command in container environments (GIT-001)
@@ -37,8 +42,12 @@
 | DA converts dots to hyphens in hrefs (`.json` → `-json`) | DA-001 | DA rewrites URLs; dots in hrefs normalized to hyphens | Match links by `a.textContent.trim().endsWith('.json')`, never by `a.href` | For any link whose display text is a file path: always use `a.textContent.trim()` to detect file type. Never use `a.getAttribute('href')` for paths in DA-authored content. | 001 | blocker | yes |
 | SKILL.md referenced non-existent file (`animation-verification-criteria.md`) | DA-002 | File renamed during development (`animation-verification.md`); reference in SKILL.md not updated | Updated reference to point to actual filename `animation-verification.md` | After creating or renaming files, grep for all references to the old name across the project. Verify cross-references in skill files point to actual filenames on disk. | 003 | major | yes |
 
-**Recurring:** No (so far — but both involve file reference mismatches from platform transformations)
-**Notes:** DA-001 documented in `skills/excat-animate-migration/SKILL.md` (DA mangles animation file paths). Both problems stem from content platforms transforming file paths/references in unexpected ways.
+| DA flattens footer HTML — strips images, icons, nested divs | DA-003 | DA content pipeline simplifies HTML; removes `<picture>`, external `<img>`, nested `<div>`, `<span class="icon">` | Rewrote footer.js to reconstruct DOM from flat content using wrapGroups() delimiter-based grouping | When building blocks that rely on complex HTML structure, assume DA will flatten it. Design JS to reconstruct structure from flat content (headings as delimiters, text labels as markers). | 015 | blocker | yes |
+| DA strips even plain `<img>` tags with external URLs | DA-004 | DA content pipeline removes `<img>` tags referencing external domains | Implemented injectFeaturedImages() with FEATURED_THUMBNAILS slug→URL map in footer.js | For images that DA will strip, use JS-based injection with a slug or identifier lookup. Key images by a stable identifier (e.g., article slug from link href) rather than position. | 015 | major | yes |
+| decorateIcons called twice causing duplicate SVG images | DA-005 | Fragment loader pipeline calls decorateIcons internally; explicit call in footer.js doubled the SVGs | Track whether new icons were added (return value from decorateBottomBar); only call decorateIcons when iconsAdded is true | When injecting `.icon` spans dynamically, check if decorateIcons will be called by the loading pipeline. Only call it explicitly when your code adds new icon spans that the pipeline hasn't seen. | 015 | minor | yes |
+
+**Recurring:** Yes — DA content handling is a recurring theme (DA-001, DA-003, DA-004 all involve DA transforming content)
+**Notes:** DA-001 documented in `skills/excat-animate-migration/SKILL.md`. DA-003/004/005 documented in footer.js implementation. Core pattern: DA simplifies HTML aggressively — always plan for JS-based reconstruction.
 
 ---
 

@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="/styles/styles.css"/>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/avenir/avenir_next_lt_pro_regular.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/avenir/avenir_next_lt_pro_medium.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/avenir/avenir_next_lt_pro_demi.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/avenir/avenir_next_lt_pro_bold.woff2" crossorigin>
 </head>
 <body>
 <header></header>
@@ -1031,6 +1033,376 @@ Each session is appended chronologically. Read from bottom for most recent.</p>
 <li><code>7f40195</code> — Refine daily status checkup skill v1.2 (two-pass best-of-both merge)</li>
 </ul><h3 id="carry-forward-10">Carry-Forward</h3><blockquote>
 <p>Daily status checkup skill v1.2 complete with 13 improvements across two refinement passes. All five supporting skills now fully refined (journaling v1.1, problem tracker v2.0, time tracking v1.1, status checkup v1.2). Next priorities: design token extraction, navigation setup, or begin bulk page migration.</p>
+</blockquote></div>
+<div><h2 id="session-011--2026-02-27--backfill-merge-issue-1-styles-bulk-to-main-pr-9">Session 011 — 2026-02-27 — [BACKFILL] Merge issue-1-styles-bulk to main (PR #9)</h2><p><strong>Branch:</strong> <code>issue-1-styles-bulk</code> → merged to <code>main</code>
+<strong>Duration:</strong> ~30m (agent) + 10% user overhead = ~33m total
+<strong>Session goal:</strong> Finalize issue-1-styles-bulk branch with skill imports and merge to main via PR #9</p><h3 id="actions-11">Actions</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>1</div><div>Add carousel, hero, tabs blocks</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>2</div><div>Add Claude adaptations for skills</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>3</div><div>Update journal entries and daily status skill docs</div><div>routine</div><div>1</div><div>pass</div><div>3m</div></div><div><div>4</div><div>Import skills from poc-ip: navigation orchestrator, get-general-styling, hooks</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>5</div><div>Update .CLAUDE.md with complete skills reference catalog</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div></div><h3 id="outcomes-11">Outcomes</h3><ul>
+<li><strong>Completed:</strong> Branch merged to main via PR #9. Skills catalog and additional blocks added.</li>
+</ul><h3 id="problems-encountered-11">Problems Encountered</h3><p>(none)</p><h3 id="key-decisions-11">Key Decisions</h3><ul>
+<li>Imported skills from poc-ip project for reuse</li>
+<li>Updated CLAUDE.md as central skills reference</li>
+</ul><h3 id="files-changed-11">Files Changed</h3><ul>
+<li><code>blocks/carousel/</code>, <code>blocks/hero/</code>, <code>blocks/tabs/</code> — New blocks</li>
+<li><code>.CLAUDE.md</code> — Skills reference catalog</li>
+<li>Skills imported from poc-ip</li>
+</ul><h3 id="commits-11">Commits</h3><ul>
+<li><code>d39760a</code> — Add carousel, hero, tabs blocks</li>
+<li><code>887c197</code> — Adding claude adaptations for skills</li>
+<li><code>1d27904</code> — Update journal entries and daily status skill docs</li>
+<li><code>ee69c55</code> — Import skills from poc-ip</li>
+<li><code>66d33f9</code> — Update .CLAUDE.md with complete skills reference catalog</li>
+<li>PR #9 merged as <code>bb49689</code></li>
+</ul><h3 id="carry-forward-11">Carry-Forward</h3><blockquote>
+<p>issue-1-styles-bulk merged to main. Ready for issue-specific branches: design tokens, navigation, block styling, footer.</p>
+</blockquote></div>
+<div><h2 id="session-012--2026-03-02--backfill-design-token-extraction-issue-2-pr-10">Session 012 — 2026-03-02 — [BACKFILL] Design token extraction (Issue #2, PR #10)</h2><p><strong>Branch:</strong> <code>issue-2-design-token-extraction</code> → merged to <code>main</code>
+<strong>Duration:</strong> ~20m (agent) + 10% user overhead = ~22m total
+<strong>Session goal:</strong> Extract design tokens from zelis.com and apply to styles/styles.css</p><h3 id="actions-12">Actions</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>1</div><div>Update head.html with design token references</div><div>new</div><div>1</div><div>pass</div><div>8m</div></div><div><div>2</div><div>Update styles/styles.css with extracted color/font/spacing tokens</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div></div><h3 id="outcomes-12">Outcomes</h3><ul>
+<li><strong>Completed:</strong> Design tokens extracted and applied. head.html and styles.css updated. PR #10 merged.</li>
+</ul><h3 id="problems-encountered-12">Problems Encountered</h3><p>(none)</p><h3 id="files-changed-12">Files Changed</h3><ul>
+<li><code>head.html</code> — Added design token references</li>
+<li><code>styles/styles.css</code> — Updated with extracted tokens (colors, fonts, spacing)</li>
+</ul><h3 id="commits-12">Commits</h3><ul>
+<li><code>241ec2e</code> — Update 2 files</li>
+<li>PR #10 merged as <code>2c4151a</code></li>
+</ul><h3 id="carry-forward-12">Carry-Forward</h3><blockquote>
+<p>Design tokens extracted and merged. Proceed to navigation setup and block styling.</p>
+</blockquote></div>
+<div><h2 id="session-013--2026-03-02--backfill-navigation-setup-issue-3-pr-11">Session 013 — 2026-03-02 — [BACKFILL] Navigation setup (Issue #3, PR #11)</h2><p><strong>Branch:</strong> <code>issue-3-nav</code> → merged to <code>main</code>
+<strong>Duration:</strong> ~25m (agent) + 10% user overhead = ~28m total
+<strong>Session goal:</strong> Build navigation structure from zelis.com and implement header block styling</p><h3 id="actions-13">Actions</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>1</div><div>Update header block CSS with navigation styling</div><div>new</div><div>1</div><div>pass</div><div>12m</div></div><div><div>2</div><div>Rebuild nav.plain.html with zelis.com site structure</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div></div><h3 id="outcomes-13">Outcomes</h3><ul>
+<li><strong>Completed:</strong> Navigation structure built, header CSS refined. PR #11 merged.</li>
+</ul><h3 id="problems-encountered-13">Problems Encountered</h3><p>(none)</p><h3 id="files-changed-13">Files Changed</h3><ul>
+<li><code>blocks/header/header.css</code> — Navigation styling updates (+22 lines)</li>
+<li><code>nav.plain.html</code> — Rebuilt navigation structure</li>
+</ul><h3 id="commits-13">Commits</h3><ul>
+<li><code>7c4f06b</code> — Add header block</li>
+<li>PR #11 merged as <code>27fa9de</code></li>
+</ul><h3 id="carry-forward-13">Carry-Forward</h3><blockquote>
+<p>Navigation merged. Proceed to block styling refinement and footer.</p>
+</blockquote></div>
+<div><h2 id="session-014--2026-03-02--backfill-block-styling-with-design-tokens-issue-5-pr-12">Session 014 — 2026-03-02 — [BACKFILL] Block styling with design tokens (Issue #5, PR #12)</h2><p><strong>Branch:</strong> <code>issue-5-block-styling</code> → merged to <code>main</code>
+<strong>Duration:</strong> ~20m (agent) + 10% user overhead = ~22m total
+<strong>Session goal:</strong> Replace hardcoded CSS values with design tokens across block stylesheets</p><h3 id="actions-14">Actions</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>1</div><div>Replace hardcoded values in cards.css with design tokens</div><div>refinement</div><div>1</div><div>pass</div><div>4m</div></div><div><div>2</div><div>Replace hardcoded values in resource-list.css with design tokens</div><div>refinement</div><div>1</div><div>pass</div><div>5m</div></div><div><div>3</div><div>Replace hardcoded values in search.css with design tokens</div><div>refinement</div><div>1</div><div>pass</div><div>3m</div></div><div><div>4</div><div>Add new tokens to styles.css (--color-light-gray, --body-font-size-l, --serif-font-family, --eyebrow-font-size)</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div></div><h3 id="outcomes-14">Outcomes</h3><ul>
+<li><strong>Completed:</strong> Hardcoded values replaced with design tokens across 4 files. Fixes #5. PR #12 merged.</li>
+</ul><h3 id="problems-encountered-14">Problems Encountered</h3><p>(none)</p><h3 id="files-changed-14">Files Changed</h3><ul>
+<li><code>blocks/cards/cards.css</code> — 15px → var(--body-font-size-l)</li>
+<li><code>blocks/resource-list/resource-list.css</code> — 14px/11px/16px → token equivalents</li>
+<li><code>blocks/search/search.css</code> — #dadada → var(--color-light-gray)</li>
+<li><code>styles/styles.css</code> — Added 4 new design tokens</li>
+</ul><h3 id="commits-14">Commits</h3><ul>
+<li><code>77779f5</code> — Replace hardcoded values with design tokens in block CSS</li>
+<li>PR #12 merged as <code>9c919ff</code></li>
+</ul><h3 id="carry-forward-14">Carry-Forward</h3><blockquote>
+<p>Block styling tokenized and merged. Footer implementation is the remaining major block task.</p>
+</blockquote></div>
+<div><h2 id="session-015--2026-03-02-to-2026-03-03--backfill-footer-implementation-issue-6-pr-13">Session 015 — 2026-03-02 to 2026-03-03 — [BACKFILL] Footer implementation (Issue #6, PR #13)</h2><p><strong>Branch:</strong> <code>issue-6-footer</code> → merged to <code>main</code>
+<strong>Duration:</strong> ~2h 30m (agent) + 10% user overhead = ~2h 45m total
+<strong>Session goal:</strong> Implement footer block matching zelis.com design, handle DA content flattening</p><h3 id="actions-15">Actions</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>1</div><div>Implement initial footer CSS matching zelis.com (dark purple, 3-section layout)</div><div>new</div><div>1</div><div>pass</div><div>30m</div></div><div><div>2</div><div>Add social media SVG icons (facebook, linkedin, x-twitter, youtube)</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>3</div><div>Refine footer CSS — section widths, featured resource sizing</div><div>refinement</div><div>1</div><div>pass</div><div>20m</div></div><div><div>4</div><div>Fix footer section widths and featured image dimensions</div><div>refinement</div><div>1</div><div>pass</div><div>15m</div></div><div><div>5</div><div>Rewrite footer.js — DOM reconstruction from DA flat content</div><div>new</div><div>2</div><div>pass</div><div>30m</div></div><div><div>6</div><div>Add wrapGroups() for card/column grouping from flat elements</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>7</div><div>Add decorateBottomBar() — logo image + social icon injection</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>8</div><div>Fix icon duplication bug (decorateIcons called twice)</div><div>bugfix</div><div>1</div><div>pass</div><div>5m</div></div><div><div>9</div><div>Add injectFeaturedImages() — JS-based image injection for DA-stripped thumbnails</div><div>new</div><div>1</div><div>pass</div><div>15m</div></div><div><div>10</div><div>Switch CSS selectors from positional to class-based (.featured-label, .featured-image)</div><div>refinement</div><div>1</div><div>pass</div><div>10m</div></div></div><h3 id="outcomes-15">Outcomes</h3><ul>
+<li><strong>Completed:</strong> Footer fully implemented with DA content handling. PR #13 merged.</li>
+<li><strong>Key insight:</strong> DA strips <code>&#x3C;picture></code>, external images, nested <code>&#x3C;div></code>s, and <code>&#x3C;span class="icon"></code>. Footer.js reconstructs the entire DOM and injects missing assets via JavaScript.</li>
+</ul><h3 id="problems-encountered-15">Problems Encountered</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="problem"><div><div>DA flattens footer HTML — strips images, icons, nested divs</div><div>blocker</div><div>yes</div><div>Rewrote footer.js to reconstruct DOM from flat content; inject images via slug-based lookup map</div><div>#5, #6, #7, #9</div></div><div><div>decorateIcons called twice causing duplicate SVG images</div><div>minor</div><div>yes</div><div>Track iconsAdded return value; only call decorateIcons when new icons were injected</div><div>#8</div></div><div><div>DA strips even plain <code>&#x3C;img></code> tags with external URLs</div><div>major</div><div>yes</div><div>Implemented JS-based injectFeaturedImages() with FEATURED_THUMBNAILS slug→URL map</div><div>#9</div></div></div><h3 id="key-decisions-12">Key Decisions</h3><ul>
+<li>Footer.js handles all DOM reconstruction — makes footer resilient to DA content simplification</li>
+<li>FEATURED_THUMBNAILS map uses article slug (from "Read more" link href) as key</li>
+<li>Class-based CSS selectors (.featured-label, .featured-image) instead of fragile positional selectors</li>
+<li>decorateIcons only called when decorateBottomBar actually adds new icon spans</li>
+</ul><h3 id="files-changed-15">Files Changed</h3><ul>
+<li><code>blocks/footer/footer.js</code> — Major rewrite: wrapGroups, injectFeaturedImages, decorateBottomBar, FEATURED_THUMBNAILS</li>
+<li><code>blocks/footer/footer.css</code> — Switched to class-based selectors, refined layout for all 3 sections</li>
+<li><code>footer.plain.html</code> — Updated DA content file</li>
+<li><code>icons/facebook.svg</code>, <code>icons/linkedin.svg</code>, <code>icons/x-twitter.svg</code>, <code>icons/youtube.svg</code> — Social media icons</li>
+</ul><h3 id="commits-15">Commits</h3><ul>
+<li><code>09140d6</code> — Implement footer matching live zelis.com design (#6)</li>
+<li><code>0d07a2d</code> — Refine footer to match live zelis.com more closely</li>
+<li><code>d514f77</code> — Fix footer section widths and image sizes</li>
+<li><code>e999362</code> — Rewrite footer.js with DOM reconstruction</li>
+<li><code>777112e</code> — Fix icon duplication, refine CSS</li>
+<li><code>5656343</code> — Add injectFeaturedImages for DA-stripped thumbnails</li>
+<li>PR #13 merged as <code>3057359</code></li>
+</ul><h3 id="carry-forward-15">Carry-Forward</h3><blockquote>
+<p>Footer complete and merged. Open issues remaining: #1 (bulk page styles), #4 (bulk page migration), #7 (additional page migrations), #8 (test harness false-positives). Journal needs backfill for sessions 011-015.</p>
 </blockquote></div>
 </main>
 <footer></footer>

@@ -1,9 +1,9 @@
 # Time Tracking — Zelis EDS Migration
 
 > Daily time reports compiled from journal.md session data.
-> Last updated: 2026-02-26 (after Session 006)
+> Last updated: 2026-03-04 (after Session 015 backfill)
 
-**Project total:** ~9h 20m (agent) / ~10h 18m (with margin)
+**Project total:** ~13h 25m (agent) / ~15h 48m (with margin)
 
 ---
 
@@ -96,6 +96,73 @@
 
 ---
 
+## 2026-02-27 — ~33m (with margin)
+
+### Session 011 — [BACKFILL] Merge issue-1-styles-bulk to main (PR #9) (~30m agent + 10% = ~33m)
+
+| # | Action | Time |
+|---|--------|------|
+| 1 | Add carousel, hero, tabs blocks | 10m |
+| 2 | Add Claude adaptations for skills | 5m |
+| 3 | Update journal entries and daily status skill docs | 3m |
+| 4 | Import skills from poc-ip | 5m |
+| 5 | Update .CLAUDE.md with skills reference catalog | 5m |
+| **Total** | | **28m** |
+
+**Daily total:** ~30m (agent) / ~33m (with margin)
+
+---
+
+## 2026-03-02 to 2026-03-03 — ~4h 57m (with margin)
+
+### Session 012 — [BACKFILL] Design token extraction (Issue #2, PR #10) (~20m agent + 10% = ~22m)
+
+| # | Action | Time |
+|---|--------|------|
+| 1 | Update head.html with design token references | 8m |
+| 2 | Update styles/styles.css with extracted tokens | 10m |
+| **Total** | | **18m** |
+
+### Session 013 — [BACKFILL] Navigation setup (Issue #3, PR #11) (~25m agent + 10% = ~28m)
+
+| # | Action | Time |
+|---|--------|------|
+| 1 | Update header block CSS with navigation styling | 12m |
+| 2 | Rebuild nav.plain.html with zelis.com structure | 10m |
+| **Total** | | **22m** |
+
+### Session 014 — [BACKFILL] Block styling with design tokens (Issue #5, PR #12) (~20m agent + 10% = ~22m)
+
+| # | Action | Time |
+|---|--------|------|
+| 1 | Replace hardcoded values in cards.css | 4m |
+| 2 | Replace hardcoded values in resource-list.css | 5m |
+| 3 | Replace hardcoded values in search.css | 3m |
+| 4 | Add new design tokens to styles.css | 5m |
+| **Total** | | **17m** |
+
+### Session 015 — [BACKFILL] Footer implementation (Issue #6, PR #13) (~2h 30m agent + 10% = ~2h 45m)
+
+| # | Action | Time |
+|---|--------|------|
+| 1 | Implement initial footer CSS (dark purple, 3-section layout) | 30m |
+| 2 | Add social media SVG icons | 10m |
+| 3 | Refine footer CSS — section widths, featured resource sizing | 20m |
+| 4 | Fix footer section widths and featured image dimensions | 15m |
+| 5 | Rewrite footer.js — DOM reconstruction from DA flat content | 30m |
+| 6 | Add wrapGroups() for card/column grouping | 10m |
+| 7 | Add decorateBottomBar() — logo image + social icon injection | 10m |
+| 8 | Fix icon duplication bug | 5m |
+| 9 | Add injectFeaturedImages() — JS image injection for DA-stripped thumbnails | 15m |
+| 10 | Switch CSS selectors to class-based (.featured-label, .featured-image) | 10m |
+| **Total** | | **155m** |
+
+**Daily total:** ~3h 35m (agent) / ~4h 57m (with margin)
+
+*Note: Sessions 012-015 span Mar 2-3. Session 015 continued across midnight.*
+
+---
+
 ## 2026-02-18 to 2026-02-25 — ~3h 18m (with margin)
 
 ### Session 000 — [BACKFILL] Project Setup and Initial Migration (~3h 0m agent + 10% = ~3h 18m)
@@ -122,6 +189,8 @@
 
 | Date | Sessions | Agent Time | With Margin | Actions |
 |------|----------|------------|-------------|---------|
+| 2026-03-02–03 | 4 | ~3h 35m | ~4h 57m | 18 |
+| 2026-02-27 | 1 | ~30m | ~33m | 5 |
 | 2026-02-26 | 6 | ~6h 20m | ~7h 0m | 47 |
 | 2026-02-18–25 | 1 | ~3h 0m | ~3h 18m | 8 |
-| **Total** | **7** | **~9h 20m** | **~10h 18m** | **55** |
+| **Total** | **12** | **~13h 25m** | **~15h 48m** | **78** |

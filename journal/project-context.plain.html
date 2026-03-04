@@ -1,9 +1,9 @@
 <div><h1 id="project-context--zeliscom-eds-migration">Project Context — Zelis.com EDS Migration</h1>
-<p><strong>Last updated:</strong> 2026-02-26 (Session 010)
-<strong>Branch:</strong> <code>issue-1-styles-bulk</code>
+<p><strong>Last updated:</strong> 2026-03-04 (Session 015 backfill)
+<strong>Branch:</strong> <code>main</code>
 <strong>Repository:</strong> https://github.com/aemdemos/poc-tm.git
 <strong>Source site:</strong> https://www.zelis.com/ (~789 URLs, WordPress)
-<strong>Overall status:</strong> Early migration — homepage blocks functional, animation skill built, tooling refined</p>
+<strong>Overall status:</strong> Mid migration — homepage complete with design tokens, nav, footer, and block styling. Bulk page migration pending.</p>
 <h2 id="whats-done">What's Done</h2>
 <ul>
 <li>Repository initialized and configured (Session 000)</li>
@@ -14,12 +14,12 @@
 <li>Animation migration skill: 5-phase workflow, Pattern A-G, decision tree (Session 002)</li>
 <li>Animation verification framework: 45 criteria, automated check script (Session 002)</li>
 <li>All skill files reconciled — .md, .html, .plain.html in sync (Session 003)</li>
-<li>Journaling skill created and project journal initialized (Session 003)</li>
-<li>Journaling skill v1.1: merged best practices, added rules, examples, portable template (Session 004)</li>
-<li>Problem tracker skill created (Session 005), rewritten to v2.0 with table format + append-and-merge (Session 006)</li>
-<li>Project time tracking skill created (Session 007), refined to v1.1 with best-of-both merge (Session 008)</li>
-<li>Daily status checkup skill created (Session 009), refined to v1.2 with two-pass best-of-both merge (Session 010)</li>
-<li>Animation verification tested on homepage — 2 test harness bugs identified (Session 009)</li>
+<li>Journaling skill v1.1, problem tracker v2.0, time tracking v1.1, status checkup v1.2 (Sessions 003-010)</li>
+<li>issue-1-styles-bulk branch merged to main with skill imports (Session 011, PR #9)</li>
+<li><strong>Design token extraction</strong> — colors, fonts, spacing extracted and applied to styles.css (Session 012, PR #10)</li>
+<li><strong>Navigation setup</strong> — header CSS refined, nav.plain.html rebuilt with zelis.com structure (Session 013, PR #11)</li>
+<li><strong>Block styling with design tokens</strong> — hardcoded values replaced across cards, resource-list, search blocks (Session 014, PR #12)</li>
+<li><strong>Footer implementation</strong> — full 3-section footer with DA content handling, image injection, social icons (Session 015, PR #13)</li>
 </ul>
 <h2 id="whats-in-progress">What's In Progress</h2>
 <ul>
@@ -27,12 +27,10 @@
 </ul>
 <h2 id="whats-pending">What's Pending</h2>
 <ul>
-<li><strong>Design token extraction</strong> — Extract colors, fonts, spacing from zelis.com and apply to <code>styles/styles.css</code></li>
-<li><strong>Navigation setup</strong> — Build nav.md/nav.html from zelis.com site structure</li>
-<li><strong>Additional page migrations</strong> — Only homepage is migrated; ~789 URLs remain</li>
-<li><strong>Block styling refinement</strong> — Blocks exist but CSS doesn't match source site</li>
-<li><strong>Footer implementation</strong> — footer.html was created in a prior session</li>
-<li><strong>Bulk import workflow</strong> — Set up page templates and import scripts for remaining pages</li>
+<li><strong>Issue #1</strong> — Bulk import of page styles</li>
+<li><strong>Issue #4</strong> — Bulk page migration (~789 URLs remain beyond homepage)</li>
+<li><strong>Issue #7</strong> — Additional page migrations</li>
+<li><strong>Issue #8</strong> — Verification test harness false-positives (TEST-001, TEST-002)</li>
 </ul>
 <h2 id="active-blockers">Active Blockers</h2>
 <ul>
@@ -41,22 +39,16 @@
 <h2 id="key-files">Key Files</h2>
 <ul>
 <li><code>blocks/hero/hero.js</code> — Hero block with Lottie link detection</li>
+<li><code>blocks/footer/footer.js</code> — Footer with DOM reconstruction, image injection, social icons</li>
+<li><code>blocks/footer/footer.css</code> — Footer styling with class-based selectors</li>
+<li><code>blocks/header/header.css</code> — Navigation styling</li>
 <li><code>scripts/delayed.js</code> — Lottie loader (1.5s timeout)</li>
 <li><code>scripts/scripts.js</code> — Main scripts including scroll-reveal init</li>
+<li><code>styles/styles.css</code> — Global styles with design tokens</li>
 <li><code>styles/lazy-styles.css</code> — Scroll-reveal and animation CSS</li>
-<li><code>styles/styles.css</code> — Global styles (needs design token population)</li>
-<li><code>skills/excat-animate-migration/SKILL.md</code> — Animation migration skill</li>
-<li><code>skills/excat-animate-migration/animation-verification.md</code> — Verification criteria</li>
-<li><code>skills/excat-journaling/SKILL.md</code> — Journaling skill (v1.1)</li>
-<li><code>skills/excat-journaling/journal-format.md</code> — Portable quick-reference template</li>
-<li><code>skills/excat-problem-tracker/SKILL.md</code> — Problem tracker skill (v2.0)</li>
-<li><code>skills/excat-problem-tracker/problems-reference-format.md</code> — Portable schema template</li>
-<li><code>skills/excat-project-time-tracking/SKILL.md</code> — Time tracking skill (v1.1)</li>
-<li><code>skills/excat-project-time-tracking/time-report-format.md</code> — Time report template</li>
-<li><code>skills/excat-daily-status-checkup/SKILL.md</code> — Daily status checkup skill (v1.2)</li>
-<li><code>skills/excat-daily-status-checkup/status-checkup-format.md</code> — Status briefing template (v1.2)</li>
-<li><code>journal/problems-reference.md</code> — Problems reference (8 problems, 5 categories)</li>
+<li><code>nav.plain.html</code> — Navigation structure</li>
 <li><code>journal/</code> — Project journal directory</li>
+<li><code>journal/problems-reference.md</code> — Problems reference (11 problems, 6 categories)</li>
 </ul>
 <h2 id="git-notes">Git Notes</h2>
 <ul>
@@ -66,5 +58,5 @@
 </ul>
 <h2 id="resume-point">Resume Point</h2>
 <blockquote>
-<p>Daily status checkup skill v1.2 complete with 13 improvements across two refinement passes. All five supporting skills now fully refined (journaling v1.1, problem tracker v2.0, time tracking v1.1, status checkup v1.2). Next priorities: design token extraction, navigation setup, or begin bulk page migration.</p>
+<p>Footer complete and merged (PR #13). Design tokens, navigation, and block styling all merged. Four open issues remain: #1 (bulk page styles), #4 (bulk page migration), #7 (additional page migrations), #8 (test harness false-positives). Next: pick which open issue to tackle.</p>
 </blockquote></div>

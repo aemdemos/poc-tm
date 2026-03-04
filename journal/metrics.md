@@ -1,28 +1,28 @@
 # Project Metrics
 
 ## Time
-- **Total sessions:** 11 (including backfill)
-- **Total agent time:** ~10h 40m
-- **Total with user margin (10%):** ~11h 47m
-- **Average session length:** ~58m
+- **Total sessions:** 16 (including backfills)
+- **Total agent time:** ~14h 25m
+- **Total with user margin (10%):** ~15h 55m
+- **Average session length:** ~54m
 
 ## Success Rates
-- **Actions attempted:** 79
-- **First-try success:** 77 (97%)
-- **Required retry:** 2 (3%)
+- **Actions attempted:** 102
+- **First-try success:** 101 (99%)
+- **Required retry:** 1 (1%)
 - **Failed:** 0 (0%)
 
 ## Problems
-- **Total encountered:** 8
-- **Resolved:** 6 (75%)
+- **Total encountered:** 11
+- **Resolved:** 9 (82%)
 - **Unresolved:** 2
-- **Most common category:** DA compatibility / file reference issues
+- **Most common category:** DA compatibility / content handling
 
 ## Problem Categories
 
 | Category | Count | Examples |
 |----------|-------|---------|
-| DA compatibility | 2 | URL mangling (dots→hyphens), file reference mismatch |
+| DA compatibility | 5 | URL mangling, file reference mismatch, content flattening, image stripping |
 | Git/environment | 2 | safe.directory error, filesystem access |
 | Performance | 1 | Animation load timeout too slow |
 | File sync | 1 | HTML variants stale after markdown edit |
@@ -43,3 +43,8 @@
 | 008 | 2026-02-26 | ~15m | ~17m | 5 | 100% |
 | 009 | 2026-02-26 | ~25m | ~28m | 6 | 100% |
 | 010 | 2026-02-26 | ~20m | ~22m | 8 | 100% |
+| 011 | 2026-02-27 | ~30m | ~33m | 5 | 100% |
+| 012 | 2026-03-02 | ~20m | ~22m | 2 | 100% |
+| 013 | 2026-03-02 | ~25m | ~28m | 2 | 100% |
+| 014 | 2026-03-02 | ~20m | ~22m | 4 | 100% |
+| 015 | 2026-03-02–03 | ~2h 30m | ~2h 45m | 10 | 100% |
