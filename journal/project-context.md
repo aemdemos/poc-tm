@@ -1,6 +1,6 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-04 (Session 015 backfill)
+**Last updated:** 2026-03-04 (Session 016)
 **Branch:** `main`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (~789 URLs, WordPress)
@@ -21,6 +21,7 @@
 - **Navigation setup** — header CSS refined, nav.plain.html rebuilt with zelis.com structure (Session 013, PR #11)
 - **Block styling with design tokens** — hardcoded values replaced across cards, resource-list, search blocks (Session 014, PR #12)
 - **Footer implementation** — full 3-section footer with DA content handling, image injection, social icons (Session 015, PR #13)
+- Journal backfill (Sessions 011-015) and journal reminder Stop hook (Session 016)
 
 ## What's In Progress
 - (nothing actively in progress — between sessions)
@@ -46,6 +47,8 @@
 - `nav.plain.html` — Navigation structure
 - `journal/` — Project journal directory
 - `journal/problems-reference.md` — Problems reference (11 problems, 6 categories)
+- `.claude/skills/hooks/journal-reminder.js` — Stop hook for journal reminders
+- `.claude/settings.json` — Project-level hook registration
 
 ## Git Notes
 - Remote: `https://github.com/aemdemos/poc-tm.git`
@@ -53,4 +56,4 @@
 - GitHub PAT provided by user at runtime (do not store in committed files)
 
 ## Resume Point
-> Footer complete and merged (PR #13). Design tokens, navigation, and block styling all merged. Four open issues remain: #1 (bulk page styles), #4 (bulk page migration), #7 (additional page migrations), #8 (test harness false-positives). Next: pick which open issue to tackle.
+> Journal fully caught up through Session 016. Journal reminder hook active. Four open issues remain: #1 (bulk page styles), #4 (bulk page migration), #7 (additional page migrations), #8 (test harness false-positives). Next: pick which open issue to tackle.

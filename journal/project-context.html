@@ -14,7 +14,7 @@
 <header></header>
 <main>
 <div><h1 id="project-context--zeliscom-eds-migration">Project Context — Zelis.com EDS Migration</h1>
-<p><strong>Last updated:</strong> 2026-03-04 (Session 015 backfill)
+<p><strong>Last updated:</strong> 2026-03-04 (Session 016)
 <strong>Branch:</strong> <code>main</code>
 <strong>Repository:</strong> https://github.com/aemdemos/poc-tm.git
 <strong>Source site:</strong> https://www.zelis.com/ (~789 URLs, WordPress)
@@ -35,6 +35,7 @@
 <li><strong>Navigation setup</strong> — header CSS refined, nav.plain.html rebuilt with zelis.com structure (Session 013, PR #11)</li>
 <li><strong>Block styling with design tokens</strong> — hardcoded values replaced across cards, resource-list, search blocks (Session 014, PR #12)</li>
 <li><strong>Footer implementation</strong> — full 3-section footer with DA content handling, image injection, social icons (Session 015, PR #13)</li>
+<li>Journal backfill (Sessions 011-015) and journal reminder Stop hook (Session 016)</li>
 </ul>
 <h2 id="whats-in-progress">What's In Progress</h2>
 <ul>
@@ -64,6 +65,8 @@
 <li><code>nav.plain.html</code> — Navigation structure</li>
 <li><code>journal/</code> — Project journal directory</li>
 <li><code>journal/problems-reference.md</code> — Problems reference (11 problems, 6 categories)</li>
+<li><code>.claude/skills/hooks/journal-reminder.js</code> — Stop hook for journal reminders</li>
+<li><code>.claude/settings.json</code> — Project-level hook registration</li>
 </ul>
 <h2 id="git-notes">Git Notes</h2>
 <ul>
@@ -73,7 +76,7 @@
 </ul>
 <h2 id="resume-point">Resume Point</h2>
 <blockquote>
-<p>Footer complete and merged (PR #13). Design tokens, navigation, and block styling all merged. Four open issues remain: #1 (bulk page styles), #4 (bulk page migration), #7 (additional page migrations), #8 (test harness false-positives). Next: pick which open issue to tackle.</p>
+<p>Journal fully caught up through Session 016. Journal reminder hook active. Four open issues remain: #1 (bulk page styles), #4 (bulk page migration), #7 (additional page migrations), #8 (test harness false-positives). Next: pick which open issue to tackle.</p>
 </blockquote></div>
 </main>
 <footer></footer>
