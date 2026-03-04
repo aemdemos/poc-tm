@@ -775,3 +775,58 @@
 
 ### Carry-Forward
 > Footer complete and merged. Open issues remaining: #1 (bulk page styles), #4 (bulk page migration), #7 (additional page migrations), #8 (test harness false-positives). Journal needs backfill for sessions 011-015.
+
+---
+
+## Session 016 — 2026-03-04 — Daily status checkup, journal backfill, and journal reminder hook
+
+**Branch:** `main`
+**Duration:** ~30m (agent) + 10% user overhead = ~33m total
+**Session goal:** Run daily status checkup, backfill missing journal entries, set up automatic journal reminder hook
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Run daily status checkup skill — read all journal sources and build briefing | new | 1 | pass | 5m |
+| 2 | Backfill journal sessions 011-015 from git history (5 sessions, 6 journal files) | new | 1 | pass | 10m |
+| 3 | Update problems-reference.md with 3 new DA problems from footer work (DA-003, DA-004, DA-005) | new | 1 | pass | 3m |
+| 4 | Investigate hook system for automatic journaling reminders | new | 1 | pass | 3m |
+| 5 | Create journal-reminder.js Stop hook in plugin cache (ESM version) | new | 1 | pass | 2m |
+| 6 | Register hook in plugin.json Stop event | new | 1 | pass | 1m |
+| 7 | Create persistent version in workspace hooks (CommonJS for package.json compat) | new | 1 | pass | 2m |
+| 8 | Create .claude/settings.json with project-level Stop hook registration | new | 1 | pass | 1m |
+| 9 | Commit and push journal backfill (`c8d237b`) | routine | 1 | pass | 1m |
+| 10 | Commit and push journal reminder hook (`7926947`) | routine | 1 | pass | 1m |
+
+### Outcomes
+- **Completed:** Daily status briefing produced; 5 missing sessions backfilled (011-015); 3 new DA problems documented; journal reminder Stop hook created and persisted in git
+- **Partial:** None
+- **Deferred:** None
+
+### Problems Encountered
+
+(none)
+
+### Key Decisions
+- Journal reminder hook uses file mtime heuristic (5-minute window) to detect whether journaling was done
+- Hook outputs `decision: block` to prevent session end without journaling — not a hard block, just a reminder
+- Created both ESM (plugin cache) and CommonJS (workspace) versions since workspace package.json lacks `"type": "module"`
+- Registered hook in `.claude/settings.json` for persistence across environments, not just plugin.json
+
+### Files Changed
+- `journal/journal.md` — Added Sessions 011-015 (backfill) and Session 016
+- `journal/journal-index.md` — Added rows for Sessions 011-016
+- `journal/project-context.md` — Updated to reflect current state (mid migration, 4 open issues)
+- `journal/metrics.md` — Updated cumulative stats (16 sessions, ~14h 55m agent time)
+- `journal/time-tracking.md` — Added daily sections for Feb 27 and Mar 2-3
+- `journal/problems-reference.md` — Added DA-003, DA-004, DA-005 from footer work
+- `.claude/skills/hooks/journal-reminder.js` — New Stop hook (CommonJS, persistent)
+- `.claude/settings.json` — New project-level hook registration
+
+### Commits
+- `c8d237b` — Backfill journal sessions 011-015 and add DA problems from footer work
+- `7926947` — Add journal reminder Stop hook for persistent session logging
+
+### Carry-Forward
+> Journal fully caught up through Session 016. Journal reminder hook active — will block session end if journaling is skipped. Four open issues remain: #1 (bulk page styles), #4 (bulk page migration), #7 (additional page migrations), #8 (test harness false-positives). Next: pick an issue to work on.
