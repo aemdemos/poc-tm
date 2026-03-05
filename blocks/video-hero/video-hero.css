@@ -1,0 +1,274 @@
+/*
+ * Video Hero Block — Zelis Design
+ * Full-width hero with poster image, gradient overlay, text content,
+ * and expandable Vimeo/YouTube video player.
+ */
+
+/* ---- Container ---- */
+.video-hero-container {
+  padding: 0;
+}
+
+.video-hero-container .video-hero-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+/* ---- Block Layout ---- */
+.video-hero {
+  position: relative;
+  background-color: #280a5f;
+  overflow: hidden;
+}
+
+.video-hero > div {
+  display: flex;
+  flex-direction: column;
+  max-width: var(--content-width, 1200px);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* ---- Text Column ---- */
+.video-hero-content {
+  padding: var(--spacing-xl, 48px) var(--spacing-m, 24px);
+  position: relative;
+  z-index: 3;
+}
+
+.video-hero h1 {
+  color: var(--color-white, #fff);
+  font-weight: 500;
+  margin-bottom: var(--spacing-s, 16px);
+  font-size: clamp(36px, 5vw, 57px);
+  line-height: 1.18;
+}
+
+.video-hero h1 em,
+.video-hero h1 i {
+  color: var(--color-gold, #ffbe00);
+  font-style: normal;
+}
+
+.video-hero p {
+  color: var(--color-white, #fff);
+  font-size: var(--body-font-size-xl, 19px);
+  line-height: 1.63;
+  margin-bottom: var(--spacing-l, 32px);
+}
+
+.video-hero .button-container {
+  display: inline-block;
+  margin: 0 var(--spacing-s, 16px) var(--spacing-s, 16px) 0;
+}
+
+.video-hero a.button {
+  color: var(--color-bright-blue, #320fff);
+  background: var(--color-white, #fff);
+  border: 2px solid var(--color-white, #fff);
+  border-radius: 3px;
+  padding: 13px 33px;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s, color 0.2s;
+}
+
+.video-hero a.button:hover {
+  background: transparent;
+  color: var(--color-white, #fff);
+}
+
+/* ---- Media Column / Poster ---- */
+.video-hero-media {
+  position: relative;
+  min-height: 300px;
+}
+
+.video-hero-poster {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+}
+
+.video-hero-poster picture {
+  display: block;
+}
+
+.video-hero-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Gradient overlay */
+.video-hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #26004f 0.72%, rgb(115 115 115 / 0%) 63.25%);
+  pointer-events: none;
+}
+
+/* ---- Play Button ---- */
+.video-hero-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.2s;
+}
+
+.video-hero-play:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-hero-play svg {
+  display: block;
+  width: 94px;
+  height: 95px;
+  filter: drop-shadow(0 2px 8px rgb(0 0 0 / 30%));
+}
+
+/* ---- Close Button ---- */
+.video-hero-close {
+  display: none;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 12;
+  background: none;
+  border: none;
+  color: var(--color-white, #fff);
+  font-size: 36px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 8px;
+}
+
+/* ---- Backdrop ---- */
+.video-hero-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgb(0 0 0 / 80%);
+  z-index: 9;
+}
+
+/* ---- Video Player (iframe container) ---- */
+.video-hero-player {
+  display: none;
+}
+
+.video-hero-player iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ---- Expanded State ---- */
+.video-hero.expanded .video-hero-backdrop {
+  display: block;
+}
+
+.video-hero.expanded .video-hero-play {
+  display: none;
+}
+
+.video-hero.expanded .video-hero-close {
+  display: block;
+}
+
+.video-hero.expanded .video-hero-poster {
+  position: fixed;
+  top: 10%;
+  left: 5%;
+  width: 90%;
+  height: 75%;
+  z-index: 10;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #000;
+}
+
+.video-hero.expanded .video-hero-poster picture,
+.video-hero.expanded .video-hero-gradient {
+  display: none;
+}
+
+.video-hero.expanded .video-hero-player {
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+/* ---- Desktop (two-column side-by-side) ---- */
+@media (width >= 900px) {
+  .video-hero > div {
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 500px;
+  }
+
+  .video-hero-content {
+    flex: 0 0 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--spacing-xl, 48px) 24px var(--spacing-xl, 48px) 32px;
+  }
+
+  .video-hero-media {
+    flex: 0 0 55%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 55%;
+  }
+
+  .video-hero-poster {
+    position: absolute;
+    inset: 0;
+  }
+
+  .video-hero-poster img {
+    position: absolute;
+    inset: 0;
+    object-position: center;
+  }
+
+  /* Gradient covers full block at desktop */
+  .video-hero-gradient {
+    position: absolute;
+    inset: 0;
+    width: 100vw;
+    right: auto;
+    left: -50vw;
+  }
+}
+
+@media (width >= 1200px) {
+  .video-hero > div {
+    min-height: 560px;
+  }
+
+  .video-hero-content {
+    padding-right: var(--spacing-xl, 48px);
+  }
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .video-hero-play {
+    transition: none;
+  }
+}

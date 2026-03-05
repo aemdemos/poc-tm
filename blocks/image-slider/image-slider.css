@@ -1,0 +1,116 @@
+/*
+ * Image Slider Block — Zelis Design
+ * Full-width image-only slider with prev/next arrows,
+ * autoplay, and CSS scroll-snap navigation.
+ */
+
+/* ---- Container ---- */
+.image-slider-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ---- Track ---- */
+.image-slider-track {
+  display: flex;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow: scroll hidden;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.image-slider-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---- Slides ---- */
+.image-slider-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  position: relative;
+  width: 100%;
+}
+
+.image-slider-slide picture {
+  display: block;
+  width: 100%;
+}
+
+.image-slider-slide img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- Navigation Arrows ---- */
+.image-slider-prev {
+  left: 16px;
+}
+
+.image-slider-next {
+  right: 16px;
+}
+
+.image-slider-prev,
+.image-slider-next {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 90%);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s;
+}
+
+.image-slider-prev:hover,
+.image-slider-next:hover {
+  background: rgb(255 255 255 / 100%);
+}
+
+/* Arrow chevrons via pseudo-element */
+.image-slider-prev::after,
+.image-slider-next::after {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--color-ink-blue-100, #23004b);
+  border-bottom: none;
+  border-left: none;
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 2px);
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.image-slider-next::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+  left: calc(50% - 2px);
+}
+
+/* Show arrows on tablet+ */
+@media (width >= 768px) {
+  .image-slider-prev,
+  .image-slider-next {
+    display: block;
+  }
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .image-slider-track {
+    scroll-behavior: auto;
+  }
+}

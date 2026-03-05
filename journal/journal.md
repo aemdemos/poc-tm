@@ -1087,3 +1087,73 @@
 
 ### Carry-Forward
 > Execution plan Step 5 is complete (P1-4, P2-5 resolved; P2-6 deferred). Next: Step 6 — new blocks (P1-5 video hero, P1-6 image slider for let-care-flow). Also remaining: P2-6 (animated SVG icons for We Are Zelis cards — needs custom block), P2-9 (gold mark highlight), P2-10 (case study card layout). PR #16 still open. Bulk import (Step 9) ready via URL catalog.
+
+---
+
+## Session 024 — 2026-03-05 — Step 6: Video Hero and Image Slider blocks
+
+**Branch:** `issue-17-addtl-blocks`
+**Duration:** ~1h 25m (agent) + 10% = ~1h 34m
+**Session goal:** Implement two new EDS blocks for let-care-flow page — video hero (P1-5) and image slider (P1-6)
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Research original zelis.com video hero — Vimeo embed, poster, gradient overlay, expanded modal | new | 1 | pass | 10m |
+| 2 | Research original zelis.com image slider — 5 full-width images, Slick slider, 5s autoplay, arrows | new | 1 | pass | 10m |
+| 3 | Review existing blocks (hero.js, video.js, carousel.js) for reuse patterns | new | 1 | pass | 5m |
+| 4 | Write Step 6 plan at `docs/step-6-new-blocks-plan.md` — content models, implementation details, acceptance criteria | new | 1 | pass | 10m |
+| 5 | Create `blocks/video-hero/video-hero.js` — two-column layout, poster+gradient, play button SVG, Vimeo/YouTube iframe injection, expanded modal with backdrop, Escape key close | new | 1 | pass | 15m |
+| 6 | Create `blocks/video-hero/video-hero.css` — dark purple bg, gradient overlay, gold em highlight, responsive at 900px/1200px, expanded modal positioning | new | 1 | pass | 10m |
+| 7 | Update `content/let-care-flow.md` — Hero→Video Hero with Vimeo URL, Carousel→Image Slider, fix image URLs to full resolution | modify | 1 | pass | 3m |
+| 8 | Write `content/let-care-flow.html` manually with proper EDS block structure (convert script broken) | new | 1 | pass | 5m |
+| 9 | Restore `content/index.html` — was corrupted by convert-all-md.js --force in previous session | fix | 1 | pass | 5m |
+| 10 | Create `blocks/image-slider/image-slider.js` — scroll-snap track, prev/next arrows, 5s autoplay via IntersectionObserver, pause on hover, reduced motion support | new | 1 | pass | 10m |
+| 11 | Create `blocks/image-slider/image-slider.css` — full-width slides, 16:9 aspect ratio, white arrow buttons, arrows hidden below 768px | new | 1 | pass | 5m |
+| 12 | Preview let-care-flow at 1440px — video hero renders two-column with poster+play button, image slider shows slides with arrows | verify | 1 | pass | 5m |
+| 13 | Verify homepage restored — hero, tabs, cards all rendering correctly | verify | 1 | pass | 3m |
+| 14 | Fix lint errors — move stopAutoplay before startAutoplay (no-use-before-define), reorder CSS selectors (no-descending-specificity) | fix | 1 | pass | 3m |
+| 15 | Commit `b672a47` — new blocks + plan doc; commit `8233149` — lint fixes | new | 1 | pass | 2m |
+| 16 | Push to remote — failed (no GitHub credentials in environment) | new | 1 | fail | 1m |
+
+### Outcomes
+- **Completed:** Both new blocks implemented, tested, and committed on `issue-17-addtl-blocks`
+  - P1-5 (video hero): poster with gradient overlay, play button, Vimeo iframe injection in expanded modal, close via button/backdrop/Escape
+  - P1-6 (image slider): 5-slide image carousel with CSS scroll-snap, 5s autoplay, prev/next arrows, IntersectionObserver
+- **Completed:** Step 6 plan documented at `docs/step-6-new-blocks-plan.md`
+- **Completed:** content/index.html restored after convert script corruption
+- **Partial:** Push to remote failed — needs manual push with GitHub credentials
+
+### Problems Encountered
+
+| Problem | Severity | Resolved? | Resolution | Related Action # |
+|---------|----------|-----------|------------|-----------------|
+| convert-all-md.js --force corrupted index.html (from previous session) — rendered EDS markdown tables as literal text | major | yes | Manually rewrote content/index.html from index.md with proper EDS block HTML structure | #9 |
+| git push failed — no GitHub credentials available in environment | minor | no | User needs to push manually: `git push origin issue-17-addtl-blocks` | #16 |
+| Lint: no-use-before-define in image-slider.js (stopAutoplay called before defined) | minor | yes | Moved stopAutoplay function above startAutoplay | #14 |
+| Lint: no-descending-specificity in image-slider.css (.image-slider-prev after grouped selector) | minor | yes | Reordered individual selectors before grouped selector | #14 |
+
+### Key Decisions
+- Created dedicated video-hero block (not extending existing hero or video blocks) — different enough layout and behavior to warrant separate block
+- Used CSS scroll-snap for image slider (matching carousel pattern) instead of transform-based animation — simpler, native swipe support
+- Image slider has no dot indicators (matches original Slick slider config on zelis.com)
+- Arrows hidden below 768px for image slider (mobile uses native swipe via scroll-snap)
+- convert-all-md.js must NOT be used for EDS content — it doesn't understand grid table syntax
+
+### Files Changed
+- `blocks/video-hero/video-hero.js` — New: two-column video hero with Vimeo/YouTube iframe injection
+- `blocks/video-hero/video-hero.css` — New: dark purple bg, gradient, responsive, expanded modal styles
+- `blocks/image-slider/image-slider.js` — New: scroll-snap slider with autoplay, arrows, IntersectionObserver
+- `blocks/image-slider/image-slider.css` — New: full-width slides, arrow styling, responsive
+- `docs/step-6-new-blocks-plan.md` — New: detailed implementation plan for both blocks
+- `content/let-care-flow.md` — Updated: Hero→Video Hero with Vimeo URL, Carousel→Image Slider
+- `content/let-care-flow.html` — Rewritten manually with proper EDS block HTML
+- `content/index.html` — Restored from corruption (manually rebuilt from index.md)
+
+### Commits
+- `b672a47` — Add video-hero and image-slider blocks (Step 6: P1-5, P1-6)
+- `8233149` — Fix lint errors in image-slider block
+
+### Carry-Forward
+> Step 6 complete — video-hero and image-slider blocks implemented on `issue-17-addtl-blocks` branch. Needs manual `git push origin issue-17-addtl-blocks` (no credentials in env). IMPORTANT: Never use convert-all-md.js for EDS content files — it corrupts block HTML. Next priorities: open PR for issue-17-addtl-blocks, then Step 7+ from execution plan (P2-9 gold mark highlight, P2-10 case study card layout, P2-6 animated SVG icons). Bulk import (Step 9) still ready via URL catalog.
