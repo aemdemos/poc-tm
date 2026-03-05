@@ -984,3 +984,46 @@
 
 ### Carry-Forward
 > Comprehensive style survey report complete at `docs/style-survey-report.md` (43 items, 14 categories, 13-step execution plan). Button fixes confirmed already done. Next steps per execution order: (1) quick CSS fixes — P1-1 body font-size, T2 h3 weight, P2-3/P2-4 footer sizes, (2) checklist corrections — T1, L1, (3) create Issue #1 PR, (4) re-migrate let-care-flow (P0-1).
+
+---
+
+## Session 020 — 2026-03-05 — Execute Style Plan Steps 1–3: CSS Fixes, Checklist, PR
+
+**Branch:** `issue-1-style-refinement-2`
+**Duration:** ~20m (agent) + 10% user overhead = ~22m total
+**Session goal:** Execute Steps 1–3 of the style survey execution plan: quick CSS fixes, checklist corrections, and Issue #1 PR.
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | P1-1: Fix body font-size `clamp(18-20px)` → flat `18px` in `styles/styles.css` | new | 1 | pass | 2m |
+| 2 | T2: Fix global h3 font-weight `600` → `500` in `styles/styles.css` | new | 1 | pass | 2m |
+| 3 | P2-3: Fix footer h5 font-size `var(--heading-font-size-xs)` → `var(--heading-font-size-s)` (16→19px) in `blocks/footer/footer.css` | new | 1 | pass | 2m |
+| 4 | P2-4: Fix footer link font-size `var(--body-font-size-s)` → `var(--body-font-size-xl)` (14→18px) in `blocks/footer/footer.css` | new | 1 | pass | 2m |
+| 5 | T1: Update validation checklist h1/h2 weight from 700 to 500 in `docs/validation-checklist.md` | new | 1 | pass | 1m |
+| 6 | L1: Update validation checklist bright-blue from #4300FF to #320FFF in `docs/validation-checklist.md` | new | 1 | pass | 1m |
+| 7 | Verify all 4 CSS fixes via Playwright `getComputedStyle` at 1440px — body 18px, h3 500, footer h5 19px, footer links 18px | new | 1 | pass | 5m |
+| 8 | Commit `533b8b9`, push to `origin/issue-1-style-refinement-2`, PR #16 created | new | 1 | pass | 5m |
+
+### Outcomes
+- **Completed:** All 4 quick CSS fixes applied and verified, 2 checklist corrections applied, committed, pushed, PR #16 open
+- **Completed:** Steps 1–3 of style survey execution plan done
+
+### Problems Encountered
+(none)
+
+### Key Decisions
+- Used flat `18px` instead of adjusting clamp range for body font-size — original site uses flat 18px, no need for responsive scaling on body text
+- Used `var(--body-font-size-xl)` for footer links since that token now resolves to 18px after the body font-size fix
+
+### Files Changed
+- `styles/styles.css` — `--body-font-size-xl` changed from `clamp(18px, ..., 20px)` to `18px`; h3 `font-weight` from `600` to `500`
+- `blocks/footer/footer.css` — h5 `font-size` from `var(--heading-font-size-xs)` to `var(--heading-font-size-s)`; link `font-size` from `var(--body-font-size-s)` to `var(--body-font-size-xl)`
+- `docs/validation-checklist.md` — h1/h2 weight corrected to 500; bright-blue corrected to #320FFF
+
+### Commits
+- `533b8b9` — Issue #1: Quick CSS fixes and style survey report
+
+### Carry-Forward
+> Steps 1–3 of execution plan complete. PR #16 open at https://github.com/aemdemos/poc-tm/pull/16. Next: Step 4 — re-migrate let-care-flow page (P0-1), then Step 5 — homepage content fixes (P1-4 careers section, P2-5/P2-6 missing images).

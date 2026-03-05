@@ -14,11 +14,11 @@
 <header></header>
 <main>
 <div><h1 id="project-context--zeliscom-eds-migration">Project Context — Zelis.com EDS Migration</h1>
-<p><strong>Last updated:</strong> 2026-03-05 (Session 019)
-<strong>Branch:</strong> <code>issue-1-style-refinement</code>
+<p><strong>Last updated:</strong> 2026-03-05 (Session 020)
+<strong>Branch:</strong> <code>issue-1-style-refinement-2</code>
 <strong>Repository:</strong> https://github.com/aemdemos/poc-tm.git
 <strong>Source site:</strong> https://www.zelis.com/ (~789 URLs, WordPress)
-<strong>Overall status:</strong> Comprehensive style survey complete (43 items, 14 categories). Homepage ~85% matched. Ready for quick CSS fixes and Issue #1 PR.</p>
+<strong>Overall status:</strong> Style plan Steps 1–3 complete. Quick CSS fixes applied, checklist corrected, PR #16 open. Ready for let-care-flow re-migration.</p>
 <h2 id="whats-done">What's Done</h2>
 <ul>
 <li>Repository initialized and configured (Session 000)</li>
@@ -37,17 +37,14 @@
 <li><strong>Issue #1 style fixes (Session 017):</strong> awards layout, carousel, tabs, section spacing, serif tokenization, docs</li>
 <li><strong>Style survey (Session 018):</strong> Comprehensive visual audit of homepage + let-care-flow vs original</li>
 <li><strong>Merged style survey report (Session 019):</strong> Combined computed-style data with architectural analysis into 43-item comprehensive document</li>
+<li><strong>Quick CSS fixes + PR (Session 020):</strong> body 18px, h3 weight 500, footer h5 19px, footer links 18px, checklist corrections, PR #16</li>
 </ul>
 <h2 id="whats-in-progress">What's In Progress</h2>
 <ul>
-<li>Issue #1 changes on <code>issue-1-style-refinement</code> branch (committed as <code>20fef05</code>, not yet PR'd)</li>
-<li>Style survey report at <code>docs/style-survey-report.md</code></li>
+<li>PR #16 open on <code>issue-1-style-refinement-2</code> — awaiting review/merge</li>
 </ul>
 <h2 id="whats-pending">What's Pending</h2>
 <ul>
-<li><strong>Quick CSS fixes</strong> — body font-size clamp max 20→18px, h3 weight 600→500, footer h5/link sizes (P1-1, T2, P2-3, P2-4)</li>
-<li><strong>Checklist corrections</strong> — T1 (h1/h2 weight 500 not 700), L1 (bright-blue #320FFF not #4300FF)</li>
-<li><strong>Issue #1 PR</strong> — Create PR for all Issue #1 changes</li>
 <li><strong>P0-1: Re-migrate let-care-flow</strong> — Page has critical duplication issues, needs fresh migration</li>
 <li><strong>P1-4: Add careers section</strong> — "Find your purpose in ours" missing from homepage</li>
 <li><strong>P1-5/P1-6: New blocks</strong> — Video hero and image slider for let-care-flow</li>
@@ -63,16 +60,15 @@
 </ul>
 <h2 id="key-files">Key Files</h2>
 <ul>
-<li><code>styles/styles.css</code> — Global styles with design tokens, section variants, awards layout</li>
+<li><code>styles/styles.css</code> — Global styles with design tokens, section variants</li>
+<li><code>blocks/footer/footer.css</code> — Footer with corrected h5/link font sizes</li>
 <li><code>blocks/tabs/tabs.css</code> — Tab button sizing (auto-width, no truncation)</li>
 <li><code>blocks/columns/columns.css</code> — Testimonial image constraint</li>
 <li><code>blocks/hero/hero.css</code> — Hero block with eyebrow serif font token</li>
 <li><code>blocks/cards/cards.js</code> — Counter animation (750+, 850k+, 120M)</li>
 <li><code>blocks/footer/footer.js</code> — Footer with DOM reconstruction</li>
-<li><code>tools/importer/convert-all-md.js</code> — Batch MD→HTML converter (reads head.html)</li>
-<li><code>head.html</code> — Single source of truth for <code>&#x3C;head></code> content</li>
 <li><code>docs/style-survey-report.md</code> — Comprehensive style audit: 43 items, 14 categories, 13-step execution plan</li>
-<li><code>docs/validation-checklist.md</code> — QA checklist for page validation</li>
+<li><code>docs/validation-checklist.md</code> — QA checklist (corrected: h1/h2 500, bright-blue #320FFF)</li>
 <li><code>journal/</code> — Project journal directory</li>
 </ul>
 <h2 id="git-notes">Git Notes</h2>
@@ -83,7 +79,7 @@
 </ul>
 <h2 id="resume-point">Resume Point</h2>
 <blockquote>
-<p>Comprehensive style survey report complete (43 items, 14 categories). Button fixes confirmed already done in Session 017. Next per execution order: (1) quick CSS fixes — P1-1 body font-size, T2 h3 weight, P2-3/P2-4 footer sizes, (2) checklist corrections — T1, L1, (3) create Issue #1 PR, (4) re-migrate let-care-flow (P0-1).</p>
+<p>Steps 1–3 of execution plan complete. PR #16 open. Next: Step 4 — re-migrate let-care-flow page (P0-1), then Step 5 — homepage content fixes (P1-4 careers section, P2-5/P2-6 missing images).</p>
 </blockquote></div>
 </main>
 <footer></footer>

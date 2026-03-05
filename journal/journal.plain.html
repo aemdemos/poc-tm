@@ -1831,3 +1831,97 @@ Each session is appended chronologically. Read from bottom for most recent.</p>
 </ul><h3 id="carry-forward-19">Carry-Forward</h3><blockquote>
 <p>Comprehensive style survey report complete at <code>docs/style-survey-report.md</code> (43 items, 14 categories, 13-step execution plan). Button fixes confirmed already done. Next steps per execution order: (1) quick CSS fixes — P1-1 body font-size, T2 h3 weight, P2-3/P2-4 footer sizes, (2) checklist corrections — T1, L1, (3) create Issue #1 PR, (4) re-migrate let-care-flow (P0-1).</p>
 </blockquote></div>
+<div><h2 id="session-020--2026-03-05--execute-style-plan-steps-13-css-fixes-checklist-pr">Session 020 — 2026-03-05 — Execute Style Plan Steps 1–3: CSS Fixes, Checklist, PR</h2><p><strong>Branch:</strong> <code>issue-1-style-refinement-2</code>
+<strong>Duration:</strong> ~20m (agent) + 10% user overhead = ~22m total
+<strong>Session goal:</strong> Execute Steps 1–3 of the style survey execution plan: quick CSS fixes, checklist corrections, and Issue #1 PR.</p><h3 id="actions-20">Actions</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>1</div><div>P1-1: Fix body font-size <code>clamp(18-20px)</code> → flat <code>18px</code> in <code>styles/styles.css</code></div><div>new</div><div>1</div><div>pass</div><div>2m</div></div><div><div>2</div><div>T2: Fix global h3 font-weight <code>600</code> → <code>500</code> in <code>styles/styles.css</code></div><div>new</div><div>1</div><div>pass</div><div>2m</div></div><div><div>3</div><div>P2-3: Fix footer h5 font-size <code>var(--heading-font-size-xs)</code> → <code>var(--heading-font-size-s)</code> (16→19px) in <code>blocks/footer/footer.css</code></div><div>new</div><div>1</div><div>pass</div><div>2m</div></div><div><div>4</div><div>P2-4: Fix footer link font-size <code>var(--body-font-size-s)</code> → <code>var(--body-font-size-xl)</code> (14→18px) in <code>blocks/footer/footer.css</code></div><div>new</div><div>1</div><div>pass</div><div>2m</div></div><div><div>5</div><div>T1: Update validation checklist h1/h2 weight from 700 to 500 in <code>docs/validation-checklist.md</code></div><div>new</div><div>1</div><div>pass</div><div>1m</div></div><div><div>6</div><div>L1: Update validation checklist bright-blue from #4300FF to #320FFF in <code>docs/validation-checklist.md</code></div><div>new</div><div>1</div><div>pass</div><div>1m</div></div><div><div>7</div><div>Verify all 4 CSS fixes via Playwright <code>getComputedStyle</code> at 1440px — body 18px, h3 500, footer h5 19px, footer links 18px</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>8</div><div>Commit <code>533b8b9</code>, push to <code>origin/issue-1-style-refinement-2</code>, PR #16 created</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div></div><h3 id="outcomes-20">Outcomes</h3><ul>
+<li><strong>Completed:</strong> All 4 quick CSS fixes applied and verified, 2 checklist corrections applied, committed, pushed, PR #16 open</li>
+<li><strong>Completed:</strong> Steps 1–3 of style survey execution plan done</li>
+</ul><h3 id="problems-encountered-20">Problems Encountered</h3><p>(none)</p><h3 id="key-decisions-17">Key Decisions</h3><ul>
+<li>Used flat <code>18px</code> instead of adjusting clamp range for body font-size — original site uses flat 18px, no need for responsive scaling on body text</li>
+<li>Used <code>var(--body-font-size-xl)</code> for footer links since that token now resolves to 18px after the body font-size fix</li>
+</ul><h3 id="files-changed-20">Files Changed</h3><ul>
+<li><code>styles/styles.css</code> — <code>--body-font-size-xl</code> changed from <code>clamp(18px, ..., 20px)</code> to <code>18px</code>; h3 <code>font-weight</code> from <code>600</code> to <code>500</code></li>
+<li><code>blocks/footer/footer.css</code> — h5 <code>font-size</code> from <code>var(--heading-font-size-xs)</code> to <code>var(--heading-font-size-s)</code>; link <code>font-size</code> from <code>var(--body-font-size-s)</code> to <code>var(--body-font-size-xl)</code></li>
+<li><code>docs/validation-checklist.md</code> — h1/h2 weight corrected to 500; bright-blue corrected to #320FFF</li>
+</ul><h3 id="commits-20">Commits</h3><ul>
+<li><code>533b8b9</code> — Issue #1: Quick CSS fixes and style survey report</li>
+</ul><h3 id="carry-forward-20">Carry-Forward</h3><blockquote>
+<p>Steps 1–3 of execution plan complete. PR #16 open at https://github.com/aemdemos/poc-tm/pull/16. Next: Step 4 — re-migrate let-care-flow page (P0-1), then Step 5 — homepage content fixes (P1-4 careers section, P2-5/P2-6 missing images).</p>
+</blockquote></div>
