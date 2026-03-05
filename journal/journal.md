@@ -830,3 +830,65 @@
 
 ### Carry-Forward
 > Journal fully caught up through Session 016. Journal reminder hook active — will block session end if journaling is skipped. Four open issues remain: #1 (bulk page styles), #4 (bulk page migration), #7 (additional page migrations), #8 (test harness false-positives). Next: pick an issue to work on.
+
+---
+
+## Session 017 — 2026-03-05 — Issue #1: Bulk Page Styles — Visual Fixes
+
+**Branch:** `issue-1-style-refinement`
+**Duration:** ~1h 45m (agent) + 10% = ~1h 56m
+**Session goal:** Make all EDS pages match original zelis.com styling. Fix critical visual breaks, layout issues, spacing, and tokenize fonts.
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Created implementation plan in `.claude/plan.md` with P0-P3 priority classification | new | 1 | pass | 15m |
+| 2 | Analyzed original zelis.com section spacing, typography, and layout via Playwright | new | 1 | pass | 10m |
+| 3 | Fixed `convert-all-md.js` to read `head.html` as single source of truth (Phase A) | new | 1 | pass | 10m |
+| 4 | Fixed awards section: badge images horizontal row using `:has(> picture)` selector | new | 1 | pass | 10m |
+| 5 | Fixed carousel/testimonials: constrained image to `max-height: 600px`, centered layout | new | 1 | pass | 10m |
+| 6 | Verified counter animation (750+, 850k+, 120M) — all three work correctly | new | 1 | pass | 5m |
+| 7 | Fixed tab button truncation: changed `flex: 1 1 0` to `flex: 0 0 auto` with tighter padding | new | 3 | pass | 15m |
+| 8 | Section spacing audit: compared all sections vs original, applied asymmetric padding (100/48) | new | 1 | pass | 10m |
+| 9 | Tokenized 5 hardcoded `Georgia, 'Times New Roman', serif` references to `var(--serif-font-family)` | new | 1 | pass | 5m |
+| 10 | Visual verification at 1440px, 768px, 375px — all sections match original | new | 1 | pass | 10m |
+| 11 | Created `docs/head-contract.md`, `docs/post-bulk-import.md`, `docs/validation-checklist.md` | new | 1 | pass | 10m |
+| 12 | Fixed stylelint `no-descending-specificity` error on awards CSS | new | 1 | pass | 3m |
+
+### Outcomes
+- **Completed:** All P0 critical visual breaks fixed, P1 layout issues fixed, P2 token cleanup done, documentation added, visual verification passed at all 3 breakpoints
+- **Deferred:** P3 responsive breakpoint alignment (900px vs 992px) — low impact, keep EDS convention
+- **Deferred:** H3 font-weight verification (600 vs 700) — needs cross-page comparison
+
+### Problems Encountered
+
+| Problem | Severity | Resolved? | Resolution | Related Action # |
+|---------|----------|-----------|------------|-----------------|
+| Tab buttons still truncated after first fix (`flex: 0 1 auto`) — total width exceeded 1200px container | major | yes | Changed to `flex: 0 0 auto`, reduced padding from `--spacing-m` to `--spacing-xs`, removed gap | #7 |
+| Playwright fonts render wider than Avenir Next LT Pro (fallback font in headless) | minor | workaround | Designed padding to accommodate wider fallback fonts | #7 |
+| Stylelint `no-descending-specificity` on awards `p:has(> picture)` selector | minor | yes | Added `/* stylelint-disable-next-line */` — false positive, selectors target different elements | #12 |
+
+### Key Decisions
+- **Asymmetric section padding (100px top / 48px bottom):** Original zelis.com uses Bootstrap `pt-8 pb-5` (100/48) on most content sections. Applied globally to default sections while keeping dark at 100/100 and accent at 48/48.
+- **Tab sizing approach:** Used `flex: 0 0 auto` with `overflow-x: auto` instead of equal-width `flex: 1 1 0`. Tabs now auto-size to content and scroll if needed on smaller screens.
+- **Counter animation "0M" was timing artifact:** Not a bug — IntersectionObserver fires when section scrolls into view. All three counters animate correctly.
+
+### Files Changed
+- `tools/importer/convert-all-md.js` — Added `readHeadHtml()` function, reads `head.html` dynamically instead of hardcoded `<head>`
+- `styles/styles.css` — Awards layout fix (`:has(> picture)` selector), asymmetric section padding (100/48), serif font tokenization (2 occurrences), stylelint disable comment
+- `blocks/tabs/tabs.css` — Desktop tab sizing: `flex: 0 0 auto`, reduced padding, removed gap, centered tabs
+- `blocks/columns/columns.css` — Testimonial section: `max-height: 600px` on image, `justify-content: center`
+- `blocks/hero/hero.css` — Serif font tokenization (1 occurrence)
+- `blocks/cards/cards.css` — Serif font tokenization (1 occurrence)
+- `blocks/footer/footer.css` — Serif font tokenization (1 occurrence)
+- `docs/head-contract.md` — New: documents single source of truth for `<head>` content
+- `docs/post-bulk-import.md` — New: step-by-step post-import workflow
+- `docs/validation-checklist.md` — New: comprehensive visual/functional QA checklist
+- `.claude/plan.md` — Implementation plan for Issue #1
+
+### Commits
+- (not yet committed — changes staged on `issue-1-style-refinement` branch)
+
+### Carry-Forward
+> Issue #1 style fixes are complete on `issue-1-style-refinement` branch but not yet committed. All P0/P1/P2 fixes done: awards horizontal, carousel constrained, tabs un-truncated, section spacing matched, fonts tokenized. Three documentation files added. Visual verification passed at 1440px, 768px, 375px. Deferred: P3 breakpoint alignment (900px vs 992px) and h3 font-weight verification. Next: commit changes, create PR, then move to Issue #4 (bulk page migration).

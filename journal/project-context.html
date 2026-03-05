@@ -14,39 +14,50 @@
 <header></header>
 <main>
 <div><h1 id="project-context--zeliscom-eds-migration">Project Context — Zelis.com EDS Migration</h1>
-<p><strong>Last updated:</strong> 2026-03-04 (Session 016)
-<strong>Branch:</strong> <code>main</code>
+<p><strong>Last updated:</strong> 2026-03-05 (Session 017)
+<strong>Branch:</strong> <code>issue-1-style-refinement</code>
 <strong>Repository:</strong> https://github.com/aemdemos/poc-tm.git
 <strong>Source site:</strong> https://www.zelis.com/ (~789 URLs, WordPress)
-<strong>Overall status:</strong> Mid migration — homepage complete with design tokens, nav, footer, and block styling. Bulk page migration pending.</p>
+<strong>Overall status:</strong> Homepage styling complete — all sections match original. Bulk page migration pending.</p>
 <h2 id="whats-done">What's Done</h2>
 <ul>
 <li>Repository initialized and configured (Session 000)</li>
 <li>Initial block set imported: 9+ blocks including hero, cards, header (Session 000)</li>
 <li>Hero Lottie animation working with link-based DA authoring pattern (Session 001)</li>
 <li>DA URL mangling workaround: match by text content, not href (Session 001)</li>
-<li>Animation load time optimized: delayed.js at 1.5s (Session 001)</li>
-<li>Animation migration skill: 5-phase workflow, Pattern A-G, decision tree (Session 002)</li>
-<li>Animation verification framework: 45 criteria, automated check script (Session 002)</li>
-<li>All skill files reconciled — .md, .html, .plain.html in sync (Session 003)</li>
+<li>Animation migration skill, verification framework (Session 002)</li>
+<li>All skill files reconciled (Session 003)</li>
 <li>Journaling skill v1.1, problem tracker v2.0, time tracking v1.1, status checkup v1.2 (Sessions 003-010)</li>
-<li>issue-1-styles-bulk branch merged to main with skill imports (Session 011, PR #9)</li>
-<li><strong>Design token extraction</strong> — colors, fonts, spacing extracted and applied to styles.css (Session 012, PR #10)</li>
-<li><strong>Navigation setup</strong> — header CSS refined, nav.plain.html rebuilt with zelis.com structure (Session 013, PR #11)</li>
-<li><strong>Block styling with design tokens</strong> — hardcoded values replaced across cards, resource-list, search blocks (Session 014, PR #12)</li>
-<li><strong>Footer implementation</strong> — full 3-section footer with DA content handling, image injection, social icons (Session 015, PR #13)</li>
-<li>Journal backfill (Sessions 011-015) and journal reminder Stop hook (Session 016)</li>
+<li>issue-1-styles-bulk branch merged to main (Session 011, PR #9)</li>
+<li><strong>Design token extraction</strong> — colors, fonts, spacing (Session 012, PR #10)</li>
+<li><strong>Navigation setup</strong> — header CSS, nav.plain.html (Session 013, PR #11)</li>
+<li><strong>Block styling with design tokens</strong> (Session 014, PR #12)</li>
+<li><strong>Footer implementation</strong> — 3-section footer (Session 015, PR #13)</li>
+<li>Journal backfill and reminder hook (Session 016)</li>
+<li><strong>Issue #1 style fixes (Session 017):</strong>
+<ul>
+<li>Infrastructure: <code>convert-all-md.js</code> reads <code>head.html</code> as single source of truth</li>
+<li>Awards section: horizontal badge layout using <code>:has(> picture)</code> selector</li>
+<li>Carousel/testimonials: image constrained to <code>max-height: 600px</code></li>
+<li>Tab buttons: auto-sized with <code>flex: 0 0 auto</code>, no truncation at 1440px</li>
+<li>Section spacing: asymmetric padding (100px top / 48px bottom) matching original</li>
+<li>Serif font: all 5 hardcoded references tokenized to <code>var(--serif-font-family)</code></li>
+<li>Documentation: head-contract.md, post-bulk-import.md, validation-checklist.md</li>
+<li>Visual verification passed at 1440px, 768px, 375px</li>
+</ul>
+</li>
 </ul>
 <h2 id="whats-in-progress">What's In Progress</h2>
 <ul>
-<li>(nothing actively in progress — between sessions)</li>
+<li>Issue #1 changes on <code>issue-1-style-refinement</code> branch (not yet committed/PR'd)</li>
 </ul>
 <h2 id="whats-pending">What's Pending</h2>
 <ul>
-<li><strong>Issue #1</strong> — Bulk import of page styles</li>
+<li><strong>Issue #1 cleanup</strong> — Commit changes, create PR</li>
 <li><strong>Issue #4</strong> — Bulk page migration (~789 URLs remain beyond homepage)</li>
 <li><strong>Issue #7</strong> — Additional page migrations</li>
 <li><strong>Issue #8</strong> — Verification test harness false-positives (TEST-001, TEST-002)</li>
+<li><strong>Deferred from Issue #1:</strong> P3 breakpoint alignment (900px vs 992px), h3 font-weight verification</li>
 </ul>
 <h2 id="active-blockers">Active Blockers</h2>
 <ul>
@@ -54,19 +65,19 @@
 </ul>
 <h2 id="key-files">Key Files</h2>
 <ul>
-<li><code>blocks/hero/hero.js</code> — Hero block with Lottie link detection</li>
-<li><code>blocks/footer/footer.js</code> — Footer with DOM reconstruction, image injection, social icons</li>
-<li><code>blocks/footer/footer.css</code> — Footer styling with class-based selectors</li>
-<li><code>blocks/header/header.css</code> — Navigation styling</li>
-<li><code>scripts/delayed.js</code> — Lottie loader (1.5s timeout)</li>
+<li><code>styles/styles.css</code> — Global styles with design tokens, section variants, awards layout</li>
+<li><code>blocks/tabs/tabs.css</code> — Tab button sizing (auto-width, no truncation)</li>
+<li><code>blocks/columns/columns.css</code> — Testimonial image constraint</li>
+<li><code>blocks/hero/hero.css</code> — Hero block with eyebrow serif font token</li>
+<li><code>blocks/cards/cards.js</code> — Counter animation (750+, 850k+, 120M)</li>
+<li><code>blocks/footer/footer.js</code> — Footer with DOM reconstruction</li>
+<li><code>tools/importer/convert-all-md.js</code> — Batch MD→HTML converter (reads head.html)</li>
+<li><code>head.html</code> — Single source of truth for <code>&#x3C;head></code> content</li>
+<li><code>docs/head-contract.md</code> — Documents the head.html contract</li>
+<li><code>docs/post-bulk-import.md</code> — Post-import workflow</li>
+<li><code>docs/validation-checklist.md</code> — QA checklist for page validation</li>
 <li><code>scripts/scripts.js</code> — Main scripts including scroll-reveal init</li>
-<li><code>styles/styles.css</code> — Global styles with design tokens</li>
-<li><code>styles/lazy-styles.css</code> — Scroll-reveal and animation CSS</li>
-<li><code>nav.plain.html</code> — Navigation structure</li>
 <li><code>journal/</code> — Project journal directory</li>
-<li><code>journal/problems-reference.md</code> — Problems reference (11 problems, 6 categories)</li>
-<li><code>.claude/skills/hooks/journal-reminder.js</code> — Stop hook for journal reminders</li>
-<li><code>.claude/settings.json</code> — Project-level hook registration</li>
 </ul>
 <h2 id="git-notes">Git Notes</h2>
 <ul>
@@ -76,7 +87,7 @@
 </ul>
 <h2 id="resume-point">Resume Point</h2>
 <blockquote>
-<p>Journal fully caught up through Session 016. Journal reminder hook active. Four open issues remain: #1 (bulk page styles), #4 (bulk page migration), #7 (additional page migrations), #8 (test harness false-positives). Next: pick which open issue to tackle.</p>
+<p>Issue #1 style fixes complete on <code>issue-1-style-refinement</code> branch but not yet committed. Next: commit all changes, create PR for Issue #1, then move to Issue #4 (bulk page migration).</p>
 </blockquote></div>
 </main>
 <footer></footer>
