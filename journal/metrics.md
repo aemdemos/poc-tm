@@ -1,21 +1,21 @@
 # Project Metrics
 
 ## Time
-- **Total sessions:** 24 (including backfills)
-- **Total agent time:** ~19h 35m
-- **Total with user margin (10%):** ~21h 35m
-- **Average session length:** ~49m
+- **Total sessions:** 25 (including backfills)
+- **Total agent time:** ~21h 0m
+- **Total with user margin (10%):** ~23h 9m
+- **Average session length:** ~50m
 
 ## Success Rates
-- **Actions attempted:** 178
-- **First-try success:** 175 (98%)
+- **Actions attempted:** 194
+- **First-try success:** 190 (98%)
 - **Required retry:** 3 (2%)
-- **Failed:** 0 (0%)
+- **Failed:** 1 (<1%)
 
 ## Problems
-- **Total encountered:** 17
-- **Resolved:** 15 (88%)
-- **Unresolved:** 2
+- **Total encountered:** 21
+- **Resolved:** 18 (86%)
+- **Unresolved:** 3
 - **Most common category:** DA compatibility / content handling
 
 ## Problem Categories
@@ -24,11 +24,12 @@
 |----------|-------|---------|
 | DA compatibility | 5 | URL mangling, file reference mismatch, content flattening, image stripping |
 | CSS/styling | 4 | Tab truncation (multiple attempts), stylelint false positive, fallback font width, body font-size mismatch |
-| Git/environment | 3 | safe.directory error, filesystem access, push rejected (rebase needed) |
+| Git/environment | 4 | safe.directory error, filesystem access, push rejected (rebase needed), push failed (no credentials) |
+| Tooling | 2 | convert-all-md.js corrupts EDS block HTML, subagent Bash/Playwright auto-denied |
+| Lint | 2 | no-use-before-define in image-slider.js, no-descending-specificity in image-slider.css |
 | Performance | 1 | Animation load timeout too slow |
 | File sync | 1 | HTML variants stale after markdown edit |
 | Test harness | 2 | Sync scroll doesn't trigger IO, F-DELAYED false positive |
-| Tool permissions | 1 | Subagent Bash/Playwright auto-denied (workaround: use main agent) |
 
 ## Session Timeline
 
@@ -58,3 +59,4 @@
 | 021 | 2026-03-05 | ~30m | ~33m | 12 | 100% |
 | 022 | 2026-03-05 | ~35m | ~39m | 10 | 100% |
 | 023 | 2026-03-05 | ~30m | ~33m | 10 | 100% |
+| 024 | 2026-03-05 | ~1h 25m | ~1h 34m | 16 | 94% (1 fail) |

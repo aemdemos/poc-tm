@@ -26,3 +26,4 @@
 | 021 | 2026-03-05 | Create URL catalog from sitemaps (W1) — 370 URLs, 20 batches | ~33m | 12 completed, 0 problems |
 | 022 | 2026-03-05 | Re-migrate let-care-flow page (P0-1) — proper blocks, no duplicates | ~39m | 10 completed, 1 problem resolved |
 | 023 | 2026-03-05 | Homepage content fixes (Step 5) — Careers section, award badges, We Are Zelis assessment | ~33m | 10 completed, 0 problems |
+| 024 | 2026-03-05 | Step 6: Video hero and image slider blocks for let-care-flow | ~1h 34m | 15 completed, 1 failed (push), 4 problems (3 resolved) |
