@@ -1,9 +1,9 @@
 <div><h1 id="project-context--zeliscom-eds-migration">Project Context — Zelis.com EDS Migration</h1>
-<p><strong>Last updated:</strong> 2026-03-05 (Session 021)
-<strong>Branch:</strong> <code>issue-1-style-refinement-2</code>
+<p><strong>Last updated:</strong> 2026-03-05 (Session 022)
+<strong>Branch:</strong> <code>main</code>
 <strong>Repository:</strong> https://github.com/aemdemos/poc-tm.git
 <strong>Source site:</strong> https://www.zelis.com/ (370 cataloged URLs, WordPress)
-<strong>Overall status:</strong> Style refinement complete, URL catalog created, PR #16 open. Ready for let-care-flow re-migration and bulk import.</p>
+<strong>Overall status:</strong> P0-1 resolved (let-care-flow re-migrated). Style plan Steps 1–4 complete. PR #16 open. Ready for homepage content fixes and new block development.</p>
 <h2 id="whats-done">What's Done</h2>
 <ul>
 <li>Repository initialized and configured (Session 000)</li>
@@ -22,6 +22,7 @@
 <li><strong>Checklist corrections</strong> — h1/h2 weight 500, bright-blue #320FFF (Session 020)</li>
 <li><strong>PR #16 open</strong> — All Issue #1 style changes on <code>issue-1-style-refinement-2</code></li>
 <li><strong>URL catalog created</strong> — 370 URLs in 20 batches, 7 templates at <code>tools/importer/url-catalog.json</code> (Session 021)</li>
+<li><strong>P0-1 resolved: let-care-flow re-migrated</strong> — Hero, Carousel (5 slides), Cards, Columns blocks; no duplicate sections (Session 022)</li>
 </ul>
 <h2 id="whats-in-progress">What's In Progress</h2>
 <ul>
@@ -29,12 +30,13 @@
 </ul>
 <h2 id="whats-pending">What's Pending</h2>
 <ul>
-<li><strong>P0-1</strong> — Re-migrate let-care-flow page (duplicate sections, missing video hero/image slider)</li>
 <li><strong>P1-4</strong> — Restore careers section on homepage</li>
 <li><strong>P2-5/P2-6</strong> — Fix award badge images, add "We Are Zelis" images</li>
 <li><strong>P1-5/P1-6</strong> — Video hero and image slider blocks for let-care-flow</li>
 <li><strong>P2-7</strong> — Footer featured resource card images</li>
 <li><strong>P2-8</strong> — Mega-menu navigation</li>
+<li><strong>P2-9</strong> — Gold mark highlight for "Care" in let-care-flow headings</li>
+<li><strong>P2-10</strong> — Case study card + two-column CTA layout for let-care-flow</li>
 <li><strong>Issue #4</strong> — Bulk page migration (370 URLs, catalog ready)</li>
 <li><strong>W2</strong> — Automated style regression (Playwright screenshot diff)</li>
 </ul>
@@ -44,6 +46,7 @@
 </ul>
 <h2 id="key-files">Key Files</h2>
 <ul>
+<li><code>content/let-care-flow.md</code> — Re-migrated page with Hero, Carousel, Cards, Columns blocks (not in git — content excluded)</li>
 <li><code>styles/styles.css</code> — Global styles with design tokens (body 18px, h3 weight 500)</li>
 <li><code>blocks/footer/footer.css</code> — Footer styling (h5 19px, links 18px)</li>
 <li><code>docs/style-survey-report.md</code> — Comprehensive style survey (43 items, 14 categories, 13-step plan)</li>
@@ -51,6 +54,7 @@
 <li><code>tools/importer/url-catalog.json</code> — 370 URLs in 20 batches for bulk import</li>
 <li><code>tools/importer/bulk-import.js</code> — Bulk import script (uses url-catalog.json)</li>
 <li><code>blocks/hero/hero.js</code> — Hero block with Lottie link detection</li>
+<li><code>blocks/carousel/carousel.js</code> — Carousel block with slide navigation</li>
 <li><code>blocks/footer/footer.js</code> — Footer with DOM reconstruction, image injection</li>
 <li><code>journal/</code> — Project journal directory</li>
 </ul>
@@ -59,8 +63,9 @@
 <li>Remote: <code>https://github.com/aemdemos/poc-tm.git</code></li>
 <li>Must use <code>HOME=/home/node</code> prefix for git commands</li>
 <li>GitHub PAT provided by user at runtime</li>
+<li><code>content/</code> directory excluded from git (<code>.git/info/exclude</code>)</li>
 </ul>
 <h2 id="resume-point">Resume Point</h2>
 <blockquote>
-<p>URL catalog complete (370 URLs, 20 batches). PR #16 open for Issue #1 style fixes. Next per execution plan: Step 4 — re-migrate let-care-flow (P0-1), then Step 5 — homepage content fixes (careers section, missing images). Bulk import (Step 9) is now unblocked.</p>
+<p>P0-1 complete (let-care-flow re-migrated with proper blocks). Execution plan Steps 1–4 done. Next: Step 5 — homepage content fixes (P1-4 careers section, P2-5/P2-6 missing images), then Step 6 — new blocks (P1-5 video hero, P1-6 image slider). PR #16 still open for Issue #1 style changes. Bulk import (Step 9) unblocked by URL catalog.</p>
 </blockquote></div>
