@@ -14,6 +14,14 @@ function showSlide(block, index) {
   });
 }
 
+function stopAutoplay(block) {
+  const id = block.dataset.autoplayId;
+  if (id) {
+    clearInterval(parseInt(id, 10));
+    block.dataset.autoplayId = '';
+  }
+}
+
 function startAutoplay(block) {
   if (block.dataset.autoplay === 'paused') return;
   stopAutoplay(block);
@@ -22,14 +30,6 @@ function startAutoplay(block) {
     showSlide(block, current + 1);
   }, 5000);
   block.dataset.autoplayId = id;
-}
-
-function stopAutoplay(block) {
-  const id = block.dataset.autoplayId;
-  if (id) {
-    clearInterval(parseInt(id, 10));
-    block.dataset.autoplayId = '';
-  }
 }
 
 export default function decorate(block) {
