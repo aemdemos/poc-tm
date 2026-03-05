@@ -1034,3 +1034,56 @@
 
 ### Carry-Forward
 > P0-1 (let-care-flow re-migration) is complete — page has proper block structure with no duplicates. Next per execution plan: Step 5 — homepage content fixes (P1-4 careers section, P2-5/P2-6 missing images), then Step 6 — new blocks (P1-5 video hero, P1-6 image slider for let-care-flow). Remaining deferred items for let-care-flow: P2-9 (gold mark highlight), P2-10 (case study card + two-column CTA layout), P3-5 (simplified header variant).
+
+---
+
+## Session 023 — 2026-03-05
+
+**Branch:** `main`
+**Scope:** Execution plan Step 5 — homepage content fixes (P1-4, P2-5, P2-6)
+**Agent time:** ~30m
+**With margin (10%):** ~33m
+
+### Actions
+
+| # | Action | Type | Tries | Result | Time |
+|---|--------|------|-------|--------|------|
+| 1 | Review execution plan Step 5 from style-survey-report.md Section 13 | research | 1 | pass | 2m |
+| 2 | Navigate to original zelis.com homepage and extract Careers section content | research | 1 | pass | 5m |
+| 3 | Extract Careers section structure — H2, body text, 2 CTAs, Lottie animation URL | research | 1 | pass | 3m |
+| 4 | Extract awards section — 4 updated badge images from zelis.com (2025 versions) | research | 1 | pass | 3m |
+| 5 | Assess "We Are Zelis" card icons — determined they use animated inline SVGs (not static images) | research | 1 | pass | 3m |
+| 6 | P1-4: Add Careers section to index.md — Columns block with text + Lottie link placeholder | modify | 1 | pass | 3m |
+| 7 | P2-5: Update award badge images — switch from stale aem.page URLs to current zelis.com URLs, fix subtitle text | modify | 1 | pass | 2m |
+| 8 | Convert updated index.md to index.html via convert_markdown_to_html | new | 1 | pass | 3m |
+| 9 | Preview homepage at localhost:3000 — verify 9 sections, award badges loading, Careers section rendering | verify | 1 | pass | 4m |
+| 10 | Journal Session 023 | admin | 1 | pass | 2m |
+
+### Outcomes
+- **P1-4 resolved:** Careers section added as new section 8 (between awards and metadata) with Columns block layout
+- **P2-5 resolved:** Award badge images updated to 2025 versions from zelis.com — all 4 load in local preview
+- **P2-6 assessed:** "We Are Zelis" feature cards use animated inline SVGs, not static images — requires custom block development (deferred)
+- **Homepage now has 9 sections** (up from 8): Hero, Tabs (dark), Stats (center), Testimonials, Meeting (light), We Are Zelis, Awards (accent), Careers, Metadata
+- **Award subtitle updated:** "From Databook to Workplace Culture" → "From Solutions to Workplace Culture"
+
+### Problems Encountered
+
+| Problem | Severity | Resolved? | Resolution | Related Action # |
+|---------|----------|-----------|------------|-----------------|
+| (none this session) | — | — | — | — |
+
+### Key Decisions
+- Used Columns block for Careers section (not Hero) — Columns doesn't support Lottie yet, so right column has JSON link placeholder
+- Updated award images to zelis.com source URLs (not aem.page media hashes) for reliable local preview rendering
+- P2-6 deferred — animated SVG icons require custom icon-card block development, not a content-only fix
+- Lottie support for Columns block is a future enhancement (needed for Careers section right column)
+
+### Files Changed
+- `content/index.md` — Added Careers section (Columns block), updated award image URLs and subtitle text
+- `content/index.html` — Regenerated from updated markdown
+
+### Commits
+- (no commits — content/ is excluded from git)
+
+### Carry-Forward
+> Execution plan Step 5 is complete (P1-4, P2-5 resolved; P2-6 deferred). Next: Step 6 — new blocks (P1-5 video hero, P1-6 image slider for let-care-flow). Also remaining: P2-6 (animated SVG icons for We Are Zelis cards — needs custom block), P2-9 (gold mark highlight), P2-10 (case study card layout). PR #16 still open. Bulk import (Step 9) ready via URL catalog.
