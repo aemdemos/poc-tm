@@ -101,7 +101,7 @@ footer .footer > div:nth-child(2) {
 
 footer .footer > div:nth-child(2) h5 {
   color: var(--color-white);
-  font-size: var(--heading-font-size-xs);
+  font-size: var(--heading-font-size-s);
   font-weight: 700;
   margin-bottom: var(--spacing-s);
 }
@@ -118,7 +118,7 @@ footer .footer > div:nth-child(2) li {
 
 footer .footer > div:nth-child(2) a:any-link {
   color: var(--color-white);
-  font-size: var(--body-font-size-s);
+  font-size: var(--body-font-size-xl);
   font-weight: 400;
   line-height: 1.5;
 }

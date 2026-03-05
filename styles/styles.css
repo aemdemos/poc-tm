@@ -48,7 +48,7 @@
   --serif-font-family: georgia, 'Times New Roman', serif;
 
   /* Body sizes (mobile-first, responsive via clamp) */
-  --body-font-size-xl: clamp(18px, 1.125rem + ((1vw - 3.2px) * 0.227), 20px);
+  --body-font-size-xl: 18px;
   --body-font-size-l: clamp(15px, 0.938rem + ((1vw - 3.2px) * 0.341), 18px);
   --body-font-size-m: clamp(16px, 1rem + ((1vw - 3.2px) * 0.227), 18px);
   --body-font-size-s: 13px;
@@ -181,7 +181,7 @@ h2 {
 
 h3 {
   font-size: var(--heading-font-size-l);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.3;
 }
 

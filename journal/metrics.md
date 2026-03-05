@@ -1,20 +1,20 @@
 # Project Metrics
 
 ## Time
-- **Total sessions:** 18 (including backfills)
-- **Total agent time:** ~16h 40m
-- **Total with user margin (10%):** ~18h 24m
-- **Average session length:** ~56m
+- **Total sessions:** 21 (including backfills)
+- **Total agent time:** ~18h 0m
+- **Total with user margin (10%):** ~19h 53m
+- **Average session length:** ~51m
 
 ## Success Rates
-- **Actions attempted:** 124
-- **First-try success:** 121 (98%)
+- **Actions attempted:** 144
+- **First-try success:** 141 (98%)
 - **Required retry:** 3 (2%)
 - **Failed:** 0 (0%)
 
 ## Problems
-- **Total encountered:** 14
-- **Resolved:** 12 (86%)
+- **Total encountered:** 15
+- **Resolved:** 13 (87%)
 - **Unresolved:** 2
 - **Most common category:** DA compatibility / content handling
 
@@ -28,6 +28,7 @@
 | Performance | 1 | Animation load timeout too slow |
 | File sync | 1 | HTML variants stale after markdown edit |
 | Test harness | 2 | Sync scroll doesn't trigger IO, F-DELAYED false positive |
+| Tool permissions | 1 | Subagent Bash/Playwright auto-denied (workaround: use main agent) |
 
 ## Session Timeline
 
@@ -51,3 +52,6 @@
 | 015 | 2026-03-02–03 | ~2h 30m | ~2h 45m | 10 | 100% |
 | 016 | 2026-03-04 | ~30m | ~33m | 10 | 100% |
 | 017 | 2026-03-05 | ~1h 45m | ~1h 56m | 12 | 92% (1 retry) |
+| 018 | 2026-03-05 | ~45m | ~50m | 9 | 100% |
+| 019 | 2026-03-05 | ~15m | ~17m | 3 | 100% |
+| 020 | 2026-03-05 | ~20m | ~22m | 8 | 100% |

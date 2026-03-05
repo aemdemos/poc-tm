@@ -892,3 +892,138 @@
 
 ### Carry-Forward
 > Issue #1 style fixes are complete on `issue-1-style-refinement` branch but not yet committed. All P0/P1/P2 fixes done: awards horizontal, carousel constrained, tabs un-truncated, section spacing matched, fonts tokenized. Three documentation files added. Visual verification passed at 1440px, 768px, 375px. Deferred: P3 breakpoint alignment (900px vs 992px) and h3 font-weight verification. Next: commit changes, create PR, then move to Issue #4 (bulk page migration).
+
+---
+
+## Session 018 — 2026-03-05 — Style Survey: Full Visual Audit of Original vs EDS
+
+**Branch:** `issue-1-style-refinement`
+**Duration:** ~45m (agent) + 10% user overhead = ~50m total
+**Session goal:** Conduct comprehensive visual and computed-style comparison of all migrated pages against the original zelis.com, catalog all differences, and produce a prioritized development plan.
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Navigated to original zelis.com at 1440px, dismissed popup, took full-page screenshot | new | 1 | pass | 5m |
+| 2 | Extracted computed styles from original: sections, headings, buttons, eyebrows, counters, footer | new | 1 | pass | 5m |
+| 3 | Extracted detailed styles: h3, eyebrow serif, primary/secondary buttons, footer headings/links | new | 1 | pass | 5m |
+| 4 | Navigated to EDS homepage at 1440px, forced scroll-reveal visible, took full-page screenshot | new | 1 | pass | 5m |
+| 5 | Extracted same computed styles from EDS homepage for side-by-side comparison | new | 1 | pass | 5m |
+| 6 | Navigated to EDS let-care-flow page, forced scroll-reveal visible, took screenshot | new | 1 | pass | 3m |
+| 7 | Navigated to original zelis.com/let-care-flow, took full-page screenshot, analyzed structure | new | 1 | pass | 5m |
+| 8 | Compiled comprehensive style-survey-report.md with all differences and prioritized dev plan | new | 1 | pass | 10m |
+| 9 | Updated journal files (session entry, index, context, metrics) | routine | 1 | pass | 5m |
+
+### Outcomes
+- **Completed:** Full computed-style extraction and comparison for both pages (homepage + let-care-flow), header, and footer
+- **Completed:** Prioritized development plan with 6 P1, 10 P2, and 7 P3 items
+- **Key finding:** Homepage ~85% style-matched; let-care-flow needs complete re-migration
+
+### Problems Encountered
+
+| Problem | Severity | Resolved? | Resolution | Related Action # |
+|---------|----------|-----------|------------|-----------------|
+| Subagent Task tool cannot use Bash or Playwright (auto-denied permissions) | major | workaround | Performed all comparisons directly in main agent context | #1-#7 |
+
+### Key Decisions
+- Performed style survey directly rather than through subagents due to permission restrictions
+- Classified let-care-flow as P0 re-migration rather than trying to fix duplicate sections in place
+- Identified body font-size (20px vs 18px) and button padding as highest-impact quick CSS fixes
+
+### Files Changed
+- `docs/style-survey-report.md` — New: comprehensive style comparison report with computed values and prioritized development plan
+
+### Commits
+- (not yet committed)
+
+### Carry-Forward
+> Style survey complete. Report at `docs/style-survey-report.md` with 23 prioritized items. Quick CSS wins: fix body font-size 20→18px, button padding 10/23→13/33, button weight 700→400, footer sizes. Let-care-flow page needs complete re-migration (P0). Homepage needs careers section restored and "We Are Zelis" images added. Mega-menu navigation deferred to bulk migration phase. Next: apply quick CSS fixes (P1-1 through P1-3), then commit/PR Issue #1, then begin P0-1 (let-care-flow re-migration).
+
+---
+
+## Session 019 — 2026-03-05 — Merge Style Survey Reports into Comprehensive Document
+
+**Branch:** `issue-1-style-refinement`
+**Duration:** ~15m (agent) + 10% user overhead = ~17m total
+**Session goal:** Merge the Playwright computed-style report (Session 018) with user's architectural styling survey report into a single comprehensive document.
+
+### Actions
+
+- [x] Read both reports and current `styles/styles.css` for accurate token values (~3m) — pass
+- [x] Write merged comprehensive report to `docs/style-survey-report.md` with 13 sections, 43 items across 14 categories (~10m) — pass
+- [x] Update journal files for Session 019 (~2m) — pass
+
+### Outcomes
+- **Completed:** Merged style survey report combining computed-style data with architectural analysis
+- **Key changes from merge:**
+  - Added methodology section (1.1–1.4) with limitations, URL set, and token baseline
+  - Added typography decisions (T1: h1/h2 weight confirmed 500, T2: h3 should be 500 not 600)
+  - Added breakpoint analysis (B1: 900 vs 992, B2: validation widths)
+  - Added section/layout mapping (S1, S2)
+  - Added links/buttons resolutions (L1: bright-blue is #320FFF not #4300FF, L2, L3)
+  - Added block-level component checklist (C1–C5) for future page types
+  - Added page-type coverage plan (7 templates)
+  - Added tooling gaps (W1–W3: URL catalog, regression automation, token re-extraction)
+  - Removed button fixes (P1-2, P1-3, P2-1) from dev plan — already resolved in Session 017
+  - Added 13-step execution order
+
+### Problems Encountered
+(none)
+
+### Key Decisions
+- Confirmed button tokens are already correct (Session 017 fixes) — removed P1-2, P1-3, P2-1 from dev plan
+- Resolved T1: h1/h2 weight is 500 per computed styles — validation checklist is wrong, not CSS
+- Resolved L1: bright-blue is #320FFF (computed) — checklist value #4300FF is incorrect
+
+### Files Changed
+- `docs/style-survey-report.md` — Rewritten: merged computed-style report with architectural survey into 13-section comprehensive document (43 items, 14 categories)
+
+### Commits
+- (not yet committed)
+
+### Carry-Forward
+> Comprehensive style survey report complete at `docs/style-survey-report.md` (43 items, 14 categories, 13-step execution plan). Button fixes confirmed already done. Next steps per execution order: (1) quick CSS fixes — P1-1 body font-size, T2 h3 weight, P2-3/P2-4 footer sizes, (2) checklist corrections — T1, L1, (3) create Issue #1 PR, (4) re-migrate let-care-flow (P0-1).
+
+---
+
+## Session 020 — 2026-03-05 — Execute Style Plan Steps 1–3: CSS Fixes, Checklist, PR
+
+**Branch:** `issue-1-style-refinement-2`
+**Duration:** ~20m (agent) + 10% user overhead = ~22m total
+**Session goal:** Execute Steps 1–3 of the style survey execution plan: quick CSS fixes, checklist corrections, and Issue #1 PR.
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | P1-1: Fix body font-size `clamp(18-20px)` → flat `18px` in `styles/styles.css` | new | 1 | pass | 2m |
+| 2 | T2: Fix global h3 font-weight `600` → `500` in `styles/styles.css` | new | 1 | pass | 2m |
+| 3 | P2-3: Fix footer h5 font-size `var(--heading-font-size-xs)` → `var(--heading-font-size-s)` (16→19px) in `blocks/footer/footer.css` | new | 1 | pass | 2m |
+| 4 | P2-4: Fix footer link font-size `var(--body-font-size-s)` → `var(--body-font-size-xl)` (14→18px) in `blocks/footer/footer.css` | new | 1 | pass | 2m |
+| 5 | T1: Update validation checklist h1/h2 weight from 700 to 500 in `docs/validation-checklist.md` | new | 1 | pass | 1m |
+| 6 | L1: Update validation checklist bright-blue from #4300FF to #320FFF in `docs/validation-checklist.md` | new | 1 | pass | 1m |
+| 7 | Verify all 4 CSS fixes via Playwright `getComputedStyle` at 1440px — body 18px, h3 500, footer h5 19px, footer links 18px | new | 1 | pass | 5m |
+| 8 | Commit `533b8b9`, push to `origin/issue-1-style-refinement-2`, PR #16 created | new | 1 | pass | 5m |
+
+### Outcomes
+- **Completed:** All 4 quick CSS fixes applied and verified, 2 checklist corrections applied, committed, pushed, PR #16 open
+- **Completed:** Steps 1–3 of style survey execution plan done
+
+### Problems Encountered
+(none)
+
+### Key Decisions
+- Used flat `18px` instead of adjusting clamp range for body font-size — original site uses flat 18px, no need for responsive scaling on body text
+- Used `var(--body-font-size-xl)` for footer links since that token now resolves to 18px after the body font-size fix
+
+### Files Changed
+- `styles/styles.css` — `--body-font-size-xl` changed from `clamp(18px, ..., 20px)` to `18px`; h3 `font-weight` from `600` to `500`
+- `blocks/footer/footer.css` — h5 `font-size` from `var(--heading-font-size-xs)` to `var(--heading-font-size-s)`; link `font-size` from `var(--body-font-size-s)` to `var(--body-font-size-xl)`
+- `docs/validation-checklist.md` — h1/h2 weight corrected to 500; bright-blue corrected to #320FFF
+
+### Commits
+- `533b8b9` — Issue #1: Quick CSS fixes and style survey report
+
+### Carry-Forward
+> Steps 1–3 of execution plan complete. PR #16 open at https://github.com/aemdemos/poc-tm/pull/16. Next: Step 4 — re-migrate let-care-flow page (P0-1), then Step 5 — homepage content fixes (P1-4 careers section, P2-5/P2-6 missing images).

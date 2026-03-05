@@ -20,3 +20,6 @@
 | 015 | 2026-03-02 to 2026-03-03 | [BACKFILL] Footer implementation (Issue #6, PR #13) | ~2h 45m | 10 completed, 3 problems resolved |
 | 016 | 2026-03-04 | Daily status checkup, journal backfill, journal reminder hook | ~33m | 10 completed, 0 problems |
 | 017 | 2026-03-05 | Issue #1: Bulk page styles — visual fixes across all sections | ~1h 56m | 12 completed, 3 problems resolved |
+| 018 | 2026-03-05 | Style survey: full visual audit of original vs EDS pages | ~50m | 9 completed, 1 problem (workaround) |
+| 019 | 2026-03-05 | Merge style survey reports into comprehensive document | ~17m | 3 completed, 0 problems |
+| 020 | 2026-03-05 | Execute style plan Steps 1–3: CSS fixes, checklist, PR #16 | ~22m | 8 completed, 0 problems |
