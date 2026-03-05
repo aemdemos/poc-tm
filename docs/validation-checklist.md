@@ -19,10 +19,10 @@ Use this checklist after migrating or modifying pages to verify visual and funct
 
 ## Typography
 
-- [ ] Headings use Avenir Next LT Pro (weight 700 for h1/h2, 600 for h3)
+- [ ] Headings use Avenir Next LT Pro (weight 500 for h1/h2, 500 for h3)
 - [ ] Body text uses Avenir Next LT Pro Regular (400)
 - [ ] Eyebrow text uses serif font (Georgia) via `var(--serif-font-family)` token
-- [ ] Link colors: bright-blue (#4300FF) default, gold (#FFBE00) on dark sections
+- [ ] Link colors: bright-blue (#320FFF) default, gold (#FFBE00) on dark sections
 
 ## Block-Specific Checks
 

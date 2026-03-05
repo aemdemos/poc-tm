@@ -1,9 +1,9 @@
 <div><h1 id="project-context--zeliscom-eds-migration">Project Context — Zelis.com EDS Migration</h1>
-<p><strong>Last updated:</strong> 2026-03-05 (Session 017)
+<p><strong>Last updated:</strong> 2026-03-05 (Session 019)
 <strong>Branch:</strong> <code>issue-1-style-refinement</code>
 <strong>Repository:</strong> https://github.com/aemdemos/poc-tm.git
 <strong>Source site:</strong> https://www.zelis.com/ (~789 URLs, WordPress)
-<strong>Overall status:</strong> Homepage styling complete — all sections match original. Bulk page migration pending.</p>
+<strong>Overall status:</strong> Comprehensive style survey complete (43 items, 14 categories). Homepage ~85% matched. Ready for quick CSS fixes and Issue #1 PR.</p>
 <h2 id="whats-done">What's Done</h2>
 <ul>
 <li>Repository initialized and configured (Session 000)</li>
@@ -19,30 +19,28 @@
 <li><strong>Block styling with design tokens</strong> (Session 014, PR #12)</li>
 <li><strong>Footer implementation</strong> — 3-section footer (Session 015, PR #13)</li>
 <li>Journal backfill and reminder hook (Session 016)</li>
-<li><strong>Issue #1 style fixes (Session 017):</strong>
-<ul>
-<li>Infrastructure: <code>convert-all-md.js</code> reads <code>head.html</code> as single source of truth</li>
-<li>Awards section: horizontal badge layout using <code>:has(> picture)</code> selector</li>
-<li>Carousel/testimonials: image constrained to <code>max-height: 600px</code></li>
-<li>Tab buttons: auto-sized with <code>flex: 0 0 auto</code>, no truncation at 1440px</li>
-<li>Section spacing: asymmetric padding (100px top / 48px bottom) matching original</li>
-<li>Serif font: all 5 hardcoded references tokenized to <code>var(--serif-font-family)</code></li>
-<li>Documentation: head-contract.md, post-bulk-import.md, validation-checklist.md</li>
-<li>Visual verification passed at 1440px, 768px, 375px</li>
-</ul>
-</li>
+<li><strong>Issue #1 style fixes (Session 017):</strong> awards layout, carousel, tabs, section spacing, serif tokenization, docs</li>
+<li><strong>Style survey (Session 018):</strong> Comprehensive visual audit of homepage + let-care-flow vs original</li>
+<li><strong>Merged style survey report (Session 019):</strong> Combined computed-style data with architectural analysis into 43-item comprehensive document</li>
 </ul>
 <h2 id="whats-in-progress">What's In Progress</h2>
 <ul>
-<li>Issue #1 changes on <code>issue-1-style-refinement</code> branch (not yet committed/PR'd)</li>
+<li>Issue #1 changes on <code>issue-1-style-refinement</code> branch (committed as <code>20fef05</code>, not yet PR'd)</li>
+<li>Style survey report at <code>docs/style-survey-report.md</code></li>
 </ul>
 <h2 id="whats-pending">What's Pending</h2>
 <ul>
-<li><strong>Issue #1 cleanup</strong> — Commit changes, create PR</li>
+<li><strong>Quick CSS fixes</strong> — body font-size clamp max 20→18px, h3 weight 600→500, footer h5/link sizes (P1-1, T2, P2-3, P2-4)</li>
+<li><strong>Checklist corrections</strong> — T1 (h1/h2 weight 500 not 700), L1 (bright-blue #320FFF not #4300FF)</li>
+<li><strong>Issue #1 PR</strong> — Create PR for all Issue #1 changes</li>
+<li><strong>P0-1: Re-migrate let-care-flow</strong> — Page has critical duplication issues, needs fresh migration</li>
+<li><strong>P1-4: Add careers section</strong> — "Find your purpose in ours" missing from homepage</li>
+<li><strong>P1-5/P1-6: New blocks</strong> — Video hero and image slider for let-care-flow</li>
+<li><strong>P2-5 to P2-10: Medium priority fixes</strong> — Award images, We Are Zelis images, mega-menu, etc.</li>
+<li><strong>W1: URL catalog</strong> — Restore/create url-catalog.json for bulk import</li>
 <li><strong>Issue #4</strong> — Bulk page migration (~789 URLs remain beyond homepage)</li>
 <li><strong>Issue #7</strong> — Additional page migrations</li>
 <li><strong>Issue #8</strong> — Verification test harness false-positives (TEST-001, TEST-002)</li>
-<li><strong>Deferred from Issue #1:</strong> P3 breakpoint alignment (900px vs 992px), h3 font-weight verification</li>
 </ul>
 <h2 id="active-blockers">Active Blockers</h2>
 <ul>
@@ -58,10 +56,8 @@
 <li><code>blocks/footer/footer.js</code> — Footer with DOM reconstruction</li>
 <li><code>tools/importer/convert-all-md.js</code> — Batch MD→HTML converter (reads head.html)</li>
 <li><code>head.html</code> — Single source of truth for <code>&#x3C;head></code> content</li>
-<li><code>docs/head-contract.md</code> — Documents the head.html contract</li>
-<li><code>docs/post-bulk-import.md</code> — Post-import workflow</li>
+<li><code>docs/style-survey-report.md</code> — Comprehensive style audit: 43 items, 14 categories, 13-step execution plan</li>
 <li><code>docs/validation-checklist.md</code> — QA checklist for page validation</li>
-<li><code>scripts/scripts.js</code> — Main scripts including scroll-reveal init</li>
 <li><code>journal/</code> — Project journal directory</li>
 </ul>
 <h2 id="git-notes">Git Notes</h2>
@@ -72,5 +68,5 @@
 </ul>
 <h2 id="resume-point">Resume Point</h2>
 <blockquote>
-<p>Issue #1 style fixes complete on <code>issue-1-style-refinement</code> branch but not yet committed. Next: commit all changes, create PR for Issue #1, then move to Issue #4 (bulk page migration).</p>
+<p>Comprehensive style survey report complete (43 items, 14 categories). Button fixes confirmed already done in Session 017. Next per execution order: (1) quick CSS fixes — P1-1 body font-size, T2 h3 weight, P2-3/P2-4 footer sizes, (2) checklist corrections — T1, L1, (3) create Issue #1 PR, (4) re-migrate let-care-flow (P0-1).</p>
 </blockquote></div>
