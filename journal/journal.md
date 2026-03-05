@@ -982,3 +982,55 @@
 
 ### Carry-Forward
 > URL catalog created at `tools/importer/url-catalog.json` (370 URLs, 20 batches, 7 templates). W1 from style survey plan is complete. Next per execution plan: Step 4 — re-migrate let-care-flow (P0-1), then Step 5 — homepage content fixes (P1-4 careers section, P2-5/P2-6 missing images). Bulk import (Step 9) is now unblocked by the catalog.
+
+---
+
+## Session 022 — 2026-03-05 — Re-migrate let-care-flow page (P0-1)
+
+**Branch:** `main`
+**Duration:** 35m (agent) + 10% = 39m
+**Session goal:** Execute Step 4 of the style survey execution plan — fresh re-migration of let-care-flow page to fix duplicate sections, missing blocks, and structural issues
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Commit and push url-catalog.json + journal updates from Session 021 | new | 2 | pass | 5m |
+| 2 | Pull/rebase to resolve journal merge conflicts with remote | new | 1 | pass | 3m |
+| 3 | Scrape let-care-flow page (analyze-webpage.js) — 11 images, screenshot, cleaned HTML | new | 1 | pass | 3m |
+| 4 | Analyze page structure from screenshot + cleaned HTML — identify 5 unique sections | new | 1 | pass | 3m |
+| 5 | Review local block implementations (hero.js, carousel.js, columns.js) and homepage.md for content model reference | new | 1 | pass | 3m |
+| 6 | Write new let-care-flow.md with proper block tables — Hero, Carousel (5 slides), Cards, Columns, Section Metadata | new | 1 | pass | 5m |
+| 7 | Convert markdown to HTML via convert_markdown_to_html | new | 1 | pass | 2m |
+| 8 | Preview page at localhost:3000 — verify all 5 sections render, force scroll-reveal visibility | new | 1 | pass | 5m |
+| 9 | Verify content completeness — 5 sections, 4 unique H2s, 5 carousel slides, 1 card, 1 columns, correct section styles | new | 1 | pass | 3m |
+| 10 | Confirm content/ excluded from git (by design) — no commit needed for content files | new | 1 | pass | 1m |
+
+### Outcomes
+- **Completed:** let-care-flow page fully re-migrated with proper block structure
+- **P0-1 resolved:** No more duplicate sections — each section appears exactly once
+- **Blocks used:** Hero (dark), Carousel (accent, 5 slides), Cards (1 case study), Columns (light, image+text CTA)
+- **Section styles:** dark → center → accent → default → light
+- **Committed:** url-catalog.json + journal backfill pushed to main as `0209ae1`
+
+### Problems Encountered
+
+| Problem | Severity | Resolved? | Resolution | Related Action # |
+|---------|----------|-----------|------------|-----------------|
+| Push rejected — remote had new commits | minor | yes | git pull --rebase, resolved conflicts by keeping our (Session 021) versions | #1-2 |
+
+### Key Decisions
+- Used standard Hero block with video thumbnail image (not video playback) — video-hero block (P1-5) deferred to Step 6 of execution plan
+- Used standard Carousel block for image slider — custom image-slider block (P1-6) deferred to Step 6
+- Used `*Care*` (emphasis/italic) to represent the gold-highlighted "Care" text — `<mark>` styling (P2-9) deferred
+- Content directory excluded from git by design — content files live on disk for local preview and are uploaded to DA separately
+
+### Files Changed
+- `content/let-care-flow.md` — Complete rewrite: 5 sections with Hero, Carousel, Cards, Columns blocks + Section Metadata
+- `content/let-care-flow.html` — Auto-generated from markdown by aem up
+
+### Commits
+- `0209ae1` — Add URL catalog (370 URLs, 20 batches) and update journal through Session 021 (from Session 021 carry-over)
+
+### Carry-Forward
+> P0-1 (let-care-flow re-migration) is complete — page has proper block structure with no duplicates. Next per execution plan: Step 5 — homepage content fixes (P1-4 careers section, P2-5/P2-6 missing images), then Step 6 — new blocks (P1-5 video hero, P1-6 image slider for let-care-flow). Remaining deferred items for let-care-flow: P2-9 (gold mark highlight), P2-10 (case study card + two-column CTA layout), P3-5 (simplified header variant).

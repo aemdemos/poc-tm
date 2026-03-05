@@ -1,10 +1,10 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-05 (Session 021)
-**Branch:** `issue-1-style-refinement-2`
+**Last updated:** 2026-03-05 (Session 022)
+**Branch:** `main`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
-**Overall status:** Style refinement complete, URL catalog created, PR #16 open. Ready for let-care-flow re-migration and bulk import.
+**Overall status:** P0-1 resolved (let-care-flow re-migrated). Style plan Steps 1–4 complete. PR #16 open. Ready for homepage content fixes and new block development.
 
 ## What's Done
 - Repository initialized and configured (Session 000)
@@ -23,17 +23,19 @@
 - **Checklist corrections** — h1/h2 weight 500, bright-blue #320FFF (Session 020)
 - **PR #16 open** — All Issue #1 style changes on `issue-1-style-refinement-2`
 - **URL catalog created** — 370 URLs in 20 batches, 7 templates at `tools/importer/url-catalog.json` (Session 021)
+- **P0-1 resolved: let-care-flow re-migrated** — Hero, Carousel (5 slides), Cards, Columns blocks; no duplicate sections (Session 022)
 
 ## What's In Progress
 - (nothing actively in progress — between sessions)
 
 ## What's Pending
-- **P0-1** — Re-migrate let-care-flow page (duplicate sections, missing video hero/image slider)
 - **P1-4** — Restore careers section on homepage
 - **P2-5/P2-6** — Fix award badge images, add "We Are Zelis" images
 - **P1-5/P1-6** — Video hero and image slider blocks for let-care-flow
 - **P2-7** — Footer featured resource card images
 - **P2-8** — Mega-menu navigation
+- **P2-9** — Gold mark highlight for "Care" in let-care-flow headings
+- **P2-10** — Case study card + two-column CTA layout for let-care-flow
 - **Issue #4** — Bulk page migration (370 URLs, catalog ready)
 - **W2** — Automated style regression (Playwright screenshot diff)
 
@@ -41,6 +43,7 @@
 - (none currently)
 
 ## Key Files
+- `content/let-care-flow.md` — Re-migrated page with Hero, Carousel, Cards, Columns blocks (not in git — content excluded)
 - `styles/styles.css` — Global styles with design tokens (body 18px, h3 weight 500)
 - `blocks/footer/footer.css` — Footer styling (h5 19px, links 18px)
 - `docs/style-survey-report.md` — Comprehensive style survey (43 items, 14 categories, 13-step plan)
@@ -48,6 +51,7 @@
 - `tools/importer/url-catalog.json` — 370 URLs in 20 batches for bulk import
 - `tools/importer/bulk-import.js` — Bulk import script (uses url-catalog.json)
 - `blocks/hero/hero.js` — Hero block with Lottie link detection
+- `blocks/carousel/carousel.js` — Carousel block with slide navigation
 - `blocks/footer/footer.js` — Footer with DOM reconstruction, image injection
 - `journal/` — Project journal directory
 
@@ -55,6 +59,7 @@
 - Remote: `https://github.com/aemdemos/poc-tm.git`
 - Must use `HOME=/home/node` prefix for git commands
 - GitHub PAT provided by user at runtime
+- `content/` directory excluded from git (`.git/info/exclude`)
 
 ## Resume Point
-> URL catalog complete (370 URLs, 20 batches). PR #16 open for Issue #1 style fixes. Next per execution plan: Step 4 — re-migrate let-care-flow (P0-1), then Step 5 — homepage content fixes (careers section, missing images). Bulk import (Step 9) is now unblocked.
+> P0-1 complete (let-care-flow re-migrated with proper blocks). Execution plan Steps 1–4 done. Next: Step 5 — homepage content fixes (P1-4 careers section, P2-5/P2-6 missing images), then Step 6 — new blocks (P1-5 video hero, P1-6 image slider). PR #16 still open for Issue #1 style changes. Bulk import (Step 9) unblocked by URL catalog.

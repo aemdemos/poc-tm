@@ -24,3 +24,4 @@
 | 019 | 2026-03-05 | [BACKFILL] Merge style survey reports into comprehensive document | ~17m | 2 completed, 0 problems |
 | 020 | 2026-03-05 | [BACKFILL] Execute style plan steps 1–3: CSS fixes, checklist, PR #16 | ~22m | 8 completed, 0 problems |
 | 021 | 2026-03-05 | Create URL catalog from sitemaps (W1) — 370 URLs, 20 batches | ~33m | 12 completed, 0 problems |
+| 022 | 2026-03-05 | Re-migrate let-care-flow page (P0-1) — proper blocks, no duplicates | ~39m | 10 completed, 1 problem resolved |
