@@ -1,0 +1,91 @@
+<div><h1 id="page-validation-checklist">Page Validation Checklist</h1>
+<p>Use this checklist after migrating or modifying pages to verify visual and functional correctness.</p>
+<h2 id="global-checks">Global Checks</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Page loads without JavaScript errors (check browser console)</li>
+<li class="task-list-item"><input type="checkbox" disabled> All fonts load (Avenir Next LT Pro: 400, 500, 600, 700)</li>
+<li class="task-list-item"><input type="checkbox" disabled> <code>head.html</code> is current (all preloads, scripts, stylesheets present)</li>
+<li class="task-list-item"><input type="checkbox" disabled> Scroll-reveal animations trigger on scroll (sections fade in)</li>
+</ul>
+<h2 id="section-styling">Section Styling</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Dark sections have ink-blue-100 background (#23004B)</li>
+<li class="task-list-item"><input type="checkbox" disabled> Light sections have ink-blue-5 background (#F7F6FF)</li>
+<li class="task-list-item"><input type="checkbox" disabled> Accent sections have gold background (#FFBE00)</li>
+<li class="task-list-item"><input type="checkbox" disabled> Section padding matches: 100px top / 48px bottom (default), 100/100 (dark), 48/48 (accent)</li>
+<li class="task-list-item"><input type="checkbox" disabled> Text colors correct per section variant (white on dark, ink-blue on accent)</li>
+</ul>
+<h2 id="typography">Typography</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Headings use Avenir Next LT Pro (weight 700 for h1/h2, 600 for h3)</li>
+<li class="task-list-item"><input type="checkbox" disabled> Body text uses Avenir Next LT Pro Regular (400)</li>
+<li class="task-list-item"><input type="checkbox" disabled> Eyebrow text uses serif font (Georgia) via <code>var(--serif-font-family)</code> token</li>
+<li class="task-list-item"><input type="checkbox" disabled> Link colors: bright-blue (#4300FF) default, gold (#FFBE00) on dark sections</li>
+</ul>
+<h2 id="block-specific-checks">Block-Specific Checks</h2>
+<h3 id="hero">Hero</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Two-column layout on desktop (text left, image/animation right)</li>
+<li class="task-list-item"><input type="checkbox" disabled> Buttons render: primary (solid) and secondary (outline)</li>
+<li class="task-list-item"><input type="checkbox" disabled> Stacks to single column on mobile</li>
+</ul>
+<h3 id="tabs">Tabs</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> All tab labels fully visible at 1440px (no truncation)</li>
+<li class="task-list-item"><input type="checkbox" disabled> Tabs scroll horizontally on mobile</li>
+<li class="task-list-item"><input type="checkbox" disabled> Active tab has underline indicator</li>
+<li class="task-list-item"><input type="checkbox" disabled> Dark section: gold underline, white text</li>
+</ul>
+<h3 id="cards">Cards</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Three-column grid on desktop, stacked on mobile</li>
+<li class="task-list-item"><input type="checkbox" disabled> Counter animation fires on scroll (750+, 850k+, 120M)</li>
+<li class="task-list-item"><input type="checkbox" disabled> Stat numbers animate with ease-out cubic easing</li>
+</ul>
+<h3 id="carousel">Carousel</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Navigation arrows and dot indicators visible</li>
+<li class="task-list-item"><input type="checkbox" disabled> Slides transition smoothly</li>
+<li class="task-list-item"><input type="checkbox" disabled> Text is readable at all breakpoints</li>
+</ul>
+<h3 id="columns">Columns</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> 58/42 split on desktop for 2-column layouts</li>
+<li class="task-list-item"><input type="checkbox" disabled> Equal columns for 3+ column layouts</li>
+<li class="task-list-item"><input type="checkbox" disabled> Stacks on mobile with image first</li>
+</ul>
+<h3 id="awards-accent-section">Awards (Accent Section)</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Badge images display in horizontal row on desktop</li>
+<li class="task-list-item"><input type="checkbox" disabled> Images wrapped with <code>display: inline</code> on parent <code>&#x3C;p></code> elements</li>
+<li class="task-list-item"><input type="checkbox" disabled> Each badge approximately 220px wide</li>
+</ul>
+<h2 id="responsive-breakpoints">Responsive Breakpoints</h2>
+<h3 id="desktop-1440px">Desktop (1440px)</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Content max-width: 1200px, centered</li>
+<li class="task-list-item"><input type="checkbox" disabled> Two-column layouts side by side</li>
+<li class="task-list-item"><input type="checkbox" disabled> Full navigation visible in header</li>
+</ul>
+<h3 id="tablet-768px">Tablet (768px)</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Columns stack appropriately</li>
+<li class="task-list-item"><input type="checkbox" disabled> Tabs horizontally scrollable</li>
+<li class="task-list-item"><input type="checkbox" disabled> Images scale proportionally</li>
+<li class="task-list-item"><input type="checkbox" disabled> Touch targets at least 44px</li>
+</ul>
+<h3 id="mobile-375px">Mobile (375px)</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> All content single column</li>
+<li class="task-list-item"><input type="checkbox" disabled> Text readable without horizontal scroll</li>
+<li class="task-list-item"><input type="checkbox" disabled> Buttons full-width or adequately sized</li>
+<li class="task-list-item"><input type="checkbox" disabled> Images don't overflow viewport</li>
+</ul>
+<h2 id="performance">Performance</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> No layout shift on page load (CLS)</li>
+<li class="task-list-item"><input type="checkbox" disabled> Images have width/height attributes</li>
+<li class="task-list-item"><input type="checkbox" disabled> Fonts preloaded in head.html</li>
+<li class="task-list-item"><input type="checkbox" disabled> Critical CSS loads synchronously (styles.css)</li>
+<li class="task-list-item"><input type="checkbox" disabled> Block CSS loads on demand (per-block loading)</li>
+</ul></div>

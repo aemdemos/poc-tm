@@ -20,9 +20,29 @@ const path = require('path');
 const http = require('http');
 
 const CONTENT_DIR = path.join(__dirname, '../../content');
+const WORKSPACE_ROOT = path.join(__dirname, '../..');
+const HEAD_HTML_PATH = path.join(WORKSPACE_ROOT, 'head.html');
 const args = process.argv.slice(2);
 const force = args.includes('--force');
 const dryRun = args.includes('--dry-run');
+
+/**
+ * Read head.html from workspace root (single source of truth).
+ * Falls back to a minimal default if head.html is missing.
+ */
+function readHeadHtml() {
+  try {
+    return fs.readFileSync(HEAD_HTML_PATH, 'utf8').trim();
+  } catch {
+    console.warn(`⚠️  head.html not found at ${HEAD_HTML_PATH}, using minimal fallback`);
+    return [
+      '<meta name="viewport" content="width=device-width, initial-scale=1"/>',
+      '<script src="/scripts/aem.js" type="module"></script>',
+      '<script src="/scripts/scripts.js" type="module"></script>',
+      '<link rel="stylesheet" href="/styles/styles.css"/>',
+    ].join('\n');
+  }
+}
 
 /**
  * Find all .md files that need conversion
@@ -226,19 +246,16 @@ function wrapPlainHtml(mainContent) {
 
 /**
  * Generate full .html with page structure matching aem up output.
- * Includes head.html content so blocks get decorated.
+ * Reads head.html from workspace root so all HTML generation stays
+ * in sync (the "head contract"). See docs/head-contract.md.
  */
 function wrapFullHtml(mainContent, title) {
+  const headContent = readHeadHtml();
   return `<!DOCTYPE html>
 <html>
 <head>
 <title>${title || ''}</title>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<script src="/scripts/aem.js" type="module"></script>
-<script src="/scripts/scripts.js" type="module"></script>
-<link rel="stylesheet" href="/styles/styles.css"/>
-<link rel="preload" as="font" type="font/woff2" href="/fonts/avenir/avenir_next_lt_pro_regular.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/fonts/avenir/avenir_next_lt_pro_medium.woff2" crossorigin>
+${headContent}
 </head>
 <body>
 <header></header>

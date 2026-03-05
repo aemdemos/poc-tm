@@ -121,12 +121,14 @@
 
 @media (width >= 900px) {
   .tabs .tabs-list {
-    gap: var(--spacing-xs);
+    gap: 0;
+    justify-content: center;
   }
 
   .tabs .tabs-list button {
-    flex: 1 1 0;
+    flex: 0 0 auto;
     font-size: var(--body-font-size-m);
-    padding: var(--spacing-s) var(--spacing-s);
+    padding: var(--spacing-s) var(--spacing-xs);
+    overflow: visible;
   }
 }

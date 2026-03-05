@@ -47,7 +47,7 @@ footer .footer > div:first-child .featured-image img {
 
 /* "Featured Resource" label with decorative line */
 footer .footer > div:first-child .featured-label {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--serif-font-family);
   font-size: var(--body-font-size-m);
   font-weight: 400;
   color: var(--color-ink-blue-8);

@@ -1,0 +1,46 @@
+<div><h1 id="head-contract">Head Contract</h1>
+<h2 id="single-source-of-truth">Single Source of Truth</h2>
+<p>The file <code>head.html</code> in the workspace root is the <strong>single source of truth</strong> for all <code>&#x3C;head></code> content injected into generated HTML pages. Any tool or script that produces full HTML pages must read from this file rather than hardcoding <code>&#x3C;head></code> content.</p>
+<h2 id="what-headhtml-contains">What <code>head.html</code> Contains</h2>
+<ul>
+<li>Viewport meta tag</li>
+<li>AEM scripts (<code>aem.js</code>, <code>scripts.js</code>)</li>
+<li>Global stylesheet (<code>styles/styles.css</code>)</li>
+<li>Font preload links (all 4 Avenir Next LT Pro weights)</li>
+</ul>
+<h2 id="consumers">Consumers</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="consumer"><div><div><code>aem up</code> (AEM CLI)</div><div>Built-in</div><div>Reads <code>head.html</code> natively</div></div><div><div>Auto-convert hook</div><div><code>.claude/skills/hooks/auto-convert-md.js</code></div><div>Via <code>html-utils.js</code> <code>buildFullHtml()</code></div></div><div><div>Batch converter</div><div><code>tools/importer/convert-all-md.js</code></div><div>Via <code>readHeadHtml()</code> (reads file directly)</div></div></div>
+<h2 id="adding-to-head">Adding to <code>&#x3C;head></code></h2>
+<p>When you need to add a new preload, stylesheet, or script:</p>
+<ol>
+<li>Edit <code>head.html</code> in the workspace root</li>
+<li>All consumers pick up the change automatically on next run</li>
+<li>No other files need updating</li>
+</ol>
+<h2 id="why-this-matters">Why This Matters</h2>
+<p>Previously, <code>convert-all-md.js</code> had a hardcoded <code>&#x3C;head></code> that drifted from the actual <code>head.html</code> (it was missing 2 of 4 font preloads). The head contract ensures all HTML generation stays in sync.</p></div>

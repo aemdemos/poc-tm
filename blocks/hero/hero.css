@@ -58,7 +58,7 @@
 /* Eyebrow text in hero */
 .hero .eyebrow,
 .hero > div > div:first-child > p:first-child:not(:last-child) {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--serif-font-family);
   font-style: normal;
   font-size: clamp(18px, 1.125rem + ((1vw - 3.2px) * 0.114), 19px);
   font-weight: 400;

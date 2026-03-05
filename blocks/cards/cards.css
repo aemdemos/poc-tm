@@ -43,7 +43,7 @@
 }
 
 .cards .cards-card-body > p:first-child {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--serif-font-family);
   font-size: 14px;
   font-weight: 400;
   color: var(--color-ink-blue-30);

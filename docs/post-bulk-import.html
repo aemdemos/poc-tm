@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<script src="/scripts/aem.js" type="module"></script>
+<script src="/scripts/scripts.js" type="module"></script>
+<link rel="stylesheet" href="/styles/styles.css"/>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/avenir/avenir_next_lt_pro_regular.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/avenir/avenir_next_lt_pro_medium.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/avenir/avenir_next_lt_pro_demi.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/avenir/avenir_next_lt_pro_bold.woff2" crossorigin>
+</head>
+<body>
+<header></header>
+<main>
+<div><h1 id="post-bulk-import-flow">Post-Bulk-Import Flow</h1>
+<p>After running a bulk import (via <code>tools/importer/bulk-import.js</code> or individual page migrations), follow these steps to ensure all pages render correctly.</p>
+<h2 id="step-1-convert-markdown-to-html">Step 1: Convert Markdown to HTML</h2>
+<p>All imported <code>.md</code> files need corresponding <code>.html</code> and <code>.plain.html</code> files for the local preview server.</p>
+<pre><code class="language-bash"># Convert all markdown files that don't have HTML yet
+node tools/importer/convert-all-md.js
+
+# Force reconvert all files (e.g., after head.html changes)
+node tools/importer/convert-all-md.js --force
+
+# Preview what would be converted
+node tools/importer/convert-all-md.js --dry-run
+</code></pre>
+<p>The converter reads <code>head.html</code> from the workspace root (see <code>docs/head-contract.md</code>).</p>
+<h2 id="step-2-verify-preview">Step 2: Verify Preview</h2>
+<p>Start the local preview server and check pages:</p>
+<pre><code class="language-bash">aem up
+# Pages available at http://localhost:3000/content/{page-name}.html
+</code></pre>
+<h2 id="step-3-check-block-rendering">Step 3: Check Block Rendering</h2>
+<p>Each page should have its blocks properly decorated. Common issues:</p>
+<ul>
+<li><strong>Block not rendering</strong>: Check that the block's <code>.js</code> and <code>.css</code> exist in <code>blocks/{name}/</code></li>
+<li><strong>Missing styles</strong>: Verify <code>styles/styles.css</code> loads (check browser console)</li>
+<li><strong>Font issues</strong>: Confirm all font preloads are in <code>head.html</code></li>
+</ul>
+<h2 id="step-4-section-styling">Step 4: Section Styling</h2>
+<p>Sections get their styling from section metadata in the markdown. The available section variants:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="class"><div><div><code>dark</code></div><div>Ink blue (#23004B)</div><div>White</div></div><div><div><code>light</code></div><div>Lavender (#F7F6FF)</div><div>Default</div></div><div><div><code>accent</code></div><div>Gold (#FFBE00)</div><div>Ink blue</div></div><div><div><code>center</code></div><div>(none)</div><div>Default, centered</div></div></div>
+<p>Section metadata is defined in the markdown as a table at the end of each section:</p>
+<pre><code class="language-markdown">| Section Metadata |          |
+| ---------------- | -------- |
+| style            | dark     |
+</code></pre>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>The auto-convert hook (<code>.claude/skills/hooks/auto-convert-md.js</code>) automatically converts <code>.md</code> to <code>.html</code> when files are written during migration sessions</li>
+<li>Images reference source URLs and are not downloaded locally during migration</li>
+<li>The <code>--force</code> flag is useful after changing <code>head.html</code> or global styles</li>
+</ul></div>
+</main>
+<footer></footer>
+</body>
+</html>

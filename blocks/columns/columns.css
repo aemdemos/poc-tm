@@ -67,6 +67,20 @@
   color: rgb(248 249 250 / 90%);
 }
 
+/* ---- Testimonial section: constrain image when paired with carousel ---- */
+.section.columns-container.carousel-container .columns > div {
+  justify-content: center;
+}
+
+.section.columns-container.carousel-container .columns img {
+  max-height: 600px;
+  width: auto;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
 /* ---- Desktop: Side-by-side ---- */
 @media (width >= 900px) {
   .columns > div {
