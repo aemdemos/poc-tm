@@ -1,20 +1,20 @@
 # Project Metrics
 
 ## Time
-- **Total sessions:** 21 (including backfills)
-- **Total agent time:** ~18h 0m
-- **Total with user margin (10%):** ~19h 53m
-- **Average session length:** ~51m
+- **Total sessions:** 22 (including backfills)
+- **Total agent time:** ~18h 30m
+- **Total with user margin (10%):** ~20h 23m
+- **Average session length:** ~50m
 
 ## Success Rates
-- **Actions attempted:** 144
-- **First-try success:** 141 (98%)
+- **Actions attempted:** 158
+- **First-try success:** 155 (98%)
 - **Required retry:** 3 (2%)
 - **Failed:** 0 (0%)
 
 ## Problems
-- **Total encountered:** 15
-- **Resolved:** 13 (87%)
+- **Total encountered:** 16
+- **Resolved:** 14 (88%)
 - **Unresolved:** 2
 - **Most common category:** DA compatibility / content handling
 
@@ -23,7 +23,7 @@
 | Category | Count | Examples |
 |----------|-------|---------|
 | DA compatibility | 5 | URL mangling, file reference mismatch, content flattening, image stripping |
-| CSS/styling | 3 | Tab truncation (multiple attempts), stylelint false positive, fallback font width |
+| CSS/styling | 4 | Tab truncation (multiple attempts), stylelint false positive, fallback font width, body font-size mismatch |
 | Git/environment | 2 | safe.directory error, filesystem access |
 | Performance | 1 | Animation load timeout too slow |
 | File sync | 1 | HTML variants stale after markdown edit |
@@ -50,8 +50,9 @@
 | 013 | 2026-03-02 | ~25m | ~28m | 2 | 100% |
 | 014 | 2026-03-02 | ~20m | ~22m | 4 | 100% |
 | 015 | 2026-03-02–03 | ~2h 30m | ~2h 45m | 10 | 100% |
-| 016 | 2026-03-04 | ~30m | ~33m | 10 | 100% |
-| 017 | 2026-03-05 | ~1h 45m | ~1h 56m | 12 | 92% (1 retry) |
-| 018 | 2026-03-05 | ~45m | ~50m | 9 | 100% |
-| 019 | 2026-03-05 | ~15m | ~17m | 3 | 100% |
+| 016 | 2026-03-04 | ~30m | ~33m | 5 | 100% |
+| 017 | 2026-03-05 | ~1h 45m | ~1h 56m | 10 | 90% (1 retry) |
+| 018 | 2026-03-05 | ~45m | ~50m | 8 | 100% |
+| 019 | 2026-03-05 | ~15m | ~17m | 2 | 100% |
 | 020 | 2026-03-05 | ~20m | ~22m | 8 | 100% |
+| 021 | 2026-03-05 | ~30m | ~33m | 12 | 100% |

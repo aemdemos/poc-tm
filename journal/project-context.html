@@ -14,45 +14,44 @@
 <header></header>
 <main>
 <div><h1 id="project-context--zeliscom-eds-migration">Project Context — Zelis.com EDS Migration</h1>
-<p><strong>Last updated:</strong> 2026-03-05 (Session 020)
+<p><strong>Last updated:</strong> 2026-03-05 (Session 021)
 <strong>Branch:</strong> <code>issue-1-style-refinement-2</code>
 <strong>Repository:</strong> https://github.com/aemdemos/poc-tm.git
-<strong>Source site:</strong> https://www.zelis.com/ (~789 URLs, WordPress)
-<strong>Overall status:</strong> Style plan Steps 1–3 complete. Quick CSS fixes applied, checklist corrected, PR #16 open. Ready for let-care-flow re-migration.</p>
+<strong>Source site:</strong> https://www.zelis.com/ (370 cataloged URLs, WordPress)
+<strong>Overall status:</strong> Style refinement complete, URL catalog created, PR #16 open. Ready for let-care-flow re-migration and bulk import.</p>
 <h2 id="whats-done">What's Done</h2>
 <ul>
 <li>Repository initialized and configured (Session 000)</li>
 <li>Initial block set imported: 9+ blocks including hero, cards, header (Session 000)</li>
 <li>Hero Lottie animation working with link-based DA authoring pattern (Session 001)</li>
-<li>DA URL mangling workaround: match by text content, not href (Session 001)</li>
-<li>Animation migration skill, verification framework (Session 002)</li>
-<li>All skill files reconciled (Session 003)</li>
-<li>Journaling skill v1.1, problem tracker v2.0, time tracking v1.1, status checkup v1.2 (Sessions 003-010)</li>
+<li>Animation migration skill, verification framework (Sessions 001–002)</li>
+<li>All skill files reconciled and merged (Sessions 003–010)</li>
 <li>issue-1-styles-bulk branch merged to main (Session 011, PR #9)</li>
-<li><strong>Design token extraction</strong> — colors, fonts, spacing (Session 012, PR #10)</li>
+<li><strong>Design token extraction</strong> — colors, fonts, spacing in styles.css (Session 012, PR #10)</li>
 <li><strong>Navigation setup</strong> — header CSS, nav.plain.html (Session 013, PR #11)</li>
-<li><strong>Block styling with design tokens</strong> (Session 014, PR #12)</li>
-<li><strong>Footer implementation</strong> — 3-section footer (Session 015, PR #13)</li>
-<li>Journal backfill and reminder hook (Session 016)</li>
-<li><strong>Issue #1 style fixes (Session 017):</strong> awards layout, carousel, tabs, section spacing, serif tokenization, docs</li>
-<li><strong>Style survey (Session 018):</strong> Comprehensive visual audit of homepage + let-care-flow vs original</li>
-<li><strong>Merged style survey report (Session 019):</strong> Combined computed-style data with architectural analysis into 43-item comprehensive document</li>
-<li><strong>Quick CSS fixes + PR (Session 020):</strong> body 18px, h3 weight 500, footer h5 19px, footer links 18px, checklist corrections, PR #16</li>
+<li><strong>Block styling with design tokens</strong> — cards, resource-list, search blocks (Session 014, PR #12)</li>
+<li><strong>Footer implementation</strong> — 3-section footer with DA handling (Session 015, PR #13)</li>
+<li><strong>Issue #1 style fixes</strong> — awards, carousel, tabs, section spacing, font tokens (Session 017)</li>
+<li><strong>Style survey</strong> — full computed-style audit, merged comprehensive report (Sessions 018–019)</li>
+<li><strong>Quick CSS fixes</strong> — body 18px, h3 weight 500, footer h5 19px, footer links 18px (Session 020)</li>
+<li><strong>Checklist corrections</strong> — h1/h2 weight 500, bright-blue #320FFF (Session 020)</li>
+<li><strong>PR #16 open</strong> — All Issue #1 style changes on <code>issue-1-style-refinement-2</code></li>
+<li><strong>URL catalog created</strong> — 370 URLs in 20 batches, 7 templates at <code>tools/importer/url-catalog.json</code> (Session 021)</li>
 </ul>
 <h2 id="whats-in-progress">What's In Progress</h2>
 <ul>
-<li>PR #16 open on <code>issue-1-style-refinement-2</code> — awaiting review/merge</li>
+<li>(nothing actively in progress — between sessions)</li>
 </ul>
 <h2 id="whats-pending">What's Pending</h2>
 <ul>
-<li><strong>P0-1: Re-migrate let-care-flow</strong> — Page has critical duplication issues, needs fresh migration</li>
-<li><strong>P1-4: Add careers section</strong> — "Find your purpose in ours" missing from homepage</li>
-<li><strong>P1-5/P1-6: New blocks</strong> — Video hero and image slider for let-care-flow</li>
-<li><strong>P2-5 to P2-10: Medium priority fixes</strong> — Award images, We Are Zelis images, mega-menu, etc.</li>
-<li><strong>W1: URL catalog</strong> — Restore/create url-catalog.json for bulk import</li>
-<li><strong>Issue #4</strong> — Bulk page migration (~789 URLs remain beyond homepage)</li>
-<li><strong>Issue #7</strong> — Additional page migrations</li>
-<li><strong>Issue #8</strong> — Verification test harness false-positives (TEST-001, TEST-002)</li>
+<li><strong>P0-1</strong> — Re-migrate let-care-flow page (duplicate sections, missing video hero/image slider)</li>
+<li><strong>P1-4</strong> — Restore careers section on homepage</li>
+<li><strong>P2-5/P2-6</strong> — Fix award badge images, add "We Are Zelis" images</li>
+<li><strong>P1-5/P1-6</strong> — Video hero and image slider blocks for let-care-flow</li>
+<li><strong>P2-7</strong> — Footer featured resource card images</li>
+<li><strong>P2-8</strong> — Mega-menu navigation</li>
+<li><strong>Issue #4</strong> — Bulk page migration (370 URLs, catalog ready)</li>
+<li><strong>W2</strong> — Automated style regression (Playwright screenshot diff)</li>
 </ul>
 <h2 id="active-blockers">Active Blockers</h2>
 <ul>
@@ -60,26 +59,25 @@
 </ul>
 <h2 id="key-files">Key Files</h2>
 <ul>
-<li><code>styles/styles.css</code> — Global styles with design tokens, section variants</li>
-<li><code>blocks/footer/footer.css</code> — Footer with corrected h5/link font sizes</li>
-<li><code>blocks/tabs/tabs.css</code> — Tab button sizing (auto-width, no truncation)</li>
-<li><code>blocks/columns/columns.css</code> — Testimonial image constraint</li>
-<li><code>blocks/hero/hero.css</code> — Hero block with eyebrow serif font token</li>
-<li><code>blocks/cards/cards.js</code> — Counter animation (750+, 850k+, 120M)</li>
-<li><code>blocks/footer/footer.js</code> — Footer with DOM reconstruction</li>
-<li><code>docs/style-survey-report.md</code> — Comprehensive style audit: 43 items, 14 categories, 13-step execution plan</li>
-<li><code>docs/validation-checklist.md</code> — QA checklist (corrected: h1/h2 500, bright-blue #320FFF)</li>
+<li><code>styles/styles.css</code> — Global styles with design tokens (body 18px, h3 weight 500)</li>
+<li><code>blocks/footer/footer.css</code> — Footer styling (h5 19px, links 18px)</li>
+<li><code>docs/style-survey-report.md</code> — Comprehensive style survey (43 items, 14 categories, 13-step plan)</li>
+<li><code>docs/validation-checklist.md</code> — Page validation checklist (corrected weights and colors)</li>
+<li><code>tools/importer/url-catalog.json</code> — 370 URLs in 20 batches for bulk import</li>
+<li><code>tools/importer/bulk-import.js</code> — Bulk import script (uses url-catalog.json)</li>
+<li><code>blocks/hero/hero.js</code> — Hero block with Lottie link detection</li>
+<li><code>blocks/footer/footer.js</code> — Footer with DOM reconstruction, image injection</li>
 <li><code>journal/</code> — Project journal directory</li>
 </ul>
 <h2 id="git-notes">Git Notes</h2>
 <ul>
 <li>Remote: <code>https://github.com/aemdemos/poc-tm.git</code></li>
 <li>Must use <code>HOME=/home/node</code> prefix for git commands</li>
-<li>GitHub PAT provided by user at runtime (do not store in committed files)</li>
+<li>GitHub PAT provided by user at runtime</li>
 </ul>
 <h2 id="resume-point">Resume Point</h2>
 <blockquote>
-<p>Steps 1–3 of execution plan complete. PR #16 open. Next: Step 4 — re-migrate let-care-flow page (P0-1), then Step 5 — homepage content fixes (P1-4 careers section, P2-5/P2-6 missing images).</p>
+<p>URL catalog complete (370 URLs, 20 batches). PR #16 open for Issue #1 style fixes. Next per execution plan: Step 4 — re-migrate let-care-flow (P0-1), then Step 5 — homepage content fixes (careers section, missing images). Bulk import (Step 9) is now unblocked.</p>
 </blockquote></div>
 </main>
 <footer></footer>

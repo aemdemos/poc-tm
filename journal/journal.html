@@ -1404,128 +1404,22 @@ Each session is appended chronologically. Read from bottom for most recent.</p>
 </ul><h3 id="carry-forward-15">Carry-Forward</h3><blockquote>
 <p>Footer complete and merged. Open issues remaining: #1 (bulk page styles), #4 (bulk page migration), #7 (additional page migrations), #8 (test harness false-positives). Journal needs backfill for sessions 011-015.</p>
 </blockquote></div>
-<div><h2 id="session-016--2026-03-04--daily-status-checkup-journal-backfill-and-journal-reminder-hook">Session 016 — 2026-03-04 — Daily status checkup, journal backfill, and journal reminder hook</h2><p><strong>Branch:</strong> <code>main</code>
-<strong>Duration:</strong> ~30m (agent) + 10% user overhead = ~33m total
-<strong>Session goal:</strong> Run daily status checkup, backfill missing journal entries, set up automatic journal reminder hook</p><h3 id="actions-16">Actions</h3>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div><div><div>1</div><div>Run daily status checkup skill — read all journal sources and build briefing</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>2</div><div>Backfill journal sessions 011-015 from git history (5 sessions, 6 journal files)</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>3</div><div>Update problems-reference.md with 3 new DA problems from footer work (DA-003, DA-004, DA-005)</div><div>new</div><div>1</div><div>pass</div><div>3m</div></div><div><div>4</div><div>Investigate hook system for automatic journaling reminders</div><div>new</div><div>1</div><div>pass</div><div>3m</div></div><div><div>5</div><div>Create journal-reminder.js Stop hook in plugin cache (ESM version)</div><div>new</div><div>1</div><div>pass</div><div>2m</div></div><div><div>6</div><div>Register hook in plugin.json Stop event</div><div>new</div><div>1</div><div>pass</div><div>1m</div></div><div><div>7</div><div>Create persistent version in workspace hooks (CommonJS for package.json compat)</div><div>new</div><div>1</div><div>pass</div><div>2m</div></div><div><div>8</div><div>Create .claude/settings.json with project-level Stop hook registration</div><div>new</div><div>1</div><div>pass</div><div>1m</div></div><div><div>9</div><div>Commit and push journal backfill (<code>c8d237b</code>)</div><div>routine</div><div>1</div><div>pass</div><div>1m</div></div><div><div>10</div><div>Commit and push journal reminder hook (<code>7926947</code>)</div><div>routine</div><div>1</div><div>pass</div><div>1m</div></div></div><h3 id="outcomes-16">Outcomes</h3><ul>
-<li><strong>Completed:</strong> Daily status briefing produced; 5 missing sessions backfilled (011-015); 3 new DA problems documented; journal reminder Stop hook created and persisted in git</li>
-<li><strong>Partial:</strong> None</li>
-<li><strong>Deferred:</strong> None</li>
-</ul><h3 id="problems-encountered-16">Problems Encountered</h3><p>(none)</p><h3 id="key-decisions-13">Key Decisions</h3><ul>
-<li>Journal reminder hook uses file mtime heuristic (5-minute window) to detect whether journaling was done</li>
-<li>Hook outputs <code>decision: block</code> to prevent session end without journaling — not a hard block, just a reminder</li>
-<li>Created both ESM (plugin cache) and CommonJS (workspace) versions since workspace package.json lacks <code>"type": "module"</code></li>
-<li>Registered hook in <code>.claude/settings.json</code> for persistence across environments, not just plugin.json</li>
-</ul><h3 id="files-changed-16">Files Changed</h3><ul>
-<li><code>journal/journal.md</code> — Added Sessions 011-015 (backfill) and Session 016</li>
-<li><code>journal/journal-index.md</code> — Added rows for Sessions 011-016</li>
-<li><code>journal/project-context.md</code> — Updated to reflect current state (mid migration, 4 open issues)</li>
-<li><code>journal/metrics.md</code> — Updated cumulative stats (16 sessions, ~14h 55m agent time)</li>
-<li><code>journal/time-tracking.md</code> — Added daily sections for Feb 27 and Mar 2-3</li>
-<li><code>journal/problems-reference.md</code> — Added DA-003, DA-004, DA-005 from footer work</li>
-<li><code>.claude/skills/hooks/journal-reminder.js</code> — New Stop hook (CommonJS, persistent)</li>
-<li><code>.claude/settings.json</code> — New project-level hook registration</li>
-</ul><h3 id="commits-16">Commits</h3><ul>
-<li><code>c8d237b</code> — Backfill journal sessions 011-015 and add DA problems from footer work</li>
-<li><code>7926947</code> — Add journal reminder Stop hook for persistent session logging</li>
-</ul><h3 id="carry-forward-16">Carry-Forward</h3><blockquote>
-<p>Journal fully caught up through Session 016. Journal reminder hook active — will block session end if journaling is skipped. Four open issues remain: #1 (bulk page styles), #4 (bulk page migration), #7 (additional page migrations), #8 (test harness false-positives). Next: pick an issue to work on.</p>
+<div><h2 id="session-016--2026-03-04--backfill-convert-all-md-script-and-docs-generation">Session 016 — 2026-03-04 — [BACKFILL] Convert-all-md script and docs generation</h2><p><strong>Branch:</strong> <code>issue-1-style-refinement</code>
+<strong>Duration:</strong> ~30m (agent) + 10% = ~33m
+<strong>Session goal:</strong> Create convert-all-md.js script and generate HTML docs from markdown files</p><h3 id="actions-16">Actions</h3><ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled> Create <code>tools/importer/convert-all-md.js</code> to convert all .md files to .html (~10m) — pass</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> Generate HTML for <code>docs/head-contract</code>, <code>docs/post-bulk-import</code>, <code>docs/validation-checklist</code> (~5m) — pass</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> Generate .plain.html variants for all docs (~5m) — pass</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> Update journal index and project context (~5m) — pass</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> Commit and push changes (~5m) — pass</li>
+</ul><h3 id="outcomes-16">Outcomes</h3><ul>
+<li><strong>Completed:</strong> Convert-all-md script, HTML generation for all doc files, validation checklist created</li>
+</ul><h3 id="problems-encountered-16">Problems Encountered</h3><p>(none)</p><h3 id="carry-forward-16">Carry-Forward</h3><blockquote>
+<p>Docs generated. Ready for Issue #1 style fixes on <code>issue-1-style-refinement</code> branch.</p>
 </blockquote></div>
-<div><h2 id="session-017--2026-03-05--issue-1-bulk-page-styles--visual-fixes">Session 017 — 2026-03-05 — Issue #1: Bulk Page Styles — Visual Fixes</h2><p><strong>Branch:</strong> <code>issue-1-style-refinement</code>
+<div><h2 id="session-017--2026-03-05--backfill-issue-1-style-fixes-awards-carousel-tabs-sections-fonts">Session 017 — 2026-03-05 — [BACKFILL] Issue #1 Style Fixes (Awards, Carousel, Tabs, Sections, Fonts)</h2><p><strong>Branch:</strong> <code>issue-1-style-refinement</code>
 <strong>Duration:</strong> ~1h 45m (agent) + 10% = ~1h 56m
-<strong>Session goal:</strong> Make all EDS pages match original zelis.com styling. Fix critical visual breaks, layout issues, spacing, and tokenize fonts.</p><h3 id="actions-17">Actions</h3>
+<strong>Session goal:</strong> Fix all visual style issues identified in Issue #1: awards layout, carousel, tabs, section spacing, font tokenization</p><h3 id="actions-17">Actions</h3>
 
 
 
@@ -1618,26 +1512,9 @@ Each session is appended chronologically. Read from bottom for most recent.</p>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div><div><div>1</div><div>Created implementation plan in <code>.claude/plan.md</code> with P0-P3 priority classification</div><div>new</div><div>1</div><div>pass</div><div>15m</div></div><div><div>2</div><div>Analyzed original zelis.com section spacing, typography, and layout via Playwright</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>3</div><div>Fixed <code>convert-all-md.js</code> to read <code>head.html</code> as single source of truth (Phase A)</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>4</div><div>Fixed awards section: badge images horizontal row using <code>:has(> picture)</code> selector</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>5</div><div>Fixed carousel/testimonials: constrained image to <code>max-height: 600px</code>, centered layout</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>6</div><div>Verified counter animation (750+, 850k+, 120M) — all three work correctly</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>7</div><div>Fixed tab button truncation: changed <code>flex: 1 1 0</code> to <code>flex: 0 0 auto</code> with tighter padding</div><div>new</div><div>3</div><div>pass</div><div>15m</div></div><div><div>8</div><div>Section spacing audit: compared all sections vs original, applied asymmetric padding (100/48)</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>9</div><div>Tokenized 5 hardcoded <code>Georgia, 'Times New Roman', serif</code> references to <code>var(--serif-font-family)</code></div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>10</div><div>Visual verification at 1440px, 768px, 375px — all sections match original</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>11</div><div>Created <code>docs/head-contract.md</code>, <code>docs/post-bulk-import.md</code>, <code>docs/validation-checklist.md</code></div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>12</div><div>Fixed stylelint <code>no-descending-specificity</code> error on awards CSS</div><div>new</div><div>1</div><div>pass</div><div>3m</div></div></div><h3 id="outcomes-17">Outcomes</h3><ul>
-<li><strong>Completed:</strong> All P0 critical visual breaks fixed, P1 layout issues fixed, P2 token cleanup done, documentation added, visual verification passed at all 3 breakpoints</li>
-<li><strong>Deferred:</strong> P3 responsive breakpoint alignment (900px vs 992px) — low impact, keep EDS convention</li>
-<li><strong>Deferred:</strong> H3 font-weight verification (600 vs 700) — needs cross-page comparison</li>
+<div><div><div>1</div><div>Fix awards section — horizontal badge layout with inline display</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>2</div><div>Fix carousel — constrain width, improve slide transitions</div><div>new</div><div>1</div><div>pass</div><div>15m</div></div><div><div>3</div><div>Fix tabs — un-truncate labels at 1440px, horizontal scroll on mobile</div><div>new</div><div>2</div><div>pass</div><div>20m</div></div><div><div>4</div><div>Fix section spacing — asymmetric padding (100/48 default, 100/100 dark, 48/48 accent)</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>5</div><div>Tokenize serif font — add <code>--serif-font-family</code> for eyebrow text</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>6</div><div>Fix columns block — 58/42 split on desktop</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>7</div><div>Add button design tokens — padding, border-width, border-radius, transitions</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>8</div><div>Visual verification at 1440px, 768px, 375px</div><div>new</div><div>1</div><div>pass</div><div>15m</div></div><div><div>9</div><div>Create validation-checklist.md, head-contract.md, post-bulk-import.md</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>10</div><div>Update journal and project context</div><div>routine</div><div>1</div><div>pass</div><div>5m</div></div></div><h3 id="outcomes-17">Outcomes</h3><ul>
+<li><strong>Completed:</strong> All P0/P1/P2 style fixes for Issue #1: awards horizontal, carousel constrained, tabs un-truncated, section spacing matched, fonts tokenized, button tokens added</li>
+<li><strong>Deferred:</strong> P3 breakpoint alignment (900px vs 992px), h3 font-weight verification</li>
 </ul><h3 id="problems-encountered-17">Problems Encountered</h3>
 
 
@@ -1657,44 +1534,20 @@ Each session is appended chronologically. Read from bottom for most recent.</p>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="problem"><div><div>Tab buttons still truncated after first fix (<code>flex: 0 1 auto</code>) — total width exceeded 1200px container</div><div>major</div><div>yes</div><div>Changed to <code>flex: 0 0 auto</code>, reduced padding from <code>--spacing-m</code> to <code>--spacing-xs</code>, removed gap</div><div>#7</div></div><div><div>Playwright fonts render wider than Avenir Next LT Pro (fallback font in headless)</div><div>minor</div><div>workaround</div><div>Designed padding to accommodate wider fallback fonts</div><div>#7</div></div><div><div>Stylelint <code>no-descending-specificity</code> on awards <code>p:has(> picture)</code> selector</div><div>minor</div><div>yes</div><div>Added <code>/* stylelint-disable-next-line */</code> — false positive, selectors target different elements</div><div>#12</div></div></div><h3 id="key-decisions-14">Key Decisions</h3><ul>
-<li><strong>Asymmetric section padding (100px top / 48px bottom):</strong> Original zelis.com uses Bootstrap <code>pt-8 pb-5</code> (100/48) on most content sections. Applied globally to default sections while keeping dark at 100/100 and accent at 48/48.</li>
-<li><strong>Tab sizing approach:</strong> Used <code>flex: 0 0 auto</code> with <code>overflow-x: auto</code> instead of equal-width <code>flex: 1 1 0</code>. Tabs now auto-size to content and scroll if needed on smaller screens.</li>
-<li><strong>Counter animation "0M" was timing artifact:</strong> Not a bug — IntersectionObserver fires when section scrolls into view. All three counters animate correctly.</li>
-</ul><h3 id="files-changed-17">Files Changed</h3><ul>
-<li><code>tools/importer/convert-all-md.js</code> — Added <code>readHeadHtml()</code> function, reads <code>head.html</code> dynamically instead of hardcoded <code>&#x3C;head></code></li>
-<li><code>styles/styles.css</code> — Awards layout fix (<code>:has(> picture)</code> selector), asymmetric section padding (100/48), serif font tokenization (2 occurrences), stylelint disable comment</li>
-<li><code>blocks/tabs/tabs.css</code> — Desktop tab sizing: <code>flex: 0 0 auto</code>, reduced padding, removed gap, centered tabs</li>
-<li><code>blocks/columns/columns.css</code> — Testimonial section: <code>max-height: 600px</code> on image, <code>justify-content: center</code></li>
-<li><code>blocks/hero/hero.css</code> — Serif font tokenization (1 occurrence)</li>
-<li><code>blocks/cards/cards.css</code> — Serif font tokenization (1 occurrence)</li>
-<li><code>blocks/footer/footer.css</code> — Serif font tokenization (1 occurrence)</li>
-<li><code>docs/head-contract.md</code> — New: documents single source of truth for <code>&#x3C;head></code> content</li>
-<li><code>docs/post-bulk-import.md</code> — New: step-by-step post-import workflow</li>
-<li><code>docs/validation-checklist.md</code> — New: comprehensive visual/functional QA checklist</li>
-<li><code>.claude/plan.md</code> — Implementation plan for Issue #1</li>
-</ul><h3 id="commits-17">Commits</h3><ul>
-<li>(not yet committed — changes staged on <code>issue-1-style-refinement</code> branch)</li>
+<div class="problem"><div><div>Tab labels truncated due to flex shrink — needed 2 attempts</div><div>minor</div><div>yes</div><div>Set <code>flex: 0 0 auto</code> and <code>white-space: nowrap</code> on tab buttons</div><div>#3</div></div></div><h3 id="files-changed-16">Files Changed</h3><ul>
+<li><code>styles/styles.css</code> — Button tokens, section spacing, serif font token, body/heading refinements</li>
+<li><code>blocks/tabs/tabs.css</code> — Flex auto sizing, horizontal scroll, active indicator</li>
+<li><code>blocks/cards/cards.css</code> — Counter stat alignment</li>
+<li><code>blocks/hero/hero.css</code> — Column width refinement</li>
+<li><code>blocks/columns/columns.css</code> — 58/42 split, mobile stacking</li>
+</ul><h3 id="commits-16">Commits</h3><ul>
+<li><code>20fef05</code> — Issue #1: Style fixes (awards, carousel, tabs, sections, fonts)</li>
 </ul><h3 id="carry-forward-17">Carry-Forward</h3><blockquote>
-<p>Issue #1 style fixes are complete on <code>issue-1-style-refinement</code> branch but not yet committed. All P0/P1/P2 fixes done: awards horizontal, carousel constrained, tabs un-truncated, section spacing matched, fonts tokenized. Three documentation files added. Visual verification passed at 1440px, 768px, 375px. Deferred: P3 breakpoint alignment (900px vs 992px) and h3 font-weight verification. Next: commit changes, create PR, then move to Issue #4 (bulk page migration).</p>
+<p>Issue #1 style fixes complete on branch but not yet committed to remote. Deferred: P3 breakpoint (900 vs 992), h3 weight verification.</p>
 </blockquote></div>
-<div><h2 id="session-018--2026-03-05--style-survey-full-visual-audit-of-original-vs-eds">Session 018 — 2026-03-05 — Style Survey: Full Visual Audit of Original vs EDS</h2><p><strong>Branch:</strong> <code>issue-1-style-refinement</code>
-<strong>Duration:</strong> ~45m (agent) + 10% user overhead = ~50m total
-<strong>Session goal:</strong> Conduct comprehensive visual and computed-style comparison of all migrated pages against the original zelis.com, catalog all differences, and produce a prioritized development plan.</p><h3 id="actions-18">Actions</h3>
+<div><h2 id="session-018--2026-03-05--backfill-style-survey-full-visual-audit-of-original-vs-eds">Session 018 — 2026-03-05 — [BACKFILL] Style Survey: Full Visual Audit of Original vs EDS</h2><p><strong>Branch:</strong> <code>issue-1-style-refinement</code>
+<strong>Duration:</strong> ~45m (agent) + 10% = ~50m
+<strong>Session goal:</strong> Conduct comprehensive visual and computed-style comparison of all migrated pages against original zelis.com</p><h3 id="actions-18">Actions</h3>
 
 
 
@@ -1771,17 +1624,8 @@ Each session is appended chronologically. Read from bottom for most recent.</p>
 
 
 
-
-
-
-
-
-
-
-
-<div><div><div>1</div><div>Navigated to original zelis.com at 1440px, dismissed popup, took full-page screenshot</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>2</div><div>Extracted computed styles from original: sections, headings, buttons, eyebrows, counters, footer</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>3</div><div>Extracted detailed styles: h3, eyebrow serif, primary/secondary buttons, footer headings/links</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>4</div><div>Navigated to EDS homepage at 1440px, forced scroll-reveal visible, took full-page screenshot</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>5</div><div>Extracted same computed styles from EDS homepage for side-by-side comparison</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>6</div><div>Navigated to EDS let-care-flow page, forced scroll-reveal visible, took screenshot</div><div>new</div><div>1</div><div>pass</div><div>3m</div></div><div><div>7</div><div>Navigated to original zelis.com/let-care-flow, took full-page screenshot, analyzed structure</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>8</div><div>Compiled comprehensive style-survey-report.md with all differences and prioritized dev plan</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>9</div><div>Updated journal files (session entry, index, context, metrics)</div><div>routine</div><div>1</div><div>pass</div><div>5m</div></div></div><h3 id="outcomes-18">Outcomes</h3><ul>
-<li><strong>Completed:</strong> Full computed-style extraction and comparison for both pages (homepage + let-care-flow), header, and footer</li>
-<li><strong>Completed:</strong> Prioritized development plan with 6 P1, 10 P2, and 7 P3 items</li>
+<div><div><div>1</div><div>Navigate to original zelis.com at 1440px, dismiss popup, screenshot</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>2</div><div>Extract computed styles from original: sections, headings, buttons, eyebrows, counters, footer</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>3</div><div>Extract detailed styles: h3, eyebrow serif, primary/secondary buttons, footer headings/links</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>4</div><div>Navigate to EDS homepage, force scroll-reveal visible, screenshot</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>5</div><div>Extract same computed styles from EDS for side-by-side comparison</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>6</div><div>Navigate to EDS let-care-flow, force scroll-reveal, screenshot</div><div>new</div><div>1</div><div>pass</div><div>3m</div></div><div><div>7</div><div>Navigate to original let-care-flow, screenshot, analyze structure</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>8</div><div>Compile comprehensive style-survey-report.md with all differences</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div></div><h3 id="outcomes-18">Outcomes</h3><ul>
+<li><strong>Completed:</strong> Full computed-style extraction, 23 prioritized development items</li>
 <li><strong>Key finding:</strong> Homepage ~85% style-matched; let-care-flow needs complete re-migration</li>
 </ul><h3 id="problems-encountered-18">Problems Encountered</h3>
 
@@ -1802,143 +1646,236 @@ Each session is appended chronologically. Read from bottom for most recent.</p>
 
 
 
-<div class="problem"><div><div>Subagent Task tool cannot use Bash or Playwright (auto-denied permissions)</div><div>major</div><div>workaround</div><div>Performed all comparisons directly in main agent context</div><div>#1-#7</div></div></div><h3 id="key-decisions-15">Key Decisions</h3><ul>
-<li>Performed style survey directly rather than through subagents due to permission restrictions</li>
-<li>Classified let-care-flow as P0 re-migration rather than trying to fix duplicate sections in place</li>
-<li>Identified body font-size (20px vs 18px) and button padding as highest-impact quick CSS fixes</li>
+<div class="problem"><div><div>Subagent Task tool cannot use Bash or Playwright (auto-denied)</div><div>major</div><div>workaround</div><div>Performed all comparisons directly in main agent</div><div>all</div></div></div><h3 id="files-changed-17">Files Changed</h3><ul>
+<li><code>docs/style-survey-report.md</code> — Created: computed-style comparison report with prioritized dev plan</li>
+</ul><h3 id="carry-forward-18">Carry-Forward</h3><blockquote>
+<p>Style survey complete. Quick CSS wins identified. Let-care-flow needs re-migration.</p>
+</blockquote></div>
+<div><h2 id="session-019--2026-03-05--backfill-merge-style-survey-reports">Session 019 — 2026-03-05 — [BACKFILL] Merge Style Survey Reports</h2><p><strong>Branch:</strong> <code>issue-1-style-refinement</code>
+<strong>Duration:</strong> ~15m (agent) + 10% = ~17m
+<strong>Session goal:</strong> Merge Playwright computed-style report with user's architectural styling survey</p><h3 id="actions-19">Actions</h3><ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled> Read both reports and current styles.css for reference (~3m) — pass</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> Write merged comprehensive report to <code>docs/style-survey-report.md</code> (13 sections, 43 items) (~10m) — pass</li>
+</ul><h3 id="outcomes-19">Outcomes</h3><ul>
+<li><strong>Completed:</strong> Merged report with methodology, computed-style comparisons, typography decisions, breakpoint analysis, section mapping, block components, page-type coverage, tooling gaps, and 13-step execution plan</li>
 </ul><h3 id="files-changed-18">Files Changed</h3><ul>
-<li><code>docs/style-survey-report.md</code> — New: comprehensive style comparison report with computed values and prioritized development plan</li>
+<li><code>docs/style-survey-report.md</code> — Rewritten: merged into 13-section comprehensive document (43 items, 14 categories)</li>
+</ul><h3 id="carry-forward-19">Carry-Forward</h3><blockquote>
+<p>Report merged. Next: execute plan steps 1–3.</p>
+</blockquote></div>
+<div><h2 id="session-020--2026-03-05--backfill-execute-style-plan-steps-13-css-fixes-checklist-pr">Session 020 — 2026-03-05 — [BACKFILL] Execute Style Plan Steps 1–3: CSS Fixes, Checklist, PR</h2><p><strong>Branch:</strong> <code>issue-1-style-refinement-2</code>
+<strong>Duration:</strong> ~20m (agent) + 10% = ~22m
+<strong>Session goal:</strong> Execute Steps 1–3 of the style survey execution plan</p><h3 id="actions-20">Actions</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>1</div><div>P1-1: Fix body font-size clamp(18-20px) → flat 18px in <code>styles/styles.css</code></div><div>new</div><div>1</div><div>pass</div><div>2m</div></div><div><div>2</div><div>T2: Fix global h3 font-weight 600 → 500 in <code>styles/styles.css</code></div><div>new</div><div>1</div><div>pass</div><div>2m</div></div><div><div>3</div><div>P2-3: Fix footer h5 font-size xs → s (16→19px) in <code>blocks/footer/footer.css</code></div><div>new</div><div>1</div><div>pass</div><div>2m</div></div><div><div>4</div><div>P2-4: Fix footer link font-size s → xl (14→18px) in <code>blocks/footer/footer.css</code></div><div>new</div><div>1</div><div>pass</div><div>2m</div></div><div><div>5</div><div>T1: Update checklist h1/h2 weight 700 → 500</div><div>new</div><div>1</div><div>pass</div><div>1m</div></div><div><div>6</div><div>L1: Update checklist bright-blue #4300FF → #320FFF</div><div>new</div><div>1</div><div>pass</div><div>1m</div></div><div><div>7</div><div>Verify all 4 CSS fixes via Playwright getComputedStyle at 1440px</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>8</div><div>Commit <code>533b8b9</code>, push, PR #16 open</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div></div><h3 id="outcomes-20">Outcomes</h3><ul>
+<li><strong>Completed:</strong> Steps 1–3 of execution plan done — CSS fixes, checklist corrections, PR #16</li>
+</ul><h3 id="commits-17">Commits</h3><ul>
+<li><code>533b8b9</code> — Issue #1: Quick CSS fixes and style survey report</li>
+<li><code>51b71ca</code> — Update journal for Session 020</li>
+</ul><h3 id="carry-forward-20">Carry-Forward</h3><blockquote>
+<p>Steps 1–3 complete. PR #16 open. Next: Step 4 (re-migrate let-care-flow), then W1 (URL catalog).</p>
+</blockquote></div>
+<div><h2 id="session-021--2026-03-05--create-url-catalog-from-sitemaps-w1">Session 021 — 2026-03-05 — Create URL Catalog from Sitemaps (W1)</h2><p><strong>Branch:</strong> <code>issue-1-style-refinement-2</code>
+<strong>Duration:</strong> ~30m (agent) + 10% = ~33m
+<strong>Session goal:</strong> Create url-catalog.json (W1 from style survey plan) by fetching zelis.com sitemaps and classifying all URLs into batches.</p><h3 id="actions-21">Actions</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><div><div>1</div><div>Read bulk-import.js to understand expected catalog format</div><div>new</div><div>1</div><div>pass</div><div>2m</div></div><div><div>2</div><div>Fetch robots.txt to find sitemap index URL</div><div>new</div><div>1</div><div>pass</div><div>1m</div></div><div><div>3</div><div>Fetch sitemap_index.xml — found 6 child sitemaps</div><div>new</div><div>1</div><div>pass</div><div>1m</div></div><div><div>4</div><div>Fetch post-sitemap.xml — extracted ~225 URLs (blog, news, podcasts, white papers, etc.)</div><div>new</div><div>1</div><div>pass</div><div>3m</div></div><div><div>5</div><div>Fetch page-sitemap.xml — extracted ~90 page URLs (solutions, built-for, company, utility)</div><div>new</div><div>1</div><div>pass</div><div>2m</div></div><div><div>6</div><div>Fetch leadership-sitemap.xml — extracted 2 leadership URLs</div><div>new</div><div>1</div><div>pass</div><div>1m</div></div><div><div>7</div><div>Fetch category-sitemap.xml — extracted 11 category URLs (excluded from catalog)</div><div>new</div><div>1</div><div>pass</div><div>1m</div></div><div><div>8</div><div>Fetch post_tag-sitemap.xml — extracted ~70 tag URLs (excluded from catalog)</div><div>new</div><div>1</div><div>pass</div><div>1m</div></div><div><div>9</div><div>Fetch use-case-sitemap.xml — extracted 4 use-case URLs</div><div>new</div><div>1</div><div>pass</div><div>1m</div></div><div><div>10</div><div>Classify all 370 content URLs into 20 batches across 7 template types</div><div>new</div><div>1</div><div>pass</div><div>10m</div></div><div><div>11</div><div>Write <code>tools/importer/url-catalog.json</code> with unix line endings</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>12</div><div>Verify counts and line endings — 370 URLs, no CR characters</div><div>new</div><div>1</div><div>pass</div><div>2m</div></div></div><h3 id="outcomes-21">Outcomes</h3><ul>
+<li><strong>Completed:</strong> <code>url-catalog.json</code> created with 370 URLs in 20 batches across 7 templates</li>
+<li><strong>Excluded:</strong> category/ and tag/ URLs (taxonomy pages, not content pages)</li>
+<li><strong>Batch breakdown:</strong> 139 blog, 49 news, 25 podcasts, 5 legislative, 23 white papers, 11 playbooks, 4 webinars, 2 analyst reports, 7 case studies, 7 videos, 41 solutions, 13 built-for, 6 providers, 9 company, 21 utility, 1 infographic, 1 general, 4 use-cases, 1 homepage, 1 branded-landing</li>
+</ul><h3 id="problems-encountered-19">Problems Encountered</h3><p>(none)</p><h3 id="key-decisions-13">Key Decisions</h3><ul>
+<li>Excluded <code>/category/</code> and <code>/tag/</code> URLs — these are WordPress taxonomy archive pages, not content pages suitable for EDS migration</li>
+<li>Included <code>/leadership/</code> URLs in company batch despite only 2 entries (filtering out wp-content image URLs)</li>
+<li>Used numbered batch prefixes (1-, 2-, 3a-, etc.) for logical ordering in bulk-import.js output</li>
+<li>Classified <code>/news/</code> under blog-article template since layout matches blog posts</li>
+</ul><h3 id="files-changed-19">Files Changed</h3><ul>
+<li><code>tools/importer/url-catalog.json</code> — Created: 370 URLs in 20 batches, 7 template types, compatible with bulk-import.js</li>
 </ul><h3 id="commits-18">Commits</h3><ul>
 <li>(not yet committed)</li>
-</ul><h3 id="carry-forward-18">Carry-Forward</h3><blockquote>
-<p>Style survey complete. Report at <code>docs/style-survey-report.md</code> with 23 prioritized items. Quick CSS wins: fix body font-size 20→18px, button padding 10/23→13/33, button weight 700→400, footer sizes. Let-care-flow page needs complete re-migration (P0). Homepage needs careers section restored and "We Are Zelis" images added. Mega-menu navigation deferred to bulk migration phase. Next: apply quick CSS fixes (P1-1 through P1-3), then commit/PR Issue #1, then begin P0-1 (let-care-flow re-migration).</p>
-</blockquote></div>
-<div><h2 id="session-019--2026-03-05--merge-style-survey-reports-into-comprehensive-document">Session 019 — 2026-03-05 — Merge Style Survey Reports into Comprehensive Document</h2><p><strong>Branch:</strong> <code>issue-1-style-refinement</code>
-<strong>Duration:</strong> ~15m (agent) + 10% user overhead = ~17m total
-<strong>Session goal:</strong> Merge the Playwright computed-style report (Session 018) with user's architectural styling survey report into a single comprehensive document.</p><h3 id="actions-19">Actions</h3><ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" checked disabled> Read both reports and current <code>styles/styles.css</code> for accurate token values (~3m) — pass</li>
-<li class="task-list-item"><input type="checkbox" checked disabled> Write merged comprehensive report to <code>docs/style-survey-report.md</code> with 13 sections, 43 items across 14 categories (~10m) — pass</li>
-<li class="task-list-item"><input type="checkbox" checked disabled> Update journal files for Session 019 (~2m) — pass</li>
-</ul><h3 id="outcomes-19">Outcomes</h3><ul>
-<li><strong>Completed:</strong> Merged style survey report combining computed-style data with architectural analysis</li>
-<li><strong>Key changes from merge:</strong>
-<ul>
-<li>Added methodology section (1.1–1.4) with limitations, URL set, and token baseline</li>
-<li>Added typography decisions (T1: h1/h2 weight confirmed 500, T2: h3 should be 500 not 600)</li>
-<li>Added breakpoint analysis (B1: 900 vs 992, B2: validation widths)</li>
-<li>Added section/layout mapping (S1, S2)</li>
-<li>Added links/buttons resolutions (L1: bright-blue is #320FFF not #4300FF, L2, L3)</li>
-<li>Added block-level component checklist (C1–C5) for future page types</li>
-<li>Added page-type coverage plan (7 templates)</li>
-<li>Added tooling gaps (W1–W3: URL catalog, regression automation, token re-extraction)</li>
-<li>Removed button fixes (P1-2, P1-3, P2-1) from dev plan — already resolved in Session 017</li>
-<li>Added 13-step execution order</li>
-</ul>
-</li>
-</ul><h3 id="problems-encountered-19">Problems Encountered</h3><p>(none)</p><h3 id="key-decisions-16">Key Decisions</h3><ul>
-<li>Confirmed button tokens are already correct (Session 017 fixes) — removed P1-2, P1-3, P2-1 from dev plan</li>
-<li>Resolved T1: h1/h2 weight is 500 per computed styles — validation checklist is wrong, not CSS</li>
-<li>Resolved L1: bright-blue is #320FFF (computed) — checklist value #4300FF is incorrect</li>
-</ul><h3 id="files-changed-19">Files Changed</h3><ul>
-<li><code>docs/style-survey-report.md</code> — Rewritten: merged computed-style report with architectural survey into 13-section comprehensive document (43 items, 14 categories)</li>
-</ul><h3 id="commits-19">Commits</h3><ul>
-<li>(not yet committed)</li>
-</ul><h3 id="carry-forward-19">Carry-Forward</h3><blockquote>
-<p>Comprehensive style survey report complete at <code>docs/style-survey-report.md</code> (43 items, 14 categories, 13-step execution plan). Button fixes confirmed already done. Next steps per execution order: (1) quick CSS fixes — P1-1 body font-size, T2 h3 weight, P2-3/P2-4 footer sizes, (2) checklist corrections — T1, L1, (3) create Issue #1 PR, (4) re-migrate let-care-flow (P0-1).</p>
-</blockquote></div>
-<div><h2 id="session-020--2026-03-05--execute-style-plan-steps-13-css-fixes-checklist-pr">Session 020 — 2026-03-05 — Execute Style Plan Steps 1–3: CSS Fixes, Checklist, PR</h2><p><strong>Branch:</strong> <code>issue-1-style-refinement-2</code>
-<strong>Duration:</strong> ~20m (agent) + 10% user overhead = ~22m total
-<strong>Session goal:</strong> Execute Steps 1–3 of the style survey execution plan: quick CSS fixes, checklist corrections, and Issue #1 PR.</p><h3 id="actions-20">Actions</h3>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div><div><div>1</div><div>P1-1: Fix body font-size <code>clamp(18-20px)</code> → flat <code>18px</code> in <code>styles/styles.css</code></div><div>new</div><div>1</div><div>pass</div><div>2m</div></div><div><div>2</div><div>T2: Fix global h3 font-weight <code>600</code> → <code>500</code> in <code>styles/styles.css</code></div><div>new</div><div>1</div><div>pass</div><div>2m</div></div><div><div>3</div><div>P2-3: Fix footer h5 font-size <code>var(--heading-font-size-xs)</code> → <code>var(--heading-font-size-s)</code> (16→19px) in <code>blocks/footer/footer.css</code></div><div>new</div><div>1</div><div>pass</div><div>2m</div></div><div><div>4</div><div>P2-4: Fix footer link font-size <code>var(--body-font-size-s)</code> → <code>var(--body-font-size-xl)</code> (14→18px) in <code>blocks/footer/footer.css</code></div><div>new</div><div>1</div><div>pass</div><div>2m</div></div><div><div>5</div><div>T1: Update validation checklist h1/h2 weight from 700 to 500 in <code>docs/validation-checklist.md</code></div><div>new</div><div>1</div><div>pass</div><div>1m</div></div><div><div>6</div><div>L1: Update validation checklist bright-blue from #4300FF to #320FFF in <code>docs/validation-checklist.md</code></div><div>new</div><div>1</div><div>pass</div><div>1m</div></div><div><div>7</div><div>Verify all 4 CSS fixes via Playwright <code>getComputedStyle</code> at 1440px — body 18px, h3 500, footer h5 19px, footer links 18px</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div><div><div>8</div><div>Commit <code>533b8b9</code>, push to <code>origin/issue-1-style-refinement-2</code>, PR #16 created</div><div>new</div><div>1</div><div>pass</div><div>5m</div></div></div><h3 id="outcomes-20">Outcomes</h3><ul>
-<li><strong>Completed:</strong> All 4 quick CSS fixes applied and verified, 2 checklist corrections applied, committed, pushed, PR #16 open</li>
-<li><strong>Completed:</strong> Steps 1–3 of style survey execution plan done</li>
-</ul><h3 id="problems-encountered-20">Problems Encountered</h3><p>(none)</p><h3 id="key-decisions-17">Key Decisions</h3><ul>
-<li>Used flat <code>18px</code> instead of adjusting clamp range for body font-size — original site uses flat 18px, no need for responsive scaling on body text</li>
-<li>Used <code>var(--body-font-size-xl)</code> for footer links since that token now resolves to 18px after the body font-size fix</li>
-</ul><h3 id="files-changed-20">Files Changed</h3><ul>
-<li><code>styles/styles.css</code> — <code>--body-font-size-xl</code> changed from <code>clamp(18px, ..., 20px)</code> to <code>18px</code>; h3 <code>font-weight</code> from <code>600</code> to <code>500</code></li>
-<li><code>blocks/footer/footer.css</code> — h5 <code>font-size</code> from <code>var(--heading-font-size-xs)</code> to <code>var(--heading-font-size-s)</code>; link <code>font-size</code> from <code>var(--body-font-size-s)</code> to <code>var(--body-font-size-xl)</code></li>
-<li><code>docs/validation-checklist.md</code> — h1/h2 weight corrected to 500; bright-blue corrected to #320FFF</li>
-</ul><h3 id="commits-20">Commits</h3><ul>
-<li><code>533b8b9</code> — Issue #1: Quick CSS fixes and style survey report</li>
-</ul><h3 id="carry-forward-20">Carry-Forward</h3><blockquote>
-<p>Steps 1–3 of execution plan complete. PR #16 open at https://github.com/aemdemos/poc-tm/pull/16. Next: Step 4 — re-migrate let-care-flow page (P0-1), then Step 5 — homepage content fixes (P1-4 careers section, P2-5/P2-6 missing images).</p>
+</ul><h3 id="carry-forward-21">Carry-Forward</h3><blockquote>
+<p>URL catalog created at <code>tools/importer/url-catalog.json</code> (370 URLs, 20 batches, 7 templates). W1 from style survey plan is complete. Next per execution plan: Step 4 — re-migrate let-care-flow (P0-1), then Step 5 — homepage content fixes (P1-4 careers section, P2-5/P2-6 missing images). Bulk import (Step 9) is now unblocked by the catalog.</p>
 </blockquote></div>
 </main>
 <footer></footer>

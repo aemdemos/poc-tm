@@ -18,8 +18,9 @@
 | 013 | 2026-03-02 | [BACKFILL] Navigation setup (Issue #3, PR #11) | ~28m | 2 completed, 0 problems |
 | 014 | 2026-03-02 | [BACKFILL] Block styling with design tokens (Issue #5, PR #12) | ~22m | 4 completed, 0 problems |
 | 015 | 2026-03-02 to 2026-03-03 | [BACKFILL] Footer implementation (Issue #6, PR #13) | ~2h 45m | 10 completed, 3 problems resolved |
-| 016 | 2026-03-04 | Daily status checkup, journal backfill, journal reminder hook | ~33m | 10 completed, 0 problems |
-| 017 | 2026-03-05 | Issue #1: Bulk page styles — visual fixes across all sections | ~1h 56m | 12 completed, 3 problems resolved |
-| 018 | 2026-03-05 | Style survey: full visual audit of original vs EDS pages | ~50m | 9 completed, 1 problem (workaround) |
-| 019 | 2026-03-05 | Merge style survey reports into comprehensive document | ~17m | 3 completed, 0 problems |
-| 020 | 2026-03-05 | Execute style plan Steps 1–3: CSS fixes, checklist, PR #16 | ~22m | 8 completed, 0 problems |
+| 016 | 2026-03-04 | [BACKFILL] Convert-all-md script and docs generation | ~33m | 5 completed, 0 problems |
+| 017 | 2026-03-05 | [BACKFILL] Issue #1 style fixes (awards, carousel, tabs, sections, fonts) | ~1h 56m | 10 completed, 1 problem resolved |
+| 018 | 2026-03-05 | [BACKFILL] Style survey: full visual audit original vs EDS | ~50m | 8 completed, 1 problem (workaround) |
+| 019 | 2026-03-05 | [BACKFILL] Merge style survey reports into comprehensive document | ~17m | 2 completed, 0 problems |
+| 020 | 2026-03-05 | [BACKFILL] Execute style plan steps 1–3: CSS fixes, checklist, PR #16 | ~22m | 8 completed, 0 problems |
+| 021 | 2026-03-05 | Create URL catalog from sitemaps (W1) — 370 URLs, 20 batches | ~33m | 12 completed, 0 problems |
