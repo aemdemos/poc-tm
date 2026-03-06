@@ -1,6 +1,6 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-06 (Session 033)
+**Last updated:** 2026-03-06 (Session 034)
 **Branch:** `issue-29`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
@@ -35,7 +35,7 @@
 - **P2-8 resolved: Mega-menu navigation** — Full-width panels, announcement bar, hover/accordion, 5 panel layouts (Session 033, Issue #29, PR #30)
 
 ## What's In Progress
-- **PR #30** — Mega-menu navigation awaiting review
+(nothing active)
 
 ## What's Pending
 - **W2** — Automated style regression (Playwright screenshot diff)
@@ -71,4 +71,4 @@
 - `content/` directory excluded from git (`.git/info/exclude`)
 
 ## Resume Point
-> PR #30 open for Issue #29 (mega-menu navigation). Awaiting user review. Backlog: W2 (style regression), Columns Lottie support, Accordion block fix, let-care-flow remote content fix.
+> Issues #31–#34 created for remaining backlog. Awaiting user review before starting implementation. Items: #31 accordion block fix, #32 Columns Lottie, #33 let-care-flow CDN content, #34 W2 style regression.

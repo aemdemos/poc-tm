@@ -1533,4 +1533,40 @@
 - `cf6d07a` — Implement mega-menu navigation with announcement bar (Closes #29)
 
 ### Carry-Forward
-> PR #30 open for Issue #29 (mega-menu). Awaiting user review. Backlog: W2 (style regression), Columns Lottie support, Accordion block fix, let-care-flow remote content fix.
+> PR #30 merged for Issue #29 (mega-menu). Backlog: W2 (style regression), Columns Lottie support, Accordion block fix, let-care-flow remote content fix.
+
+---
+
+## Session 034 — 2026-03-06 — Create GitHub issues for remaining backlog
+
+**Branch:** `issue-29`
+**Duration:** 15m (agent) + 10% = 17m
+**Session goal:** Create detailed GitHub issues with problem statements and proposed work for all 4 remaining backlog items
+
+### Actions
+- [x] Research accordion block error — identified TypeError on `row.children[1]`, 33 affected solutions pages, malformed import content (~3m) — pass
+- [x] Research Columns Lottie support — traced hero Lottie pipeline, confirmed columns.js has zero Lottie awareness, Careers section placeholder (~3m) — pass
+- [x] Research let-care-flow CDN issue — traced two-part cause (aem up proxies CDN + malformed .plain.html), documented discovery timeline (~3m) — pass
+- [x] Research W2 style regression — confirmed no Playwright test infra exists, URL catalog ready as input, style survey as manual predecessor (~3m) — pass
+- [x] Create Issue #31: Accordion block JS error on solutions pages (~1m) — pass
+- [x] Create Issue #32: Add Lottie animation support to Columns block (~1m) — pass
+- [x] Create Issue #33: let-care-flow page blocks not rendering (CDN pipe-table parsing) (~1m) — pass
+- [x] Create Issue #34: Automated style regression with Playwright screenshot diff (W2) (~1m) — pass
+
+### Outcomes
+- **Completed:** 4 GitHub issues created (#31–#34) with detailed problem statements, root cause analysis, affected files, and step-by-step proposed work plans. Awaiting user review before starting work.
+
+### Problems Encountered
+(none)
+
+### Files Changed
+- `journal/journal.md` — Added Session 034
+- `journal/journal-index.md` — Added Session 034 row
+- `journal/project-context.md` — Updated resume point
+- `journal/metrics.md` — Updated totals
+
+### Commits
+(none — GitHub issues only)
+
+### Carry-Forward
+> Issues #31–#34 created for remaining backlog. Awaiting user review before starting implementation. Items: #31 accordion block fix, #32 Columns Lottie, #33 let-care-flow CDN content, #34 W2 style regression.
