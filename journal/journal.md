@@ -1482,3 +1482,55 @@
 
 ### Carry-Forward
 > Issue #29 created for P2-8 mega-menu. Awaiting user review of issue before starting implementation. Backlog after P2-8: W2 (style regression), Columns Lottie support, Accordion block fix, let-care-flow remote content fix.
+
+---
+
+## Session 033 — 2026-03-06 — P2-8 Mega-menu navigation implementation
+
+**Branch:** `issue-29`
+**Duration:** 45m (agent) + 10% = 50m
+**Session goal:** Implement mega-menu navigation (Issue #29) — full-width panels, announcement bar, hover/accordion
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Read header.js, header.css, nav.plain.html to recover context from previous session | continuation | 1 | pass | 3m |
+| 2 | Remove duplicate desktop CSS block (lines 547–708) with stale selectors from old architecture | new | 1 | pass | 3m |
+| 3 | Add `white-space: normal` to base mega-panel styles | new | 1 | pass | 1m |
+| 4 | Move announcement section from inside nav to nav-wrapper (above nav) | new | 1 | pass | 3m |
+| 5 | Add `closeAllPanels()` call at end of decorate to prevent auto-open on load | new | 1 | pass | 2m |
+| 6 | Desktop 1440px visual validation — announcement bar, nav links, no auto-opened panels | new | 1 | pass | 3m |
+| 7 | Test Solutions hover — full-width panel with 2-column grid, 10 solutions with descriptions | new | 1 | pass | 3m |
+| 8 | Test Built For hover — category columns (Payers 5 links, Providers 3 links) | new | 1 | pass | 2m |
+| 9 | Strip EDS button decoration from mega-panel links | new | 1 | pass | 3m |
+| 10 | Mobile 375px validation — hamburger, nav items, accordion expand for Solutions | new | 1 | pass | 5m |
+| 11 | Lint check — stylelint + eslint both clean | new | 1 | pass | 1m |
+| 12 | Commit, push, create PR #30 | new | 1 | pass | 3m |
+
+### Outcomes
+- **Completed:** Full mega-menu navigation with 5 panels (Why Zelis?, Solutions, Built for, Resources, About), announcement bar, desktop hover, mobile accordion, overlay backdrop. PR #30 created.
+
+### Problems Encountered
+
+| Problem | Severity | Resolved? | Resolution | Related Action # |
+|---------|----------|-----------|------------|-----------------|
+| Duplicate desktop CSS block (from previous session) had `position: fixed; top: 0` and stale `> .mega-panel` child combinator causing panels to overlap nav | major | yes | Removed entire duplicate block (lines 547–708); base styles handle everything correctly | #2 |
+| Announcement bar rendered as narrow flex item inside nav grid | major | yes | Moved announcement section from nav to nav-wrapper before nav element | #4 |
+| CTA links in mega-panels styled as large purple buttons (EDS auto-decoration) | minor | yes | Strip `.button` and `.button-container` classes from mega-panel/mobile-panel content | #9 |
+
+### Key Decisions
+- Chose to enrich `nav.plain.html` with all mega-menu content (intro descriptions, solution descriptions, category groups) rather than hardcoding in JS — keeps content authorable in DA
+- Two-tier panel architecture: desktop panels in external `.mega-panels-container` (for full-width), mobile panels cloned inline inside each `<li>` (for accordion behavior)
+- Nav content encoding convention: `<strong>` = intro panel title, `<p>` = descriptions, nested `<ul>` without `<a>` parent = category groups
+
+### Files Changed
+- `nav.plain.html` — Complete rewrite: 4 sections (announcement, brand, enriched nav with mega-menu content, tools+search)
+- `blocks/header/header.js` — Complete rewrite: mega-panel builder, hover with 200ms delay, mobile accordion cloning, button stripping
+- `blocks/header/header.css` — Major rewrite: announcement bar, mega-panels-container, panel inner layout, solutions grid, category columns, mobile overrides, overlay
+
+### Commits
+- `cf6d07a` — Implement mega-menu navigation with announcement bar (Closes #29)
+
+### Carry-Forward
+> PR #30 open for Issue #29 (mega-menu). Awaiting user review. Backlog: W2 (style regression), Columns Lottie support, Accordion block fix, let-care-flow remote content fix.

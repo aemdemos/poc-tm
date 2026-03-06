@@ -1,20 +1,20 @@
 # Project Metrics
 
 ## Time
-- **Total sessions:** 33 (including backfills)
-- **Total agent time:** ~24h 50m
-- **Total with user margin (10%):** ~27h 24m
-- **Average session length:** ~46m
+- **Total sessions:** 34 (including backfills)
+- **Total agent time:** ~25h 35m
+- **Total with user margin (10%):** ~28h 14m
+- **Average session length:** ~45m
 
 ## Success Rates
-- **Actions attempted:** 271
-- **First-try success:** 265 (98%)
+- **Actions attempted:** 283
+- **First-try success:** 277 (98%)
 - **Required retry:** 5 (2%)
 - **Failed:** 1 (<1%)
 
 ## Problems
-- **Total encountered:** 25
-- **Resolved:** 20 (80%)
+- **Total encountered:** 28
+- **Resolved:** 23 (82%)
 - **Unresolved:** 5
 - **Most common category:** DA compatibility / content handling
 
@@ -23,8 +23,8 @@
 | Category | Count | Examples |
 |----------|-------|---------|
 | DA compatibility | 5 | URL mangling, file reference mismatch, content flattening, image stripping |
-| CSS/styling | 4 | Tab truncation (multiple attempts), stylelint false positive, fallback font width, body font-size mismatch |
-| Git/environment | 5 | safe.directory error, filesystem access, push rejected (rebase needed), push failed (no credentials) ×2 |
+| CSS/styling | 7 | Tab truncation (multiple attempts), stylelint false positive, fallback font width, body font-size mismatch, mega-panel positioning, announcement bar layout, CTA button decoration |
+| Git/environment | 5 | safe.directory error, filesystem access, push rejected (rebase needed), push failed (no credentials) x2 |
 | Tooling | 2 | convert-all-md.js corrupts EDS block HTML, subagent Bash/Playwright auto-denied |
 | Lint | 2 | no-use-before-define in image-slider.js, no-descending-specificity in image-slider.css |
 | Performance | 1 | Animation load timeout too slow |
@@ -71,3 +71,4 @@
 | 030 | 2026-03-06 | ~20m | ~22m | 5 | 100% |
 | 031 | 2026-03-07 | ~30m | ~33m | 12 | 100% |
 | 032 | 2026-03-06 | ~25m | ~28m | 8 | 100% |
+| 033 | 2026-03-06 | ~45m | ~50m | 12 | 100% |

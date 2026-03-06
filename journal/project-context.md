@@ -1,10 +1,10 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-06 (Session 032)
-**Branch:** `main`
+**Last updated:** 2026-03-06 (Session 033)
+**Branch:** `issue-29`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
-**Overall status:** Bulk import complete (365 pages). Issue #27 (P2-7 footer featured resource card images) resolved, PR #28 merged.
+**Overall status:** Mega-menu navigation implemented. PR #30 open for review.
 
 ## What's Done
 - Repository initialized and configured (Session 000)
@@ -28,18 +28,16 @@
 - **P1-5 resolved: Video hero block** — `blocks/video-hero/` with Vimeo/YouTube iframe injection (Session 024)
 - **P1-6 resolved: Image slider block** — `blocks/image-slider/` with CSS scroll-snap, 5s autoplay (Session 024)
 - **Issue #19: Bulk site import** — 365 pages imported across 20 batches with HTML pipeline (Session 025)
-- **Issue #19 pushed** — `issue-19-reimports` branch pushed to remote (Session 026)
 - **P2-9 resolved: Gold highlight** — `main h1/h2/h3 em` styled gold `#FFBE00` in styles.css (Session 026, Issue #21)
 - **P2-10 resolved: Case study card + HR** — Single-card :only-child horizontal layout with purple border, HR styling (Session 027, Issue #23)
-- **P2-6 researched** — Full problem statement written: 3 inline SVGs with stroke-drawing animation, IntersectionObserver trigger (Session 028)
 - **P2-6 resolved: Animated SVG icons** — 3 inline SVGs with stroke-draw animation via IntersectionObserver in cards block (Session 029, Issue #25, PR #26)
-- **P2-7 resolved: Footer featured resource card images** — Added Forrester Wave slug to FEATURED_THUMBNAILS map, console.warn for unmapped slugs (Session 031, Issue #27, PR #28)
+- **P2-7 resolved: Footer featured resource card images** — Added Forrester Wave slug to FEATURED_THUMBNAILS map (Session 031, Issue #27, PR #28)
+- **P2-8 resolved: Mega-menu navigation** — Full-width panels, announcement bar, hover/accordion, 5 panel layouts (Session 033, Issue #29, PR #30)
 
 ## What's In Progress
-(nothing active)
+- **PR #30** — Mega-menu navigation awaiting review
 
 ## What's Pending
-- **P2-8** — Mega-menu navigation
 - **W2** — Automated style regression (Playwright screenshot diff)
 - **Columns Lottie support** — Careers section right column needs Lottie rendering
 - **Accordion block fix** — JS error on solutions pages (pre-existing)
@@ -50,6 +48,9 @@
 
 ## Key Files
 - `styles/styles.css` — Global styles with design tokens + gold highlight + HR styling
+- `blocks/header/header.js` — Mega-menu: panel builder, hover/accordion, announcement bar detection
+- `blocks/header/header.css` — Mega-menu: panels-container, solutions grid, categories, mobile accordion, overlay
+- `nav.plain.html` — Enriched navigation with intro descriptions, solution cards, category groups
 - `blocks/cards/cards.css` — Card grid with single-card case study variant (:only-child) + icon-cards animated SVGs
 - `blocks/columns/columns.css` — Flexible columns with 58/42 desktop split
 - `tools/importer/bulk-import.js` — Bulk import script with markdownToEdsHtml() HTML pipeline
@@ -70,4 +71,4 @@
 - `content/` directory excluded from git (`.git/info/exclude`)
 
 ## Resume Point
-> Issue #29 created for P2-8 (mega-menu navigation) with detailed problem statement and 7-step plan. Awaiting user review before starting implementation. Backlog after P2-8: W2 (style regression), Columns Lottie support, accordion block fix, let-care-flow remote content fix.
+> PR #30 open for Issue #29 (mega-menu navigation). Awaiting user review. Backlog: W2 (style regression), Columns Lottie support, Accordion block fix, let-care-flow remote content fix.
