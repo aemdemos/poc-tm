@@ -25,6 +25,7 @@ function wrapGroups(container, isDelimiter) {
 
 /* Featured resource thumbnail URLs keyed by slug from the "Read more" link. */
 const FEATURED_THUMBNAILS = {
+  'zelis-named-a-strong-performer-in-the-forrester-wave-customer-experience-platforms-for-healthcare-q1-2026': 'https://www.zelis.com/wp-content/uploads/2026/03/Forrester-Wave-Report_FWR-Option-3_Forrester-Wave-Report-ZHUB-1920x1200-v3-300x300.png',
   'accelerating-progress-in-healthcare-finance-a-call-to-action': 'https://www.zelis.com/wp-content/uploads/2025/05/2025_forum_0400-300x200.jpg',
   'cms-price-transparency-proposed-rule-payer': 'https://www.zelis.com/wp-content/uploads/2025/09/Zoom-Into-Price-Transparency_Thumbnail-300x170.jpg',
   'advancing-the-healthcare-financial-experience': 'https://www.zelis.com/wp-content/uploads/2026/01/Resource-Page-Image-SOTFE-300x200.png',
@@ -41,7 +42,11 @@ function injectFeaturedImages(section) {
     if (!link) return;
     const slug = link.getAttribute('href')?.split('/').filter(Boolean).pop();
     const src = FEATURED_THUMBNAILS[slug];
-    if (!src) return;
+    if (!src) {
+      // eslint-disable-next-line no-console
+      console.warn(`[footer] No thumbnail mapped for featured resource slug: "${slug}"`);
+      return;
+    }
     const p = document.createElement('p');
     p.classList.add('featured-image');
     const img = document.createElement('img');
