@@ -6,6 +6,10 @@ import { loadScript } from './aem.js';
 async function initLottie() {
   await loadScript('https://cdn.jsdelivr.net/npm/lottie-web@5/build/player/lottie_light.min.js');
 
+  // Mark the injected script so verification can distinguish delayed-load from render-blocking
+  const lottieScript = document.querySelector('script[src*="lottie"]');
+  if (lottieScript) lottieScript.dataset.loadedBy = 'delayed';
+
   document.querySelectorAll('[data-lottie-path]').forEach((container) => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
