@@ -1,10 +1,10 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-05 (Session 024)
-**Branch:** `issue-17-addtl-blocks`
+**Last updated:** 2026-03-06 (Session 026)
+**Branch:** `issue-21-highlight`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
-**Overall status:** Execution plan Steps 1–6 complete. Video hero and image slider blocks implemented. Needs push to remote.
+**Overall status:** Bulk import complete (365 pages). Gold highlight implemented. Multiple PRs ready.
 
 ## What's Done
 - Repository initialized and configured (Session 000)
@@ -20,50 +20,45 @@
 - **Issue #1 style fixes** — awards, carousel, tabs, section spacing, font tokens (Session 017)
 - **Style survey** — full computed-style audit, merged comprehensive report (Sessions 018–019)
 - **Quick CSS fixes** — body 18px, h3 weight 500, footer h5 19px, footer links 18px (Session 020)
-- **Checklist corrections** — h1/h2 weight 500, bright-blue #320FFF (Session 020)
 - **PR #16 open** — All Issue #1 style changes on `issue-1-style-refinement-2`
-- **URL catalog created** — 370 URLs in 20 batches, 7 templates at `tools/importer/url-catalog.json` (Session 021)
-- **P0-1 resolved: let-care-flow re-migrated** — Hero, Carousel (5 slides), Cards, Columns blocks; no duplicate sections (Session 022)
-- **P1-4 resolved: Careers section added** — "Find your purpose in ours." with Columns block, 2 CTAs, Lottie placeholder (Session 023)
-- **P2-5 resolved: Award badges updated** — 4 images switched to 2025 zelis.com URLs, subtitle corrected (Session 023)
-- **P1-5 resolved: Video hero block** — `blocks/video-hero/` with Vimeo/YouTube iframe injection, poster+gradient, expanded modal (Session 024)
-- **P1-6 resolved: Image slider block** — `blocks/image-slider/` with CSS scroll-snap, 5s autoplay, prev/next arrows, IntersectionObserver (Session 024)
-- **Step 6 plan documented** — `docs/step-6-new-blocks-plan.md` with content models, implementation details, acceptance criteria (Session 024)
+- **URL catalog created** — 370 URLs in 20 batches, 7 templates (Session 021)
+- **P0-1 resolved: let-care-flow re-migrated** — Hero, Carousel, Cards, Columns blocks (Session 022)
+- **P1-4 resolved: Careers section added** — Columns block, 2 CTAs, Lottie placeholder (Session 023)
+- **P2-5 resolved: Award badges updated** — 4 images switched to 2025 URLs (Session 023)
+- **P1-5 resolved: Video hero block** — `blocks/video-hero/` with Vimeo/YouTube iframe injection (Session 024)
+- **P1-6 resolved: Image slider block** — `blocks/image-slider/` with CSS scroll-snap, 5s autoplay (Session 024)
+- **Issue #19: Bulk site import** — 365 pages imported across 20 batches with HTML pipeline (Session 025)
+- **Issue #19 pushed** — `issue-19-reimports` branch pushed to remote (Session 026)
+- **P2-9 resolved: Gold highlight** — `main h1/h2/h3 em` styled gold `#FFBE00` in styles.css (Session 026, Issue #21)
 
 ## What's In Progress
-- **Push pending** — `issue-17-addtl-blocks` branch has 2 commits (`b672a47`, `8233149`) that need manual push (no GitHub credentials in env)
+(nothing active)
 
 ## What's Pending
-- **P2-6** — Add animated SVG icons to "We Are Zelis" feature cards (needs custom block development)
+- **PR for issue-21-highlight** — Create PR to close Issue #21
+- **P2-10** — Case study card + two-column CTA layout for let-care-flow
+- **P2-6** — Add animated SVG icons to "We Are Zelis" feature cards
 - **P2-7** — Footer featured resource card images
 - **P2-8** — Mega-menu navigation
-- **P2-9** — Gold mark highlight for "Care" in let-care-flow headings
-- **P2-10** — Case study card + two-column CTA layout for let-care-flow
-- **Issue #4** — Bulk page migration (370 URLs, catalog ready)
 - **W2** — Automated style regression (Playwright screenshot diff)
-- **Columns Lottie support** — Careers section right column needs Lottie rendering (future enhancement)
-- **PR for issue-17-addtl-blocks** — Create PR after push
+- **Columns Lottie support** — Careers section right column needs Lottie rendering
+- **Accordion block fix** — JS error on solutions pages (pre-existing)
 
 ## Active Blockers
-- **Git push** — No GitHub credentials in current environment; user must push manually
+(none)
 
 ## Key Files
-- `content/index.md` — Homepage with 9 sections including Careers (not in git — content excluded)
-- `content/let-care-flow.md` — Updated with Video Hero + Image Slider blocks (not in git)
-- `content/let-care-flow.html` — Manually written EDS block HTML (not in git)
-- `blocks/video-hero/video-hero.js` — Two-column video hero with Vimeo/YouTube iframe injection
-- `blocks/video-hero/video-hero.css` — Dark purple bg, gradient overlay, expanded modal, responsive
-- `blocks/image-slider/image-slider.js` — Scroll-snap slider with autoplay, arrows, IntersectionObserver
-- `blocks/image-slider/image-slider.css` — Full-width slides, arrow styling, responsive
-- `docs/step-6-new-blocks-plan.md` — Implementation plan for both blocks
-- `styles/styles.css` — Global styles with design tokens (body 18px, h3 weight 500)
-- `blocks/footer/footer.css` — Footer styling (h5 19px, links 18px)
-- `docs/style-survey-report.md` — Comprehensive style survey (43 items, 14 categories, 13-step plan)
-- `tools/importer/url-catalog.json` — 370 URLs in 20 batches for bulk import
+- `styles/styles.css` — Global styles with design tokens + gold highlight rule
+- `tools/importer/bulk-import.js` — Bulk import script with markdownToEdsHtml() HTML pipeline
+- `tools/importer/url-catalog.json` — 370 URLs in 20 batches
+- `tools/importer/import-results.json` — Results from latest import run (365 success, 3 failed)
+- `content/` — 367 .md + 369 .html files (excluded from git)
+- `blocks/video-hero/` — Video hero block (Vimeo/YouTube iframe injection)
+- `blocks/image-slider/` — Image slider block (CSS scroll-snap, autoplay)
 - `journal/` — Project journal directory
 
 ## Critical Warning
-- **NEVER use `convert-all-md.js`** for EDS content files — it corrupts block HTML by rendering grid tables as literal text. Always write HTML manually or use the MCP convert tool.
+- **NEVER use `convert-all-md.js`** for EDS content files — it corrupts block HTML
 
 ## Git Notes
 - Remote: `https://github.com/aemdemos/poc-tm.git`
@@ -72,4 +67,4 @@
 - `content/` directory excluded from git (`.git/info/exclude`)
 
 ## Resume Point
-> Step 6 complete on `issue-17-addtl-blocks` branch (commits `b672a47`, `8233149`). Needs manual `git push origin issue-17-addtl-blocks`, then create PR. Next priorities: P2-9 (gold mark highlight), P2-10 (case study card layout), P2-6 (animated SVG icons). Bulk import (Step 9) still ready via URL catalog.
+> P2-9 complete on `issue-21-highlight` (commit `b5fded1`, pushed). Next priorities: P2-10 (case study card + CTA), P2-6 (animated SVG icons), accordion block JS fix.

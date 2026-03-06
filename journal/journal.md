@@ -1157,3 +1157,98 @@
 
 ### Carry-Forward
 > Step 6 complete — video-hero and image-slider blocks implemented on `issue-17-addtl-blocks` branch. Needs manual `git push origin issue-17-addtl-blocks` (no credentials in env). IMPORTANT: Never use convert-all-md.js for EDS content files — it corrupts block HTML. Next priorities: open PR for issue-17-addtl-blocks, then Step 7+ from execution plan (P2-9 gold mark highlight, P2-10 case study card layout, P2-6 animated SVG icons). Bulk import (Step 9) still ready via URL catalog.
+
+---
+
+## Session 025 — 2026-03-05 — Bulk site import: Issue #19 (365 pages)
+
+**Branch:** `issue-19-reimports`
+**Duration:** 45m (agent) + 10% = 50m
+**Session goal:** Execute bulk import of all 370 URLs from url-catalog.json with fixed HTML pipeline
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Add `markdownToEdsHtml()` converter to bulk-import.js — sections, block tables, headings, images, lists, inline markdown | new | 1 | pass | 15m |
+| 2 | Fix `importPage()` to write both .md and .html; fix `const html` name collision; fix double-slash in root paths | fix | 1 | pass | 5m |
+| 3 | Validate all 6 template parsers with sample URLs (blog-article, gated-resource, case-study, solutions-page, built-for-audience, company-utility) | verify | 1 | pass | 5m |
+| 4 | Add let-care-flow to alreadyMigrated list in url-catalog.json | new | 1 | pass | 1m |
+| 5 | Run `bulk-import.js --batch all` — process all 20 batches (368 URLs after skipping 2 already-migrated) | new | 1 | pass | 10m |
+| 6 | Spot-check blog article (blockchain-technology-overview) — renders with title, hero image, date, body, related posts | verify | 1 | pass | 2m |
+| 7 | Spot-check gated resource (5-cs-of-payment-integrity) — renders with title, hero image, description, download section | verify | 1 | pass | 2m |
+| 8 | Spot-check solutions page (payment-integrity) — renders with hero, CTA, content sections, footer | verify | 1 | pass | 2m |
+| 9 | Spot-check case study (from-156k-to-430) — renders with title, hero image, subtitle, tag | verify | 1 | pass | 2m |
+| 10 | Spot-check built-for page (health-plans) — renders with title, sections, use cases, footer | verify | 1 | pass | 2m |
+| 11 | Verify homepage (index) not broken by import | verify | 1 | pass | 1m |
+| 12 | Commit `4d479b8` — bulk-import.js + url-catalog.json + import-results.json | new | 1 | pass | 1m |
+| 13 | Push to remote — failed (no GitHub credentials) | new | 1 | fail | 1m |
+
+### Outcomes
+- **Completed:** HTML pipeline added to bulk-import.js — generates proper EDS HTML alongside markdown
+- **Completed:** Full site import — 365 of 368 pages successfully imported across 20 batches
+- **Completed:** Spot-check validation — all 6 template types render correctly in preview
+- **Partial:** Push to remote failed — needs manual push with GitHub credentials
+
+### Problems Encountered
+
+| Problem | Severity | Resolved? | Resolution | Related Action # |
+|---------|----------|-----------|------------|-----------------|
+| 3 source URLs returned 404 (removed from zelis.com) | minor | yes | Expected — pages no longer exist on source site | #5 |
+| Git push failed — no GitHub credentials in environment | minor | no | User needs to push manually | #13 |
+| Accordion block JS error on solutions page | minor | workaround | Pre-existing issue — not related to import pipeline | #8 |
+
+### Key Decisions
+- Used `--batch all` to process all 20 batches in a single run rather than batch-by-batch — more efficient, all use same HTML pipeline
+- Added `markdownToEdsHtml()` inline in bulk-import.js rather than a separate module — keeps the import script self-contained
+- 3 failed URLs (404s) are acceptable — pages were removed from source site between cataloging and import
+
+### Files Changed
+- `tools/importer/bulk-import.js` — Added markdownToEdsHtml() converter (+211 lines), fixed urlToContentPath for root paths, write both .md and .html
+- `tools/importer/url-catalog.json` — Added let-care-flow to alreadyMigrated list
+- `tools/importer/import-results.json` — New: import run results (365 success, 3 failed)
+
+### Commits
+- `4d479b8` — Add HTML pipeline to bulk-import and execute full site import (365 pages)
+
+### Carry-Forward
+> Issue #19 bulk import complete on `issue-19-reimports` branch. 365 pages imported successfully. Commit `4d479b8` needs manual push. Then create PR to close Issue #19. Next priorities: P2-9 (gold mark highlight), P2-10 (case study card layout), P2-6 (animated SVG icons). Accordion block JS error on solutions pages is a pre-existing issue worth investigating.
+
+---
+
+## Session 026 — 2026-03-06 — Issue #19 push + P2-9 gold highlight (Issue #21)
+
+**Branch:** `issue-19-reimports` → `issue-21-highlight`
+**Duration:** 25m (agent) + 10% = 28m
+**Session goal:** Push Issue #19 bulk import, then implement P2-9 gold mark highlight
+
+### Actions
+- [x] Push `issue-19-reimports` commit `4d479b8` to remote with user-provided token (~1m) — pass
+- [x] Research original zelis.com `<mark>` element — gold `#FFBE00`, used in H1 and H2 on let-care-flow (~3m) — pass
+- [x] Inspect EDS let-care-flow — first `<em>` (video-hero H1) already gold, second `<em>` (default content H2) was dark italic (~3m) — pass
+- [x] Write problem statement and plan for P2-9 in GitHub issue markdown format (~5m) — pass
+- [x] Switch to `issue-21-highlight` branch (~1m) — pass
+- [x] Add global CSS rule: `main h1/h2/h3 em { color: var(--color-gold); font-style: normal }` in styles.css (~2m) — pass
+- [x] Verify both "Care" instances now gold on let-care-flow preview (~2m) — pass
+- [x] Verify homepage has no unintended gold text (~1m) — pass
+- [x] Commit `b5fded1` and push to remote (~2m) — pass
+
+### Outcomes
+- **Completed:** Issue #19 pushed and ready for PR
+- **Completed:** P2-9 gold highlight — both "Care" instances on let-care-flow now render in gold `#FFBE00`, matching original site
+
+### Problems Encountered
+(none)
+
+### Key Decisions
+- Used global `main h1/h2/h3 em` rule rather than page-specific selector — reusable across any page that uses `<em>` for gold highlights
+- Scoped to H1–H3 only to avoid affecting H4–H6 or paragraph `<em>` (standard italic)
+
+### Files Changed
+- `styles/styles.css` — Added 6-line gold highlight rule for `<em>` in headings
+
+### Commits
+- `b5fded1` — Add gold highlight for em elements in headings (P2-9)
+
+### Carry-Forward
+> P2-9 complete on `issue-21-highlight` (commit `b5fded1`, pushed). Issue #19 also pushed. Next priorities: P2-10 (case study card + two-column CTA), P2-6 (animated SVG icons), accordion block JS fix.

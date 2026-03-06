@@ -1,21 +1,21 @@
 # Project Metrics
 
 ## Time
-- **Total sessions:** 25 (including backfills)
-- **Total agent time:** ~21h 0m
-- **Total with user margin (10%):** ~23h 9m
-- **Average session length:** ~50m
+- **Total sessions:** 27 (including backfills)
+- **Total agent time:** ~22h 10m
+- **Total with user margin (10%):** ~24h 27m
+- **Average session length:** ~49m
 
 ## Success Rates
-- **Actions attempted:** 194
-- **First-try success:** 190 (98%)
-- **Required retry:** 3 (2%)
+- **Actions attempted:** 216
+- **First-try success:** 212 (98%)
+- **Required retry:** 3 (1%)
 - **Failed:** 1 (<1%)
 
 ## Problems
-- **Total encountered:** 21
-- **Resolved:** 18 (86%)
-- **Unresolved:** 3
+- **Total encountered:** 24
+- **Resolved:** 20 (83%)
+- **Unresolved:** 4
 - **Most common category:** DA compatibility / content handling
 
 ## Problem Categories
@@ -24,12 +24,14 @@
 |----------|-------|---------|
 | DA compatibility | 5 | URL mangling, file reference mismatch, content flattening, image stripping |
 | CSS/styling | 4 | Tab truncation (multiple attempts), stylelint false positive, fallback font width, body font-size mismatch |
-| Git/environment | 4 | safe.directory error, filesystem access, push rejected (rebase needed), push failed (no credentials) |
+| Git/environment | 5 | safe.directory error, filesystem access, push rejected (rebase needed), push failed (no credentials) ×2 |
 | Tooling | 2 | convert-all-md.js corrupts EDS block HTML, subagent Bash/Playwright auto-denied |
 | Lint | 2 | no-use-before-define in image-slider.js, no-descending-specificity in image-slider.css |
 | Performance | 1 | Animation load timeout too slow |
 | File sync | 1 | HTML variants stale after markdown edit |
 | Test harness | 2 | Sync scroll doesn't trigger IO, F-DELAYED false positive |
+| Source site | 1 | 3 URLs returned 404 during bulk import |
+| Block runtime | 1 | Accordion block JS error on solutions pages |
 
 ## Session Timeline
 
@@ -60,3 +62,5 @@
 | 022 | 2026-03-05 | ~35m | ~39m | 10 | 100% |
 | 023 | 2026-03-05 | ~30m | ~33m | 10 | 100% |
 | 024 | 2026-03-05 | ~1h 25m | ~1h 34m | 16 | 94% (1 fail) |
+| 025 | 2026-03-05 | ~45m | ~50m | 13 | 92% (1 fail) |
+| 026 | 2026-03-06 | ~25m | ~28m | 9 | 100% |
