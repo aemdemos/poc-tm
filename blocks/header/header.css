@@ -56,7 +56,46 @@ header nav a:any-link {
   color: currentcolor;
 }
 
-/* hamburger */
+/* ── announcement bar ───────────────────────────────────────────────── */
+
+header .nav-announcement {
+  background-color: var(--color-pale-lavender, #f4f0fa);
+  text-align: center;
+  padding: 10px 24px;
+  font-size: 14px;
+  color: var(--text-color);
+  line-height: 1.5;
+  width: 100%;
+}
+
+header .nav-announcement .default-content-wrapper {
+  max-width: 1264px;
+  margin: auto;
+}
+
+header .nav-announcement p {
+  margin: 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header .nav-announcement a {
+  font-weight: 700;
+  text-decoration: none;
+  margin-left: 8px;
+}
+
+header .nav-announcement a:hover {
+  text-decoration: underline;
+}
+
+@media (width < 900px) {
+  header .nav-announcement {
+    display: none;
+  }
+}
+
+/* ── hamburger ──────────────────────────────────────────────────────── */
+
 header nav .nav-hamburger {
   grid-area: hamburger;
   height: 22px;
@@ -137,7 +176,8 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
   }
 }
 
-/* brand */
+/* ── brand ──────────────────────────────────────────────────────────── */
+
 header .nav-brand {
   grid-area: brand;
   flex-basis: 128px;
@@ -151,7 +191,8 @@ header nav .nav-brand img {
   height: auto;
 }
 
-/* sections */
+/* ── nav sections ───────────────────────────────────────────────────── */
+
 header nav .nav-sections {
   grid-area: sections;
   flex: 1 1 auto;
@@ -165,22 +206,15 @@ header nav[aria-expanded='true'] .nav-sections {
   align-self: start;
 }
 
-header nav .nav-sections ul {
+header nav .nav-sections .default-content-wrapper > ul {
   list-style: none;
   padding-left: 0;
   font-size: 18px;
+  margin: 0;
 }
 
-header nav .nav-sections ul > li {
+header nav .nav-sections .default-content-wrapper > ul > li {
   font-weight: 600;
-}
-
-header nav .nav-sections ul > li > ul {
-  margin-top: 0;
-}
-
-header nav .nav-sections ul > li > ul > li {
-  font-weight: 400;
 }
 
 @media (width >= 900px) {
@@ -194,10 +228,32 @@ header nav .nav-sections ul > li > ul > li {
     align-self: unset;
   }
 
+  header nav .nav-sections .default-content-wrapper > ul {
+    display: flex;
+    gap: 24px;
+    margin: 0;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li {
+    flex: 0 1 auto;
+    position: relative;
+  }
+}
+
+/* ── nav-drop (top-level items with dropdowns) ──────────────────────── */
+
+header nav .nav-sections .nav-drop {
+  cursor: pointer;
+}
+
+header nav .nav-sections .nav-drop > a {
+  text-decoration: none;
+}
+
+@media (width >= 900px) {
   header nav .nav-sections .nav-drop {
     position: relative;
     padding-right: 16px;
-    cursor: pointer;
   }
 
   header nav .nav-sections .nav-drop::after {
@@ -219,53 +275,306 @@ header nav .nav-sections ul > li > ul > li {
     bottom: 2px;
     transform: rotate(315deg);
   }
+}
 
-  header nav .nav-sections ul {
-    display: flex;
-    gap: 24px;
-    margin: 0;
-  }
+/* stylelint-disable no-descending-specificity */
 
-  header nav .nav-sections .default-content-wrapper > ul > li {
-    flex: 0 1 auto;
-    position: relative;
-  }
+/* ── mega-panels container (desktop: full-width below nav) ──────────── */
 
-  header nav .nav-sections .default-content-wrapper > ul > li > ul {
-    display: none;
-    position: relative;
-  }
+header .mega-panels-container {
+  display: none;
+}
 
-  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
+header .mega-panels-container .mega-panel {
+  display: none;
+  background-color: var(--background-color);
+  border-bottom: 1px solid rgb(185 177 220);
+  box-shadow: 0 4px 17px 0 rgb(35 0 75 / 10%);
+  padding: 32px 0;
+  white-space: normal;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+header .mega-panels-container .mega-panel.open {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (width >= 900px) {
+  header .mega-panels-container {
     display: block;
-    position: absolute;
-    left: -24px;
-    width: 200px;
-    top: 150%;
-    padding: 16px;
-    background-color: var(--light-color);
-    white-space: initial;
-    z-index: 1;
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li > ul::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 16px;
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid var(--light-color);
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
-    padding: 8px 0;
   }
 }
 
-/* tools */
+/* Mobile inline panels (cloned inside each nav-drop) */
+header .mega-panel-mobile {
+  display: none;
+}
+
+header nav .nav-drop[aria-expanded='true'] > .mega-panel-mobile {
+  display: block;
+}
+
+@media (width >= 900px) {
+  header .mega-panel-mobile {
+    display: none !important;
+  }
+}
+
+/* ── mega-panel inner layout ────────────────────────────────────────── */
+
+header .mega-panel-inner {
+  max-width: 1264px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  gap: 48px;
+}
+
+/* Intro column */
+header .mega-intro {
+  flex: 0 0 280px;
+  padding-right: 32px;
+  border-right: 1px solid var(--color-warm-gray, #e8e4e0);
+}
+
+header .mega-intro-title {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-deep-purple, var(--text-color));
+  margin: 0 0 12px;
+}
+
+header .mega-intro-desc {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0 0 16px;
+  color: var(--text-color);
+}
+
+header .mega-intro-cta {
+  margin: 0;
+}
+
+header .mega-intro-cta a {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-deep-purple, var(--text-color));
+  text-decoration: none;
+}
+
+header .mega-intro-cta a::after {
+  content: ' \2192';
+}
+
+header .mega-intro-cta a:hover {
+  text-decoration: underline;
+}
+
+/* Content area */
+header .mega-content {
+  flex: 1;
+}
+
+/* Solutions grid: 2-column layout */
+header .mega-solutions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 48px;
+}
+
+header .mega-solution-card {
+  padding: 8px 0;
+}
+
+header .mega-solution-link {
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--text-color);
+  display: block;
+  margin-bottom: 4px;
+}
+
+header .mega-solution-link:hover {
+  color: var(--color-deep-purple, var(--text-color));
+  text-decoration: underline;
+}
+
+header .mega-solution-desc {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 0;
+  color: var(--color-dark-gray, #555);
+}
+
+/* Categories: columns of grouped links */
+header .mega-categories {
+  display: flex;
+  gap: 48px;
+}
+
+header .mega-category {
+  flex: 1;
+}
+
+header .mega-category-title {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-dark-gray, #555);
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-warm-gray, #e8e4e0);
+}
+
+header .mega-panel ul,
+header .mega-panel-mobile ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+header .mega-panel ul li,
+header .mega-panel-mobile ul li {
+  padding: 6px 0;
+}
+
+header .mega-panel a,
+header .mega-panel-mobile a {
+  font-size: 15px;
+  font-weight: 400;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+header .mega-panel a:hover,
+header .mega-panel-mobile a:hover {
+  color: var(--color-deep-purple, var(--text-color));
+  text-decoration: underline;
+}
+
+/* Simple link list fallback */
+header .mega-links ul {
+  columns: 2;
+  column-gap: 48px;
+}
+
+/* ── mobile mega-panel styling ──────────────────────────────────────── */
+
+@media (width < 900px) {
+  header .mega-panel-mobile {
+    padding: 8px 0 16px;
+    font-weight: 400;
+  }
+
+  header .mega-panel-mobile .mega-panel-inner {
+    flex-direction: column;
+    gap: 12px;
+    padding: 0;
+  }
+
+  header .mega-panel-mobile .mega-intro {
+    flex: unset;
+    padding-right: 0;
+    border-right: none;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-warm-gray, #e8e4e0);
+  }
+
+  header .mega-panel-mobile .mega-intro-title {
+    font-size: 16px;
+    margin: 0 0 4px;
+  }
+
+  header .mega-panel-mobile .mega-intro-desc {
+    font-size: 14px;
+    margin: 0 0 8px;
+    color: var(--color-dark-gray, #555);
+  }
+
+  header .mega-panel-mobile .mega-intro-cta a {
+    font-size: 14px;
+  }
+
+  header .mega-panel-mobile .mega-categories {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  header .mega-panel-mobile .mega-solutions {
+    display: block;
+  }
+
+  header .mega-panel-mobile .mega-solution-card {
+    padding: 8px 0;
+  }
+
+  header .mega-panel-mobile .mega-solution-link {
+    font-weight: 600;
+    font-size: 16px;
+    display: block;
+  }
+
+  header .mega-panel-mobile .mega-solution-desc {
+    font-size: 14px;
+    margin: 4px 0 0;
+    color: var(--color-dark-gray, #555);
+  }
+
+  header .mega-panel-mobile .mega-category-title {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-dark-gray, #555);
+    margin: 0 0 8px;
+  }
+
+  header .mega-panel-mobile a {
+    font-size: 16px;
+    font-weight: 400;
+  }
+}
+
+/* stylelint-enable no-descending-specificity */
+
+/* ── nav overlay (desktop backdrop) ─────────────────────────────────── */
+
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0 0 0 / 30%);
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.nav-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (width < 900px) {
+  .nav-overlay {
+    display: none;
+  }
+}
+
+/* ── tools ──────────────────────────────────────────────────────────── */
+
 header nav .nav-tools {
   grid-area: tools;
   display: none;
@@ -335,13 +644,32 @@ header nav .nav-tools .button-container:last-child .button:hover {
   text-decoration: none;
 }
 
+/* Search button */
+header .nav-search-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: var(--color-dark-gray);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+}
+
+header .nav-search-btn:hover {
+  color: var(--text-color);
+}
+
 @media (width >= 900px) {
   header nav .nav-tools {
     display: block;
   }
 }
 
-/* breadcrumbs */
+/* ── breadcrumbs ────────────────────────────────────────────────────── */
+
 header .breadcrumbs {
   display: none;
   margin: auto;

@@ -1394,3 +1394,143 @@
 
 ### Carry-Forward
 > Issue #25 implemented and pushed on `issue-25` branch. 3 SVG icons with stroke-drawing animation working on homepage. Next: create PR for Issue #25, then continue with P2-7 (footer images), P2-8 (mega-menu), or accordion block fix.
+
+---
+
+## Session 031 — 2026-03-07 — P2-7: Footer Featured Resource Card Images (Issue #27)
+
+**Branch:** `issue-27`
+**Duration:** 30m (agent) + 10% = 33m
+**Session goal:** Daily status checkup, then implement P2-7 — footer featured resource card images
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Daily status checkup — read all journal files, build briefing | repeat | 1 | pass | 3m |
+| 2 | Investigate original zelis.com footer — extract 3 resource card images and slugs | new | 1 | pass | 5m |
+| 3 | Compare EDS footer vs original — screenshot both, measure image sizing | new | 1 | pass | 4m |
+| 4 | Create GitHub Issue #27 with problem statement and plan | new | 1 | pass | 3m |
+| 5 | Create `issue-27` branch from main | repeat | 2 | pass | 2m |
+| 6 | Add Forrester Wave slug+URL to `FEATURED_THUMBNAILS` map in footer.js | new | 1 | pass | 2m |
+| 7 | Add `console.warn` for unmapped slugs in `injectFeaturedImages()` | new | 1 | pass | 2m |
+| 8 | Verify image sizing matches original (220×80px at both desktop and mobile) | new | 1 | pass | 3m |
+| 9 | Validate desktop 1440px — 3-column footer cards with images | new | 1 | pass | 2m |
+| 10 | Validate mobile 375px — stacked footer cards with images | new | 1 | pass | 2m |
+| 11 | Run stylelint + eslint — both clean | repeat | 1 | pass | 1m |
+| 12 | Commit `b5bf5ab`, push to `issue-27`, create PR #28 | new | 1 | pass | 2m |
+
+### Outcomes
+- **Completed:** Issue #27 created, implemented, validated, PR #28 merged
+- **Finding:** Image CSS sizing (220×80px) already matched original — no CSS changes needed
+
+### Problems Encountered
+
+| Problem | Severity | Resolved? | Resolution | Related Action # |
+|---------|----------|-----------|------------|-----------------|
+| Old `issue-27` branch already existed | minor | yes | Deleted and recreated from main | #5 |
+
+### Key Decisions
+- No CSS changes needed — existing `max-width: 220px; height: 80px` already matches original site at both desktop and mobile viewports
+- Added `console.warn` for unmapped slugs rather than silently failing — makes content drift visible in browser console without breaking rendering
+- Kept existing 3 slugs in map and added new Forrester Wave slug — backwards compatible
+
+### Files Changed
+- `blocks/footer/footer.js` — Added Forrester Wave slug to `FEATURED_THUMBNAILS` map, added `console.warn` for unmapped slugs
+
+### Commits
+- `b5bf5ab` — Add Forrester Wave thumbnail and console warning for unmapped slugs (Closes #27)
+
+### Carry-Forward
+> Issue #27 (P2-7) resolved. PR #28 merged. Backlog: P2-8 (mega-menu navigation), W2 (style regression), Columns Lottie support, Accordion block fix, let-care-flow remote content fix.
+
+---
+
+## Session 032 — 2026-03-06 — Journal housekeeping + P2-8 mega-menu issue
+
+**Branch:** `issue-27`
+**Duration:** 25m (agent) + 10% = 28m
+**Session goal:** Complete journal file updates from Session 031, then investigate and create GitHub issue for P2-8 mega-menu navigation
+
+### Actions
+- [x] Update `journal-index.md` — added Sessions 030 and 031 rows (~1m) — pass
+- [x] Update `metrics.md` — added Sessions 030 and 031 rows, updated totals (~2m) — pass
+- [x] Update `project-context.md` — marked P2-7 resolved, updated resume point (~2m) — pass
+- [x] Investigate original Zelis.com mega-menu — screenshot header, hover over Solutions to capture full-width panel layout with icons, descriptions, 2-column grid (~5m) — pass
+- [x] Investigate EDS header — screenshot current dropdown, confirmed 200px simple dropdown with flat links, no mega-menu content in nav.plain.html (~3m) — pass
+- [x] Read `blocks/header/header.js` (248 lines) and `blocks/header/header.css` (388 lines) — full code review of current nav implementation (~3m) — pass
+- [x] Read `nav.plain.html` — confirmed 3 sections (brand, flat link lists, tools), no mega-menu panel content (~2m) — pass
+- [x] Create GitHub Issue #29 with problem statement and 7-step plan (~5m) — pass
+
+### Outcomes
+- **Completed:** Journal files updated through Session 031. GitHub Issue #29 created for P2-8 mega-menu navigation with detailed problem statement and 7-step implementation plan.
+- **Finding:** Original site has 5 distinct mega-menu panel layouts (Solutions is richest with icon+title+description grid). Nav fragment has none of this content — it's all WordPress PHP-rendered.
+
+### Problems Encountered
+(none)
+
+### Key Decisions
+- Documented both approaches for nav content (restructure nav.plain.html vs hardcode in JS) — will decide during implementation
+
+### Files Changed
+- `journal/journal-index.md` — Added rows for Sessions 030 and 031
+- `journal/metrics.md` — Added Session 030–031 rows, updated totals
+- `journal/project-context.md` — P2-7 marked resolved, resume point updated
+
+### Commits
+(none — journal changes + GitHub issue only)
+
+### Carry-Forward
+> Issue #29 created for P2-8 mega-menu. Awaiting user review of issue before starting implementation. Backlog after P2-8: W2 (style regression), Columns Lottie support, Accordion block fix, let-care-flow remote content fix.
+
+---
+
+## Session 033 — 2026-03-06 — P2-8 Mega-menu navigation implementation
+
+**Branch:** `issue-29`
+**Duration:** 45m (agent) + 10% = 50m
+**Session goal:** Implement mega-menu navigation (Issue #29) — full-width panels, announcement bar, hover/accordion
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Read header.js, header.css, nav.plain.html to recover context from previous session | continuation | 1 | pass | 3m |
+| 2 | Remove duplicate desktop CSS block (lines 547–708) with stale selectors from old architecture | new | 1 | pass | 3m |
+| 3 | Add `white-space: normal` to base mega-panel styles | new | 1 | pass | 1m |
+| 4 | Move announcement section from inside nav to nav-wrapper (above nav) | new | 1 | pass | 3m |
+| 5 | Add `closeAllPanels()` call at end of decorate to prevent auto-open on load | new | 1 | pass | 2m |
+| 6 | Desktop 1440px visual validation — announcement bar, nav links, no auto-opened panels | new | 1 | pass | 3m |
+| 7 | Test Solutions hover — full-width panel with 2-column grid, 10 solutions with descriptions | new | 1 | pass | 3m |
+| 8 | Test Built For hover — category columns (Payers 5 links, Providers 3 links) | new | 1 | pass | 2m |
+| 9 | Strip EDS button decoration from mega-panel links | new | 1 | pass | 3m |
+| 10 | Mobile 375px validation — hamburger, nav items, accordion expand for Solutions | new | 1 | pass | 5m |
+| 11 | Lint check — stylelint + eslint both clean | new | 1 | pass | 1m |
+| 12 | Commit, push, create PR #30 | new | 1 | pass | 3m |
+
+### Outcomes
+- **Completed:** Full mega-menu navigation with 5 panels (Why Zelis?, Solutions, Built for, Resources, About), announcement bar, desktop hover, mobile accordion, overlay backdrop. PR #30 created.
+
+### Problems Encountered
+
+| Problem | Severity | Resolved? | Resolution | Related Action # |
+|---------|----------|-----------|------------|-----------------|
+| Duplicate desktop CSS block (from previous session) had `position: fixed; top: 0` and stale `> .mega-panel` child combinator causing panels to overlap nav | major | yes | Removed entire duplicate block (lines 547–708); base styles handle everything correctly | #2 |
+| Announcement bar rendered as narrow flex item inside nav grid | major | yes | Moved announcement section from nav to nav-wrapper before nav element | #4 |
+| CTA links in mega-panels styled as large purple buttons (EDS auto-decoration) | minor | yes | Strip `.button` and `.button-container` classes from mega-panel/mobile-panel content | #9 |
+
+### Key Decisions
+- Chose to enrich `nav.plain.html` with all mega-menu content (intro descriptions, solution descriptions, category groups) rather than hardcoding in JS — keeps content authorable in DA
+- Two-tier panel architecture: desktop panels in external `.mega-panels-container` (for full-width), mobile panels cloned inline inside each `<li>` (for accordion behavior)
+- Nav content encoding convention: `<strong>` = intro panel title, `<p>` = descriptions, nested `<ul>` without `<a>` parent = category groups
+
+### Files Changed
+- `nav.plain.html` — Complete rewrite: 4 sections (announcement, brand, enriched nav with mega-menu content, tools+search)
+- `blocks/header/header.js` — Complete rewrite: mega-panel builder, hover with 200ms delay, mobile accordion cloning, button stripping
+- `blocks/header/header.css` — Major rewrite: announcement bar, mega-panels-container, panel inner layout, solutions grid, category columns, mobile overrides, overlay
+
+### Commits
+- `cf6d07a` — Implement mega-menu navigation with announcement bar (Closes #29)
+
+### Carry-Forward
+> PR #30 open for Issue #29 (mega-menu). Awaiting user review. Backlog: W2 (style regression), Columns Lottie support, Accordion block fix, let-care-flow remote content fix.
