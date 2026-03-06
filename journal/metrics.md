@@ -1,20 +1,20 @@
 # Project Metrics
 
 ## Time
-- **Total sessions:** 35 (including backfills)
-- **Total agent time:** ~25h 50m
-- **Total with user margin (10%):** ~28h 31m
+- **Total sessions:** 36 (including backfills)
+- **Total agent time:** ~26h 25m
+- **Total with user margin (10%):** ~29h 10m
 - **Average session length:** ~44m
 
 ## Success Rates
-- **Actions attempted:** 291
-- **First-try success:** 285 (98%)
-- **Required retry:** 5 (2%)
+- **Actions attempted:** 305
+- **First-try success:** 298 (98%)
+- **Required retry:** 6 (2%)
 - **Failed:** 1 (<1%)
 
 ## Problems
-- **Total encountered:** 28
-- **Resolved:** 23 (82%)
+- **Total encountered:** 30
+- **Resolved:** 25 (83%)
 - **Unresolved:** 5
 - **Most common category:** DA compatibility / content handling
 
@@ -25,7 +25,8 @@
 | DA compatibility | 5 | URL mangling, file reference mismatch, content flattening, image stripping |
 | CSS/styling | 7 | Tab truncation (multiple attempts), stylelint false positive, fallback font width, body font-size mismatch, mega-panel positioning, announcement bar layout, CTA button decoration |
 | Git/environment | 5 | safe.directory error, filesystem access, push rejected (rebase needed), push failed (no credentials) x2 |
-| Tooling | 2 | convert-all-md.js corrupts EDS block HTML, subagent Bash/Playwright auto-denied |
+| Tooling | 3 | convert-all-md.js corrupts EDS block HTML, subagent Bash/Playwright auto-denied, pixelmatch v7 ESM default export |
+| Test infra | 1 | results.json overwritten between Playwright projects (module re-initialization) |
 | Lint | 2 | no-use-before-define in image-slider.js, no-descending-specificity in image-slider.css |
 | Performance | 1 | Animation load timeout too slow |
 | File sync | 1 | HTML variants stale after markdown edit |
@@ -73,3 +74,4 @@
 | 032 | 2026-03-06 | ~25m | ~28m | 8 | 100% |
 | 033 | 2026-03-06 | ~45m | ~50m | 12 | 100% |
 | 034 | 2026-03-06 | ~15m | ~17m | 8 | 100% |
+| 035 | 2026-03-06 | ~35m | ~39m | 14 | 93% (1 retry) |

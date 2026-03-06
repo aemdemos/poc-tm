@@ -1570,3 +1570,61 @@
 
 ### Carry-Forward
 > Issues #31–#34 created for remaining backlog. Awaiting user review before starting implementation. Items: #31 accordion block fix, #32 Columns Lottie, #33 let-care-flow CDN content, #34 W2 style regression.
+
+---
+
+## Session 035 — 2026-03-06 — Issue #34: Automated style regression tests (W2)
+
+**Branch:** `issue-34`
+**Duration:** 35m (agent) + 10% = 39m
+**Session goal:** Implement Playwright-based visual regression test infrastructure comparing original zelis.com against EDS preview
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Commit outstanding journal changes on issue-29, switch to issue-34 | new | 1 | pass | 2m |
+| 2 | Research project structure — URL catalog (7 templates, 370 URLs), package.json, eslint config | new | 1 | pass | 3m |
+| 3 | Install @playwright/test, pixelmatch, pngjs + Chromium browser | new | 1 | pass | 3m |
+| 4 | Create playwright.config.js — desktop (1440×900) + mobile (375×812) projects | new | 1 | pass | 2m |
+| 5 | Create tests/style-regression/compare.js — pixelmatch wrapper with dimension normalization | new | 1 | pass | 3m |
+| 6 | Create tests/style-regression/style-regression.spec.js — URL catalog-driven test spec | new | 1 | pass | 5m |
+| 7 | Create tests/style-regression/generate-report.js — markdown report with PASS/WARN/FAIL thresholds | new | 1 | pass | 3m |
+| 8 | Add npm scripts and eslint overrides for test files | new | 1 | pass | 2m |
+| 9 | Fix pixelmatch ESM import (v7 exports .default) | retry | 2 | pass | 2m |
+| 10 | Fix lint errors — quote style, nested ternary, import/newline-after-import | new | 1 | pass | 2m |
+| 11 | Fix results.json accumulation across projects (load existing on startup, clear via npm script) | new | 1 | pass | 2m |
+| 12 | Run full regression suite — 16 tests pass (8 templates × 2 viewports) | new | 1 | pass | 5m |
+| 13 | Generate combined regression report — 55.96% average similarity | new | 1 | pass | 1m |
+| 14 | Commit `4aca7f6`, push to issue-34, create PR #35 | new | 1 | pass | 2m |
+
+### Outcomes
+- **Completed:** Full Playwright screenshot diff infrastructure for style regression. 16 tests passing across 8 template types × 2 viewports. PR #35 open.
+
+### Problems Encountered
+
+| Problem | Severity | Resolved? | Resolution | Related Action # |
+|---------|----------|-----------|------------|-----------------|
+| pixelmatch v7 is ESM-only, `require()` returns wrapper with `.default` | minor | yes | Used `pixelmatchModule.default \|\| pixelmatchModule` pattern | #9 |
+| results.json overwritten when second project (mobile) starts — module re-initialized | minor | yes | Load existing results on startup + clear via npm script | #11 |
+
+### Key Decisions
+- Used 1 sample URL per template type for the first pass (8 pages total) rather than all 370 — keeps test runtime under 5 minutes
+- PASS >= 80%, WARN 60-79%, FAIL < 60% thresholds — reasonable for early migration state
+- Screenshots and test output excluded from git via .gitignore
+
+### Files Changed
+- `playwright.config.js` — New: desktop + mobile test projects
+- `tests/style-regression/style-regression.spec.js` — New: URL catalog-driven test spec
+- `tests/style-regression/compare.js` — New: pixelmatch wrapper with dimension normalization
+- `tests/style-regression/generate-report.js` — New: markdown report generator
+- `package.json` — Added devDependencies and npm scripts
+- `.eslintrc.js` — Added node env override for test files
+- `.gitignore` — Added test output exclusions
+
+### Commits
+- `eeda7d3` — Journal Session 034: create GitHub issues for remaining backlog (#31-#34)
+- `4aca7f6` — Add automated style regression tests with Playwright screenshot diff (Closes #34)
+
+### Carry-Forward
+> PR #35 open for Issue #34 (W2 style regression). Baseline: ~56% avg similarity across 8 templates. Remaining issues: #31 accordion block fix, #32 Columns Lottie, #33 let-care-flow CDN content.
