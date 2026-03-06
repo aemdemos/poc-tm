@@ -1,10 +1,10 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-06 (Session 028)
-**Branch:** `issue-21-highlight`
+**Last updated:** 2026-03-06 (Session 029)
+**Branch:** `issue-25`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
-**Overall status:** Bulk import complete (365 pages). Issue #23 merged. P2-6 problem statement written, ready for GitHub issue creation.
+**Overall status:** Bulk import complete (365 pages). Issue #25 (P2-6 animated SVG icons) implemented and pushed.
 
 ## What's Done
 - Repository initialized and configured (Session 000)
@@ -32,12 +32,13 @@
 - **P2-9 resolved: Gold highlight** — `main h1/h2/h3 em` styled gold `#FFBE00` in styles.css (Session 026, Issue #21)
 - **P2-10 resolved: Case study card + HR** — Single-card :only-child horizontal layout with purple border, HR styling (Session 027, Issue #23)
 - **P2-6 researched** — Full problem statement written: 3 inline SVGs with stroke-drawing animation, IntersectionObserver trigger (Session 028)
+- **P2-6 resolved: Animated SVG icons** — 3 inline SVGs with stroke-draw animation via IntersectionObserver in cards block (Session 029, Issue #25)
 
 ## What's In Progress
 (nothing active)
 
 ## What's Pending
-- **P2-6 GitHub issue** — Create issue from problem statement, then implement animated SVG icons
+- **PR for Issue #25** — Create PR to close Issue #25
 - **P2-7** — Footer featured resource card images
 - **P2-8** — Mega-menu navigation
 - **W2** — Automated style regression (Playwright screenshot diff)
@@ -50,7 +51,7 @@
 
 ## Key Files
 - `styles/styles.css` — Global styles with design tokens + gold highlight + HR styling
-- `blocks/cards/cards.css` — Card grid with single-card case study variant (:only-child)
+- `blocks/cards/cards.css` — Card grid with single-card case study variant (:only-child) + icon-cards animated SVGs
 - `blocks/columns/columns.css` — Flexible columns with 58/42 desktop split
 - `tools/importer/bulk-import.js` — Bulk import script with markdownToEdsHtml() HTML pipeline
 - `tools/importer/url-catalog.json` — 370 URLs in 20 batches
@@ -70,4 +71,4 @@
 - `content/` directory excluded from git (`.git/info/exclude`)
 
 ## Resume Point
-> P2-6 problem statement complete. Icons are inline SVGs with stroke-dasharray/dashoffset drawing animation triggered by IntersectionObserver. 3 icons: lightbulb+hand (16 paths), circular arrows+lightning (12 paths), eye motif (11 paths). All ~70×88px, #23004B stroke. Next: create P2-6 GitHub issue, then implement or move to P2-7/P2-8.
+> Issue #25 (P2-6) implemented and pushed on `issue-25` branch. 3 animated SVG icons with stroke-draw animation in cards block. Commit `755ef7f`. Next: create PR for Issue #25, then continue with P2-7 (footer images), P2-8 (mega-menu), or accordion block fix.

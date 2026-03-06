@@ -1342,3 +1342,55 @@
 
 ### Carry-Forward
 > P2-6 problem statement written and delivered. Ready to create as GitHub issue. SVG icons are inline with stroke-drawing animation (stroke-dasharray/dashoffset + IntersectionObserver). 3 icons: lightbulb+hand (16 paths), circular arrows+lightning (12 paths), eye/magnifying glass (11 paths). All ~70×88px, #23004B stroke. EDS section currently renders text-only. Next: create GitHub issue for P2-6, then implement or move to P2-7/P2-8.
+
+---
+
+## Session 029 — 2026-03-06 — P2-6 Implementation: Animated SVG Icons (Issue #25)
+
+**Branch:** `issue-25`
+**Duration:** 35m (agent) + 10% = 39m
+**Session goal:** Create GitHub issue #25 for P2-6, then implement animated SVG icons for the "We Are Zelis" feature cards
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Create GitHub Issue #25 via API | repeat | 1 | pass | 2m |
+| 2 | Read cards.js, cards.css, explore EDS homepage structure | repeat | 1 | pass | 3m |
+| 3 | Extract 3 SVG icon outerHTML from original zelis.com | repeat | 2 | pass | 4m |
+| 4 | Analyze SVG animation (stroke-dasharray/dashoffset, IntersectionObserver) | repeat | 1 | pass | 2m |
+| 5 | Create `issue-25` branch from main | new | 2 | pass | 2m |
+| 6 | Add ICON_SVGS map + initIconCards() to cards.js | new | 1 | pass | 5m |
+| 7 | Add icon-cards CSS: layout, stroke animation, staggered delays | new | 1 | pass | 5m |
+| 8 | Fix 3 stylelint no-descending-specificity warnings | repeat | 1 | pass | 2m |
+| 9 | Validate desktop 1440px — 3-col grid with icons above headings | new | 1 | pass | 3m |
+| 10 | Validate mobile 375px — stacked layout, icons above text | new | 1 | pass | 2m |
+| 11 | Verify no regression on stats cards section | new | 1 | pass | 2m |
+| 12 | Commit `755ef7f` and push to `issue-25` branch | new | 1 | pass | 3m |
+
+### Outcomes
+- **Completed:** 3 animated SVG icons injected into "We Are Zelis" cards with stroke-drawing animation, committed and pushed
+
+### Problems Encountered
+
+| Problem | Severity | Resolved? | Resolution | Related Action # |
+|---------|----------|-----------|------------|-----------------|
+| git safe.directory error | minor | yes | Added `/workspace` to safe.directory config | #5 |
+| Stashed journal changes conflicting with branch switch | minor | yes | Stashed, switched, popped | #5 |
+
+### Key Decisions
+- Detected "We Are Zelis" section by eyebrow text match rather than section class — robust since section classes are auto-generated
+- Stored SVG data inline in cards.js (~10.6KB total) rather than external files — avoids extra HTTP requests, SVGs are small
+- Used CSS `transition` on `stroke-dashoffset` with staggered `transition-delay` per `nth-child` path — cleaner than JS-driven animation
+- Added `animated` class immediately for `prefers-reduced-motion` users — icons visible without animation
+- Removed empty second `cards-card-body` div from each card — was leftover from 2-column authoring format
+
+### Files Changed
+- `blocks/cards/cards.js` — Added `ICON_SVGS` map (3 inline SVGs), `initIconCards()` function with IntersectionObserver
+- `blocks/cards/cards.css` — Added `.icon-cards` variant: transparent cards, icon container, stroke-draw animation with staggered delays
+
+### Commits
+- `755ef7f` — Add animated SVG icons to We Are Zelis feature cards (Closes #25)
+
+### Carry-Forward
+> Issue #25 implemented and pushed on `issue-25` branch. 3 SVG icons with stroke-drawing animation working on homepage. Next: create PR for Issue #25, then continue with P2-7 (footer images), P2-8 (mega-menu), or accordion block fix.
