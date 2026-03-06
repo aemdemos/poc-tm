@@ -1,21 +1,22 @@
 # Project Metrics
 
 ## Time
-- **Total sessions:** 36 (including backfills)
-- **Total agent time:** ~26h 25m
-- **Total with user margin (10%):** ~29h 10m
+- **Total sessions:** 37 (including backfills)
+- **Total agent time:** ~27h 5m
+- **Total with user margin (10%):** ~29h 54m
 - **Average session length:** ~44m
 
 ## Success Rates
-- **Actions attempted:** 305
-- **First-try success:** 298 (98%)
+- **Actions attempted:** 313
+- **First-try success:** 306 (98%)
 - **Required retry:** 6 (2%)
 - **Failed:** 1 (<1%)
 
 ## Problems
-- **Total encountered:** 30
-- **Resolved:** 25 (83%)
-- **Unresolved:** 5
+- **Total encountered:** 32
+- **Resolved:** 25 (78%)
+- **Workarounds:** 7
+- **Unresolved:** 0
 - **Most common category:** DA compatibility / content handling
 
 ## Problem Categories
@@ -75,3 +76,4 @@
 | 033 | 2026-03-06 | ~45m | ~50m | 12 | 100% |
 | 034 | 2026-03-06 | ~15m | ~17m | 8 | 100% |
 | 035 | 2026-03-06 | ~35m | ~39m | 14 | 93% (1 retry) |
+| 036 | 2026-03-06 | ~40m | ~44m | 8 | 100% |

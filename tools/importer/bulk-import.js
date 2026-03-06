@@ -864,6 +864,64 @@ function inlineMdToHtml(text) {
  * Parse a markdown table block and return { name, rows }.
  * A block starts with `| BlockName | ... |` followed by `| --- | ... |`.
  */
+/**
+ * Detect if a line is an ASCII border like +------+---+
+ */
+function isAsciiBorder(line) {
+  return /^\+[-+]+\+$/.test(line.trim());
+}
+
+/**
+ * Parse an ASCII-bordered block table (using + borders).
+ * Format:
+ *   +------+
+ *   | Block Name |
+ *   +------+---+
+ *   | cell1 | cell2 |
+ *   +------+---+
+ */
+function parseAsciiBorderTable(lines, startIdx) {
+  let idx = startIdx;
+
+  // Skip top border (+----+)
+  idx++;
+
+  // Read header row: | Block Name |
+  const headerLine = lines[idx];
+  const headerCells = headerLine.split('|').map((c) => c.trim()).filter(Boolean);
+  const blockName = headerCells[0].toLowerCase().replace(/\s+/g, '-');
+  idx++;
+
+  // Skip separator border (+----+---+)
+  if (idx < lines.length && isAsciiBorder(lines[idx].trim())) idx++;
+
+  const rows = [];
+
+  while (idx < lines.length) {
+    const trimmed = lines[idx].trim();
+
+    // End of table: border line followed by non-table content or end
+    if (isAsciiBorder(trimmed)) {
+      idx++;
+      // Check if next line is another row or end of table
+      if (idx >= lines.length || !lines[idx].trim().startsWith('|')) break;
+      continue;
+    }
+
+    // Data row: | cell1 | cell2 |
+    if (trimmed.startsWith('|')) {
+      // Collect multi-line cell content (rows between borders)
+      const rowCells = trimmed.split('|').map((c) => c.trim()).filter(Boolean);
+      rows.push(rowCells);
+      idx++;
+    } else {
+      break;
+    }
+  }
+
+  return { name: blockName, rows, endIdx: idx };
+}
+
 function parseBlockTable(lines, startIdx) {
   const headerLine = lines[startIdx];
   const cells = headerLine.split('|').map((c) => c.trim()).filter(Boolean);
@@ -942,6 +1000,16 @@ function markdownToEdsHtml(markdown) {
       if (!trimmed) {
         flushList();
         i++;
+        continue;
+      }
+
+      // ASCII-bordered block table: starts with +---+
+      if (isAsciiBorder(trimmed) && i + 1 < sectionLines.length
+        && sectionLines[i + 1].trim().startsWith('|')) {
+        flushList();
+        const block = parseAsciiBorderTable(sectionLines, i);
+        elements.push(blockToHtml(block));
+        i = block.endIdx;
         continue;
       }
 
