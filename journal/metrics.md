@@ -1,21 +1,21 @@
 # Project Metrics
 
 ## Time
-- **Total sessions:** 27 (including backfills)
-- **Total agent time:** ~22h 10m
-- **Total with user margin (10%):** ~24h 27m
+- **Total sessions:** 28 (including backfills)
+- **Total agent time:** ~22h 40m
+- **Total with user margin (10%):** ~25h 0m
 - **Average session length:** ~49m
 
 ## Success Rates
-- **Actions attempted:** 216
-- **First-try success:** 212 (98%)
+- **Actions attempted:** 227
+- **First-try success:** 223 (98%)
 - **Required retry:** 3 (1%)
 - **Failed:** 1 (<1%)
 
 ## Problems
-- **Total encountered:** 24
-- **Resolved:** 20 (83%)
-- **Unresolved:** 4
+- **Total encountered:** 25
+- **Resolved:** 20 (80%)
+- **Unresolved:** 5
 - **Most common category:** DA compatibility / content handling
 
 ## Problem Categories
@@ -32,6 +32,7 @@
 | Test harness | 2 | Sync scroll doesn't trigger IO, F-DELAYED false positive |
 | Source site | 1 | 3 URLs returned 404 during bulk import |
 | Block runtime | 1 | Accordion block JS error on solutions pages |
+| Local preview | 1 | `aem up` proxies from remote CDN; let-care-flow .plain.html broken (pipe-table parsing) |
 
 ## Session Timeline
 
@@ -64,3 +65,4 @@
 | 024 | 2026-03-05 | ~1h 25m | ~1h 34m | 16 | 94% (1 fail) |
 | 025 | 2026-03-05 | ~45m | ~50m | 13 | 92% (1 fail) |
 | 026 | 2026-03-06 | ~25m | ~28m | 9 | 100% |
+| 027 | 2026-03-06 | ~30m | ~33m | 11 | 100% |

@@ -1,10 +1,10 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-06 (Session 026)
-**Branch:** `issue-21-highlight`
+**Last updated:** 2026-03-06 (Session 027)
+**Branch:** `issue-23`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
-**Overall status:** Bulk import complete (365 pages). Gold highlight implemented. Multiple PRs ready.
+**Overall status:** Bulk import complete (365 pages). Issue #23 CSS implemented and pushed. Multiple PRs ready.
 
 ## What's Done
 - Repository initialized and configured (Session 000)
@@ -30,28 +30,30 @@
 - **Issue #19: Bulk site import** — 365 pages imported across 20 batches with HTML pipeline (Session 025)
 - **Issue #19 pushed** — `issue-19-reimports` branch pushed to remote (Session 026)
 - **P2-9 resolved: Gold highlight** — `main h1/h2/h3 em` styled gold `#FFBE00` in styles.css (Session 026, Issue #21)
+- **P2-10 resolved: Case study card + HR** — Single-card :only-child horizontal layout with purple border, HR styling (Session 027, Issue #23)
 
 ## What's In Progress
 (nothing active)
 
 ## What's Pending
-- **PR for issue-21-highlight** — Create PR to close Issue #21
-- **P2-10** — Case study card + two-column CTA layout for let-care-flow
+- **PR for issue-23** — Create PR to close Issue #23
 - **P2-6** — Add animated SVG icons to "We Are Zelis" feature cards
 - **P2-7** — Footer featured resource card images
 - **P2-8** — Mega-menu navigation
 - **W2** — Automated style regression (Playwright screenshot diff)
 - **Columns Lottie support** — Careers section right column needs Lottie rendering
 - **Accordion block fix** — JS error on solutions pages (pre-existing)
+- **let-care-flow remote content fix** — Remote CDN .plain.html has broken pipe-table parsing; blocks don't render
 
 ## Active Blockers
 (none)
 
 ## Key Files
-- `styles/styles.css` — Global styles with design tokens + gold highlight rule
+- `styles/styles.css` — Global styles with design tokens + gold highlight + HR styling
+- `blocks/cards/cards.css` — Card grid with single-card case study variant (:only-child)
+- `blocks/columns/columns.css` — Flexible columns with 58/42 desktop split
 - `tools/importer/bulk-import.js` — Bulk import script with markdownToEdsHtml() HTML pipeline
 - `tools/importer/url-catalog.json` — 370 URLs in 20 batches
-- `tools/importer/import-results.json` — Results from latest import run (365 success, 3 failed)
 - `content/` — 367 .md + 369 .html files (excluded from git)
 - `blocks/video-hero/` — Video hero block (Vimeo/YouTube iframe injection)
 - `blocks/image-slider/` — Image slider block (CSS scroll-snap, autoplay)
@@ -59,6 +61,7 @@
 
 ## Critical Warning
 - **NEVER use `convert-all-md.js`** for EDS content files — it corrupts block HTML
+- **`aem up` proxies content from remote CDN** — local content files in `content/` are NOT used for preview
 
 ## Git Notes
 - Remote: `https://github.com/aemdemos/poc-tm.git`
@@ -67,4 +70,4 @@
 - `content/` directory excluded from git (`.git/info/exclude`)
 
 ## Resume Point
-> P2-9 complete on `issue-21-highlight` (commit `b5fded1`, pushed). Next priorities: P2-10 (case study card + CTA), P2-6 (animated SVG icons), accordion block JS fix.
+> Issue #23 committed (`15c6150`) and pushed on `issue-23` branch. Next: create PR for Issue #23, then P2-6 (animated SVG icons), P2-7 (footer images), or accordion block fix.
