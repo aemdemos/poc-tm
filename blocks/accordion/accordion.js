@@ -8,6 +8,8 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   [...block.children].forEach((row) => {
+    // skip rows without both label and body columns
+    if (row.children.length < 2) return;
     // decorate accordion item label
     const label = row.children[0];
     const summary = document.createElement('summary');

@@ -1673,3 +1673,43 @@
 
 ### Carry-Forward
 > PR #36 open for Issue #33. Remaining issues: #31 accordion block JS error on solutions pages, #32 Columns Lottie animation support.
+
+---
+
+## Session 037 — 2026-03-06 — Fix accordion block JS error (Issue #31)
+
+**Branch:** `issue-31`
+**Duration:** 25m (agent) + 10% = 28m
+**Session goal:** Fix accordion block TypeError on solutions pages
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Read accordion.js — identified crash at row.children[1].className | new | 1 | pass | 2m |
+| 2 | Inspect payment-integrity.html content — garbled accordion rows, 1-child rows | new | 1 | pass | 3m |
+| 3 | Check source site accordion structure — 2 items with rich body content | new | 1 | pass | 3m |
+| 4 | Audit all 33 solutions pages — 12/113 broken rows across 13 files | new | 1 | pass | 5m |
+| 5 | Add defensive guard: skip rows with < 2 children | new | 1 | pass | 2m |
+| 6 | Verify payment-integrity renders without crash | new | 1 | pass | 2m |
+| 7 | Verify network-solutions and request-meeting pages (edge case: only broken row) | new | 1 | pass | 3m |
+| 8 | Commit `1294d89`, push to issue-31, create PR #37 | new | 1 | pass | 5m |
+
+### Outcomes
+- **Completed:** Accordion block no longer crashes on solutions pages. 13 affected pages now render gracefully. PR #37 open.
+- **Deferred:** Accordion content quality — the pipe-table body content is garbled from the bulk import. Would need re-import with solutions-page-parser to get correct accordion body text.
+
+### Problems Encountered
+(none — straightforward fix)
+
+### Key Decisions
+- JS-only fix: skip malformed rows rather than re-importing content. The 1-child rows are typically section headers ("Key Points", "Key benefits") that aren't meaningful as collapsible items anyway.
+
+### Files Changed
+- `blocks/accordion/accordion.js` — Added `if (row.children.length < 2) return;` guard (+2 lines)
+
+### Commits
+- `1294d89` — Add defensive guard in accordion block for malformed rows (Closes #31)
+
+### Carry-Forward
+> PR #37 open for Issue #31. Only remaining issue: #32 Columns Lottie animation support.

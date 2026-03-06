@@ -1,10 +1,10 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-06 (Session 036)
-**Branch:** `issue-33`
+**Last updated:** 2026-03-06 (Session 037)
+**Branch:** `issue-31`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
-**Overall status:** Issue #33 fixed (let-care-flow blocks rendering). PR #36 open for review.
+**Overall status:** Issue #31 fixed (accordion JS crash). PR #37 open for review.
 
 ## What's Done
 - Repository initialized and configured (Session 000)
@@ -35,12 +35,12 @@
 - **P2-8 resolved: Mega-menu navigation** — Full-width panels, announcement bar, hover/accordion, 5 panel layouts (Session 033, Issue #29, PR #30)
 - **W2 resolved: Style regression tests** — Playwright screenshot diff, pixelmatch, 8 templates × 2 viewports (Session 035, Issue #34, PR #35)
 - **Issue #33 resolved: let-care-flow blocks rendering** — ASCII border table parsing in bulk-import.js, regenerate-plain-html.js utility (Session 036, PR #36)
+- **Issue #31 resolved: Accordion block JS crash** — Defensive guard for malformed rows with < 2 children (Session 037, PR #37)
 
 ## What's In Progress
 (nothing active)
 
 ## What's Pending
-- **Issue #31** — Accordion block JS error on solutions pages
 - **Issue #32** — Add Lottie animation support to Columns block
 
 ## Active Blockers
@@ -72,4 +72,4 @@
 - `content/` directory excluded from git (`.git/info/exclude`)
 
 ## Resume Point
-> PR #36 open for Issue #33 (let-care-flow fix). Remaining issues: #31 accordion block fix, #32 Columns Lottie.
+> PR #37 open for Issue #31 (accordion fix). Only remaining issue: #32 Columns Lottie animation support.
