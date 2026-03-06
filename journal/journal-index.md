@@ -41,3 +41,4 @@
 | 036 | 2026-03-06 | Issue #33: Fix let-care-flow blocks not rendering (PR #36) | ~44m | 8 completed, 2 problems (workarounds) |
 | 037 | 2026-03-06 | Issue #31: Fix accordion block JS error on solutions pages (PR #37) | ~28m | 8 completed, 0 problems |
 | 038 | 2026-03-06 | Issue #32: Add Lottie animation to Columns block (PR #38) | ~22m | 7 completed, 3 minor problems |
+| 039 | 2026-03-06 | Issue #8: Fix verification test harness false-positives (PR #39) | ~22m | 6 completed, 0 problems |
