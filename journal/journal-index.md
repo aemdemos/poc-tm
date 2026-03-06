@@ -27,3 +27,5 @@
 | 022 | 2026-03-05 | Re-migrate let-care-flow page (P0-1) — proper blocks, no duplicates | ~39m | 10 completed, 1 problem resolved |
 | 023 | 2026-03-05 | Homepage content fixes (Step 5) — Careers section, award badges, We Are Zelis assessment | ~33m | 10 completed, 0 problems |
 | 024 | 2026-03-05 | Step 6: Video hero and image slider blocks for let-care-flow | ~1h 34m | 15 completed, 1 failed (push), 4 problems (3 resolved) |
+| 025 | 2026-03-05 | Bulk site import: Issue #19 (365 pages via HTML pipeline) | ~50m | 12 completed, 1 failed (push), 3 problems (2 resolved) |
+| 026 | 2026-03-06 | Issue #19 push + P2-9 gold highlight (Issue #21) | ~28m | 9 completed, 0 problems |
