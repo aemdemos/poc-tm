@@ -1628,3 +1628,48 @@
 
 ### Carry-Forward
 > PR #35 open for Issue #34 (W2 style regression). Baseline: ~56% avg similarity across 8 templates. Remaining issues: #31 accordion block fix, #32 Columns Lottie, #33 let-care-flow CDN content.
+
+---
+
+## Session 036 — 2026-03-06 — Fix let-care-flow blocks not rendering (Issue #33)
+
+**Branch:** `issue-33`
+**Duration:** 40m (agent) + 10% = 44m
+**Session goal:** Fix let-care-flow page blocks not rendering due to CDN pipe-table parsing issue
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Diagnose remote CDN responses — .aem.live 404, .aem.page flat content | new | 1 | pass | 5m |
+| 2 | Compare local .plain.html (broken pipe tables) vs .html (correct blocks) | new | 1 | pass | 5m |
+| 3 | Identify root cause: markdownToEdsHtml() only handles GFM, not ASCII border format | new | 1 | pass | 5m |
+| 4 | Implement isAsciiBorder() and parseAsciiBorderTable() in bulk-import.js | new | 1 | pass | 10m |
+| 5 | Create regenerate-plain-html.js utility (extract <main> from .html → .plain.html) | new | 1 | pass | 5m |
+| 6 | Regenerate let-care-flow.plain.html with proper block structure | new | 1 | pass | 2m |
+| 7 | Verify all 5 blocks render at localhost:3000 (video-hero, image-slider, cards, columns, metadata) | new | 1 | pass | 3m |
+| 8 | Commit `25ace3a`, push to issue-33, create PR #36 | new | 1 | pass | 5m |
+
+### Outcomes
+- **Completed:** ASCII border table parsing in bulk-import.js, regenerate-plain-html.js utility, let-care-flow verified rendering with all 5 blocks. PR #36 open.
+
+### Problems Encountered
+
+| Problem | Severity | Resolved? | Resolution | Related Action # |
+|---------|----------|-----------|------------|-----------------|
+| CDN .aem.live returns 404 for let-care-flow | major | workaround | Local preview with --html-folder content flag serves .html directly | #1 |
+| eslint "No files matching pattern" for tools/importer/ | minor | workaround | tools/ not in eslint scope (browser sourceType: module config incompatible with CJS) — skipped lint | #8 |
+
+### Key Decisions
+- Added ASCII border parsing BEFORE existing GFM detection in markdownToEdsHtml() loop to handle the +---+ format
+- Created standalone regenerate-plain-html.js rather than modifying bulk-import.js — clean separation of concerns
+
+### Files Changed
+- `tools/importer/bulk-import.js` — Added isAsciiBorder(), parseAsciiBorderTable(), and ASCII detection in main loop (+68 lines)
+- `tools/importer/regenerate-plain-html.js` — New: extracts <main> from .html and writes as .plain.html
+
+### Commits
+- `25ace3a` — Fix ASCII border table parsing in bulk-import and add plain-html regenerator (Closes #33)
+
+### Carry-Forward
+> PR #36 open for Issue #33. Remaining issues: #31 accordion block JS error on solutions pages, #32 Columns Lottie animation support.

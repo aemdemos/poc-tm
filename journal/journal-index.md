@@ -38,3 +38,4 @@
 | 033 | 2026-03-06 | P2-8: Mega-menu navigation implementation (Issue #29, PR #30) | ~50m | 12 completed, 3 problems resolved |
 | 034 | 2026-03-06 | Create GitHub issues for remaining backlog (#31–#34) | ~17m | 8 completed, 0 problems |
 | 035 | 2026-03-06 | Issue #34: Automated style regression tests (W2, PR #35) | ~39m | 14 completed, 2 minor problems resolved |
+| 036 | 2026-03-06 | Issue #33: Fix let-care-flow blocks not rendering (PR #36) | ~44m | 8 completed, 2 problems (workarounds) |

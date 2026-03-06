@@ -1,10 +1,10 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-06 (Session 035)
-**Branch:** `issue-34`
+**Last updated:** 2026-03-06 (Session 036)
+**Branch:** `issue-33`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
-**Overall status:** Style regression test infrastructure implemented. PR #35 open for review.
+**Overall status:** Issue #33 fixed (let-care-flow blocks rendering). PR #36 open for review.
 
 ## What's Done
 - Repository initialized and configured (Session 000)
@@ -34,6 +34,7 @@
 - **P2-7 resolved: Footer featured resource card images** — Added Forrester Wave slug to FEATURED_THUMBNAILS map (Session 031, Issue #27, PR #28)
 - **P2-8 resolved: Mega-menu navigation** — Full-width panels, announcement bar, hover/accordion, 5 panel layouts (Session 033, Issue #29, PR #30)
 - **W2 resolved: Style regression tests** — Playwright screenshot diff, pixelmatch, 8 templates × 2 viewports (Session 035, Issue #34, PR #35)
+- **Issue #33 resolved: let-care-flow blocks rendering** — ASCII border table parsing in bulk-import.js, regenerate-plain-html.js utility (Session 036, PR #36)
 
 ## What's In Progress
 (nothing active)
@@ -41,7 +42,6 @@
 ## What's Pending
 - **Issue #31** — Accordion block JS error on solutions pages
 - **Issue #32** — Add Lottie animation support to Columns block
-- **Issue #33** — let-care-flow page blocks not rendering (CDN pipe-table parsing)
 
 ## Active Blockers
 (none)
@@ -53,7 +53,8 @@
 - `nav.plain.html` — Enriched navigation with intro descriptions, solution cards, category groups
 - `blocks/cards/cards.css` — Card grid with single-card case study variant (:only-child) + icon-cards animated SVGs
 - `blocks/columns/columns.css` — Flexible columns with 58/42 desktop split
-- `tools/importer/bulk-import.js` — Bulk import script with markdownToEdsHtml() HTML pipeline
+- `tools/importer/bulk-import.js` — Bulk import script with markdownToEdsHtml() HTML pipeline (incl. ASCII border table parsing)
+- `tools/importer/regenerate-plain-html.js` — Utility to extract <main> from .html → .plain.html
 - `tools/importer/url-catalog.json` — 370 URLs in 20 batches
 - `playwright.config.js` — Style regression test config (desktop 1440px, mobile 375px)
 - `tests/style-regression/` — Screenshot diff test suite, compare helper, report generator
@@ -71,4 +72,4 @@
 - `content/` directory excluded from git (`.git/info/exclude`)
 
 ## Resume Point
-> PR #35 open for Issue #34 (W2 style regression). Remaining issues: #31 accordion block fix, #32 Columns Lottie, #33 let-care-flow CDN content.
+> PR #36 open for Issue #33 (let-care-flow fix). Remaining issues: #31 accordion block fix, #32 Columns Lottie.
