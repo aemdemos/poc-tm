@@ -1,10 +1,10 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-06 (Session 029)
+**Last updated:** 2026-03-06 (Session 030)
 **Branch:** `issue-25`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
-**Overall status:** Bulk import complete (365 pages). Issue #25 (P2-6 animated SVG icons) implemented and pushed.
+**Overall status:** Bulk import complete (365 pages). Issue #25 (P2-6 animated SVG icons) — PR #26 open.
 
 ## What's Done
 - Repository initialized and configured (Session 000)
@@ -38,7 +38,7 @@
 (nothing active)
 
 ## What's Pending
-- **PR for Issue #25** — Create PR to close Issue #25
+- **PR #26 merge** — Merge PR for Issue #25 (animated SVG icons)
 - **P2-7** — Footer featured resource card images
 - **P2-8** — Mega-menu navigation
 - **W2** — Automated style regression (Playwright screenshot diff)
@@ -71,4 +71,4 @@
 - `content/` directory excluded from git (`.git/info/exclude`)
 
 ## Resume Point
-> Issue #25 (P2-6) implemented and pushed on `issue-25` branch. 3 animated SVG icons with stroke-draw animation in cards block. Commit `755ef7f`. Next: create PR for Issue #25, then continue with P2-7 (footer images), P2-8 (mega-menu), or accordion block fix.
+> PR #26 open for Issue #25 (animated SVG icons) on `issue-25` branch. All work pushed. Next: merge PR #26, then continue with P2-7 (footer images), P2-8 (mega-menu), accordion block fix, or other backlog items.
