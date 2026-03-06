@@ -1,10 +1,10 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-06 (Session 033)
-**Branch:** `issue-29`
+**Last updated:** 2026-03-06 (Session 035)
+**Branch:** `issue-34`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
-**Overall status:** Mega-menu navigation implemented. PR #30 open for review.
+**Overall status:** Style regression test infrastructure implemented. PR #35 open for review.
 
 ## What's Done
 - Repository initialized and configured (Session 000)
@@ -33,15 +33,15 @@
 - **P2-6 resolved: Animated SVG icons** — 3 inline SVGs with stroke-draw animation via IntersectionObserver in cards block (Session 029, Issue #25, PR #26)
 - **P2-7 resolved: Footer featured resource card images** — Added Forrester Wave slug to FEATURED_THUMBNAILS map (Session 031, Issue #27, PR #28)
 - **P2-8 resolved: Mega-menu navigation** — Full-width panels, announcement bar, hover/accordion, 5 panel layouts (Session 033, Issue #29, PR #30)
+- **W2 resolved: Style regression tests** — Playwright screenshot diff, pixelmatch, 8 templates × 2 viewports (Session 035, Issue #34, PR #35)
 
 ## What's In Progress
-- **PR #30** — Mega-menu navigation awaiting review
+(nothing active)
 
 ## What's Pending
-- **W2** — Automated style regression (Playwright screenshot diff)
-- **Columns Lottie support** — Careers section right column needs Lottie rendering
-- **Accordion block fix** — JS error on solutions pages (pre-existing)
-- **let-care-flow remote content fix** — Remote CDN .plain.html has broken pipe-table parsing; blocks don't render
+- **Issue #31** — Accordion block JS error on solutions pages
+- **Issue #32** — Add Lottie animation support to Columns block
+- **Issue #33** — let-care-flow page blocks not rendering (CDN pipe-table parsing)
 
 ## Active Blockers
 (none)
@@ -55,9 +55,9 @@
 - `blocks/columns/columns.css` — Flexible columns with 58/42 desktop split
 - `tools/importer/bulk-import.js` — Bulk import script with markdownToEdsHtml() HTML pipeline
 - `tools/importer/url-catalog.json` — 370 URLs in 20 batches
+- `playwright.config.js` — Style regression test config (desktop 1440px, mobile 375px)
+- `tests/style-regression/` — Screenshot diff test suite, compare helper, report generator
 - `content/` — 367 .md + 369 .html files (excluded from git)
-- `blocks/video-hero/` — Video hero block (Vimeo/YouTube iframe injection)
-- `blocks/image-slider/` — Image slider block (CSS scroll-snap, autoplay)
 - `journal/` — Project journal directory
 
 ## Critical Warning
@@ -71,4 +71,4 @@
 - `content/` directory excluded from git (`.git/info/exclude`)
 
 ## Resume Point
-> PR #30 open for Issue #29 (mega-menu navigation). Awaiting user review. Backlog: W2 (style regression), Columns Lottie support, Accordion block fix, let-care-flow remote content fix.
+> PR #35 open for Issue #34 (W2 style regression). Remaining issues: #31 accordion block fix, #32 Columns Lottie, #33 let-care-flow CDN content.

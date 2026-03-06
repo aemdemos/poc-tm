@@ -9,3 +9,10 @@ helix-importer-ui
 .idea
 localhost.pem
 localhost-key.pem
+
+# Style regression test outputs
+tests/style-regression/screenshots/
+tests/style-regression/test-results/
+tests/style-regression/results.json
+tests/style-regression/report.json
+tests/style-regression/regression-report.md

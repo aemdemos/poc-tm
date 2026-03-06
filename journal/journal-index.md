@@ -36,3 +36,5 @@
 | 031 | 2026-03-07 | P2-7: Footer featured resource card images (Issue #27, PR #28) | ~33m | 12 completed, 1 minor problem |
 | 032 | 2026-03-06 | Journal housekeeping + P2-8 mega-menu issue (#29) | ~28m | 8 completed, 0 problems |
 | 033 | 2026-03-06 | P2-8: Mega-menu navigation implementation (Issue #29, PR #30) | ~50m | 12 completed, 3 problems resolved |
+| 034 | 2026-03-06 | Create GitHub issues for remaining backlog (#31–#34) | ~17m | 8 completed, 0 problems |
+| 035 | 2026-03-06 | Issue #34: Automated style regression tests (W2, PR #35) | ~39m | 14 completed, 2 minor problems resolved |

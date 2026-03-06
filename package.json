@@ -7,6 +7,10 @@
     "lint:js": "eslint . --ext .json,.js",
     "lint:css": "stylelint 'blocks/**/*.css' 'styles/*.css'",
     "lint": "npm run lint:js && npm run lint:css",
+    "test:regression": "rm -f tests/style-regression/results.json && npx playwright test",
+    "test:regression:desktop": "npx playwright test --project=desktop",
+    "test:regression:mobile": "npx playwright test --project=mobile",
+    "test:regression:report": "node tests/style-regression/generate-report.js",
     "build:json": "npm-run-all -p build:json:models build:json:definitions build:json:filters",
     "build:json:models": "merge-json-cli -i \"models/_component-models.json\" -o \"component-models.json\"",
     "build:json:definitions": "merge-json-cli -i \"models/_component-definition.json\" -o \"component-definition.json\"",
@@ -26,6 +30,7 @@
   "devDependencies": {
     "@babel/core": "7.23.7",
     "@babel/eslint-parser": "7.28.0",
+    "@playwright/test": "^1.58.2",
     "chai": "5.0.0",
     "eslint": "8.57.1",
     "eslint-config-airbnb-base": "15.0.0",
@@ -35,6 +40,8 @@
     "husky": "9.1.1",
     "merge-json-cli": "^1.0.4",
     "npm-run-all": "^4.1.5",
+    "pixelmatch": "^7.1.0",
+    "pngjs": "^7.0.0",
     "stylelint": "16.23.1",
     "stylelint-config-standard": "39.0.0"
   }

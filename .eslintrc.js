@@ -19,4 +19,17 @@ module.exports = {
     'linebreak-style': ['error', 'unix'], // enforce unix linebreaks
     'no-param-reassign': [2, { props: false }], // allow modifying properties of param
   },
+  overrides: [
+    {
+      files: ['tests/**/*.js', 'playwright.config.js'],
+      env: { node: true, browser: false },
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+        'import/extensions': 'off',
+        'no-console': 'off',
+        'no-restricted-syntax': 'off',
+        'no-await-in-loop': 'off',
+      },
+    },
+  ],
 };
