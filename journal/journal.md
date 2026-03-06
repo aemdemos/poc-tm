@@ -1713,3 +1713,48 @@
 
 ### Carry-Forward
 > PR #37 open for Issue #31. Only remaining issue: #32 Columns Lottie animation support.
+
+---
+
+## Session 038 — 2026-03-06 — Add Lottie animation support to Columns block (Issue #32)
+
+**Branch:** `issue-32`
+**Duration:** 20m (agent) + 10% = 22m
+**Session goal:** Add Lottie .json link detection to columns block, matching hero block pattern
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Read columns.js, hero.js, delayed.js, lazy-styles.css — understand Lottie pipeline | new | 1 | pass | 3m |
+| 2 | Add Lottie detection to columns.js — find .json links, create data-lottie-path container | new | 1 | pass | 3m |
+| 3 | Verify Lottie container created on homepage Careers section | new | 1 | pass | 2m |
+| 4 | Fix path resolution — use href (full URL) instead of textContent (filename only) | new | 1 | pass | 2m |
+| 5 | Fix DOM structure — replace parent <p> to avoid invalid p>div nesting | new | 1 | pass | 2m |
+| 6 | Verify final DOM: div>div clean nesting, correct full URL path | new | 1 | pass | 2m |
+| 7 | Commit `c2eeb66`, push to issue-32, create PR #38 | new | 1 | pass | 4m |
+
+### Outcomes
+- **Completed:** Columns block now detects Lottie .json links and creates animation containers. PR #38 open.
+- **Note:** CORS blocks cross-origin JSON fetch in local dev (expected). In production, animation JSON would be same-origin or CORS-enabled.
+
+### Problems Encountered
+
+| Problem | Severity | Resolved? | Resolution | Related Action # |
+|---------|----------|-----------|------------|-----------------|
+| Lottie path was just filename, not full URL | minor | yes | Use href when it ends with .json, fall back to textContent for DA | #4 |
+| Lottie div inside <p> = invalid HTML | minor | yes | Replace parent <p> wrapper instead of just the <a> link | #5 |
+| CORS blocks external JSON fetch in local dev | minor | workaround | Expected in local dev; production serves same-origin or CORS-enabled JSON | #6 |
+
+### Key Decisions
+- Used href for Lottie path (has full URL) with textContent fallback for DA environments where hrefs get mangled (.json → -json)
+- No CSS changes needed — global [data-lottie-path] styles in lazy-styles.css are sufficient
+
+### Files Changed
+- `blocks/columns/columns.js` — Added Lottie .json link detection, container creation, href-based path resolution (+16 lines)
+
+### Commits
+- `c2eeb66` — Add Lottie animation support to Columns block (Closes #32)
+
+### Carry-Forward
+> PR #38 open for Issue #32. All backlog issues (#31–#34) now have PRs. No remaining open issues.
