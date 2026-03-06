@@ -1,10 +1,10 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-06 (Session 038)
-**Branch:** `issue-32`
+**Last updated:** 2026-03-06 (Session 039)
+**Branch:** `issue-8`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
-**Overall status:** All backlog issues (#31–#34) resolved. PRs #35–#38 open for review.
+**Overall status:** All issues resolved. PRs #35–#39 open for review.
 
 ## What's Done
 - Repository initialized and configured (Session 000)
@@ -37,12 +37,13 @@
 - **Issue #33 resolved: let-care-flow blocks rendering** — ASCII border table parsing in bulk-import.js, regenerate-plain-html.js utility (Session 036, PR #36)
 - **Issue #31 resolved: Accordion block JS crash** — Defensive guard for malformed rows with < 2 children (Session 037, PR #37)
 - **Issue #32 resolved: Columns Lottie support** — .json link detection, href-based path, p-wrapper replacement (Session 038, PR #38)
+- **Issue #8 resolved: Verification test harness false-positives** — Async scroll for IO, data-loaded-by attribute for F-DELAYED (Session 039, PR #39)
 
 ## What's In Progress
 (nothing active)
 
 ## What's Pending
-(none — all backlog issues resolved)
+(none — all known issues resolved)
 
 ## Active Blockers
 (none)
@@ -59,6 +60,8 @@
 - `tools/importer/url-catalog.json` — 370 URLs in 20 batches
 - `playwright.config.js` — Style regression test config (desktop 1440px, mobile 375px)
 - `tests/style-regression/` — Screenshot diff test suite, compare helper, report generator
+- `.claude/skills/excat-animate-migration/verify-animations.js` — 11-check verification IIFE (fixed in Session 039)
+- `scripts/delayed.js` — Lottie loader with data-loaded-by attribution
 - `content/` — 367 .md + 369 .html files (excluded from git)
 - `journal/` — Project journal directory
 
@@ -73,4 +76,4 @@
 - `content/` directory excluded from git (`.git/info/exclude`)
 
 ## Resume Point
-> All backlog issues resolved. PRs #35 (style regression), #36 (let-care-flow), #37 (accordion), #38 (columns Lottie) open for review. No remaining open issues.
+> All known issues resolved. PRs #35 (style regression), #36 (let-care-flow), #37 (accordion), #38 (columns Lottie), #39 (verification harness) open for review. No remaining open issues.

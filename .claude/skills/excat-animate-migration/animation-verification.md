@@ -184,7 +184,7 @@ Criteria are organized by **Pattern letter** (A–G) from the animation migratio
 
 | Criterion ID | Verification | Pass Condition |
 |--------------|--------------|----------------|
-| `F-DELAYED` | Load phase | Lottie loaded in `delayed.js` (`loadDelayed`), not blocking LCP |
+| `F-DELAYED` | Load phase | Lottie loaded in `delayed.js` (`loadDelayed`), not render-blocking; script has `data-loaded-by="delayed"` attribute |
 | `F-CONTAINER` | Container and path | Element has `data-lottie-path`; path resolves to correct JSON. DA: use link **text** for path, not href |
 | `F-RENDER` | SVG renders | After delayed load, Lottie SVG is visible with non-zero dimensions; no empty or broken container |
 | `F-LOOP` | Loop/autoplay | `data-lottie-loop` and autoplay behavior match source |
@@ -223,17 +223,20 @@ Criteria are organized by **Pattern letter** (A–G) from the animation migratio
 ```
 
 ```javascript
-// F-DELAYED — Lottie should load after delay, not in <head>
+// F-DELAYED — Lottie should be loaded via delayed.js (data-loaded-by="delayed")
+// Note: loadScript() in aem.js always appends to <head>, so DOM placement
+// cannot distinguish render-blocking from delayed scripts. delayed.js sets
+// data-loaded-by="delayed" on the script element after loading it.
 (() => {
   const scripts = [...document.querySelectorAll('script[src]')];
   const lottieScript = scripts.find(s => s.src.includes('lottie'));
-  const inHead = lottieScript && lottieScript.closest('head');
+  const loadedByDelayed = lottieScript && lottieScript.dataset.loadedBy === 'delayed';
   return {
     criterion: 'F-DELAYED',
     lottieLoaded: !!lottieScript,
-    inHead: !!inHead,
-    status: lottieScript && !inHead ? 'PASS' : inHead ? 'FAIL' : 'WARN',
-    note: inHead ? 'Lottie loaded in <head> — blocks rendering' : lottieScript ? 'Lottie loaded via delayed.js' : 'No lottie script found',
+    loadedBy: lottieScript?.dataset.loadedBy || 'unknown',
+    status: !lottieScript ? 'WARN' : loadedByDelayed ? 'PASS' : 'FAIL',
+    note: !lottieScript ? 'No lottie script found' : loadedByDelayed ? 'Lottie loaded via delayed.js' : 'Lottie loaded outside delayed.js — may block rendering',
   };
 })()
 ```
@@ -572,7 +575,7 @@ For tooling, query-index, or automation, store a single metadata key whose value
 2. **Run source inventory script** (§1 automated check for source) → save result
 3. **Navigate to EDS page** (`localhost:3000` or `.aem.page`)
 4. **Wait 2+ seconds** (for `delayed.js` to load Lottie)
-5. **Scroll full page** incrementally (400px steps, 200ms pause) to trigger all IntersectionObservers
+5. **Scroll full page** incrementally (400px steps, 300ms async pause between each) to trigger all IntersectionObservers
 6. **Run `verify-animations.js`** (full verification script) → save JSON report
 7. **Compare inventories** (source vs EDS) — every source animation should have an EDS counterpart
 8. **Take comparison screenshots** at 0%, 25%, 50%, 75%, 100% scroll (both pages)

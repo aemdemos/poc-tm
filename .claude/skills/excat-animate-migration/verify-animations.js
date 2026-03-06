@@ -12,11 +12,15 @@
  * Usage (Playwright):
  *   await page.goto('http://localhost:3000/content/index');
  *   await page.waitForTimeout(2500);
- *   await page.evaluate(() => {
+ *   // Async scroll so IntersectionObservers have time to fire between steps
+ *   await page.evaluate(async () => {
  *     const h = document.body.scrollHeight;
- *     for (let y = 0; y < h; y += 400) { window.scrollTo(0, y); }
+ *     for (let y = 0; y < h; y += 400) {
+ *       window.scrollTo(0, y);
+ *       await new Promise((r) => setTimeout(r, 300));
+ *     }
  *   });
- *   await page.waitForTimeout(1000);
+ *   await page.waitForTimeout(500);
  *   const report = await page.evaluate(verifyAnimationsScript);
  *
  * Usage (browser_evaluate MCP tool):
@@ -116,13 +120,16 @@
     lotties.length === 0 ? 'PASS' : allLottieOk ? 'PASS' : 'FAIL',
     { containers: lottieResults });
 
-  // ── F-DELAYED: Lottie loaded via delayed.js (not in <head>) ───
+  // ── F-DELAYED: Lottie loaded via delayed.js (not render-blocking) ─
+  // delayed.js sets data-loaded-by="delayed" on scripts it injects.
+  // We check for that attribute instead of DOM placement, because
+  // loadScript() appends to <head> even for delayed scripts.
   const allScripts = [...document.querySelectorAll('script[src]')];
   const lottieScript = allScripts.find((s) => s.src.includes('lottie'));
-  const lottieInHead = lottieScript && lottieScript.closest('head');
+  const loadedByDelayed = lottieScript && lottieScript.dataset.loadedBy === 'delayed';
   add('F-DELAYED', 'Lottie Load Phase',
-    !lottieScript ? 'PASS' : lottieInHead ? 'FAIL' : 'PASS',
-    { loaded: !!lottieScript, inHead: !!lottieInHead, src: lottieScript?.src || 'none' });
+    !lottieScript ? 'PASS' : loadedByDelayed ? 'PASS' : 'FAIL',
+    { loaded: !!lottieScript, loadedBy: lottieScript?.dataset.loadedBy || 'unknown', src: lottieScript?.src || 'none' });
 
   // ── F-LIGHT: Lottie light build ───────────────────────────────
   const isLight = !lottieScript || lottieScript.src.includes('lottie_light');

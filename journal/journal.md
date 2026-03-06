@@ -1758,3 +1758,44 @@
 
 ### Carry-Forward
 > PR #38 open for Issue #32. All backlog issues (#31–#34) now have PRs. No remaining open issues.
+
+---
+
+## Session 039 — 2026-03-06 — Fix verification test harness false-positives (Issue #8)
+
+**Branch:** `issue-8`
+**Duration:** 20m (agent) + 10% = 22m
+**Session goal:** Fix two false-positive bugs in verify-animations.js (TEST-001 sync scroll, TEST-002 F-DELAYED)
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Read verify-animations.js, delayed.js, aem.js loadScript, animation-verification.md | new | 1 | pass | 3m |
+| 2 | Fix TEST-001: Convert sync scroll loop in usage comments to async with 300ms pauses | new | 1 | pass | 2m |
+| 3 | Fix TEST-002: Add data-loaded-by="delayed" to delayed.js, update F-DELAYED check | new | 1 | pass | 3m |
+| 4 | Update animation-verification.md — F-DELAYED criteria, code snippet, workflow step | new | 1 | pass | 2m |
+| 5 | Verify on homepage — async scroll triggers 7/8 IO, F-DELAYED reports PASS | new | 1 | pass | 5m |
+| 6 | Commit `bc99638`, push to issue-8, create PR #39 | new | 1 | pass | 3m |
+
+### Outcomes
+- **Completed:** Both TEST-001 and TEST-002 false-positives fixed. PR #39 open for Issue #8.
+- **F-DELAYED**: Now correctly reports PASS (loadedBy: "delayed") instead of false FAIL
+- **A-DOM**: Async scroll triggers 7/8 IntersectionObservers vs 0/8 with sync loop
+
+### Problems Encountered
+(none)
+
+### Key Decisions
+- Chose `data-loaded-by` attribute approach for TEST-002 (cleanest of 3 options: source attribution, load timing, script attribute). Requires minimal change to delayed.js (3 lines) and is deterministic.
+
+### Files Changed
+- `.claude/skills/excat-animate-migration/verify-animations.js` — Async scroll in usage comments; F-DELAYED uses data-loaded-by instead of closest('head')
+- `.claude/skills/excat-animate-migration/animation-verification.md` — Updated F-DELAYED criteria, code snippet, workflow scroll instructions
+- `scripts/delayed.js` — Mark injected Lottie script with data-loaded-by="delayed" after loading
+
+### Commits
+- `bc99638` — Fix verification test harness false-positives (TEST-001, TEST-002)
+
+### Carry-Forward
+> PR #39 open for Issue #8. All known issues now have PRs.
