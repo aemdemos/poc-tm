@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-03-05T23:50:39.329Z",
+  "total": 368,
+  "success": 365,
+  "failed": 3,
+  "skipped": 0,
+  "errors": [
+    {
+      "url": "https://www.zelis.com/news/zelis-add-investors-reflecting-strong-market-confidence-in-mission/",
+      "error": "HTTP 404 for https://www.zelis.com/news/zelis-add-investors-reflecting-strong-market-confidence-in-mission/"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-named-2024-best-in-klas/",
+      "error": "HTTP 404 for https://www.zelis.com/news/zelis-named-2024-best-in-klas/"
+    },
+    {
+      "url": "https://www.zelis.com/case-studies/tpa-eliminated-the-thud-factor-for-clients-2/",
+      "error": "HTTP 404 for https://www.zelis.com/case-studies/tpa-eliminated-the-thud-factor-for-clients-2/"
+    }
+  ]
+}

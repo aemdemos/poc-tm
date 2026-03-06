@@ -112,8 +112,9 @@ function urlToContentPath(url) {
 
   return {
     mdPath: path.join(CONTENT_DIR, dir, `${filename}.md`),
+    htmlPath: path.join(CONTENT_DIR, dir, `${filename}.html`),
     dir: path.join(CONTENT_DIR, dir),
-    relativePath: `content/${dir}/${filename}.md`,
+    relativePath: dir ? `content/${dir}/${filename}` : `content/${filename}`,
   };
 }
 
@@ -836,6 +837,205 @@ function inlineHtmlToMd(html) {
 }
 
 // ============================================================
+// Markdown → EDS HTML converter
+// ============================================================
+
+const HEAD_HTML = fs.readFileSync(path.join(__dirname, '../../head.html'), 'utf8');
+
+/**
+ * Convert inline markdown to HTML (bold, italic, links, images).
+ */
+function inlineMdToHtml(text) {
+  return text
+    // Images: ![alt](src) → <picture>...<img>...</picture>
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, src) => {
+      const escaped = src.replace(/&/g, '&amp;');
+      return `<picture><source srcset="${escaped}"><source srcset="${escaped}" media="(min-width: 600px)"><img src="${escaped}" alt="${alt}" loading="lazy"></picture>`;
+    })
+    // Links: [text](url) → <a href="url">text</a>
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, linkText, href) => `<a href="${href}">${linkText}</a>`)
+    // Bold: **text** → <strong>text</strong>
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    // Italic: *text* → <em>text</em>
+    .replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, '<em>$1</em>');
+}
+
+/**
+ * Parse a markdown table block and return { name, rows }.
+ * A block starts with `| BlockName | ... |` followed by `| --- | ... |`.
+ */
+function parseBlockTable(lines, startIdx) {
+  const headerLine = lines[startIdx];
+  const cells = headerLine.split('|').map((c) => c.trim()).filter(Boolean);
+  const blockName = cells[0].toLowerCase().replace(/\s+/g, '-');
+
+  // Skip separator line (| --- | --- |)
+  let idx = startIdx + 2;
+  const rows = [];
+
+  while (idx < lines.length && lines[idx].startsWith('|')) {
+    const rowCells = lines[idx].split('|').map((c) => c.trim()).filter(Boolean);
+    rows.push(rowCells);
+    idx++;
+  }
+
+  return { name: blockName, rows, endIdx: idx };
+}
+
+/**
+ * Convert a parsed block table to EDS HTML.
+ */
+function blockToHtml(block) {
+  const lines = [`<div class="${block.name}">`];
+  block.rows.forEach((cells) => {
+    lines.push('  <div>');
+    cells.forEach((cell) => {
+      lines.push(`    <div>${inlineMdToHtml(cell)}</div>`);
+    });
+    lines.push('  </div>');
+  });
+  lines.push('</div>');
+  return lines.join('\n');
+}
+
+/**
+ * Convert markdown content to EDS-compatible HTML.
+ * Handles: sections (---), block tables, headings, images, lists, paragraphs.
+ */
+function markdownToEdsHtml(markdown) {
+  const allLines = markdown.split('\n');
+  const sections = [];
+  let currentSection = [];
+
+  // Split into sections by ---
+  allLines.forEach((line) => {
+    if (line.trim() === '---') {
+      sections.push(currentSection);
+      currentSection = [];
+    } else {
+      currentSection.push(line);
+    }
+  });
+  if (currentSection.length > 0) sections.push(currentSection);
+
+  const sectionHtmlParts = [];
+
+  sections.forEach((sectionLines) => {
+    const elements = [];
+    let i = 0;
+    const pendingListItems = [];
+    let listType = null;
+
+    const flushList = () => {
+      if (pendingListItems.length > 0) {
+        const tag = listType === 'ol' ? 'ol' : 'ul';
+        elements.push(`<${tag}>${pendingListItems.map((li) => `<li>${li}</li>`).join('')}</${tag}>`);
+        pendingListItems.length = 0;
+        listType = null;
+      }
+    };
+
+    while (i < sectionLines.length) {
+      const line = sectionLines[i];
+      const trimmed = line.trim();
+
+      if (!trimmed) {
+        flushList();
+        i++;
+        continue;
+      }
+
+      // Block table: starts with | and next line is | --- |
+      if (trimmed.startsWith('|') && i + 1 < sectionLines.length
+        && sectionLines[i + 1].trim().startsWith('| ---')) {
+        flushList();
+        const block = parseBlockTable(sectionLines, i);
+        elements.push(blockToHtml(block));
+        i = block.endIdx;
+        continue;
+      }
+
+      // Heading
+      const headingMatch = trimmed.match(/^(#{1,6})\s+(.+)/);
+      if (headingMatch) {
+        flushList();
+        const level = headingMatch[1].length;
+        const text = inlineMdToHtml(headingMatch[2]);
+        const id = headingMatch[2].toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+        elements.push(`<h${level} id="${id}">${text}</h${level}>`);
+        i++;
+        continue;
+      }
+
+      // Unordered list item
+      if (trimmed.startsWith('- ')) {
+        if (listType !== 'ul') flushList();
+        listType = 'ul';
+        pendingListItems.push(inlineMdToHtml(trimmed.slice(2)));
+        i++;
+        continue;
+      }
+
+      // Ordered list item
+      const olMatch = trimmed.match(/^\d+\.\s+(.+)/);
+      if (olMatch) {
+        if (listType !== 'ol') flushList();
+        listType = 'ol';
+        pendingListItems.push(inlineMdToHtml(olMatch[1]));
+        i++;
+        continue;
+      }
+
+      // Blockquote
+      if (trimmed.startsWith('> ')) {
+        flushList();
+        elements.push(`<blockquote>${inlineMdToHtml(trimmed.slice(2))}</blockquote>`);
+        i++;
+        continue;
+      }
+
+      // Image on its own line
+      if (trimmed.match(/^!\[.*\]\(.*\)$/)) {
+        flushList();
+        elements.push(`<p>${inlineMdToHtml(trimmed)}</p>`);
+        i++;
+        continue;
+      }
+
+      // Regular paragraph
+      flushList();
+      elements.push(`<p>${inlineMdToHtml(trimmed)}</p>`);
+      i++;
+    }
+
+    flushList();
+
+    if (elements.length > 0) {
+      sectionHtmlParts.push(elements.join('\n'));
+    }
+  });
+
+  // Wrap in full HTML document
+  const bodyHtml = sectionHtmlParts.map((s) => `<div>${s}</div>`).join('\n');
+
+  return `<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+${HEAD_HTML.trim()}
+</head>
+<body>
+<header></header>
+<main>
+${bodyHtml}
+</main>
+<footer></footer>
+</body>
+</html>
+`;
+}
+
+// ============================================================
 // Template router
 // ============================================================
 
@@ -879,11 +1079,14 @@ async function importPage(url, templateName) {
     return { url, path: contentPath.relativePath, chars: markdown.length };
   }
 
-  // Create directory and save
+  // Create directory and save (markdown + HTML)
   fs.mkdirSync(contentPath.dir, { recursive: true });
   fs.writeFileSync(contentPath.mdPath, markdown, 'utf8');
 
-  return { url, path: contentPath.relativePath, chars: markdown.length };
+  const edsHtml = markdownToEdsHtml(markdown);
+  fs.writeFileSync(contentPath.htmlPath, edsHtml, 'utf8');
+
+  return { url, path: contentPath.relativePath, chars: markdown.length, htmlChars: edsHtml.length };
 }
 
 async function sleep(ms) {
@@ -907,7 +1110,7 @@ async function processBatch(urls, templateName, batchLabel) {
     try {
       const result = await importPage(url, templateName);
       results.success++;
-      console.log(`  ${progress} ✓ ${url} → ${result.path} (${result.chars} chars)`);
+      console.log(`  ${progress} ✓ ${url} → ${result.path} (.md ${result.chars}, .html ${result.htmlChars || '—'})`);
     } catch (err) {
       results.failed++;
       results.errors.push({ url, error: err.message });
