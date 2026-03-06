@@ -203,6 +203,14 @@ h6 {
   line-height: 1.25;
 }
 
+/* Gold mark highlight — matches <mark> on original site */
+main h1 em,
+main h2 em,
+main h3 em {
+  color: var(--color-gold, #ffbe00);
+  font-style: normal;
+}
+
 p,
 dl,
 ol,
