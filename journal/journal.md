@@ -1252,3 +1252,52 @@
 
 ### Carry-Forward
 > P2-9 complete on `issue-21-highlight` (commit `b5fded1`, pushed). Issue #19 also pushed. Next priorities: P2-10 (case study card + two-column CTA), P2-6 (animated SVG icons), accordion block JS fix.
+
+---
+
+## Session 027 — 2026-03-06 — Issue #23: Case study card + CTA layout (P2-10)
+
+**Branch:** `issue-23`
+**Duration:** 30m (agent) + 10% = 33m
+**Session goal:** Implement CSS refinements for let-care-flow case study card and CTA sections (Issue #23)
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Read cards.css, columns.css, styles.css for current state | new | 1 | pass | 3m |
+| 2 | Navigate to let-care-flow preview, investigate block rendering | new | 1 | partial | 5m |
+| 3 | Diagnose preview issue — blocks not rendering, plain.html broken | new | 1 | pass | 5m |
+| 4 | Discover `aem up` proxies content from remote CDN, not local files | new | 1 | pass | 3m |
+| 5 | Add single-card case study CSS to cards.css (:only-child horizontal layout, purple border) | new | 1 | pass | 5m |
+| 6 | Add HR styling to styles.css (light/dark variants) | new | 1 | pass | 2m |
+| 7 | Validate multi-card grids on homepage — no regression (1440px) | new | 1 | pass | 3m |
+| 8 | Validate CTA columns section on homepage — light background, image-text layout correct | new | 1 | pass | 2m |
+| 9 | Validate mobile (375px) — cards stack, columns stack, CTA correct | new | 1 | pass | 2m |
+| 10 | Fix stylelint no-descending-specificity warning | new | 1 | pass | 1m |
+| 11 | Commit `15c6150` and push to remote | new | 1 | pass | 2m |
+
+### Outcomes
+- **Completed:** Single-card horizontal layout with purple accent, HR styling, lint clean, pushed
+- **Partial:** Cannot visually verify on let-care-flow itself — remote CDN has broken .plain.html for that page (blocks not rendered). CSS verified via homepage blocks instead.
+
+### Problems Encountered
+
+| Problem | Severity | Resolved? | Resolution | Related Action # |
+|---------|----------|-----------|------------|-----------------|
+| let-care-flow blocks don't render in local preview | major | workaround | `aem up` proxies .plain.html from remote CDN (not local files). Remote has broken pipe-table conversion. Verified CSS on homepage blocks instead. | #2–4 |
+
+### Key Decisions
+- Used `:only-child` pseudo-class to target single-card scenarios — avoids custom block variant, works automatically
+- Verified on homepage's working cards/columns blocks since let-care-flow content is broken on remote CDN
+- Used `var(--color-ink-blue-50)` for purple accent border — matches brand palette mid-tone
+
+### Files Changed
+- `blocks/cards/cards.css` — Added single-card (:only-child) horizontal layout: image left 280px/340px, content right, 4px purple left border, full-width grid override
+- `styles/styles.css` — Added HR styling: 1px light gray border-top, 48px margin, dark section variant
+
+### Commits
+- `15c6150` — Add single-card case study layout and HR styling for let-care-flow (Closes #23)
+
+### Carry-Forward
+> Issue #23 committed and pushed on `issue-23` branch. CSS changes are correct but let-care-flow local preview is broken because `aem up` proxies from remote CDN which has malformed .plain.html (pipe-table parsing failure in markdown). Next: create PR for Issue #23, then continue with P2-6 (animated SVG icons), P2-7 (footer images), or accordion block fix.

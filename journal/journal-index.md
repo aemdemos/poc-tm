@@ -29,3 +29,4 @@
 | 024 | 2026-03-05 | Step 6: Video hero and image slider blocks for let-care-flow | ~1h 34m | 15 completed, 1 failed (push), 4 problems (3 resolved) |
 | 025 | 2026-03-05 | Bulk site import: Issue #19 (365 pages via HTML pipeline) | ~50m | 12 completed, 1 failed (push), 3 problems (2 resolved) |
 | 026 | 2026-03-06 | Issue #19 push + P2-9 gold highlight (Issue #21) | ~28m | 9 completed, 0 problems |
+| 027 | 2026-03-06 | Issue #23: Single-card case study layout + HR styling (P2-10) | ~33m | 11 completed, 1 problem (workaround) |
