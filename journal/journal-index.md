@@ -30,3 +30,4 @@
 | 025 | 2026-03-05 | Bulk site import: Issue #19 (365 pages via HTML pipeline) | ~50m | 12 completed, 1 failed (push), 3 problems (2 resolved) |
 | 026 | 2026-03-06 | Issue #19 push + P2-9 gold highlight (Issue #21) | ~28m | 9 completed, 0 problems |
 | 027 | 2026-03-06 | Issue #23: Single-card case study layout + HR styling (P2-10) | ~33m | 11 completed, 1 problem (workaround) |
+| 028 | 2026-03-06 | P2-6 research: animated SVG icons problem statement | ~22m | 7 completed, 0 problems |

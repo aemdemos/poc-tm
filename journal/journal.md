@@ -1301,3 +1301,44 @@
 
 ### Carry-Forward
 > Issue #23 committed and pushed on `issue-23` branch. CSS changes are correct but let-care-flow local preview is broken because `aem up` proxies from remote CDN which has malformed .plain.html (pipe-table parsing failure in markdown). Next: create PR for Issue #23, then continue with P2-6 (animated SVG icons), P2-7 (footer images), or accordion block fix.
+
+---
+
+## Session 028 — 2026-03-06 — P2-6 Research and Problem Statement
+
+**Branch:** `issue-21-highlight`
+**Duration:** 20m (agent) + 10% = 22m
+**Session goal:** Research the "We Are Zelis" animated SVG icons on the original site and write a GitHub-compatible problem statement for P2-6
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Navigate to zelis.com homepage, capture full page snapshot | new | 1 | pass | 3m |
+| 2 | Extract SVG icon details from 3 feature cards (inline SVGs, not img tags) | new | 2 | pass | 4m |
+| 3 | Analyze animation mechanism — stroke-dasharray/dashoffset drawing technique | new | 1 | pass | 3m |
+| 4 | Screenshot original "We Are Zelis" section for reference | new | 1 | pass | 2m |
+| 5 | Navigate to EDS homepage, verify "We Are Zelis" section renders without icons | new | 1 | pass | 3m |
+| 6 | Screenshot EDS version for comparison | new | 1 | pass | 2m |
+| 7 | Write comprehensive P2-6 problem statement in GitHub-compatible markdown | new | 1 | pass | 5m |
+
+### Outcomes
+- **Completed:** Full P2-6 problem statement with technical details, animation specs, implementation approach, and acceptance criteria
+
+### Problems Encountered
+
+(none)
+
+### Key Decisions
+- Identified icons are **inline SVGs** (not `<img>` references to .svg files) — this affects authoring approach
+- Noted Lottie background animation as separate sub-issue to keep P2-6 focused on icons
+- Animation uses CSS transitions on `stroke-dashoffset` triggered by IntersectionObserver — same pattern already used in project (hero Lottie)
+
+### Files Changed
+(no files modified — research and documentation only)
+
+### Commits
+(none)
+
+### Carry-Forward
+> P2-6 problem statement written and delivered. Ready to create as GitHub issue. SVG icons are inline with stroke-drawing animation (stroke-dasharray/dashoffset + IntersectionObserver). 3 icons: lightbulb+hand (16 paths), circular arrows+lightning (12 paths), eye/magnifying glass (11 paths). All ~70×88px, #23004B stroke. EDS section currently renders text-only. Next: create GitHub issue for P2-6, then implement or move to P2-7/P2-8.

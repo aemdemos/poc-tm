@@ -1,10 +1,10 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-06 (Session 027)
-**Branch:** `issue-23`
+**Last updated:** 2026-03-06 (Session 028)
+**Branch:** `issue-21-highlight`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
-**Overall status:** Bulk import complete (365 pages). Issue #23 CSS implemented and pushed. Multiple PRs ready.
+**Overall status:** Bulk import complete (365 pages). Issue #23 merged. P2-6 problem statement written, ready for GitHub issue creation.
 
 ## What's Done
 - Repository initialized and configured (Session 000)
@@ -31,13 +31,13 @@
 - **Issue #19 pushed** — `issue-19-reimports` branch pushed to remote (Session 026)
 - **P2-9 resolved: Gold highlight** — `main h1/h2/h3 em` styled gold `#FFBE00` in styles.css (Session 026, Issue #21)
 - **P2-10 resolved: Case study card + HR** — Single-card :only-child horizontal layout with purple border, HR styling (Session 027, Issue #23)
+- **P2-6 researched** — Full problem statement written: 3 inline SVGs with stroke-drawing animation, IntersectionObserver trigger (Session 028)
 
 ## What's In Progress
 (nothing active)
 
 ## What's Pending
-- **PR for issue-23** — Create PR to close Issue #23
-- **P2-6** — Add animated SVG icons to "We Are Zelis" feature cards
+- **P2-6 GitHub issue** — Create issue from problem statement, then implement animated SVG icons
 - **P2-7** — Footer featured resource card images
 - **P2-8** — Mega-menu navigation
 - **W2** — Automated style regression (Playwright screenshot diff)
@@ -70,4 +70,4 @@
 - `content/` directory excluded from git (`.git/info/exclude`)
 
 ## Resume Point
-> Issue #23 committed (`15c6150`) and pushed on `issue-23` branch. Next: create PR for Issue #23, then P2-6 (animated SVG icons), P2-7 (footer images), or accordion block fix.
+> P2-6 problem statement complete. Icons are inline SVGs with stroke-dasharray/dashoffset drawing animation triggered by IntersectionObserver. 3 icons: lightbulb+hand (16 paths), circular arrows+lightning (12 paths), eye motif (11 paths). All ~70×88px, #23004B stroke. Next: create P2-6 GitHub issue, then implement or move to P2-7/P2-8.

@@ -165,6 +165,79 @@
   }
 }
 
+/* ---- Icon Cards ("We Are Zelis" feature cards) ---- */
+/* stylelint-disable-next-line no-descending-specificity */
+.cards.icon-cards > ul > li {
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  padding: var(--spacing-m) 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.cards.icon-cards > ul > li:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+.cards.icon-cards .cards-card-icon {
+  width: 70px;
+  height: 88px;
+  margin-bottom: var(--spacing-s);
+}
+
+.cards.icon-cards .cards-card-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.cards.icon-cards .cards-card-body {
+  padding: 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.cards.icon-cards .cards-card-body > p:first-child {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-m);
+  font-weight: 500;
+  line-height: 1.19;
+  color: var(--text-color);
+  margin-bottom: var(--spacing-xs);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.cards.icon-cards .cards-card-body > p:first-child strong {
+  font-weight: 500;
+}
+
+/* Stroke-draw animation: paths start hidden (dashoffset = dasharray) */
+.cards.icon-cards svg path {
+  transition: stroke-dashoffset 1.5s ease-in-out;
+}
+
+/* Stagger path draw timing */
+.cards.icon-cards svg path:nth-child(2) { transition-delay: 0.08s; }
+.cards.icon-cards svg path:nth-child(3) { transition-delay: 0.16s; }
+.cards.icon-cards svg path:nth-child(4) { transition-delay: 0.24s; }
+.cards.icon-cards svg path:nth-child(5) { transition-delay: 0.32s; }
+.cards.icon-cards svg path:nth-child(6) { transition-delay: 0.4s; }
+.cards.icon-cards svg path:nth-child(7) { transition-delay: 0.48s; }
+.cards.icon-cards svg path:nth-child(8) { transition-delay: 0.56s; }
+.cards.icon-cards svg path:nth-child(9) { transition-delay: 0.64s; }
+.cards.icon-cards svg path:nth-child(10) { transition-delay: 0.72s; }
+.cards.icon-cards svg path:nth-child(11) { transition-delay: 0.8s; }
+.cards.icon-cards svg path:nth-child(12) { transition-delay: 0.88s; }
+.cards.icon-cards svg path:nth-child(13) { transition-delay: 0.96s; }
+.cards.icon-cards svg path:nth-child(14) { transition-delay: 1.04s; }
+.cards.icon-cards svg path:nth-child(15) { transition-delay: 1.12s; }
+
+/* When animated class is added, draw all paths */
+.cards.icon-cards.animated svg path {
+  stroke-dashoffset: 0 !important;
+}
+
 /* ---- Responsive Grid ---- */
 @media (width >= 600px) {
   .cards > ul {
