@@ -1,10 +1,10 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-06 (Session 029)
-**Branch:** `issue-25`
+**Last updated:** 2026-03-06 (Session 032)
+**Branch:** `main`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
-**Overall status:** Bulk import complete (365 pages). Issue #25 (P2-6 animated SVG icons) implemented and pushed.
+**Overall status:** Bulk import complete (365 pages). Issue #27 (P2-7 footer featured resource card images) resolved, PR #28 merged.
 
 ## What's Done
 - Repository initialized and configured (Session 000)
@@ -32,14 +32,13 @@
 - **P2-9 resolved: Gold highlight** — `main h1/h2/h3 em` styled gold `#FFBE00` in styles.css (Session 026, Issue #21)
 - **P2-10 resolved: Case study card + HR** — Single-card :only-child horizontal layout with purple border, HR styling (Session 027, Issue #23)
 - **P2-6 researched** — Full problem statement written: 3 inline SVGs with stroke-drawing animation, IntersectionObserver trigger (Session 028)
-- **P2-6 resolved: Animated SVG icons** — 3 inline SVGs with stroke-draw animation via IntersectionObserver in cards block (Session 029, Issue #25)
+- **P2-6 resolved: Animated SVG icons** — 3 inline SVGs with stroke-draw animation via IntersectionObserver in cards block (Session 029, Issue #25, PR #26)
+- **P2-7 resolved: Footer featured resource card images** — Added Forrester Wave slug to FEATURED_THUMBNAILS map, console.warn for unmapped slugs (Session 031, Issue #27, PR #28)
 
 ## What's In Progress
 (nothing active)
 
 ## What's Pending
-- **PR for Issue #25** — Create PR to close Issue #25
-- **P2-7** — Footer featured resource card images
 - **P2-8** — Mega-menu navigation
 - **W2** — Automated style regression (Playwright screenshot diff)
 - **Columns Lottie support** — Careers section right column needs Lottie rendering
@@ -71,4 +70,4 @@
 - `content/` directory excluded from git (`.git/info/exclude`)
 
 ## Resume Point
-> Issue #25 (P2-6) implemented and pushed on `issue-25` branch. 3 animated SVG icons with stroke-draw animation in cards block. Commit `755ef7f`. Next: create PR for Issue #25, then continue with P2-7 (footer images), P2-8 (mega-menu), or accordion block fix.
+> Issue #29 created for P2-8 (mega-menu navigation) with detailed problem statement and 7-step plan. Awaiting user review before starting implementation. Backlog after P2-8: W2 (style regression), Columns Lottie support, accordion block fix, let-care-flow remote content fix.

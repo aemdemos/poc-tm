@@ -32,3 +32,6 @@
 | 027 | 2026-03-06 | Issue #23: Single-card case study layout + HR styling (P2-10) | ~33m | 11 completed, 1 problem (workaround) |
 | 028 | 2026-03-06 | P2-6 research: animated SVG icons problem statement | ~22m | 7 completed, 0 problems |
 | 029 | 2026-03-06 | P2-6 implementation: animated SVG icons (Issue #25) | ~39m | 12 completed, 2 minor problems |
+| 030 | 2026-03-06 | PR #26 for Issue #25 (animated SVG icons) | ~22m | 5 completed, 0 problems |
+| 031 | 2026-03-07 | P2-7: Footer featured resource card images (Issue #27, PR #28) | ~33m | 12 completed, 1 minor problem |
+| 032 | 2026-03-06 | Journal housekeeping + P2-8 mega-menu issue (#29) | ~28m | 8 completed, 0 problems |

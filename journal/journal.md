@@ -1394,3 +1394,91 @@
 
 ### Carry-Forward
 > Issue #25 implemented and pushed on `issue-25` branch. 3 SVG icons with stroke-drawing animation working on homepage. Next: create PR for Issue #25, then continue with P2-7 (footer images), P2-8 (mega-menu), or accordion block fix.
+
+---
+
+## Session 031 — 2026-03-07 — P2-7: Footer Featured Resource Card Images (Issue #27)
+
+**Branch:** `issue-27`
+**Duration:** 30m (agent) + 10% = 33m
+**Session goal:** Daily status checkup, then implement P2-7 — footer featured resource card images
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Daily status checkup — read all journal files, build briefing | repeat | 1 | pass | 3m |
+| 2 | Investigate original zelis.com footer — extract 3 resource card images and slugs | new | 1 | pass | 5m |
+| 3 | Compare EDS footer vs original — screenshot both, measure image sizing | new | 1 | pass | 4m |
+| 4 | Create GitHub Issue #27 with problem statement and plan | new | 1 | pass | 3m |
+| 5 | Create `issue-27` branch from main | repeat | 2 | pass | 2m |
+| 6 | Add Forrester Wave slug+URL to `FEATURED_THUMBNAILS` map in footer.js | new | 1 | pass | 2m |
+| 7 | Add `console.warn` for unmapped slugs in `injectFeaturedImages()` | new | 1 | pass | 2m |
+| 8 | Verify image sizing matches original (220×80px at both desktop and mobile) | new | 1 | pass | 3m |
+| 9 | Validate desktop 1440px — 3-column footer cards with images | new | 1 | pass | 2m |
+| 10 | Validate mobile 375px — stacked footer cards with images | new | 1 | pass | 2m |
+| 11 | Run stylelint + eslint — both clean | repeat | 1 | pass | 1m |
+| 12 | Commit `b5bf5ab`, push to `issue-27`, create PR #28 | new | 1 | pass | 2m |
+
+### Outcomes
+- **Completed:** Issue #27 created, implemented, validated, PR #28 merged
+- **Finding:** Image CSS sizing (220×80px) already matched original — no CSS changes needed
+
+### Problems Encountered
+
+| Problem | Severity | Resolved? | Resolution | Related Action # |
+|---------|----------|-----------|------------|-----------------|
+| Old `issue-27` branch already existed | minor | yes | Deleted and recreated from main | #5 |
+
+### Key Decisions
+- No CSS changes needed — existing `max-width: 220px; height: 80px` already matches original site at both desktop and mobile viewports
+- Added `console.warn` for unmapped slugs rather than silently failing — makes content drift visible in browser console without breaking rendering
+- Kept existing 3 slugs in map and added new Forrester Wave slug — backwards compatible
+
+### Files Changed
+- `blocks/footer/footer.js` — Added Forrester Wave slug to `FEATURED_THUMBNAILS` map, added `console.warn` for unmapped slugs
+
+### Commits
+- `b5bf5ab` — Add Forrester Wave thumbnail and console warning for unmapped slugs (Closes #27)
+
+### Carry-Forward
+> Issue #27 (P2-7) resolved. PR #28 merged. Backlog: P2-8 (mega-menu navigation), W2 (style regression), Columns Lottie support, Accordion block fix, let-care-flow remote content fix.
+
+---
+
+## Session 032 — 2026-03-06 — Journal housekeeping + P2-8 mega-menu issue
+
+**Branch:** `issue-27`
+**Duration:** 25m (agent) + 10% = 28m
+**Session goal:** Complete journal file updates from Session 031, then investigate and create GitHub issue for P2-8 mega-menu navigation
+
+### Actions
+- [x] Update `journal-index.md` — added Sessions 030 and 031 rows (~1m) — pass
+- [x] Update `metrics.md` — added Sessions 030 and 031 rows, updated totals (~2m) — pass
+- [x] Update `project-context.md` — marked P2-7 resolved, updated resume point (~2m) — pass
+- [x] Investigate original Zelis.com mega-menu — screenshot header, hover over Solutions to capture full-width panel layout with icons, descriptions, 2-column grid (~5m) — pass
+- [x] Investigate EDS header — screenshot current dropdown, confirmed 200px simple dropdown with flat links, no mega-menu content in nav.plain.html (~3m) — pass
+- [x] Read `blocks/header/header.js` (248 lines) and `blocks/header/header.css` (388 lines) — full code review of current nav implementation (~3m) — pass
+- [x] Read `nav.plain.html` — confirmed 3 sections (brand, flat link lists, tools), no mega-menu panel content (~2m) — pass
+- [x] Create GitHub Issue #29 with problem statement and 7-step plan (~5m) — pass
+
+### Outcomes
+- **Completed:** Journal files updated through Session 031. GitHub Issue #29 created for P2-8 mega-menu navigation with detailed problem statement and 7-step implementation plan.
+- **Finding:** Original site has 5 distinct mega-menu panel layouts (Solutions is richest with icon+title+description grid). Nav fragment has none of this content — it's all WordPress PHP-rendered.
+
+### Problems Encountered
+(none)
+
+### Key Decisions
+- Documented both approaches for nav content (restructure nav.plain.html vs hardcode in JS) — will decide during implementation
+
+### Files Changed
+- `journal/journal-index.md` — Added rows for Sessions 030 and 031
+- `journal/metrics.md` — Added Session 030–031 rows, updated totals
+- `journal/project-context.md` — P2-7 marked resolved, resume point updated
+
+### Commits
+(none — journal changes + GitHub issue only)
+
+### Carry-Forward
+> Issue #29 created for P2-8 mega-menu. Awaiting user review of issue before starting implementation. Backlog after P2-8: W2 (style regression), Columns Lottie support, Accordion block fix, let-care-flow remote content fix.
