@@ -66,6 +66,10 @@ function resolveConfig(cliArgs) {
   if (existsSync(configPath)) {
     try {
       fileConfig = JSON.parse(readFileSync(configPath, 'utf8'));
+      // Optional: override workspace root (e.g. monorepo sub-package). Relative to config file.
+      if (fileConfig.root) {
+        root = resolve(dirname(configPath), fileConfig.root);
+      }
     } catch (e) {
       console.warn(`Warning: Could not parse ${configPath}: ${e.message}`);
     }
@@ -374,6 +378,10 @@ lines.push(`| NEAR | ${nearThreshold}-${readyThreshold - 1}% visual similarity |
 lines.push(`| WORK | <${nearThreshold}% visual similarity |`);
 lines.push('| UNTESTED | Imported but no regression test run |');
 lines.push('| N/A | URL cataloged but content not yet imported |');
+if (readyThreshold < 95) {
+  lines.push('');
+  lines.push('> **Tip:** For pixel-for-pixel / customer QA bar, set `thresholds.customerReady` to **95** in `readiness-config.json` and regenerate.');
+}
 lines.push('');
 
 // ── Overall Summary ───────────────────────────────────────────────

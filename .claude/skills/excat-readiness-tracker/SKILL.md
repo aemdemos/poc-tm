@@ -1,6 +1,6 @@
 ---
 name: excat-readiness-tracker
-description: Generate and query migration readiness status for an AEM EDS project. Reads from url-catalog.json, regression-report.md, and content directory to produce a dual-format readiness dashboard (JSON + Markdown). Re-runnable after each regression test cycle. Invoke when user says "readiness tracker", "readiness status", "migration readiness", "how many pages are ready", "generate readiness report", "refresh readiness", "page status", "template status", "what needs work", "which templates are ready", "readiness dashboard", "update tracker", or asks about migration progress.
+description: Generate and query migration readiness status for an AEM EDS project. Reads from url-catalog.json, regression-report.md, and content directory to produce a dual-format readiness dashboard (JSON + Markdown). Re-runnable after each regression test cycle. Invoke when user says "readiness tracker", "readiness status", "migration readiness", "how many pages are ready", "generate readiness report", "refresh readiness", "page status", "template status", "what needs work", "which templates are ready", "readiness dashboard", "update tracker", "customer QA", "ready for QA", "ready for customer", "pixel perfect", "pixel-for-pixel", "handoff to customer", or asks about migration progress.
 ---
 
 # EXECUTION MINDSET
@@ -11,6 +11,7 @@ description: Generate and query migration readiness status for an AEM EDS projec
 - DO: Handle missing data sources gracefully (note what's missing, proceed with what exists)
 - DO: Generate both JSON and Markdown outputs every time
 - DO: Provide concrete next-step recommendations sorted by impact
+- DO: Treat "customer-ready" as **visually as close to pixel-for-pixel as possible** — the similarity score is the measurable proxy for that
 - DON'T: Fabricate scores or page counts — only report what the data shows
 - DON'T: Hardcode project-specific values (site name, URLs) — read from config or data
 - DON'T: Modify source data files (url-catalog.json, regression-report.md, content/)
@@ -20,6 +21,16 @@ description: Generate and query migration readiness status for an AEM EDS projec
 ---
 
 # Readiness Tracker Skill
+
+## Definition of Ready
+
+**A page is "ready for customer QA" when it appears to the human eye as close to pixel-for-pixel to the source as possible.** This skill does not perform the visual comparison itself; it consumes a **regression report** whose similarity scores are produced by screenshot diff (e.g. Playwright + pixelmatch). Those scores are the measurable proxy for visual fidelity.
+
+- **customer-ready** — The template’s tested page(s) meet the configured similarity threshold (default 80%). For **pixel-for-pixel / customer handoff**, set `thresholds.customerReady` to **95** (or higher) in `readiness-config.json`; many EDS projects use 95% as the bar for "ready to send to customer."
+- **near-ready** / **needs-work** — Below that bar; useful for prioritization and progress tracking.
+- **untested** / **not-imported** — No regression data or no content yet; not ready for customer QA.
+
+When advising users, emphasize that raising the threshold (e.g. to 95%) aligns the tracker with a strict "pixel-for-pixel" bar for customer QA.
 
 ## Scope
 
@@ -81,11 +92,14 @@ Optional. Place at workspace root:
   "contentDir": "content",
   "outputDir": ".",
   "thresholds": {
-    "customerReady": 80,
+    "customerReady": 95,
     "nearReady": 60
   }
 }
 ```
+
+- **customerReady: 95** — Recommended for "ready for customer QA" / pixel-for-pixel bar; use 80 for a looser minimum.
+- **root** — Optional. If set, overrides workspace-root detection (path relative to config file). Useful when the script lives outside the main repo or in a monorepo.
 
 All fields are optional. Missing fields fall through to env vars or auto-discovery.
 
@@ -108,6 +122,8 @@ When no config is provided, the generator tries these locations:
 | needs-work | <60% |
 | untested | Imported but no regression data |
 | not-imported | URL cataloged but no content file |
+
+**Pixel-for-pixel / customer QA:** The default 80% is a conservative minimum. For "ready to send to customer" (visually as close to pixel-for-pixel as possible), set `thresholds.customerReady` to **95** in `readiness-config.json`. The regression similarity score is the proxy for visual fidelity; 95% aligns with typical EDS customer-handoff bars.
 
 ## Workflow
 
@@ -169,15 +185,20 @@ When refreshing after CSS fixes or new regression runs:
 
 ## Portability
 
+This skill is **project-agnostic**. No project-specific URLs, site names, or paths are hardcoded; all are read from the URL catalog, config, or auto-discovery.
+
 To use this skill in a new project:
 
-1. **Copy** the `.claude/skills/excat-readiness-tracker/` directory
-2. **Ensure** a URL catalog exists (e.g., `tools/importer/url-catalog.json`)
-3. **Optionally** create `readiness-config.json` at workspace root with project-specific paths
-4. **Run** `node .claude/skills/excat-readiness-tracker/generate-tracker.js`
-5. **Outputs** appear at workspace root: `readiness-tracker.json` and `readiness-tracker.md`
+1. **Copy** the entire `excat-readiness-tracker` skill directory (e.g. into `.claude/skills/` or the new project’s equivalent).
+2. **Ensure** a URL catalog exists in the expected format (see URL Catalog Format below). Common locations: `tools/importer/url-catalog.json`, `url-catalog.json`, or set via config.
+3. **Optionally** create `readiness-config.json` at **workspace root** with project-specific paths and thresholds. All config fields are optional; missing values fall back to env vars or auto-discovery.
+4. **Run** the generator from the project root (or set `outputDir` in config):  
+   `node .claude/skills/excat-readiness-tracker/generate-tracker.js`
+5. **Outputs** are written to the configured `outputDir` (default: workspace root): `readiness-tracker.json` and `readiness-tracker.md`.
 
-No external dependencies. The generator uses only Node.js built-ins (`fs`, `path`, `child_process`, `url`).
+**Workspace root** is resolved by the generator as: the first directory (walking up from the script) that contains `package.json`. To override, set `root` in `readiness-config.json` (relative to config file location) or run the script from the desired project root so that auto-discovery paths are correct.
+
+**Dependencies:** None. The generator uses only Node.js built-ins (`fs`, `path`, `child_process`, `url`).
 
 ### URL Catalog Format
 
@@ -258,6 +279,9 @@ See [readiness-tracker-format.md](readiness-tracker-format.md) for the complete 
 
 **Scores seem wrong:**
 - Scores come from the regression report, not this skill. Re-run regression tests to update scores.
+
+**Want pixel-for-pixel / customer QA bar:**
+- Set `thresholds.customerReady` to **95** (or higher) in `readiness-config.json`, then regenerate. The tracker will mark only templates at ≥95% avg similarity as customer-ready.
 
 **Script won't run (ES module error):**
 - The script uses ES module syntax. Run with `node --input-type=module` or ensure `package.json` has `"type": "module"`, or rename to `.mjs`.

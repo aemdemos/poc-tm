@@ -64,9 +64,11 @@
 
 ### Readiness status values
 
+Readiness is a **proxy for visual fidelity**: "customer-ready" means the page is considered ready for customer QA — i.e. it should appear to the human eye as close to **pixel-for-pixel** to the source as possible. The similarity score comes from screenshot diff (e.g. Playwright + pixelmatch) and is the measurable input; the threshold is configurable.
+
 | Value | Meaning |
 |-------|---------|
-| `customer-ready` | Template avg similarity >= customerReady threshold (default 80%) |
+| `customer-ready` | Template avg similarity >= customerReady threshold (default 80%; use 95 for pixel-for-pixel / customer QA bar) |
 | `near-ready` | Template avg similarity >= nearReady threshold (default 60%) |
 | `needs-work` | Template avg similarity < nearReady threshold |
 | `untested` | Imported but template has no regression data |
