@@ -720,6 +720,11 @@ main .section.narrow > div {
     padding-top: 0;
   }
 
+  /* Narrow body for blog pages with author photo (e.g. addressing-claims) — original uses 864px Kadence column */
+  body.blog-article main > .section:nth-of-type(2):has(> .default-content-wrapper:first-child > p:first-child img) > .default-content-wrapper {
+    max-width: 864px;
+  }
+
   body.blog-article main > .section:nth-of-type(2) .default-content-wrapper p {
     margin-bottom: var(--spacing-l);
   }
@@ -807,7 +812,7 @@ main .section.narrow > div {
     height: 414px;
     top: 50%;
     right: 0;
-    transform: skewX(-30deg) translateY(-50%);
+    transform: translateY(-50%) skewX(-30deg);
     background-image: linear-gradient(
       90deg,
       #ffbe00 4.55%,
