@@ -28,6 +28,13 @@ The briefing is output directly in the reply by default. Optionally written to `
 - [Bullets from project-context "What's Pending" and/or last Carry-Forward priorities]
 - [Any explicit next priorities from Resume Point]
 
+## Migration readiness (if readiness-tracker.json exists)
+- [X]/[Y] pages customer-ready ([Z]% of catalog)
+- Templates: [N] ready, [M] near-ready, [K] need work
+- Top priority: [template] at [X]% avg ([N] pages, need +[Y]pp)
+
+> Skip this section if readiness-tracker.json does not exist.
+
 ## Problems to keep in mind
 
 > Skip this section entirely if there are no blockers, unresolved problems,

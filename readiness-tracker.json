@@ -1,0 +1,3531 @@
+{
+  "$schema": "readiness-tracker-schema",
+  "generated": "2026-03-09T15:46:36.364Z",
+  "source": "https://www.zelis.com/sitemap_index.xml",
+  "thresholds": {
+    "customer-ready": ">=80% similarity (desktop + mobile average)",
+    "near-ready": "60-79% similarity",
+    "needs-work": "<60% similarity",
+    "untested": "imported but no regression test",
+    "not-imported": "URL cataloged but no content file"
+  },
+  "dataSources": {
+    "urlCatalog": {
+      "found": true,
+      "path": "tools/importer/url-catalog.json"
+    },
+    "regressionReport": {
+      "found": true,
+      "path": "tests/style-regression/regression-report.md"
+    },
+    "contentDir": {
+      "found": true,
+      "path": "content"
+    }
+  },
+  "stats": {
+    "totalUrls": 370,
+    "imported": 367,
+    "notImported": 3,
+    "manualMigration": 2,
+    "bulkImport": 365,
+    "byReadiness": {
+      "customer-ready": 0,
+      "near-ready": 225,
+      "needs-work": 142,
+      "untested": 0,
+      "not-imported": 3
+    },
+    "templateCount": 8,
+    "templatesReady": 0,
+    "templatesNearReady": 3,
+    "templatesNeedWork": 5,
+    "templatesUntested": 0
+  },
+  "templates": [
+    {
+      "name": "homepage",
+      "totalPages": 1,
+      "imported": 1,
+      "manualMigration": 1,
+      "bulkImport": 0,
+      "regressionTested": true,
+      "desktop": {
+        "page": "index",
+        "similarity": 62.17,
+        "status": "WARN"
+      },
+      "mobile": {
+        "page": "index",
+        "similarity": 58.44,
+        "status": "FAIL"
+      },
+      "templateReadiness": "near-ready"
+    },
+    {
+      "name": "branded-landing",
+      "totalPages": 1,
+      "imported": 1,
+      "manualMigration": 1,
+      "bulkImport": 0,
+      "regressionTested": true,
+      "desktop": {
+        "page": "let-care-flow",
+        "similarity": 69.84,
+        "status": "WARN"
+      },
+      "mobile": {
+        "page": "let-care-flow",
+        "similarity": 76.72,
+        "status": "WARN"
+      },
+      "templateReadiness": "near-ready"
+    },
+    {
+      "name": "blog-article",
+      "totalPages": 225,
+      "imported": 223,
+      "manualMigration": 0,
+      "bulkImport": 223,
+      "regressionTested": true,
+      "desktop": {
+        "page": "blog_accelerating-progress-in-healthcare-finance-a-call-to-action",
+        "similarity": 70.54,
+        "status": "WARN"
+      },
+      "mobile": {
+        "page": "blog_accelerating-progress-in-healthcare-finance-a-call-to-action",
+        "similarity": 79.01,
+        "status": "WARN"
+      },
+      "templateReadiness": "near-ready"
+    },
+    {
+      "name": "gated-resource",
+      "totalPages": 42,
+      "imported": 42,
+      "manualMigration": 0,
+      "bulkImport": 42,
+      "regressionTested": true,
+      "desktop": {
+        "page": "white-papers_5-cs-of-payment-integrity",
+        "similarity": 54.73,
+        "status": "FAIL"
+      },
+      "mobile": {
+        "page": "white-papers_5-cs-of-payment-integrity",
+        "similarity": 41.42,
+        "status": "FAIL"
+      },
+      "templateReadiness": "needs-work"
+    },
+    {
+      "name": "case-study",
+      "totalPages": 7,
+      "imported": 6,
+      "manualMigration": 0,
+      "bulkImport": 6,
+      "regressionTested": true,
+      "desktop": {
+        "page": "case-studies_client-focused-partnership-drives-innovation-and-savings",
+        "similarity": 60.06,
+        "status": "WARN"
+      },
+      "mobile": {
+        "page": "case-studies_client-focused-partnership-drives-innovation-and-savings",
+        "similarity": 47,
+        "status": "FAIL"
+      },
+      "templateReadiness": "needs-work"
+    },
+    {
+      "name": "solutions-page",
+      "totalPages": 41,
+      "imported": 41,
+      "manualMigration": 0,
+      "bulkImport": 41,
+      "regressionTested": true,
+      "desktop": {
+        "page": "solutions",
+        "similarity": 49.92,
+        "status": "FAIL"
+      },
+      "mobile": {
+        "page": "solutions",
+        "similarity": 19.66,
+        "status": "FAIL"
+      },
+      "templateReadiness": "needs-work"
+    },
+    {
+      "name": "built-for-audience",
+      "totalPages": 23,
+      "imported": 23,
+      "manualMigration": 0,
+      "bulkImport": 23,
+      "regressionTested": true,
+      "desktop": {
+        "page": "built-for",
+        "similarity": 57.57,
+        "status": "FAIL"
+      },
+      "mobile": {
+        "page": "built-for",
+        "similarity": 31.1,
+        "status": "FAIL"
+      },
+      "templateReadiness": "needs-work"
+    },
+    {
+      "name": "company-utility",
+      "totalPages": 30,
+      "imported": 30,
+      "manualMigration": 0,
+      "bulkImport": 30,
+      "regressionTested": true,
+      "desktop": {
+        "page": "company",
+        "similarity": 66.12,
+        "status": "WARN"
+      },
+      "mobile": {
+        "page": "company",
+        "similarity": 51,
+        "status": "FAIL"
+      },
+      "templateReadiness": "needs-work"
+    }
+  ],
+  "pages": [
+    {
+      "url": "https://www.zelis.com/",
+      "edsPath": "/index",
+      "template": "homepage",
+      "batch": "1-homepage",
+      "imported": true,
+      "migrationMethod": "manual",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/let-care-flow/",
+      "edsPath": "/let-care-flow",
+      "template": "branded-landing",
+      "batch": "2-let-care-flow",
+      "imported": true,
+      "migrationMethod": "manual",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/accelerating-progress-in-healthcare-finance-a-call-to-action/",
+      "edsPath": "/blog/accelerating-progress-in-healthcare-finance-a-call-to-action",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/addressing-claims-pre-payment-helps-maximize-savings/",
+      "edsPath": "/blog/addressing-claims-pre-payment-helps-maximize-savings",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/addressing-provider-abrasion-5-strategies-for-regional-health-plans/",
+      "edsPath": "/blog/addressing-provider-abrasion-5-strategies-for-regional-health-plans",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/amanda-eisel-celebrating-success-and-setting-sights-on-year-ahead/",
+      "edsPath": "/blog/amanda-eisel-celebrating-success-and-setting-sights-on-year-ahead",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/amanda-eisel-dont-get-complacent-about-the-power-of-consumers/",
+      "edsPath": "/blog/amanda-eisel-dont-get-complacent-about-the-power-of-consumers",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/amanda-eisel-harmonizing-healthcare-financial-experience/",
+      "edsPath": "/blog/amanda-eisel-harmonizing-healthcare-financial-experience",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/amanda-eisel-why-i-joined-zelis/",
+      "edsPath": "/blog/amanda-eisel-why-i-joined-zelis",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/amanda-eisels-take-on-year-ahead/",
+      "edsPath": "/blog/amanda-eisels-take-on-year-ahead",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/are-idr-disputes-holding-you-back-from-savings/",
+      "edsPath": "/blog/are-idr-disputes-holding-you-back-from-savings",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/automation-turning-great-resignation-into-great-upgrade/",
+      "edsPath": "/blog/automation-turning-great-resignation-into-great-upgrade",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/best-practices-for-identifying-claim-errors-prepayment/",
+      "edsPath": "/blog/best-practices-for-identifying-claim-errors-prepayment",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/beyond-cost-control-how-to-build-a-comprehensive-payment-integrity-strategy/",
+      "edsPath": "/blog/beyond-cost-control-how-to-build-a-comprehensive-payment-integrity-strategy",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/blending-human-expertise-and-technology-to-improve-claims-negotiations/",
+      "edsPath": "/blog/blending-human-expertise-and-technology-to-improve-claims-negotiations",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/blockchain-technology-overview/",
+      "edsPath": "/blog/blockchain-technology-overview",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/bringing-wellness-into-the-workplace/",
+      "edsPath": "/blog/bringing-wellness-into-the-workplace",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/building-a-remarkable-client-experience/",
+      "edsPath": "/blog/building-a-remarkable-client-experience",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/caution-bumpy-road-ahead-navigating-health-plan-roadblocks/",
+      "edsPath": "/blog/caution-bumpy-road-ahead-navigating-health-plan-roadblocks",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/challenges-and-opportunities-of-digital-payments-for-pc-carriers/",
+      "edsPath": "/blog/challenges-and-opportunities-of-digital-payments-for-pc-carriers",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/check-fraud-is-booming-secure-provider-payments/",
+      "edsPath": "/blog/check-fraud-is-booming-secure-provider-payments",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/choosing-the-right-partner-for-mrf-compliance/",
+      "edsPath": "/blog/choosing-the-right-partner-for-mrf-compliance",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/clinical-gray-areas-navigating-claim-reimbursement-without-guidelines/",
+      "edsPath": "/blog/clinical-gray-areas-navigating-claim-reimbursement-without-guidelines",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/consumer-cost-has-returned-to-the-front-burner/",
+      "edsPath": "/blog/consumer-cost-has-returned-to-the-front-burner",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/content-and-healthcare-claims-creating-harmony-for-claim-payment/",
+      "edsPath": "/blog/content-and-healthcare-claims-creating-harmony-for-claim-payment",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/debunking-common-rbp-misconceptions/",
+      "edsPath": "/blog/debunking-common-rbp-misconceptions",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/deepen-your-member-empowerment-strategy-via-consumer-trust/",
+      "edsPath": "/blog/deepen-your-member-empowerment-strategy-via-consumer-trust",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/digging-deeper-on-the-benefits-of-going-paperless/",
+      "edsPath": "/blog/digging-deeper-on-the-benefits-of-going-paperless",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/disruption-analysis-to-win-the-race/",
+      "edsPath": "/blog/disruption-analysis-to-win-the-race",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/dont-count-on-a-second-take-addressing-healthcare-business-risks-before-a-crisis/",
+      "edsPath": "/blog/dont-count-on-a-second-take-addressing-healthcare-business-risks-before-a-crisis",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/effective-strategies-to-navigate-provider-out-of-network-billing-challenges/",
+      "edsPath": "/blog/effective-strategies-to-navigate-provider-out-of-network-billing-challenges",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/elevate-payment-integrity-with-single-vendor-approach/",
+      "edsPath": "/blog/elevate-payment-integrity-with-single-vendor-approach",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/employing-digital-tools-for-member-satisfaction/",
+      "edsPath": "/blog/employing-digital-tools-for-member-satisfaction",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/enhanced-accessibility-analysis-advantages/",
+      "edsPath": "/blog/enhanced-accessibility-analysis-advantages",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/equity-meet-efficiency-creating-a-more-transparent-healthcare-system-through-technology/",
+      "edsPath": "/blog/equity-meet-efficiency-creating-a-more-transparent-healthcare-system-through-technology",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/five-strategies-to-reduce-provider-abrasion-within-your-payment-integrity-programs/",
+      "edsPath": "/blog/five-strategies-to-reduce-provider-abrasion-within-your-payment-integrity-programs",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/from-fragmented-to-fluid-a-total-experience-approach-to-provider-network-management/",
+      "edsPath": "/blog/from-fragmented-to-fluid-a-total-experience-approach-to-provider-network-management",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/from-the-office-of-the-cmo-top-trends-for-2024/",
+      "edsPath": "/blog/from-the-office-of-the-cmo-top-trends-for-2024",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/future-of-healthcare-policy-summit-highlights/",
+      "edsPath": "/blog/future-of-healthcare-policy-summit-highlights",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/future-of-workers-compensation-payments/",
+      "edsPath": "/blog/future-of-workers-compensation-payments",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/going-green-how-health-plans-are-driving-sustainability-through-digital-payments/",
+      "edsPath": "/blog/going-green-how-health-plans-are-driving-sustainability-through-digital-payments",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/health-plans-must-modernize-payments-systems-to-keep-their-provider-base/",
+      "edsPath": "/blog/health-plans-must-modernize-payments-systems-to-keep-their-provider-base",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/healthcare-adjudication-trends-to-watch/",
+      "edsPath": "/blog/healthcare-adjudication-trends-to-watch",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/healthcare-affordability-exposed-insights-for-health-plans/",
+      "edsPath": "/blog/healthcare-affordability-exposed-insights-for-health-plans",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/healthcare-payment-options-can-mean-big-benefits-for-payers-and-providers/",
+      "edsPath": "/blog/healthcare-payment-options-can-mean-big-benefits-for-payers-and-providers",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/healthcare-trends-how-payment-integrity-is-reshaping-claims-processing/",
+      "edsPath": "/blog/healthcare-trends-how-payment-integrity-is-reshaping-claims-processing",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/how-claims-analytics-helps-providers-manage-denials/",
+      "edsPath": "/blog/how-claims-analytics-helps-providers-manage-denials",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/how-healthcare-data-analytics-helps-your-provider-network/",
+      "edsPath": "/blog/how-healthcare-data-analytics-helps-your-provider-network",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/how-human-and-artificial-intelligence-can-streamline-claims-reviews/",
+      "edsPath": "/blog/how-human-and-artificial-intelligence-can-streamline-claims-reviews",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/how-off-label-drug-use-impacts-healthcare-and-prescription-prices/",
+      "edsPath": "/blog/how-off-label-drug-use-impacts-healthcare-and-prescription-prices",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/how-payers-can-reduce-operational-risks-and-boost-efficiences/",
+      "edsPath": "/blog/how-payers-can-reduce-operational-risks-and-boost-efficiences",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/how-to-boost-provider-satisfaction/",
+      "edsPath": "/blog/how-to-boost-provider-satisfaction",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/how-to-enhance-provider-trust-with-smart-contract-management/",
+      "edsPath": "/blog/how-to-enhance-provider-trust-with-smart-contract-management",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/how-to-prepare-for-cms-icd-10-cm-code-updates/",
+      "edsPath": "/blog/how-to-prepare-for-cms-icd-10-cm-code-updates",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/how-to-turn-messy-mrf-data-into-actionable-insights/",
+      "edsPath": "/blog/how-to-turn-messy-mrf-data-into-actionable-insights",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/how-to-unlock-better-provider-and-network-data-for-brokers/",
+      "edsPath": "/blog/how-to-unlock-better-provider-and-network-data-for-brokers",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/how-a-partner-can-enhance-operational-efficiency-for-tpas/",
+      "edsPath": "/blog/how-a-partner-can-enhance-operational-efficiency-for-tpas",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/if-the-healthcare-financial-experience-was-just-like-riding-a-bike/",
+      "edsPath": "/blog/if-the-healthcare-financial-experience-was-just-like-riding-a-bike",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/inflation-an-unwelcome-guest/",
+      "edsPath": "/blog/inflation-an-unwelcome-guest",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/inflation-busting-healthcare-solutions/",
+      "edsPath": "/blog/inflation-busting-healthcare-solutions",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/its-time-to-update-your-outdated-payment-integrity-processes/",
+      "edsPath": "/blog/its-time-to-update-your-outdated-payment-integrity-processes",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/look-ahead-to-2023-for-health-plans-and-tpas/",
+      "edsPath": "/blog/look-ahead-to-2023-for-health-plans-and-tpas",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/low-value-care-something-we-should-all-care-about/",
+      "edsPath": "/blog/low-value-care-something-we-should-all-care-about",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/machine-readable-files-mandate-overview/",
+      "edsPath": "/blog/machine-readable-files-mandate-overview",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/making-strides-towards-healthcare-affordability/",
+      "edsPath": "/blog/making-strides-towards-healthcare-affordability",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/medicare-star-ratings-decline-opens-the-door-for-new-opportunities-in-member-satisfaction/",
+      "edsPath": "/blog/medicare-star-ratings-decline-opens-the-door-for-new-opportunities-in-member-satisfaction",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/meeting-transparency-regulations-and-improving-the-member-experience-through-data-and-partnerships/",
+      "edsPath": "/blog/meeting-transparency-regulations-and-improving-the-member-experience-through-data-and-partnerships",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/minimize-nsa-and-tic-regulation-impact/",
+      "edsPath": "/blog/minimize-nsa-and-tic-regulation-impact",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/mrfs-the-trouble-with-and-solution-to-some-of-healthcares-biggest-cost-problems/",
+      "edsPath": "/blog/mrfs-the-trouble-with-and-solution-to-some-of-healthcares-biggest-cost-problems",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/navigating-2023-a-year-of-integration-and-innovation-in-healthcare-solutions/",
+      "edsPath": "/blog/navigating-2023-a-year-of-integration-and-innovation-in-healthcare-solutions",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/navigating-the-healthcare-policy-2025-landscape-insights-and-opportunities/",
+      "edsPath": "/blog/navigating-the-healthcare-policy-2025-landscape-insights-and-opportunities",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/navigating-the-no-surprises-act-in-2025-regulatory-updates-for-payers/",
+      "edsPath": "/blog/navigating-the-no-surprises-act-in-2025-regulatory-updates-for-payers",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/navigating-the-no-surprises-act-in-2025-trends-and-insights-for-payers/",
+      "edsPath": "/blog/navigating-the-no-surprises-act-in-2025-trends-and-insights-for-payers",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/new-regulatory-and-legislative-activities-for-cms/",
+      "edsPath": "/blog/new-regulatory-and-legislative-activities-for-cms",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/no-surprises-act-where-weve-been-where-were-going/",
+      "edsPath": "/blog/no-surprises-act-where-weve-been-where-were-going",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/no-surprises-here-exploring-future-idr-out-of-network-strategies/",
+      "edsPath": "/blog/no-surprises-here-exploring-future-idr-out-of-network-strategies",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/nsa-member-id-and-advanced-eob-requirements/",
+      "edsPath": "/blog/nsa-member-id-and-advanced-eob-requirements",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/nsa-update-fees-for-using-the-idr-process/",
+      "edsPath": "/blog/nsa-update-fees-for-using-the-idr-process",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/nsa-updates-idr-registry-coming-your-way/",
+      "edsPath": "/blog/nsa-updates-idr-registry-coming-your-way",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/nsa-updates-open-negotiations/",
+      "edsPath": "/blog/nsa-updates-open-negotiations",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/nsa-updates-understanding-idr-process/",
+      "edsPath": "/blog/nsa-updates-understanding-idr-process",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/optimize-provider-payment-experience-with-electronic-payments/",
+      "edsPath": "/blog/optimize-provider-payment-experience-with-electronic-payments",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/our-powers-combined-unpacking-our-inorganic-growth-strategy/",
+      "edsPath": "/blog/our-powers-combined-unpacking-our-inorganic-growth-strategy",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/out-of-network-billing-support-what-modern-payers-must-know/",
+      "edsPath": "/blog/out-of-network-billing-support-what-modern-payers-must-know",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/overview-transparency-in-coverage-schema-2-0-regulatory-update/",
+      "edsPath": "/blog/overview-transparency-in-coverage-schema-2-0-regulatory-update",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/paper-payments-belong-in-the-80s/",
+      "edsPath": "/blog/paper-payments-belong-in-the-80s",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/payment-harmonization-index-b2b-payments/",
+      "edsPath": "/blog/payment-harmonization-index-b2b-payments",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/payment-integrity-and-cost-containment-in-healthcare-a-benchmark/",
+      "edsPath": "/blog/payment-integrity-and-cost-containment-in-healthcare-a-benchmark",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/payment-interity-market-trends-and-vendor-best-practices/",
+      "edsPath": "/blog/payment-interity-market-trends-and-vendor-best-practices",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/people-price-shop-to-get-best-deals/",
+      "edsPath": "/blog/people-price-shop-to-get-best-deals",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/pre-payment-bill-review-webinar-highlights/",
+      "edsPath": "/blog/pre-payment-bill-review-webinar-highlights",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/preparing-for-tic-compliance-with-mrfs/",
+      "edsPath": "/blog/preparing-for-tic-compliance-with-mrfs",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/price-transparency-best-practices/",
+      "edsPath": "/blog/price-transparency-best-practices",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/price-transparency-best-practices-for-providers-and-payers/",
+      "edsPath": "/blog/price-transparency-best-practices-for-providers-and-payers",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/putting-community-health-in-the-spotlight-this-fall/",
+      "edsPath": "/blog/putting-community-health-in-the-spotlight-this-fall",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/rbp-an-overview/",
+      "edsPath": "/blog/rbp-an-overview",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/reduce-fraud-risk-by-modernizing-healthcare-payments/",
+      "edsPath": "/blog/reduce-fraud-risk-by-modernizing-healthcare-payments",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/reliable-provider-directories-for-brokerages-and-fmos/",
+      "edsPath": "/blog/reliable-provider-directories-for-brokerages-and-fmos",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/revolutionizing-contract-negotiations-with-data-driven-technology/",
+      "edsPath": "/blog/revolutionizing-contract-negotiations-with-data-driven-technology",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/revolutionizing-provider-payments-with-ai/",
+      "edsPath": "/blog/revolutionizing-provider-payments-with-ai",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/seven-strategies-to-get-employees-to-use-their-benefits/",
+      "edsPath": "/blog/seven-strategies-to-get-employees-to-use-their-benefits",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/singular-solution-to-reduce-claims-payment-frustration-fatigue/",
+      "edsPath": "/blog/singular-solution-to-reduce-claims-payment-frustration-fatigue",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/state-of-the-market-podcast-highlights/",
+      "edsPath": "/blog/state-of-the-market-podcast-highlights",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/tackling-medicaid-redeterminations-amid-complex-legislation/",
+      "edsPath": "/blog/tackling-medicaid-redeterminations-amid-complex-legislation",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/texas-court-repeals-nsa-qpa-policy/",
+      "edsPath": "/blog/texas-court-repeals-nsa-qpa-policy",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/the-courage-to-help-care-flow-a-fix-for-the-financial-experience/",
+      "edsPath": "/blog/the-courage-to-help-care-flow-a-fix-for-the-financial-experience",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/the-crucial-transition-to-digital-payments-in-healthcare/",
+      "edsPath": "/blog/the-crucial-transition-to-digital-payments-in-healthcare",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/the-data-revolution-coming-to-a-healthcare-industry-near-you/",
+      "edsPath": "/blog/the-data-revolution-coming-to-a-healthcare-industry-near-you",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/the-dos-and-donts-of-bill-review/",
+      "edsPath": "/blog/the-dos-and-donts-of-bill-review",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/the-future-of-healthcare-digital-disbursements-why-payers-must-go-digital-now/",
+      "edsPath": "/blog/the-future-of-healthcare-digital-disbursements-why-payers-must-go-digital-now",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/the-impact-of-drgs-on-transforming-payment-accuracy-in-healthcare/",
+      "edsPath": "/blog/the-impact-of-drgs-on-transforming-payment-accuracy-in-healthcare",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/the-intersection-of-womens-health-and-the-healthcare-industry-accelerating-the-pace-of-advancement/",
+      "edsPath": "/blog/the-intersection-of-womens-health-and-the-healthcare-industry-accelerating-the-pace-of-advancement",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/the-new-wave-of-virtual-on-boarding/",
+      "edsPath": "/blog/the-new-wave-of-virtual-on-boarding",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/three-strategies-to-clarify-out-of-network-billing-for-members/",
+      "edsPath": "/blog/three-strategies-to-clarify-out-of-network-billing-for-members",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/three-ways-technology-change-healthcare-payments/",
+      "edsPath": "/blog/three-ways-technology-change-healthcare-payments",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/times-up-payments-modernization-cannot-wait/",
+      "edsPath": "/blog/times-up-payments-modernization-cannot-wait",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/transparency-is-king-four-ways-to-reduce-provider-abrasion-in-claims-pricing/",
+      "edsPath": "/blog/transparency-is-king-four-ways-to-reduce-provider-abrasion-in-claims-pricing",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/two-minute-take-the-provider-experience/",
+      "edsPath": "/blog/two-minute-take-the-provider-experience",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/unbundled-claims-a-top-offender-for-overpayments/",
+      "edsPath": "/blog/unbundled-claims-a-top-offender-for-overpayments",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/understanding-provider-payment-experience-podcast-highlights/",
+      "edsPath": "/blog/understanding-provider-payment-experience-podcast-highlights",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/understanding-reference-based-pricing-rbp/",
+      "edsPath": "/blog/understanding-reference-based-pricing-rbp",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/understanding-the-no-surprises-act-overview/",
+      "edsPath": "/blog/understanding-the-no-surprises-act-overview",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/unlocking-motivation-designing-strategic-incentive-programs-for-impactful-member-engagement/",
+      "edsPath": "/blog/unlocking-motivation-designing-strategic-incentive-programs-for-impactful-member-engagement",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/unraveling-the-nsa-assessing-hhs-first-annual-report/",
+      "edsPath": "/blog/unraveling-the-nsa-assessing-hhs-first-annual-report",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/using-healthcare-data-analytics-to-optimize-provider-networks/",
+      "edsPath": "/blog/using-healthcare-data-analytics-to-optimize-provider-networks",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/value-based-care-an-evolution-in-healthcare-spending/",
+      "edsPath": "/blog/value-based-care-an-evolution-in-healthcare-spending",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/what-it-means-to-modernize-the-healthcare-financial-experience/",
+      "edsPath": "/blog/what-it-means-to-modernize-the-healthcare-financial-experience",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/what-payers-gain-from-digital-payments/",
+      "edsPath": "/blog/what-payers-gain-from-digital-payments",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/why-carriers-need-modern-payments-platform/",
+      "edsPath": "/blog/why-carriers-need-modern-payments-platform",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/why-denial-management-in-healthcare-needs-a-smarter-strategy/",
+      "edsPath": "/blog/why-denial-management-in-healthcare-needs-a-smarter-strategy",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/why-member-support-can-solve-payer-out-of-network-challenges/",
+      "edsPath": "/blog/why-member-support-can-solve-payer-out-of-network-challenges",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/why-provider-network-management-matters-now-more-than-ever/",
+      "edsPath": "/blog/why-provider-network-management-matters-now-more-than-ever",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/why-providers-should-use-cost-to-collect-as-a-key-financial-health-indicator/",
+      "edsPath": "/blog/why-providers-should-use-cost-to-collect-as-a-key-financial-health-indicator",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/why-shedding-legacy-systems-is-essential-for-seamless-healthcare-payments/",
+      "edsPath": "/blog/why-shedding-legacy-systems-is-essential-for-seamless-healthcare-payments",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/zelis-ceo-on-member-empowerment/",
+      "edsPath": "/blog/zelis-ceo-on-member-empowerment",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/2023-state-of-the-market-provider-network-landscape/",
+      "edsPath": "/blog/2023-state-of-the-market-provider-network-landscape",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/2025-u-s-healthcare-policy-changes-federal-and-state/",
+      "edsPath": "/blog/2025-u-s-healthcare-policy-changes-federal-and-state",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/3-reasons-to-provide-positive-healthcare-payment-experiences/",
+      "edsPath": "/blog/3-reasons-to-provide-positive-healthcare-payment-experiences",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/5-questions-to-ask-your-claims-editing-vendor-partner/",
+      "edsPath": "/blog/5-questions-to-ask-your-claims-editing-vendor-partner",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/5-ways-healthcare-payers-can-improve-provider-satisfaction/",
+      "edsPath": "/blog/5-ways-healthcare-payers-can-improve-provider-satisfaction",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/5-ways-payers-can-change-the-game-for-members/",
+      "edsPath": "/blog/5-ways-payers-can-change-the-game-for-members",
+      "template": "blog-article",
+      "batch": "3a-blog",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/accessibility-and-adequacy-podcast-highlights/",
+      "edsPath": "/blog/accessibility-and-adequacy-podcast-highlights",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/across-the-table-podcast-highlights/",
+      "edsPath": "/blog/across-the-table-podcast-highlights",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/achieving-work-life-balance-podcast-highlights/",
+      "edsPath": "/blog/achieving-work-life-balance-podcast-highlights",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/electrifying-growth-with-amanda-podcast-highlights/",
+      "edsPath": "/blog/electrifying-growth-with-amanda-podcast-highlights",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/healthcare-payment-system-challenges-podcast-highlights/",
+      "edsPath": "/blog/healthcare-payment-system-challenges-podcast-highlights",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/healthcare-shift-toward-consumerization-podcast-highlights/",
+      "edsPath": "/blog/healthcare-shift-toward-consumerization-podcast-highlights",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/member-empowerment-clarity-control-guidance-podcast-highlights/",
+      "edsPath": "/blog/member-empowerment-clarity-control-guidance-podcast-highlights",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/member-empowerment-evolution-podcast-highlights/",
+      "edsPath": "/blog/member-empowerment-evolution-podcast-highlights",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/modernizing-payer-provider-experience-podcast-highlights/",
+      "edsPath": "/blog/modernizing-payer-provider-experience-podcast-highlights",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/personalizing-healthcare-billing-experience-podcast-highlights/",
+      "edsPath": "/blog/personalizing-healthcare-billing-experience-podcast-highlights",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/provider-network-moneyball-mindset-podcast-highlights/",
+      "edsPath": "/blog/provider-network-moneyball-mindset-podcast-highlights",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/state-of-the-provider-network-market-highlights/",
+      "edsPath": "/blog/state-of-the-provider-network-market-highlights",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/strengthening-payer-provider-relationships-podcast-highlights/",
+      "edsPath": "/blog/strengthening-payer-provider-relationships-podcast-highlights",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/blog/understanding-the-idr-process-podcast-highlights/",
+      "edsPath": "/blog/understanding-the-idr-process-podcast-highlights",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/podcasts/care-guidance-tools-help-deliver-high-quality-care-formembers/",
+      "edsPath": "/podcasts/care-guidance-tools-help-deliver-high-quality-care-formembers",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/podcasts/consider-the-member-nsa-tic-best-practices-podcast-highlights/",
+      "edsPath": "/podcasts/consider-the-member-nsa-tic-best-practices-podcast-highlights",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/podcasts/decoding-the-healthcare-maze-strategies-for-meaningful-member-engagement/",
+      "edsPath": "/podcasts/decoding-the-healthcare-maze-strategies-for-meaningful-member-engagement",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/podcasts/enhancing-member-engagement-through-an-omnichannel-strategy/",
+      "edsPath": "/podcasts/enhancing-member-engagement-through-an-omnichannel-strategy",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/podcasts/explaining-healthcares-paradigm-shift-with-tic-regulations/",
+      "edsPath": "/podcasts/explaining-healthcares-paradigm-shift-with-tic-regulations",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/podcasts/key-strategies-to-ensure-seamless-integration/",
+      "edsPath": "/podcasts/key-strategies-to-ensure-seamless-integration",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/podcasts/navigating-new-terrain-the-impact-of-nsa-regulations-on-claims-pricing/",
+      "edsPath": "/podcasts/navigating-new-terrain-the-impact-of-nsa-regulations-on-claims-pricing",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/podcasts/reducing-provider-abrasion-in-healthcare-strategies-and-insights/",
+      "edsPath": "/podcasts/reducing-provider-abrasion-in-healthcare-strategies-and-insights",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/podcasts/strengthening-client-relationships-using-advanced-analytics-and-innovative-solutions/",
+      "edsPath": "/podcasts/strengthening-client-relationships-using-advanced-analytics-and-innovative-solutions",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/podcasts/transforming-healthcare-transparency-with-payer-mrfs/",
+      "edsPath": "/podcasts/transforming-healthcare-transparency-with-payer-mrfs",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/podcasts/understanding-tic-final-rule-podcast-highlights/",
+      "edsPath": "/podcasts/understanding-tic-final-rule-podcast-highlights",
+      "template": "blog-article",
+      "batch": "3b-blog-podcasts",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/legislative-highlights/cms-issues-important-reminder-about-upcoming-provider-directory-requirements-for-medicaid-and-chip-plans/",
+      "edsPath": "/legislative-highlights/cms-issues-important-reminder-about-upcoming-provider-directory-requirements-for-medicaid-and-chip-plans",
+      "template": "blog-article",
+      "batch": "3c-blog-legislative",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/legislative-highlights/cms-releases-final-rule-on-hospital-transparency-requirements/",
+      "edsPath": "/legislative-highlights/cms-releases-final-rule-on-hospital-transparency-requirements",
+      "template": "blog-article",
+      "batch": "3c-blog-legislative",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/legislative-highlights/cms-to-enforce-tics-prescription-drug-mrf-requirement/",
+      "edsPath": "/legislative-highlights/cms-to-enforce-tics-prescription-drug-mrf-requirement",
+      "template": "blog-article",
+      "batch": "3c-blog-legislative",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/legislative-highlights/federal-regulation-roadmap-signals-possible-new-price-transparency-requirements/",
+      "edsPath": "/legislative-highlights/federal-regulation-roadmap-signals-possible-new-price-transparency-requirements",
+      "template": "blog-article",
+      "batch": "3c-blog-legislative",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/legislative-highlights/oig-audit-highlights-challenges-in-hospital-price-transparency-compliance/",
+      "edsPath": "/legislative-highlights/oig-audit-highlights-challenges-in-hospital-price-transparency-compliance",
+      "template": "blog-article",
+      "batch": "3c-blog-legislative",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/easy-end-to-end-mrf-management/",
+      "edsPath": "/news/easy-end-to-end-mrf-management",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/fortifying-mission-with-new-zelis-brand/",
+      "edsPath": "/news/fortifying-mission-with-new-zelis-brand",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/heather-valteris-joins-as-chief-marketing-officer/",
+      "edsPath": "/news/heather-valteris-joins-as-chief-marketing-officer",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/linda-zukauckas-joins-zelis-board-of-directors/",
+      "edsPath": "/news/linda-zukauckas-joins-zelis-board-of-directors",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/new-research-reveals-consumer-frustrations-with-healthcare-billing/",
+      "edsPath": "/news/new-research-reveals-consumer-frustrations-with-healthcare-billing",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/sue-schick-joins-zelis-as-president-and-chief-revenue-officer/",
+      "edsPath": "/news/sue-schick-joins-zelis-as-president-and-chief-revenue-officer",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/wayne-deveydt-joins-zelis-board-of-directors/",
+      "edsPath": "/news/wayne-deveydt-joins-zelis-board-of-directors",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-achieves-great-place-to-work-certification-for-a-second-consecutive-year/",
+      "edsPath": "/news/zelis-achieves-great-place-to-work-certification-for-a-second-consecutive-year",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-achieves-top-score-in-human-rights-campaign-foundations-2025-corporate-equality-index/",
+      "edsPath": "/news/zelis-achieves-top-score-in-human-rights-campaign-foundations-2025-corporate-equality-index",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-acquires-assets-of-medxoom-to-deliver-a-mobile-first-member-experience-platform/",
+      "edsPath": "/news/zelis-acquires-assets-of-medxoom-to-deliver-a-mobile-first-member-experience-platform",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-acquires-redcard/",
+      "edsPath": "/news/zelis-acquires-redcard",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-add-investors-reflecting-strong-market-confidence-in-mission/",
+      "edsPath": "/news/zelis-add-investors-reflecting-strong-market-confidence-in-mission",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": false,
+      "migrationMethod": "none",
+      "readiness": "not-imported"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-and-ablepay-announce-partnership/",
+      "edsPath": "/news/zelis-and-ablepay-announce-partnership",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-and-availity-announce-strategic-alliance-to-streamline-administrative-workflows/",
+      "edsPath": "/news/zelis-and-availity-announce-strategic-alliance-to-streamline-administrative-workflows",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-and-google-wallet-bring-security-convenience-and-efficiency-to-healthcare-consumers/",
+      "edsPath": "/news/zelis-and-google-wallet-bring-security-convenience-and-efficiency-to-healthcare-consumers",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-and-rectangle-health-deliver-revolutionary-straight-through-processing-for-the-healthcare-and-dental-industries/",
+      "edsPath": "/news/zelis-and-rectangle-health-deliver-revolutionary-straight-through-processing-for-the-healthcare-and-dental-industries",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-announces-acquisition-sapphire-digital/",
+      "edsPath": "/news/zelis-announces-acquisition-sapphire-digital",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-announces-new-ceo-amanda-eisel/",
+      "edsPath": "/news/zelis-announces-new-ceo-amanda-eisel",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-certified-great-place-to-work/",
+      "edsPath": "/news/zelis-certified-great-place-to-work",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-closes-acquisition-sapphire-digital/",
+      "edsPath": "/news/zelis-closes-acquisition-sapphire-digital",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-completes-acquisition-of-payer-compass/",
+      "edsPath": "/news/zelis-completes-acquisition-of-payer-compass",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-completes-acquisition-of-payspan/",
+      "edsPath": "/news/zelis-completes-acquisition-of-payspan",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-completes-acquisition-redcard/",
+      "edsPath": "/news/zelis-completes-acquisition-redcard",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-delivers-industrys-first-integrated-healthcare-payments-and-communications-platform/",
+      "edsPath": "/news/zelis-delivers-industrys-first-integrated-healthcare-payments-and-communications-platform",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-earns-2024-great-place-to-work-certification-in-india/",
+      "edsPath": "/news/zelis-earns-2024-great-place-to-work-certification-in-india",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-earns-klas-points-of-light-award-for-transformative-payer-provider-collaboration/",
+      "edsPath": "/news/zelis-earns-klas-points-of-light-award-for-transformative-payer-provider-collaboration",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-earns-re-certification-by-the-national-committee-for-quality-assurance-for-healthcare-navigation-platform-s365/",
+      "edsPath": "/news/zelis-earns-re-certification-by-the-national-committee-for-quality-assurance-for-healthcare-navigation-platform-s365",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-health-bill-assist-wins-healthcare-insurance-innovation-award-from-medtech-breakthrough/",
+      "edsPath": "/news/zelis-health-bill-assist-wins-healthcare-insurance-innovation-award-from-medtech-breakthrough",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-healthcorum-partner-provider-network/",
+      "edsPath": "/news/zelis-healthcorum-partner-provider-network",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-launches-reference-based-pricing-solution/",
+      "edsPath": "/news/zelis-launches-reference-based-pricing-solution",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-launches-smartshopper-propel-solution/",
+      "edsPath": "/news/zelis-launches-smartshopper-propel-solution",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-named-2024-best-in-klas/",
+      "edsPath": "/news/zelis-named-2024-best-in-klas",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": false,
+      "migrationMethod": "none",
+      "readiness": "not-imported"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-named-in-2023-medtech-breakthrough-awards-program/",
+      "edsPath": "/news/zelis-named-in-2023-medtech-breakthrough-awards-program",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-named-medtech-breakthrough-best-digital-health-company/",
+      "edsPath": "/news/zelis-named-medtech-breakthrough-best-digital-health-company",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-named-to-fortunes-2023-best-workplaces-in-health-care/",
+      "edsPath": "/news/zelis-named-to-fortunes-2023-best-workplaces-in-health-care",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-named-to-inc-5000-list-of-fastest-growing-companies/",
+      "edsPath": "/news/zelis-named-to-inc-5000-list-of-fastest-growing-companies",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-ranked-inc5000-fastest-growing-10th-time/",
+      "edsPath": "/news/zelis-ranked-inc5000-fastest-growing-10th-time",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-ranked-inc5000-fastest-growing-11th-year/",
+      "edsPath": "/news/zelis-ranked-inc5000-fastest-growing-11th-year",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-ranked-inc5000-fastest-growing-9th-time/",
+      "edsPath": "/news/zelis-ranked-inc5000-fastest-growing-9th-time",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-ranks-new-jersey-fastest-growing-companies-4th-time/",
+      "edsPath": "/news/zelis-ranks-new-jersey-fastest-growing-companies-4th-time",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-recognized-as-2023-great-place-to-work/",
+      "edsPath": "/news/zelis-recognized-as-2023-great-place-to-work",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-recognized-as-a-2025-great-place-to-work-in-the-us-and-india/",
+      "edsPath": "/news/zelis-recognized-as-a-2025-great-place-to-work-in-the-us-and-india",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-study-shows-employers-consumers-believe-ai-digital-tools-transparency-will-improve-healthcare/",
+      "edsPath": "/news/zelis-study-shows-employers-consumers-believe-ai-digital-tools-transparency-will-improve-healthcare",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-to-acquire-payer-compass-for-advanced-claims-management-solutions/",
+      "edsPath": "/news/zelis-to-acquire-payer-compass-for-advanced-claims-management-solutions",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-transforms-provider-revenue-cycle-management-with-claims-insights-powered-by-rivet/",
+      "edsPath": "/news/zelis-transforms-provider-revenue-cycle-management-with-claims-insights-powered-by-rivet",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-unlocks-price-transparency-data-with-healthcare-insights-360/",
+      "edsPath": "/news/zelis-unlocks-price-transparency-data-with-healthcare-insights-360",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-unveils-health-bill-assist-to-help-members-navigate-out-of-network-bills/",
+      "edsPath": "/news/zelis-unveils-health-bill-assist-to-help-members-navigate-out-of-network-bills",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-unveils-next-gen-in-network-pricing-and-contract-modeling-solution/",
+      "edsPath": "/news/zelis-unveils-next-gen-in-network-pricing-and-contract-modeling-solution",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/news/zelis-payment-integrity-named-2024-best-in-klas/",
+      "edsPath": "/news/zelis-payment-integrity-named-2024-best-in-klas",
+      "template": "blog-article",
+      "batch": "3d-news",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/5-cs-of-payment-integrity/",
+      "edsPath": "/white-papers/5-cs-of-payment-integrity",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/ai-human-insight-smarter-healthcare-pricing-and-payment-accuracy/",
+      "edsPath": "/white-papers/ai-human-insight-smarter-healthcare-pricing-and-payment-accuracy",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/b2b-payments-harmonization-report-2022/",
+      "edsPath": "/white-papers/b2b-payments-harmonization-report-2022",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/balancing-efficiency-and-provider-relationships-when-optimizing-payment-integrity/",
+      "edsPath": "/white-papers/balancing-efficiency-and-provider-relationships-when-optimizing-payment-integrity",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/bridging-gaps-epayments-payers-2021/",
+      "edsPath": "/white-papers/bridging-gaps-epayments-payers-2021",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/data-innovation-optimizing-healthcare-claims-management/",
+      "edsPath": "/white-papers/data-innovation-optimizing-healthcare-claims-management",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/delivering-on-the-promise-of-healthcare-payments-modernization/",
+      "edsPath": "/white-papers/delivering-on-the-promise-of-healthcare-payments-modernization",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/expert-claims-review-managing-increasing-complexity-in-healthcare-billing/",
+      "edsPath": "/white-papers/expert-claims-review-managing-increasing-complexity-in-healthcare-billing",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/fact-or-fiction-four-healthcare-affordability-myths/",
+      "edsPath": "/white-papers/fact-or-fiction-four-healthcare-affordability-myths",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/healthcare-financial-journey-reducing-friction-for-consumers/",
+      "edsPath": "/white-papers/healthcare-financial-journey-reducing-friction-for-consumers",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/how-health-plans-can-simplify-digitize-to-respond-to-industry-shifts/",
+      "edsPath": "/white-papers/how-health-plans-can-simplify-digitize-to-respond-to-industry-shifts",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/how-to-build-unwavering-operational-resilience/",
+      "edsPath": "/white-papers/how-to-build-unwavering-operational-resilience",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/navigating-rising-healthcare-costs-and-complex-claims-pricing/",
+      "edsPath": "/white-papers/navigating-rising-healthcare-costs-and-complex-claims-pricing",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/optimizing-member-engagement-strategies-for-diverse-medicare-medicaid-populations-2/",
+      "edsPath": "/white-papers/optimizing-member-engagement-strategies-for-diverse-medicare-medicaid-populations-2",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/out-of-network-pricing-solutions/",
+      "edsPath": "/white-papers/out-of-network-pricing-solutions",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/payment-integrity-and-cost-containment-downloadable-report/",
+      "edsPath": "/white-papers/payment-integrity-and-cost-containment-downloadable-report",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/provider-network-and-development-a-payment-harmonization-benchmark/",
+      "edsPath": "/white-papers/provider-network-and-development-a-payment-harmonization-benchmark",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/seven-strategies-to-boost-star-rating/",
+      "edsPath": "/white-papers/seven-strategies-to-boost-star-rating",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/the-importance-of-reducing-friction-in-healthcare-provider-financial-journeys/",
+      "edsPath": "/white-papers/the-importance-of-reducing-friction-in-healthcare-provider-financial-journeys",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/the-network-analysis-pyramid/",
+      "edsPath": "/white-papers/the-network-analysis-pyramid",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/top-six-challenges-to-payment-accuracy/",
+      "edsPath": "/white-papers/top-six-challenges-to-payment-accuracy",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/transforming-tpa-operations-to-optimize-oon-claims-and-compliance/",
+      "edsPath": "/white-papers/transforming-tpa-operations-to-optimize-oon-claims-and-compliance",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/white-papers/unlocking-the-value-of-healthcare-claims-modernization/",
+      "edsPath": "/white-papers/unlocking-the-value-of-healthcare-claims-modernization",
+      "template": "gated-resource",
+      "batch": "4a-white-papers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/playbooks/claims-payment-optimization-for-smooth-rev-cycle-patient-experience-2/",
+      "edsPath": "/playbooks/claims-payment-optimization-for-smooth-rev-cycle-patient-experience-2",
+      "template": "gated-resource",
+      "batch": "4b-playbooks",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/playbooks/current-payment-integrity-trends-for-health-plans/",
+      "edsPath": "/playbooks/current-payment-integrity-trends-for-health-plans",
+      "template": "gated-resource",
+      "batch": "4b-playbooks",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/playbooks/digital-payments-are-the-new-standard/",
+      "edsPath": "/playbooks/digital-payments-are-the-new-standard",
+      "template": "gated-resource",
+      "batch": "4b-playbooks",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/playbooks/facing-challenges-as-a-tpa-heres-your-playbook/",
+      "edsPath": "/playbooks/facing-challenges-as-a-tpa-heres-your-playbook",
+      "template": "gated-resource",
+      "batch": "4b-playbooks",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/playbooks/fast-claims-build-lasting-loyalty/",
+      "edsPath": "/playbooks/fast-claims-build-lasting-loyalty",
+      "template": "gated-resource",
+      "batch": "4b-playbooks",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/playbooks/high-confidence-data/",
+      "edsPath": "/playbooks/high-confidence-data",
+      "template": "gated-resource",
+      "batch": "4b-playbooks",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/playbooks/looking-to-understand-reference-based-pricing/",
+      "edsPath": "/playbooks/looking-to-understand-reference-based-pricing",
+      "template": "gated-resource",
+      "batch": "4b-playbooks",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/playbooks/make-workers-comp-payments-easy/",
+      "edsPath": "/playbooks/make-workers-comp-payments-easy",
+      "template": "gated-resource",
+      "batch": "4b-playbooks",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/playbooks/still-cutting-checks-like-its-1999/",
+      "edsPath": "/playbooks/still-cutting-checks-like-its-1999",
+      "template": "gated-resource",
+      "batch": "4b-playbooks",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/playbooks/stop-wrestling-with-outdated-payments-systems/",
+      "edsPath": "/playbooks/stop-wrestling-with-outdated-payments-systems",
+      "template": "gated-resource",
+      "batch": "4b-playbooks",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/playbooks/unlock-your-next-ratings-win-with-the-stars-strategy-playbook/",
+      "edsPath": "/playbooks/unlock-your-next-ratings-win-with-the-stars-strategy-playbook",
+      "template": "gated-resource",
+      "batch": "4b-playbooks",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/webinars/navigating-2025-how-payers-can-respond-to-emerging-trends/",
+      "edsPath": "/webinars/navigating-2025-how-payers-can-respond-to-emerging-trends",
+      "template": "gated-resource",
+      "batch": "4c-webinars",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/webinars/payments-unlocked-strategic-moves-to-modernize-healthcare-payments/",
+      "edsPath": "/webinars/payments-unlocked-strategic-moves-to-modernize-healthcare-payments",
+      "template": "gated-resource",
+      "batch": "4c-webinars",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/webinars/reducing-friction-through-a-modernized-claims-payment-experience/",
+      "edsPath": "/webinars/reducing-friction-through-a-modernized-claims-payment-experience",
+      "template": "gated-resource",
+      "batch": "4c-webinars",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/webinars/unlock-cost-savings-and-boost-efficiency-with-smarter-partnerships/",
+      "edsPath": "/webinars/unlock-cost-savings-and-boost-efficiency-with-smarter-partnerships",
+      "template": "gated-resource",
+      "batch": "4c-webinars",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/analyst-report/2024-smartshopper-performance-and-savings-report/",
+      "edsPath": "/analyst-report/2024-smartshopper-performance-and-savings-report",
+      "template": "gated-resource",
+      "batch": "4d-analyst-reports",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/analyst-report/klas-payment-accuracy-and-integrity-solutions-2023-report/",
+      "edsPath": "/analyst-report/klas-payment-accuracy-and-integrity-solutions-2023-report",
+      "template": "gated-resource",
+      "batch": "4d-analyst-reports",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/case-studies/client-focused-partnership-drives-innovation-and-savings/",
+      "edsPath": "/case-studies/client-focused-partnership-drives-innovation-and-savings",
+      "template": "case-study",
+      "batch": "5-case-studies",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/case-studies/from-156k-to-430-a-health-bill-win-that-earned-member-trust/",
+      "edsPath": "/case-studies/from-156k-to-430-a-health-bill-win-that-earned-member-trust",
+      "template": "case-study",
+      "batch": "5-case-studies",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/case-studies/how-zelis-helped-a-member-save-51k-on-their-health-bill/",
+      "edsPath": "/case-studies/how-zelis-helped-a-member-save-51k-on-their-health-bill",
+      "template": "case-study",
+      "batch": "5-case-studies",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/case-studies/idn-zelis-modernize-healthcare-payment-processing/",
+      "edsPath": "/case-studies/idn-zelis-modernize-healthcare-payment-processing",
+      "template": "case-study",
+      "batch": "5-case-studies",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/case-studies/long-term-partnership-drives-membership-growth-and-billions-in-savings/",
+      "edsPath": "/case-studies/long-term-partnership-drives-membership-growth-and-billions-in-savings",
+      "template": "case-study",
+      "batch": "5-case-studies",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/case-studies/tpa-eliminated-the-thud-factor-for-clients-2/",
+      "edsPath": "/case-studies/tpa-eliminated-the-thud-factor-for-clients-2",
+      "template": "case-study",
+      "batch": "5-case-studies",
+      "imported": false,
+      "migrationMethod": "none",
+      "readiness": "not-imported"
+    },
+    {
+      "url": "https://www.zelis.com/case-studies/tpa-reduced-operational-costs-with-zelis/",
+      "edsPath": "/case-studies/tpa-reduced-operational-costs-with-zelis",
+      "template": "case-study",
+      "batch": "5-case-studies",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/videos/an-introduction-to-machine-readable-files-mrfs/",
+      "edsPath": "/videos/an-introduction-to-machine-readable-files-mrfs",
+      "template": "blog-article",
+      "batch": "6-videos",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/videos/driving-efficiency-and-better-financial-outcomes-in-the-revenue-cycle/",
+      "edsPath": "/videos/driving-efficiency-and-better-financial-outcomes-in-the-revenue-cycle",
+      "template": "blog-article",
+      "batch": "6-videos",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/videos/how-top-healthcare-teams-optimize-payments-under-pressure/",
+      "edsPath": "/videos/how-top-healthcare-teams-optimize-payments-under-pressure",
+      "template": "blog-article",
+      "batch": "6-videos",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/videos/price-transparency-101-breaking-down-tic-regulations/",
+      "edsPath": "/videos/price-transparency-101-breaking-down-tic-regulations",
+      "template": "blog-article",
+      "batch": "6-videos",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/videos/understanding-healthcare-price-transparency/",
+      "edsPath": "/videos/understanding-healthcare-price-transparency",
+      "template": "blog-article",
+      "batch": "6-videos",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/videos/understanding-schema-2-0/",
+      "edsPath": "/videos/understanding-schema-2-0",
+      "template": "blog-article",
+      "batch": "6-videos",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/videos/using-mrf-data-to-your-advantage/",
+      "edsPath": "/videos/using-mrf-data-to-your-advantage",
+      "template": "blog-article",
+      "batch": "6-videos",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "near-ready"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/",
+      "edsPath": "/solutions",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/hc-insights-360/request-meeting-hci/",
+      "edsPath": "/solutions/hc-insights-360/request-meeting-hci",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/in-network-pricing/",
+      "edsPath": "/solutions/in-network-pricing",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/member-engagement/",
+      "edsPath": "/solutions/member-engagement",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/member-engagement/amplify/",
+      "edsPath": "/solutions/member-engagement/amplify",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/member-engagement/mobile-member-app/",
+      "edsPath": "/solutions/member-engagement/mobile-member-app",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/member-engagement/provider-decision-support/",
+      "edsPath": "/solutions/member-engagement/provider-decision-support",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/member-engagement/request-meeting/",
+      "edsPath": "/solutions/member-engagement/request-meeting",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/member-engagement/s365/",
+      "edsPath": "/solutions/member-engagement/s365",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/member-engagement/smartshopper/",
+      "edsPath": "/solutions/member-engagement/smartshopper",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/member-engagement/smartshopper-performance-and-savings-report-2025/",
+      "edsPath": "/solutions/member-engagement/smartshopper-performance-and-savings-report-2025",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/network-solutions/",
+      "edsPath": "/solutions/network-solutions",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/network-solutions/network360/",
+      "edsPath": "/solutions/network-solutions/network360",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/network-solutions/primary-and-supplemental-networks/",
+      "edsPath": "/solutions/network-solutions/primary-and-supplemental-networks",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/network-solutions/providers-provider-networks-request-meeting/",
+      "edsPath": "/solutions/network-solutions/providers-provider-networks-request-meeting",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/network-solutions/request-meeting/",
+      "edsPath": "/solutions/network-solutions/request-meeting",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/out-of-network-solutions/",
+      "edsPath": "/solutions/out-of-network-solutions",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/out-of-network-solutions/health-bill-assist/",
+      "edsPath": "/solutions/out-of-network-solutions/health-bill-assist",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/out-of-network-solutions/market-based-pricing/",
+      "edsPath": "/solutions/out-of-network-solutions/market-based-pricing",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/out-of-network-solutions/network-pricing/",
+      "edsPath": "/solutions/out-of-network-solutions/network-pricing",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/out-of-network-solutions/no-surprises-act/",
+      "edsPath": "/solutions/out-of-network-solutions/no-surprises-act",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/out-of-network-solutions/out-of-network-claims/",
+      "edsPath": "/solutions/out-of-network-solutions/out-of-network-claims",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/out-of-network-solutions/request-meeting/",
+      "edsPath": "/solutions/out-of-network-solutions/request-meeting",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/payment-integrity/",
+      "edsPath": "/solutions/payment-integrity",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/payment-integrity/claims-editing/",
+      "edsPath": "/solutions/payment-integrity/claims-editing",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/payment-integrity/expert-claims-review/",
+      "edsPath": "/solutions/payment-integrity/expert-claims-review",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/payment-integrity/request-meeting/",
+      "edsPath": "/solutions/payment-integrity/request-meeting",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/payments-optimization/",
+      "edsPath": "/solutions/payments-optimization",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/payments-optimization/claims-communications/",
+      "edsPath": "/solutions/payments-optimization/claims-communications",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/payments-optimization/enrollment-communications/",
+      "edsPath": "/solutions/payments-optimization/enrollment-communications",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/payments-optimization/member-disbursements/",
+      "edsPath": "/solutions/payments-optimization/member-disbursements",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/payments-optimization/request-meeting/",
+      "edsPath": "/solutions/payments-optimization/request-meeting",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/payments-optimization-3/",
+      "edsPath": "/solutions/payments-optimization-3",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/payments-optimization-3/advanced-payment-platform/",
+      "edsPath": "/solutions/payments-optimization-3/advanced-payment-platform",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/payments-optimization-3/calculate-your-savings/",
+      "edsPath": "/solutions/payments-optimization-3/calculate-your-savings",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/payments-optimization-3/payer-payments/",
+      "edsPath": "/solutions/payments-optimization-3/payer-payments",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/payments-optimization-vwo/",
+      "edsPath": "/solutions/payments-optimization-vwo",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/price-transparency/",
+      "edsPath": "/solutions/price-transparency",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/price-transparency/mrf/",
+      "edsPath": "/solutions/price-transparency/mrf",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/price-transparency/request-a-price-transparency-meeting/",
+      "edsPath": "/solutions/price-transparency/request-a-price-transparency-meeting",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/solutions/reference-based-pricing-for-network-replacement/",
+      "edsPath": "/solutions/reference-based-pricing-for-network-replacement",
+      "template": "solutions-page",
+      "batch": "7a-solutions",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/built-for/",
+      "edsPath": "/built-for",
+      "template": "built-for-audience",
+      "batch": "7b-built-for",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/built-for/built-for-providers/dental-practices/",
+      "edsPath": "/built-for/built-for-providers/dental-practices",
+      "template": "built-for-audience",
+      "batch": "7b-built-for",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/built-for/built-for-providers/health-systems-and-hospitals/",
+      "edsPath": "/built-for/built-for-providers/health-systems-and-hospitals",
+      "template": "built-for-audience",
+      "batch": "7b-built-for",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/built-for/built-for-providers/health-systems-and-hospitals-draft/request-a-meeting/",
+      "edsPath": "/built-for/built-for-providers/health-systems-and-hospitals-draft/request-a-meeting",
+      "template": "built-for-audience",
+      "batch": "7b-built-for",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/built-for/built-for-providers/medical-practices/",
+      "edsPath": "/built-for/built-for-providers/medical-practices",
+      "template": "built-for-audience",
+      "batch": "7b-built-for",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/built-for/payers/",
+      "edsPath": "/built-for/payers",
+      "template": "built-for-audience",
+      "batch": "7b-built-for",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/built-for/payers/benefit-consultants-brokers/",
+      "edsPath": "/built-for/payers/benefit-consultants-brokers",
+      "template": "built-for-audience",
+      "batch": "7b-built-for",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/built-for/payers/dental-payer/",
+      "edsPath": "/built-for/payers/dental-payer",
+      "template": "built-for-audience",
+      "batch": "7b-built-for",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/built-for/payers/health-plans/",
+      "edsPath": "/built-for/payers/health-plans",
+      "template": "built-for-audience",
+      "batch": "7b-built-for",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/built-for/payers/property-and-casualty-plans/",
+      "edsPath": "/built-for/payers/property-and-casualty-plans",
+      "template": "built-for-audience",
+      "batch": "7b-built-for",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/built-for/payers/third-party-administrators/",
+      "edsPath": "/built-for/payers/third-party-administrators",
+      "template": "built-for-audience",
+      "batch": "7b-built-for",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/built-for/payers/workers-compensation/",
+      "edsPath": "/built-for/payers/workers-compensation",
+      "template": "built-for-audience",
+      "batch": "7b-built-for",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/built-for/payers/zelis-for-property-and-casualty/",
+      "edsPath": "/built-for/payers/zelis-for-property-and-casualty",
+      "template": "built-for-audience",
+      "batch": "7b-built-for",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/providers/",
+      "edsPath": "/providers",
+      "template": "built-for-audience",
+      "batch": "7c-providers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/providers/provider-enrollment/",
+      "edsPath": "/providers/provider-enrollment",
+      "template": "built-for-audience",
+      "batch": "7c-providers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/providers/provider-networks/",
+      "edsPath": "/providers/provider-networks",
+      "template": "built-for-audience",
+      "batch": "7c-providers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/providers/provider-networks/request-meeting-provider-network/",
+      "edsPath": "/providers/provider-networks/request-meeting-provider-network",
+      "template": "built-for-audience",
+      "batch": "7c-providers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/providers/provider-networks/state-specific-providers/",
+      "edsPath": "/providers/provider-networks/state-specific-providers",
+      "template": "built-for-audience",
+      "batch": "7c-providers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/providers/provider-payments-2/",
+      "edsPath": "/providers/provider-payments-2",
+      "template": "built-for-audience",
+      "batch": "7c-providers",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/company/",
+      "edsPath": "/company",
+      "template": "company-utility",
+      "batch": "8a-company",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/company/analyst-reports/",
+      "edsPath": "/company/analyst-reports",
+      "template": "company-utility",
+      "batch": "8a-company",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/company/careers/",
+      "edsPath": "/company/careers",
+      "template": "company-utility",
+      "batch": "8a-company",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/company/careers-india/",
+      "edsPath": "/company/careers-india",
+      "template": "company-utility",
+      "batch": "8a-company",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/company/leadership/matthew-albright/",
+      "edsPath": "/company/leadership/matthew-albright",
+      "template": "company-utility",
+      "batch": "8a-company",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/company/leadership/jim-bridges/",
+      "edsPath": "/company/leadership/jim-bridges",
+      "template": "company-utility",
+      "batch": "8a-company",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/company/partnerships/",
+      "edsPath": "/company/partnerships",
+      "template": "company-utility",
+      "batch": "8a-company",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/company/philanthropy/",
+      "edsPath": "/company/philanthropy",
+      "template": "company-utility",
+      "batch": "8a-company",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/company/press/",
+      "edsPath": "/company/press",
+      "template": "company-utility",
+      "batch": "8a-company",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/ceo-blog/",
+      "edsPath": "/ceo-blog",
+      "template": "company-utility",
+      "batch": "8b-utility",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/connect-with-zelis/",
+      "edsPath": "/connect-with-zelis",
+      "template": "company-utility",
+      "batch": "8b-utility",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/diversity-and-inclusion/",
+      "edsPath": "/diversity-and-inclusion",
+      "template": "company-utility",
+      "batch": "8b-utility",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/events/",
+      "edsPath": "/events",
+      "template": "company-utility",
+      "batch": "8b-utility",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/find-a-provider/",
+      "edsPath": "/find-a-provider",
+      "template": "company-utility",
+      "batch": "8b-utility",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/for-members/",
+      "edsPath": "/for-members",
+      "template": "company-utility",
+      "batch": "8b-utility",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/healthcare-financial-experience/",
+      "edsPath": "/healthcare-financial-experience",
+      "template": "company-utility",
+      "batch": "8b-utility",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/health-systems-hospitals-splash/",
+      "edsPath": "/health-systems-hospitals-splash",
+      "template": "company-utility",
+      "batch": "8b-utility",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/log-in/",
+      "edsPath": "/log-in",
+      "template": "company-utility",
+      "batch": "8b-utility",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/member-solutions/",
+      "edsPath": "/member-solutions",
+      "template": "company-utility",
+      "batch": "8b-utility",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/payment-harmonization-index-2022/",
+      "edsPath": "/payment-harmonization-index-2022",
+      "template": "company-utility",
+      "batch": "8b-utility",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/press-sub-page/",
+      "edsPath": "/press-sub-page",
+      "template": "company-utility",
+      "batch": "8b-utility",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/privacy-policy/",
+      "edsPath": "/privacy-policy",
+      "template": "company-utility",
+      "batch": "8b-utility",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/provider-satisfaction-report/",
+      "edsPath": "/provider-satisfaction-report",
+      "template": "company-utility",
+      "batch": "8b-utility",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/resources/",
+      "edsPath": "/resources",
+      "template": "company-utility",
+      "batch": "8b-utility",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/terms-of-use/",
+      "edsPath": "/terms-of-use",
+      "template": "company-utility",
+      "batch": "8b-utility",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/thank-you-meeting-request/",
+      "edsPath": "/thank-you-meeting-request",
+      "template": "company-utility",
+      "batch": "8b-utility",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/thank-you-zfactor/",
+      "edsPath": "/thank-you-zfactor",
+      "template": "company-utility",
+      "batch": "8b-utility",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/thanks-for-subscribing-tic-breaking-news/",
+      "edsPath": "/thanks-for-subscribing-tic-breaking-news",
+      "template": "company-utility",
+      "batch": "8b-utility",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/transparency-in-coverage-legislative-hub/",
+      "edsPath": "/transparency-in-coverage-legislative-hub",
+      "template": "company-utility",
+      "batch": "8b-utility",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/zelis-payments-terms-of-use/",
+      "edsPath": "/zelis-payments-terms-of-use",
+      "template": "company-utility",
+      "batch": "8b-utility",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/infographics/itemized-bill-review-infographic/",
+      "edsPath": "/infographics/itemized-bill-review-infographic",
+      "template": "gated-resource",
+      "batch": "9-infographics",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/general/zelis-expert-claims-review-solutionbrief/",
+      "edsPath": "/general/zelis-expert-claims-review-solutionbrief",
+      "template": "gated-resource",
+      "batch": "10-general",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/use-case/brokers/",
+      "edsPath": "/use-case/brokers",
+      "template": "built-for-audience",
+      "batch": "11-use-cases",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/use-case/members/",
+      "edsPath": "/use-case/members",
+      "template": "built-for-audience",
+      "batch": "11-use-cases",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/use-case/payers/",
+      "edsPath": "/use-case/payers",
+      "template": "built-for-audience",
+      "batch": "11-use-cases",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    },
+    {
+      "url": "https://www.zelis.com/use-case/providers/",
+      "edsPath": "/use-case/providers",
+      "template": "built-for-audience",
+      "batch": "11-use-cases",
+      "imported": true,
+      "migrationMethod": "bulk",
+      "readiness": "needs-work"
+    }
+  ]
+}
