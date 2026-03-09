@@ -864,14 +864,15 @@ body.blog-article main > .section:nth-of-type(2) > .default-content-wrapper:firs
   }
 }
 
-/* ---- Blog Author Bio: space below hero image and tagline ---- */
-body.blog-article main > .section:first-of-type > div:nth-child(2) {
-  margin-top: 48px;
+/* ---- Blog Author Bio: space below hero image and tagline (only the author bio block) ---- */
+body.blog-article main > .section:first-of-type .columns {
+  padding-top: 96px;
+  max-width: 75%;
 }
 
 @media (width >= 900px) {
-  body.blog-article main > .section:first-of-type > div:nth-child(2) {
-    margin-top: 56px;
+  body.blog-article main > .section:first-of-type .columns {
+    padding-top: 112px;
   }
 }
 
