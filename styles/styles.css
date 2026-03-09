@@ -450,6 +450,11 @@ main img {
   width: 100%;
 }
 
+/* Blog featured image */
+body.blog-article main .section img {
+  border-radius: 5px;
+}
+
 /* ============================================================
    SECTIONS
    ============================================================ */
@@ -708,11 +713,6 @@ main .section.narrow > div {
 /* ============================================================
    BLOG / ARTICLE LAYOUT
    ============================================================ */
-
-/* Blog featured image */
-body.blog-article main img {
-  border-radius: 5px;
-}
 
 /* ---- Blog Body Text: match original paragraph spacing ---- */
 @media (width >= 900px) {
