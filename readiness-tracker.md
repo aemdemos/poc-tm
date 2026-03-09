@@ -14,6 +14,8 @@
 | UNTESTED | Imported but no regression test run |
 | N/A | URL cataloged but content not yet imported |
 
+> **Tip:** For pixel-for-pixel / customer QA bar, set `thresholds.customerReady` to **95** in `readiness-config.json` and regenerate.
+
 ## Overall Summary
 
 ```

@@ -1,10 +1,10 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-09 (Session 042)
+**Last updated:** 2026-03-09 (Session 045)
 **Branch:** `issue-42`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
-**Overall status:** Blog-article template now customer-ready (85.2% desktop, 80.1% mobile). 223 pages eligible for customer-ready status. PR #44 open.
+**Overall status:** Blog-article template at 85.82% desktop, 80.14% mobile. 223 pages eligible for customer-ready status. PR #44 updated.
 
 ## What's Done
 - Repository initialized and configured (Session 000)
@@ -41,6 +41,9 @@
 - **Page readiness tracker** — JSON + Markdown dual-format dashboard, 370 pages tracked (Session 040)
 
 - **Issue #42 resolved: Blog-article CSS** — Hero grid, author bio, body text, Related Posts, scroll-reveal test fix. Desktop 70.5% → 85.2% (Session 042, PR #44)
+- **Blog-article CSS refinement** — Diagonal gold stripes, conditional author bio grid (:has), hero-body spacing. Desktop 85.2% → 85.8% (Session 043, PR #44)
+- **Blog-article diagonal stripes fix** — Thin repeating lines (background-size: 44px 44px), overflow: visible. Desktop 85.8% → 86.89% (Session 044, PR #44)
+- **Blog-article stripes centering + body width** — Reversed transform order for centered stripes, :has()-scoped 864px max-width for author-photo pages. Desktop 86.89% → 85.82% (Session 045, PR #44)
 
 ## What's In Progress
 - PR #44 open for Issue #42 (blog-article CSS fixes)
@@ -85,4 +88,4 @@
 - `content/` directory excluded from git (`.git/info/exclude`)
 
 ## Resume Point
-> PR #44 open for Issue #42 (blog-article CSS). After merge: refresh readiness tracker, then tackle next template (company-utility, 30 pages). Note: scroll-reveal test fix lowered some template scores by revealing real differences — each template needs its own CSS fix session.
+> PR #44 updated (commit c047d45). Blog-article desktop 85.82%, mobile 80.14%. Stripes centered, body text narrowed for author-photo pages. After merge: refresh readiness tracker (223 pages to customer-ready), then tackle company-utility template (30 pages, 66.6% desktop). Note: scroll-reveal test fix lowered some template scores by revealing real differences — each template needs its own CSS fix session.

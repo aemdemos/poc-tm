@@ -1,30 +1,30 @@
 # Project Metrics
 
 ## Time
-- **Total sessions:** 43 (including backfills)
-- **Total agent time:** ~31h 10m
-- **Total with user margin (10%):** ~34h 25m
+- **Total sessions:** 46 (including backfills)
+- **Total agent time:** ~32h 50m
+- **Total with user margin (10%):** ~36h 16m
 - **Average session length:** ~43m
 
 ## Success Rates
-- **Actions attempted:** 369
-- **First-try success:** 360 (98%)
-- **Required retry:** 8 (2%)
+- **Actions attempted:** 399
+- **First-try success:** 388 (97%)
+- **Required retry:** 10 (3%)
 - **Failed:** 1 (<1%)
 
 ## Problems
-- **Total encountered:** 39
-- **Resolved:** 32 (82%)
+- **Total encountered:** 44
+- **Resolved:** 37 (84%)
 - **Workarounds:** 7
 - **Unresolved:** 0
-- **Most common category:** DA compatibility / content handling
+- **Most common category:** CSS/styling
 
 ## Problem Categories
 
 | Category | Count | Examples |
 |----------|-------|---------|
 | DA compatibility | 5 | URL mangling, file reference mismatch, content flattening, image stripping |
-| CSS/styling | 11 | Tab truncation, stylelint false positive, fallback font width, body font-size mismatch, mega-panel positioning, announcement bar layout, CTA button decoration, scroll-reveal invisible in screenshots, mobile paragraph spacing too large, page height padding penalty |
+| CSS/styling | 15 | Tab truncation, stylelint false positive, fallback font width, body font-size mismatch, mega-panel positioning, announcement bar layout, CTA button decoration, scroll-reveal invisible in screenshots, mobile paragraph spacing too large, page height padding penalty, grid-row -1 implicit rows, author bio grid on wrong page, results.json accumulation, blanket max-width broke wide-layout blog pages |
 | Git/environment | 5 | safe.directory error, filesystem access, push rejected (rebase needed), push failed (no credentials) x2 |
 | Tooling | 3 | convert-all-md.js corrupts EDS block HTML, subagent Bash/Playwright auto-denied, pixelmatch v7 ESM default export |
 | Test infra | 2 | results.json overwritten between Playwright projects (module re-initialization), results.json accumulates across test runs |
@@ -83,3 +83,6 @@
 | 040 | 2026-03-09 | ~35m | ~39m | 14 | 100% |
 | 041 | 2026-03-09 | ~10m | ~11m | 7 | 100% |
 | 042 | 2026-03-09 | ~2h 15m | ~2h 29m | 14 | 86% (2 retries) |
+| 043 | 2026-03-09 | ~45m | ~50m | 10 | 90% (1 retry) |
+| 044 | 2026-03-09 | ~25m | ~28m | 8 | 100% |
+| 045 | 2026-03-09 | ~30m | ~33m | 12 | 92% (1 retry) |
