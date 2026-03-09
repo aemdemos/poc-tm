@@ -714,8 +714,12 @@ main .section.narrow > div {
    BLOG / ARTICLE LAYOUT
    ============================================================ */
 
-/* ---- Blog Body Text: match original paragraph spacing ---- */
+/* ---- Blog Body: reduce top spacing to match original (0 gap hero→body) ---- */
 @media (width >= 900px) {
+  body.blog-article main > .section:nth-of-type(2) {
+    padding-top: 0;
+  }
+
   body.blog-article main > .section:nth-of-type(2) .default-content-wrapper p {
     margin-bottom: var(--spacing-l);
   }
@@ -734,8 +738,49 @@ main .section.narrow > div {
   }
 }
 
+/* ---- Blog Author Bio: inline image + text (only when DCW starts with author photo) ---- */
+@media (width >= 900px) {
+  body.blog-article main > .section:nth-of-type(2) > .default-content-wrapper:first-child:has(> p:first-child img) {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 0 var(--spacing-l);
+    align-items: start;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  /* Author photo: small circle in left column, spans name + bio rows */
+  body.blog-article main > .section:nth-of-type(2) > .default-content-wrapper:first-child:has(> p:first-child img) > p:first-child {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    margin: 0;
+  }
+
+  body.blog-article main > .section:nth-of-type(2) > .default-content-wrapper:first-child > p:first-child img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  /* Author name + bio text in right column */
+  body.blog-article main > .section:nth-of-type(2) > .default-content-wrapper:first-child:has(> p:first-child img) > p:nth-child(2),
+  body.blog-article main > .section:nth-of-type(2) > .default-content-wrapper:first-child:has(> p:first-child img) > p:nth-child(3) {
+    grid-column: 2;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  /* Article body content spans full width */
+  body.blog-article main > .section:nth-of-type(2) > .default-content-wrapper:first-child:has(> p:first-child img) > :nth-child(n+4) {
+    grid-column: 1 / -1;
+  }
+}
+
 /* ---- Blog Hero: 2-column grid (title left, image right) ---- */
 @media (width >= 900px) {
+  body.blog-article main > .section:first-of-type {
+    overflow: hidden;
+  }
+
   body.blog-article main > .section:first-of-type > .default-content-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -751,6 +796,36 @@ main .section.narrow > div {
     grid-row: 1 / -1;
     margin: 0;
     align-self: center;
+    position: relative;
+  }
+
+  /* Gold diagonal stripes behind hero image */
+  body.blog-article main > .section:first-of-type > .default-content-wrapper > p:first-child::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 414px;
+    top: 50%;
+    right: 0;
+    transform: skewX(-30deg) translateY(-50%);
+    background: linear-gradient(
+      90deg,
+      #ffbe00 4.55%,
+      transparent 4.55%,
+      transparent 50%,
+      #ffbe00 50%,
+      #ffbe00 54.55%,
+      transparent 54.55%,
+      transparent 100%
+    );
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* Ensure hero image stays above the stripes */
+  body.blog-article main > .section:first-of-type > .default-content-wrapper > p:first-child img {
+    position: relative;
+    z-index: 1;
   }
 
   /* H1 → left column, row 2 */
