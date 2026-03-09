@@ -1,6 +1,6 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-09 (Session 047)
+**Last updated:** 2026-03-09 (Session 047, commit af80abb)
 **Branch:** `issue-42`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
