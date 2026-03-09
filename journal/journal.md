@@ -1961,7 +1961,8 @@
 - `tests/style-regression/regression-report.md` — Regenerated (gitignored)
 
 ### Commits
-- `a0a3628` — Blog-article CSS fixes: desktop 85.2%, mobile 80.1% (Issue #42)
+- `fd8f787` — Blog-article CSS fixes: desktop 85.2%, mobile 80.1% (Issue #42) — includes lint fix
+- `2eeb5c4` — Update journal Session 042
 
 ### Carry-Forward
 > PR #44 open for Issue #42. Blog-article now PASS on both desktop (85.2%) and mobile (80.1%). Next priority: refresh readiness tracker (should show 223 pages moving to customer-ready), then tackle company-utility template (30 pages), gated-resource (42 pages). Note: scroll-reveal fix lowered some template scores by exposing real differences — those templates need their own CSS fix sessions.
