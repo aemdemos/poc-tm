@@ -896,6 +896,14 @@ body.blog-article main > .section:first-of-type .columns > div > div:not(.column
   flex: 1 !important;
 }
 
+/* Author bio paragraph: match original Zelis blog (article/div[2]/.../p[2]) — font and size */
+body.blog-article main > .section:first-of-type .columns p {
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
 /* ---- Blog Related Posts: match original section height (798px) & bottom gap ---- */
 @media (width >= 900px) {
   body.blog-article .section.dark.cards-container {
