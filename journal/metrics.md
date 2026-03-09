@@ -1,20 +1,20 @@
 # Project Metrics
 
 ## Time
-- **Total sessions:** 46 (including backfills)
-- **Total agent time:** ~32h 50m
-- **Total with user margin (10%):** ~36h 16m
-- **Average session length:** ~43m
+- **Total sessions:** 48 (including backfills)
+- **Total agent time:** ~33h 55m
+- **Total with user margin (10%):** ~37h 25m
+- **Average session length:** ~42m
 
 ## Success Rates
-- **Actions attempted:** 399
-- **First-try success:** 388 (97%)
-- **Required retry:** 10 (3%)
+- **Actions attempted:** 419
+- **First-try success:** 407 (97%)
+- **Required retry:** 11 (3%)
 - **Failed:** 1 (<1%)
 
 ## Problems
-- **Total encountered:** 44
-- **Resolved:** 37 (84%)
+- **Total encountered:** 45
+- **Resolved:** 38 (84%)
 - **Workarounds:** 7
 - **Unresolved:** 0
 - **Most common category:** CSS/styling
@@ -27,7 +27,7 @@
 | CSS/styling | 15 | Tab truncation, stylelint false positive, fallback font width, body font-size mismatch, mega-panel positioning, announcement bar layout, CTA button decoration, scroll-reveal invisible in screenshots, mobile paragraph spacing too large, page height padding penalty, grid-row -1 implicit rows, author bio grid on wrong page, results.json accumulation, blanket max-width broke wide-layout blog pages |
 | Git/environment | 5 | safe.directory error, filesystem access, push rejected (rebase needed), push failed (no credentials) x2 |
 | Tooling | 3 | convert-all-md.js corrupts EDS block HTML, subagent Bash/Playwright auto-denied, pixelmatch v7 ESM default export |
-| Test infra | 2 | results.json overwritten between Playwright projects (module re-initialization), results.json accumulates across test runs |
+| Test infra | 3 | results.json overwritten between Playwright projects (module re-initialization), results.json accumulates across test runs, scroll-reveal opacity:0 hides content in screenshots |
 | Lint | 2 | no-use-before-define in image-slider.js, no-descending-specificity in image-slider.css |
 | Performance | 1 | Animation load timeout too slow |
 | File sync | 1 | HTML variants stale after markdown edit |
@@ -86,3 +86,5 @@
 | 043 | 2026-03-09 | ~45m | ~50m | 10 | 90% (1 retry) |
 | 044 | 2026-03-09 | ~25m | ~28m | 8 | 100% |
 | 045 | 2026-03-09 | ~30m | ~33m | 12 | 92% (1 retry) |
+| 046 | 2026-03-09 | ~35m | ~39m | 9 | 100% |
+| 047 | 2026-03-09 | ~30m | ~33m | 11 | 100% |

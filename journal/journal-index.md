@@ -48,3 +48,5 @@
 | 043 | 2026-03-09 | Blog-article refinement: diagonal stripes, author bio grid, spacing (85.8%, PR #44) | ~50m | 10 completed, 3 problems resolved |
 | 044 | 2026-03-09 | Fix diagonal stripes: thin repeating lines (86.89% desktop, PR #44) | ~28m | 4 completed, 1 problem resolved |
 | 045 | 2026-03-09 | Center stripes + narrow body text (85.82% desktop, PR #44) | ~33m | 4 completed, 1 problem resolved |
+| 046 | 2026-03-09 | Blog article full-page visual comparison (7 viewports, ~70% avg) | ~39m | 9 completed, 1 problem resolved |
+| 047 | 2026-03-09 | Implement comparison report fixes RC-01–RC-09 (share icons, mobile hero, gold border) | ~33m | 11 completed, 0 problems |

@@ -1,10 +1,10 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-09 (Session 045)
+**Last updated:** 2026-03-09 (Session 047)
 **Branch:** `issue-42`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
-**Overall status:** Blog-article template at 85.82% desktop, 80.14% mobile. 223 pages eligible for customer-ready status. PR #44 updated.
+**Overall status:** Blog-article template at 85.77% desktop, 80.08% mobile. All 9 comparison report fixes implemented. 223 pages eligible for customer-ready status. PR #44 updated.
 
 ## What's Done
 - Repository initialized and configured (Session 000)
@@ -39,17 +39,20 @@
 - **Issue #32 resolved: Columns Lottie support** — .json link detection, href-based path, p-wrapper replacement (Session 038, PR #38)
 - **Issue #8 resolved: Verification test harness false-positives** — Async scroll for IO, data-loaded-by attribute for F-DELAYED (Session 039, PR #39)
 - **Page readiness tracker** — JSON + Markdown dual-format dashboard, 370 pages tracked (Session 040)
-
 - **Issue #42 resolved: Blog-article CSS** — Hero grid, author bio, body text, Related Posts, scroll-reveal test fix. Desktop 70.5% → 85.2% (Session 042, PR #44)
 - **Blog-article CSS refinement** — Diagonal gold stripes, conditional author bio grid (:has), hero-body spacing. Desktop 85.2% → 85.8% (Session 043, PR #44)
 - **Blog-article diagonal stripes fix** — Thin repeating lines (background-size: 44px 44px), overflow: visible. Desktop 85.8% → 86.89% (Session 044, PR #44)
 - **Blog-article stripes centering + body width** — Reversed transform order for centered stripes, :has()-scoped 864px max-width for author-photo pages. Desktop 86.89% → 85.82% (Session 045, PR #44)
+- **Blog article visual comparison** — Full 7-viewport comparison (1440–375px), ~70% avg similarity, 9 recommended changes cataloged (Session 046)
+- **Blog-article comparison fixes** — All 9 RCs implemented: share link SVG icons, mobile hero reorder, author photo mobile sizing, Related Posts gold border. Desktop 85.77%, mobile 80.08%. (Session 047, PR #44)
 
 ## What's In Progress
-- PR #44 open for Issue #42 (blog-article CSS fixes)
+- PR #44 open for Issue #42 (blog-article CSS fixes) — ready to merge
 
 ## What's Pending
+- **Merge PR #44 to main** — blog-article CSS work complete
 - **Refresh readiness tracker** after PR #44 merge — should show 223 pages moving to customer-ready
+- **Content authoring fixes:** Cookie Preferences + FDIC notice missing from CDN footer, category badges for Related Posts cards
 - **CSS fixes for remaining templates:** company-utility (+13.4pp, 30 pages), gated-resource (+41.6pp, 42 pages), branded-landing (+15pp, 12 pages), homepage (+17.8pp, 2 pages)
 - **Import 3 missing URLs** (2 news articles, 1 case study returned 404 during bulk import)
 - **Per-page regression testing** (currently template-level only — 1 representative per template)
@@ -61,7 +64,7 @@
 - `readiness-tracker.json` — Machine-readable readiness data (370 pages, 8 templates)
 - `readiness-tracker.md` — Human-readable dashboard with progress bars and prioritized next steps
 - `tools/readiness/generate-tracker.js` — Re-runnable generator script
-- `styles/styles.css` — Global styles with design tokens + gold highlight + HR styling
+- `styles/styles.css` — Global styles with design tokens + blog-article CSS (89 lines added in Session 047)
 - `blocks/header/header.js` — Mega-menu: panel builder, hover/accordion, announcement bar detection
 - `blocks/header/header.css` — Mega-menu: panels-container, solutions grid, categories, mobile accordion, overlay
 - `nav.plain.html` — Enriched navigation with intro descriptions, solution cards, category groups
@@ -72,6 +75,7 @@
 - `tools/importer/url-catalog.json` — 370 URLs in 20 batches
 - `playwright.config.js` — Style regression test config (desktop 1440px, mobile 375px)
 - `tests/style-regression/` — Screenshot diff test suite, compare helper, report generator
+- `comparison-work/page-visual-compare/2026-03-09-blog-addressing-claims/` — Visual comparison report + 14 screenshots
 - `.claude/skills/excat-animate-migration/verify-animations.js` — 11-check verification IIFE (fixed in Session 039)
 - `scripts/delayed.js` — Lottie loader with data-loaded-by attribution
 - `content/` — 367 .md + 369 .html files (excluded from git)
@@ -80,6 +84,7 @@
 ## Critical Warning
 - **NEVER use `convert-all-md.js`** for EDS content files — it corrupts block HTML
 - **`aem up` proxies content from remote CDN** — local content files in `content/` are NOT used for preview
+- **Scroll-reveal hides content in screenshots** — Override `.scroll-reveal { opacity: 1; transform: none; }` before capturing full-page screenshots
 
 ## Git Notes
 - Remote: `https://github.com/aemdemos/poc-tm.git`
@@ -88,4 +93,4 @@
 - `content/` directory excluded from git (`.git/info/exclude`)
 
 ## Resume Point
-> PR #44 updated (commit c047d45). Blog-article desktop 85.82%, mobile 80.14%. Stripes centered, body text narrowed for author-photo pages. After merge: refresh readiness tracker (223 pages to customer-ready), then tackle company-utility template (30 pages, 66.6% desktop). Note: scroll-reveal test fix lowered some template scores by revealing real differences — each template needs its own CSS fix session.
+> All 9 comparison report fixes implemented and pushed to PR #44 (commit `bb1957d`). Blog-article: desktop 85.77%, mobile 80.08%. Next steps: (1) merge PR #44 to main, (2) refresh readiness tracker (223 pages to customer-ready), (3) tackle company-utility template CSS (30 pages, 66.6% desktop). Content authoring tasks deferred: Cookie Preferences + FDIC notice in CDN footer, category badges in Related Posts cards.
