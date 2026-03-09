@@ -1,10 +1,10 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-06 (Session 039)
-**Branch:** `issue-8`
+**Last updated:** 2026-03-09 (Session 040)
+**Branch:** `issue-27`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
-**Overall status:** All issues resolved. PRs #35–#39 open for review.
+**Overall status:** All issues resolved. Readiness tracker created — 0 pages customer-ready, 225 near-ready.
 
 ## What's Done
 - Repository initialized and configured (Session 000)
@@ -38,17 +38,23 @@
 - **Issue #31 resolved: Accordion block JS crash** — Defensive guard for malformed rows with < 2 children (Session 037, PR #37)
 - **Issue #32 resolved: Columns Lottie support** — .json link detection, href-based path, p-wrapper replacement (Session 038, PR #38)
 - **Issue #8 resolved: Verification test harness false-positives** — Async scroll for IO, data-loaded-by attribute for F-DELAYED (Session 039, PR #39)
+- **Page readiness tracker** — JSON + Markdown dual-format dashboard, 370 pages tracked (Session 040)
 
 ## What's In Progress
 (nothing active)
 
 ## What's Pending
-(none — all known issues resolved)
+- **CSS fixes to reach customer-ready:** blog-article template needs +5.2pp (223 pages), branded-landing +6.7pp, homepage +19.7pp
+- **Import 3 missing URLs** (2 news articles, 1 case study returned 404 during bulk import)
+- **Per-page regression testing** (currently template-level only — 1 representative per template)
 
 ## Active Blockers
 (none)
 
 ## Key Files
+- `readiness-tracker.json` — Machine-readable readiness data (370 pages, 8 templates)
+- `readiness-tracker.md` — Human-readable dashboard with progress bars and prioritized next steps
+- `tools/readiness/generate-tracker.js` — Re-runnable generator script
 - `styles/styles.css` — Global styles with design tokens + gold highlight + HR styling
 - `blocks/header/header.js` — Mega-menu: panel builder, hover/accordion, announcement bar detection
 - `blocks/header/header.css` — Mega-menu: panels-container, solutions grid, categories, mobile accordion, overlay
@@ -76,4 +82,4 @@
 - `content/` directory excluded from git (`.git/info/exclude`)
 
 ## Resume Point
-> All known issues resolved. PRs #35 (style regression), #36 (let-care-flow), #37 (accordion), #38 (columns Lottie), #39 (verification harness) open for review. No remaining open issues.
+> Readiness tracker created (Session 040). Top priority: fix blog-article template CSS to push 223 pages from near-ready (74.8%) to customer-ready (>=80%). Re-run `node tools/readiness/generate-tracker.js` after regression updates.

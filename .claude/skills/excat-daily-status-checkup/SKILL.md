@@ -68,6 +68,7 @@ All paths use the same journal directory as excat-journaling. Default: `journal/
 | Time report | `journal/time-tracking.md` | Project total (agent and with margin); recent daily totals (last 1-3 days) |
 | Metrics | `journal/metrics.md` | Session count, success rates, problem stats |
 | Git (optional) | `git status` / `git branch` | Branch, uncommitted changes, recent commits if helpful |
+| Readiness tracker (optional) | `readiness-tracker.json` | Overall readiness stats, top priority template, pages by status |
 
 ## Workflow
 

@@ -1798,4 +1798,63 @@
 - `bc99638` — Fix verification test harness false-positives (TEST-001, TEST-002)
 
 ### Carry-Forward
-> PR #39 open for Issue #8. All known issues now have PRs.
+> PR #39 merged for Issue #8. All known issues resolved and merged. End-of-day time report generated (time-tracking.md). No remaining open issues or PRs.
+
+---
+
+## Session 040 — 2026-03-09 — Page readiness tracker + portable skill
+
+**Branch:** `issue-27`
+**Duration:** 35m (agent) + 10% = 39m
+**Session goal:** Create a page readiness tracker readable by both humans and LLMs, then port it into a reusable skill
+
+### Actions
+
+| # | Action | Pattern | Attempts | Result | Time (est.) |
+|---|--------|---------|----------|--------|-------------|
+| 1 | Read url-catalog.json (370 URLs, 8 templates, 20 batches) | new | 1 | pass | 2m |
+| 2 | Read regression-report.md (8 templates × 2 viewports, 0/8 pass) | new | 1 | pass | 2m |
+| 3 | Count content/ HTML files (369 exist) | new | 1 | pass | 1m |
+| 4 | Design tracker schema: JSON (machine) + Markdown (human) | new | 1 | pass | 3m |
+| 5 | Write initial generate-tracker.js at tools/readiness/ | new | 1 | pass | 5m |
+| 6 | Run generator — 370 pages, 8 templates, 0 ready / 225 near / 142 work / 3 missing | new | 1 | pass | 1m |
+| 7 | Improve next-steps section — data-driven priority sort by gap-to-80% | new | 1 | pass | 2m |
+| 8 | Create portable skill: SKILL.md with frontmatter, execution mindset, 4 workflow phases | new | 1 | pass | 5m |
+| 9 | Create readiness-tracker-format.md schema reference | new | 1 | pass | 3m |
+| 10 | Refactor generator into skill dir: resolveConfig(), CLI args, auto-discovery, delta comparison | new | 1 | pass | 8m |
+| 11 | Replace tools/readiness/generate-tracker.js with shim | new | 1 | pass | 1m |
+| 12 | Test: skill dir run, shim, missing regression, custom output dir | new | 1 | pass | 2m |
+| 13 | Update status-checkup skill: add readiness source row + briefing section | new | 1 | pass | 2m |
+| 14 | Update journal, project-context, metrics | new | 1 | pass | 3m |
+
+### Outcomes
+- **Completed:** Portable `excat-readiness-tracker` skill with SKILL.md, format reference, configurable generator
+- **Completed:** Initial tracker: 0 customer-ready, 225 near-ready, 142 needs-work, 3 not-imported
+- **Completed:** Status-checkup integration: optional "Migration readiness" section in briefing
+- **Key feature:** 4-tier config resolution: CLI args → readiness-config.json → env vars → auto-discovery
+- **Key feature:** Delta comparison on refresh (reports changes since previous run)
+
+### Problems Encountered
+(none)
+
+### Key Decisions
+- Template-level readiness: all pages inherit their template's regression score. Template CSS fixes benefit all pages.
+- JSON + Markdown dual format: JSON for LLM consumption, Markdown for human scanning (progress bars, tables).
+- Generator lives inside skill directory for portability. Old location replaced with a shim for backward compat.
+- JSON config (not YAML) to avoid parser dependency. Auto-discovery handles zero-config projects.
+
+### Files Changed
+- `.claude/skills/excat-readiness-tracker/SKILL.md` — New: Skill definition with trigger phrases, workflow phases, portability guide
+- `.claude/skills/excat-readiness-tracker/readiness-tracker-format.md` — New: JSON schema + Markdown format reference
+- `.claude/skills/excat-readiness-tracker/generate-tracker.js` — New: Portable generator with configurable paths, CLI args, delta comparison
+- `tools/readiness/generate-tracker.js` — Replaced with shim importing from skill directory
+- `readiness-tracker.json` — Regenerated with dataSources field
+- `readiness-tracker.md` — Regenerated with dynamic source label
+- `.claude/skills/excat-daily-status-checkup/SKILL.md` — Added readiness tracker to Sources table
+- `.claude/skills/excat-daily-status-checkup/status-checkup-format.md` — Added optional "Migration readiness" section
+
+### Commits
+- `5c00b4a` — Add portable readiness tracker skill + initial dashboard (Session 040)
+
+### Carry-Forward
+> Readiness tracker skill created and working. To port to another project: copy `.claude/skills/excat-readiness-tracker/`. Top priority: fix blog-article template CSS (+5.2pp to push 223 pages to customer-ready). Re-run: `node .claude/skills/excat-readiness-tracker/generate-tracker.js`
