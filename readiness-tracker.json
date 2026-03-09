@@ -1,6 +1,6 @@
 {
   "$schema": "readiness-tracker-schema",
-  "generated": "2026-03-09T15:46:36.364Z",
+  "generated": "2026-03-09T15:54:42.484Z",
   "source": "https://www.zelis.com/sitemap_index.xml",
   "thresholds": {
     "customer-ready": ">=80% similarity (desktop + mobile average)",

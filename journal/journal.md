@@ -1854,7 +1854,7 @@
 - `.claude/skills/excat-daily-status-checkup/status-checkup-format.md` — Added optional "Migration readiness" section
 
 ### Commits
-(pending)
+- `5c00b4a` — Add portable readiness tracker skill + initial dashboard (Session 040)
 
 ### Carry-Forward
 > Readiness tracker skill created and working. To port to another project: copy `.claude/skills/excat-readiness-tracker/`. Top priority: fix blog-article template CSS (+5.2pp to push 223 pages to customer-ready). Re-run: `node .claude/skills/excat-readiness-tracker/generate-tracker.js`
