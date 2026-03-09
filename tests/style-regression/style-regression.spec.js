@@ -70,11 +70,28 @@ async function waitForSettle(page) {
   await page.waitForTimeout(2000);
 }
 
+// Scroll through page to trigger scroll-reveal / IntersectionObserver animations
+async function triggerScrollReveal(page) {
+  await page.evaluate(async () => {
+    const scrollHeight = document.body.scrollHeight;
+    const viewportHeight = window.innerHeight;
+    for (let y = 0; y < scrollHeight; y += viewportHeight / 2) {
+      window.scrollTo(0, y);
+      await new Promise((r) => setTimeout(r, 100));
+    }
+    window.scrollTo(0, scrollHeight);
+    await new Promise((r) => setTimeout(r, 100));
+    window.scrollTo(0, 0);
+  });
+  await page.waitForTimeout(800);
+}
+
 // Take a full-page screenshot with retries
 async function takeScreenshot(page, url, filePath) {
   await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30_000 });
   await waitForSettle(page);
   await dismissOverlays(page);
+  await triggerScrollReveal(page);
   await page.waitForTimeout(500);
 
   fs.mkdirSync(path.dirname(filePath), { recursive: true });

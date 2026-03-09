@@ -709,16 +709,139 @@ main .section.narrow > div {
    BLOG / ARTICLE LAYOUT
    ============================================================ */
 
-/* Constrain blog body content for readability */
-body.blog main > .section:not(:first-of-type) > div,
-body.article main > .section:not(:first-of-type) > div {
-  max-width: 800px;
+/* Blog featured image */
+body.blog-article main img {
+  border-radius: 5px;
 }
 
-/* Blog featured image */
-body.blog main img.hero-image,
-body.article main img.hero-image {
-  border-radius: 5px;
+/* ---- Blog Body Text: match original paragraph spacing ---- */
+@media (width >= 900px) {
+  body.blog-article main > .section:nth-of-type(2) .default-content-wrapper p {
+    margin-bottom: var(--spacing-l);
+  }
+
+  /* Reset eyebrow override on blog body first paragraph — should be regular body text */
+  body.blog-article main > .section:nth-of-type(2) > .default-content-wrapper:first-child > p:first-child {
+    font-family: var(--body-font-family);
+    font-size: var(--body-font-size-xl);
+    line-height: 1.625;
+    margin-bottom: var(--spacing-l);
+  }
+
+  body.blog-article main > .section:nth-of-type(2) .default-content-wrapper h3 {
+    font-size: 23px;
+    line-height: 32px;
+  }
+}
+
+/* ---- Blog Hero: 2-column grid (title left, image right) ---- */
+@media (width >= 900px) {
+  body.blog-article main > .section:first-of-type > .default-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 0 var(--spacing-xl);
+    align-items: start;
+    padding-top: var(--spacing-xxl);
+  }
+
+  /* Image → right column, spans both rows */
+  body.blog-article main > .section:first-of-type > .default-content-wrapper > p:first-child {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    margin: 0;
+    align-self: center;
+  }
+
+  /* H1 → left column, row 2 */
+  body.blog-article main > .section:first-of-type > .default-content-wrapper > h1 {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+  }
+
+  /* Date → left column, row 1 */
+  body.blog-article main > .section:first-of-type > .default-content-wrapper > p:nth-child(3) {
+    grid-column: 1;
+    grid-row: 1;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-dark-gray);
+    font-size: var(--body-font-size-s);
+  }
+}
+
+/* ---- Blog Author Bio: constrain columns image ---- */
+body.blog-article main > .section:first-of-type .columns > div {
+  align-items: center;
+}
+
+body.blog-article main > .section:first-of-type .columns > div > .columns-img-col {
+  flex: 0 0 120px !important;
+}
+
+body.blog-article main > .section:first-of-type .columns > div > .columns-img-col img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+body.blog-article main > .section:first-of-type .columns > div > div:not(.columns-img-col) {
+  flex: 1 !important;
+}
+
+/* ---- Blog Related Posts: match original section height (798px) & bottom gap ---- */
+@media (width >= 900px) {
+  body.blog-article .section.dark.cards-container {
+    padding-bottom: 118px;
+    margin-bottom: 320px;
+  }
+}
+
+/* ---- Blog Cards (Related Posts): title/description separation ---- */
+body.blog-article .section.dark.cards-container .cards li {
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgb(255 255 255 / 8%);
+}
+
+body.blog-article .section.dark.cards-container .cards-card-body strong {
+  display: block;
+  font-size: var(--heading-font-size-l);
+  margin-bottom: var(--spacing-s);
+  color: var(--color-white);
+}
+
+body.blog-article .section.dark.cards-container .cards-card-body p {
+  color: rgb(248 249 250 / 85%);
+}
+
+body.blog-article .section.dark.cards-container .cards-card-body a.button {
+  background: transparent;
+  border: none;
+  color: var(--link-color);
+  padding: 0;
+  font-size: var(--body-font-size-m);
+  font-weight: 500;
+  margin-top: var(--spacing-s);
+  display: inline-block;
+}
+
+/* ---- Blog Related Posts header: button to top-right ---- */
+@media (width >= 900px) {
+  body.blog-article .section.dark.cards-container > .default-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  body.blog-article .section.dark.cards-container > .default-content-wrapper > h2 {
+    margin-bottom: 0;
+  }
+
+  body.blog-article .section.dark.cards-container > .default-content-wrapper > .button-container {
+    margin: 0;
+  }
 }
 
 /* ============================================================
