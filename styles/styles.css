@@ -714,10 +714,14 @@ main .section.narrow > div {
    BLOG / ARTICLE LAYOUT
    ============================================================ */
 
-/* ---- Blog Body: spacing between hero and author section (match original) ---- */
+/* ---- Blog Body: spacing between hero/author and main text (reduced by half) ---- */
+body.blog-article main > .section:nth-of-type(2) {
+  padding-top: 50px;
+}
+
 @media (width >= 900px) {
   body.blog-article main > .section:nth-of-type(2) {
-    padding-top: 56px;
+    padding-top: 28px;
   }
 
   /* Narrow body for blog pages with author photo (e.g. addressing-claims) — original uses 864px Kadence column */
