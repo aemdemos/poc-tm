@@ -43,3 +43,5 @@
 | 038 | 2026-03-06 | Issue #32: Add Lottie animation to Columns block (PR #38) | ~22m | 7 completed, 3 minor problems |
 | 039 | 2026-03-06 | Issue #8: Fix verification test harness false-positives (PR #39) | ~22m | 6 completed, 0 problems |
 | 040 | 2026-03-09 | Page readiness tracker + portable skill (JSON + Markdown dashboard) | ~39m | 14 completed, 0 problems |
+| 041 | 2026-03-09 | Session 040 finalization and readiness verification | ~11m | 7 completed, 0 problems |
+| 042 | 2026-03-09 | Issue #42: Blog-article CSS fixes (Desktop 70.5% → 85.2%, PR #44) | ~2h 29m | 14 completed, 4 problems resolved |

@@ -1,10 +1,10 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-09 (Session 040)
-**Branch:** `issue-27`
+**Last updated:** 2026-03-09 (Session 042)
+**Branch:** `issue-42`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
-**Overall status:** All issues resolved. Readiness tracker created — 0 pages customer-ready, 225 near-ready.
+**Overall status:** Blog-article template now customer-ready (85.2% desktop, 80.1% mobile). 223 pages eligible for customer-ready status. PR #44 open.
 
 ## What's Done
 - Repository initialized and configured (Session 000)
@@ -40,11 +40,14 @@
 - **Issue #8 resolved: Verification test harness false-positives** — Async scroll for IO, data-loaded-by attribute for F-DELAYED (Session 039, PR #39)
 - **Page readiness tracker** — JSON + Markdown dual-format dashboard, 370 pages tracked (Session 040)
 
+- **Issue #42 resolved: Blog-article CSS** — Hero grid, author bio, body text, Related Posts, scroll-reveal test fix. Desktop 70.5% → 85.2% (Session 042, PR #44)
+
 ## What's In Progress
-(nothing active)
+- PR #44 open for Issue #42 (blog-article CSS fixes)
 
 ## What's Pending
-- **CSS fixes to reach customer-ready:** blog-article template needs +5.2pp (223 pages), branded-landing +6.7pp, homepage +19.7pp
+- **Refresh readiness tracker** after PR #44 merge — should show 223 pages moving to customer-ready
+- **CSS fixes for remaining templates:** company-utility (+13.4pp, 30 pages), gated-resource (+41.6pp, 42 pages), branded-landing (+15pp, 12 pages), homepage (+17.8pp, 2 pages)
 - **Import 3 missing URLs** (2 news articles, 1 case study returned 404 during bulk import)
 - **Per-page regression testing** (currently template-level only — 1 representative per template)
 
@@ -82,4 +85,4 @@
 - `content/` directory excluded from git (`.git/info/exclude`)
 
 ## Resume Point
-> Readiness tracker created (Session 040). Top priority: fix blog-article template CSS to push 223 pages from near-ready (74.8%) to customer-ready (>=80%). Re-run `node tools/readiness/generate-tracker.js` after regression updates.
+> PR #44 open for Issue #42 (blog-article CSS). After merge: refresh readiness tracker, then tackle next template (company-utility, 30 pages). Note: scroll-reveal test fix lowered some template scores by revealing real differences — each template needs its own CSS fix session.

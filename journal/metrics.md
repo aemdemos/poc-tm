@@ -1,20 +1,20 @@
 # Project Metrics
 
 ## Time
-- **Total sessions:** 41 (including backfills)
-- **Total agent time:** ~28h 45m
-- **Total with user margin (10%):** ~31h 45m
-- **Average session length:** ~42m
+- **Total sessions:** 43 (including backfills)
+- **Total agent time:** ~31h 10m
+- **Total with user margin (10%):** ~34h 25m
+- **Average session length:** ~43m
 
 ## Success Rates
-- **Actions attempted:** 348
-- **First-try success:** 341 (98%)
-- **Required retry:** 6 (2%)
+- **Actions attempted:** 369
+- **First-try success:** 360 (98%)
+- **Required retry:** 8 (2%)
 - **Failed:** 1 (<1%)
 
 ## Problems
-- **Total encountered:** 35
-- **Resolved:** 28 (80%)
+- **Total encountered:** 39
+- **Resolved:** 32 (82%)
 - **Workarounds:** 7
 - **Unresolved:** 0
 - **Most common category:** DA compatibility / content handling
@@ -24,10 +24,10 @@
 | Category | Count | Examples |
 |----------|-------|---------|
 | DA compatibility | 5 | URL mangling, file reference mismatch, content flattening, image stripping |
-| CSS/styling | 7 | Tab truncation (multiple attempts), stylelint false positive, fallback font width, body font-size mismatch, mega-panel positioning, announcement bar layout, CTA button decoration |
+| CSS/styling | 11 | Tab truncation, stylelint false positive, fallback font width, body font-size mismatch, mega-panel positioning, announcement bar layout, CTA button decoration, scroll-reveal invisible in screenshots, mobile paragraph spacing too large, page height padding penalty |
 | Git/environment | 5 | safe.directory error, filesystem access, push rejected (rebase needed), push failed (no credentials) x2 |
 | Tooling | 3 | convert-all-md.js corrupts EDS block HTML, subagent Bash/Playwright auto-denied, pixelmatch v7 ESM default export |
-| Test infra | 1 | results.json overwritten between Playwright projects (module re-initialization) |
+| Test infra | 2 | results.json overwritten between Playwright projects (module re-initialization), results.json accumulates across test runs |
 | Lint | 2 | no-use-before-define in image-slider.js, no-descending-specificity in image-slider.css |
 | Performance | 1 | Animation load timeout too slow |
 | File sync | 1 | HTML variants stale after markdown edit |
@@ -81,3 +81,5 @@
 | 038 | 2026-03-06 | ~20m | ~22m | 7 | 100% |
 | 039 | 2026-03-06 | ~20m | ~22m | 6 | 100% |
 | 040 | 2026-03-09 | ~35m | ~39m | 14 | 100% |
+| 041 | 2026-03-09 | ~10m | ~11m | 7 | 100% |
+| 042 | 2026-03-09 | ~2h 15m | ~2h 29m | 14 | 86% (2 retries) |
