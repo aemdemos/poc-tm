@@ -1409,6 +1409,165 @@ body.blog-article main > .section:nth-of-type(3) .default-content-wrapper p a[ti
 }
 
 /* ============================================================
+   TEMPLATE: CASE-STUDY
+   ============================================================ */
+
+/* --- Section spacing defaults --- */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section {
+  padding-top: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xxl);
+}
+
+/* --- Hero section (1): reduce top padding, let header spacing breathe --- */
+body.case-study main > .section:first-of-type {
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
+}
+
+/* Hero subtitle (paragraph after H1, before buttons) */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:first-of-type .columns p:not(.button-container) {
+  font-size: var(--heading-font-size-l);
+  line-height: 1.5;
+}
+
+/* Hero image: rounded corners */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:first-of-type .columns .columns-img-col img {
+  border-radius: 8px;
+}
+
+/* --- Quote block: case-study styling --- */
+body.case-study .quote blockquote {
+  padding: var(--spacing-l) 0 var(--spacing-l) var(--spacing-xl);
+  border-left: 3px solid var(--color-ink-blue-8);
+  max-width: none;
+}
+
+body.case-study .quote blockquote .quote-quotation {
+  font-size: var(--body-font-size-xl);
+  font-style: normal;
+  line-height: 1.6;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study .quote blockquote .quote-attribution p {
+  font-size: var(--body-font-size-s);
+}
+
+/* --- Lavender section (3): angled purple background --- */
+body.case-study main > .section.lavender {
+  background-color: var(--color-ink-blue-5);
+  position: relative;
+  overflow: visible;
+  margin-top: var(--spacing-xxl);
+  margin-bottom: var(--spacing-xxl);
+}
+
+body.case-study main > .section.lavender::before,
+body.case-study main > .section.lavender::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: var(--spacing-xxl);
+  background-color: inherit;
+}
+
+body.case-study main > .section.lavender::before {
+  top: calc(-1 * var(--spacing-xxl));
+  clip-path: polygon(0 100%, 100% 0, 100% 100%, 0 100%);
+}
+
+body.case-study main > .section.lavender::after {
+  bottom: calc(-1 * var(--spacing-xxl));
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 100%);
+}
+
+/* --- Highlight/CTA section (5): gold background --- */
+body.case-study main > .section.highlight {
+  background-color: var(--color-gold);
+  color: var(--color-ink-blue-100);
+  padding: var(--spacing-xl) 0;
+  text-align: center;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section.highlight h2 {
+  color: var(--color-ink-blue-100);
+}
+
+/* Eyebrow text above H2 in CTA */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section.highlight .default-content-wrapper > p:first-child {
+  font-size: var(--eyebrow-font-size);
+  font-weight: 500;
+  margin-bottom: var(--spacing-xs);
+}
+
+/* CTA button on gold background: use primary purple */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section.highlight a.button {
+  background-color: var(--color-bright-blue);
+  border-color: var(--color-bright-blue);
+  color: var(--color-white);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section.highlight a.button:hover {
+  background-color: var(--link-hover-color);
+  border-color: var(--link-hover-color);
+}
+
+/* --- Related Resources section (last content section) --- */
+body.case-study main > .section:nth-last-of-type(2) {
+  padding-top: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xxl);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:nth-last-of-type(2) > .default-content-wrapper h2 {
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Card category tag (em inside cards) */
+body.case-study .cards .cards-card-body p em {
+  font-size: var(--body-font-size-s);
+  font-style: normal;
+  color: var(--color-dark-gray);
+  display: block;
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Card title */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study .cards .cards-card-body h3 {
+  font-size: var(--heading-font-size-l);
+  font-weight: 500;
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Card description */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study .cards .cards-card-body p {
+  font-size: var(--body-font-size-s);
+  line-height: 1.5;
+}
+
+/* Card CTA link */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study .cards .cards-card-body > p:last-child a {
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* Hide metadata section */
+body.case-study main > .section:last-of-type:has(.metadata) {
+  display: none;
+}
+
+/* ============================================================
    RESPONSIVE ADJUSTMENTS
    ============================================================ */
 
