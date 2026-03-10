@@ -748,10 +748,10 @@ body.blog-article main > .section:nth-of-type(2) {
   }
 }
 
-/* ---- Blog Author Bio: font size match original .has-small-font-size ---- */
+/* ---- Blog Author Bio: font size match original .has-small-font-size (12px / 19.5px) ---- */
 body.blog-article main > .section:nth-of-type(2) > .default-content-wrapper:first-child:has(> p:first-child img) > p:nth-child(3) {
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 12px;
+  line-height: 1.625;
   color: var(--text-color);
 }
 
@@ -903,8 +903,8 @@ body.blog-article main > .section:first-of-type .columns > div > div:not(.column
 /* Author bio paragraph: match original Zelis blog (article/div[2]/.../p[2]) — font and size */
 body.blog-article main > .section:first-of-type .columns p {
   font-family: var(--body-font-family);
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 12px;
+  line-height: 1.625;
   color: var(--text-color);
 }
 
