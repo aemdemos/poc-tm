@@ -450,6 +450,11 @@ main img {
   width: 100%;
 }
 
+/* Blog featured image */
+body.blog-article main .section img {
+  border-radius: 5px;
+}
+
 /* ============================================================
    SECTIONS
    ============================================================ */
@@ -709,16 +714,345 @@ main .section.narrow > div {
    BLOG / ARTICLE LAYOUT
    ============================================================ */
 
-/* Constrain blog body content for readability */
-body.blog main > .section:not(:first-of-type) > div,
-body.article main > .section:not(:first-of-type) > div {
-  max-width: 800px;
+/* ---- Blog Body: spacing between hero/author and main text (reduced by half) ---- */
+body.blog-article main > .section:nth-of-type(2) {
+  padding-top: 50px;
 }
 
-/* Blog featured image */
-body.blog main img.hero-image,
-body.article main img.hero-image {
-  border-radius: 5px;
+@media (width >= 900px) {
+  body.blog-article main > .section:nth-of-type(2) {
+    padding-top: 28px;
+  }
+
+  /* Narrow body for blog pages with author photo (e.g. addressing-claims) — original uses 864px Kadence column */
+  body.blog-article main > .section:nth-of-type(2):has(> .default-content-wrapper:first-child > p:first-child img) > .default-content-wrapper {
+    max-width: 864px;
+  }
+
+  body.blog-article main > .section:nth-of-type(2) .default-content-wrapper p {
+    margin-bottom: var(--spacing-l);
+  }
+
+  /* Reset eyebrow override on blog body first paragraph — should be regular body text */
+  body.blog-article main > .section:nth-of-type(2) > .default-content-wrapper:first-child > p:first-child {
+    font-family: var(--body-font-family);
+    font-size: var(--body-font-size-xl);
+    line-height: 1.625;
+    margin-bottom: var(--spacing-l);
+  }
+
+
+  body.blog-article main > .section:nth-of-type(2) .default-content-wrapper h3 {
+    font-size: 23px;
+    line-height: 32px;
+  }
+}
+
+/* ---- Blog Author Bio: font size match original .has-small-font-size ---- */
+body.blog-article main > .section:nth-of-type(2) > .default-content-wrapper:first-child:has(> p:first-child img) > p:nth-child(3) {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+/* ---- Blog Author Bio: inline image + text (only when DCW starts with author photo) ---- */
+@media (width >= 900px) {
+  body.blog-article main > .section:nth-of-type(2) > .default-content-wrapper:first-child:has(> p:first-child img) {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 0 var(--spacing-l);
+    align-items: start;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  /* Author photo: small circle in left column, spans name + bio rows */
+  body.blog-article main > .section:nth-of-type(2) > .default-content-wrapper:first-child:has(> p:first-child img) > p:first-child {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    margin: 0;
+  }
+
+  body.blog-article main > .section:nth-of-type(2) > .default-content-wrapper:first-child > p:first-child img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  /* Author name + bio text in right column */
+  body.blog-article main > .section:nth-of-type(2) > .default-content-wrapper:first-child:has(> p:first-child img) > p:nth-child(2),
+  body.blog-article main > .section:nth-of-type(2) > .default-content-wrapper:first-child:has(> p:first-child img) > p:nth-child(3) {
+    grid-column: 2;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  /* Article body content spans full width */
+  body.blog-article main > .section:nth-of-type(2) > .default-content-wrapper:first-child:has(> p:first-child img) > :nth-child(n+4) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---- Blog Hero: 2-column grid (title left, image right) ---- */
+@media (width >= 900px) {
+  body.blog-article main > .section:first-of-type {
+    overflow: visible;
+  }
+
+  body.blog-article main > .section:first-of-type > .default-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 0 var(--spacing-xl);
+    align-items: start;
+    padding-top: var(--spacing-xxl);
+  }
+
+  /* Image → right column, spans both rows */
+  body.blog-article main > .section:first-of-type > .default-content-wrapper > p:first-child {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    margin: 0;
+    align-self: center;
+    position: relative;
+  }
+
+  /* Gold diagonal stripes behind hero image */
+  body.blog-article main > .section:first-of-type > .default-content-wrapper > p:first-child::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 414px;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%) skewX(-30deg);
+    background-image: linear-gradient(
+      90deg,
+      #ffbe00 4.55%,
+      transparent 4.55%,
+      transparent 50%,
+      #ffbe00 50%,
+      #ffbe00 54.55%,
+      transparent 54.55%,
+      transparent 100%
+    );
+    background-size: 44px 44px;
+    background-repeat: repeat;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* Ensure hero image stays above the stripes */
+  body.blog-article main > .section:first-of-type > .default-content-wrapper > p:first-child img {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* H1 → left column, row 2; match original blog hero title (55px, weight 500, Avenir) */
+  body.blog-article main > .section:first-of-type > .default-content-wrapper > h1 {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    font-size: var(--heading-font-size-xxl);
+    font-weight: 500;
+    font-family: var(--heading-font-family);
+    line-height: 1.18;
+  }
+
+  /* Date → left column, row 1 */
+  body.blog-article main > .section:first-of-type > .default-content-wrapper > p:nth-child(3) {
+    grid-column: 1;
+    grid-row: 1;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-dark-gray);
+    font-size: var(--body-font-size-s);
+  }
+}
+
+/* ---- Blog Author Bio: space below hero image and tagline (only the author bio block) ---- */
+body.blog-article main > .section:first-of-type .columns {
+  padding-top: 96px;
+  max-width: 75%;
+}
+
+@media (width >= 900px) {
+  body.blog-article main > .section:first-of-type .columns {
+    padding-top: 112px;
+  }
+}
+
+/* ---- Blog Author Bio: constrain columns image ---- */
+body.blog-article main > .section:first-of-type .columns > div {
+  align-items: center;
+}
+
+body.blog-article main > .section:first-of-type .columns > div > .columns-img-col {
+  flex: 0 0 120px !important;
+}
+
+body.blog-article main > .section:first-of-type .columns > div > .columns-img-col img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+body.blog-article main > .section:first-of-type .columns > div > div:not(.columns-img-col) {
+  flex: 1 !important;
+}
+
+/* Author bio paragraph: match original Zelis blog (article/div[2]/.../p[2]) — font and size */
+body.blog-article main > .section:first-of-type .columns p {
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+/* ---- Blog Related Posts: match original section height (798px) & bottom gap ---- */
+@media (width >= 900px) {
+  body.blog-article .section.dark.cards-container {
+    padding-bottom: 118px;
+    margin-bottom: 320px;
+  }
+}
+
+/* ---- Blog Cards (Related Posts): title/description separation ---- */
+body.blog-article .section.dark.cards-container .cards li {
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgb(255 255 255 / 8%);
+}
+
+body.blog-article .section.dark.cards-container .cards-card-body strong {
+  display: block;
+  font-size: var(--heading-font-size-l);
+  margin-bottom: var(--spacing-s);
+  color: var(--color-white);
+}
+
+body.blog-article .section.dark.cards-container .cards-card-body p {
+  color: rgb(248 249 250 / 85%);
+}
+
+body.blog-article .section.dark.cards-container .cards-card-body a.button {
+  background: transparent;
+  border: none;
+  color: var(--link-color);
+  padding: 0;
+  font-size: var(--body-font-size-m);
+  font-weight: 500;
+  margin-top: var(--spacing-s);
+  display: inline-block;
+}
+
+/* ---- Blog Related Posts header: button to top-right ---- */
+@media (width >= 900px) {
+  body.blog-article .section.dark.cards-container > .default-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  body.blog-article .section.dark.cards-container > .default-content-wrapper > h2 {
+    margin-bottom: 0;
+  }
+
+  body.blog-article .section.dark.cards-container > .default-content-wrapper > .button-container {
+    margin: 0;
+  }
+}
+
+/* ---- Blog Author Photo: constrain at mobile ---- */
+@media (width < 900px) {
+  body.blog-article main > .section:nth-of-type(2) > .default-content-wrapper > p:first-child img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+/* ---- Blog Hero: reorder at mobile (date → title → image) ---- */
+@media (width < 900px) {
+  body.blog-article main > .section:first-of-type > .default-content-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Date paragraph (3rd child) appears first */
+  body.blog-article main > .section:first-of-type > .default-content-wrapper > p:nth-child(3) {
+    order: -2;
+    color: var(--color-dark-gray);
+    font-size: var(--body-font-size-s);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  /* H1 appears second; match original size/weight/font at mobile */
+  body.blog-article main > .section:first-of-type > .default-content-wrapper > h1 {
+    order: -1;
+    font-size: var(--heading-font-size-xxl);
+    font-weight: 500;
+    font-family: var(--heading-font-family);
+    line-height: 1.18;
+  }
+
+  /* Image paragraph (1st child) stays default order (appears last) */
+}
+
+/* ---- Blog Share Links: icon styling ---- */
+body.blog-article main > .section:nth-of-type(3) .default-content-wrapper p {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+body.blog-article main > .section:nth-of-type(3) .default-content-wrapper p a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-text);
+  color: var(--color-white);
+  text-indent: -9999px;
+  overflow: hidden;
+  position: relative;
+}
+
+body.blog-article main > .section:nth-of-type(3) .default-content-wrapper p a::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  text-indent: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+body.blog-article main > .section:nth-of-type(3) .default-content-wrapper p a[title="Linkedin"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'/%3E%3C/svg%3E");
+}
+
+body.blog-article main > .section:nth-of-type(3) .default-content-wrapper p a[title="Twitter"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'/%3E%3C/svg%3E");
+}
+
+body.blog-article main > .section:nth-of-type(3) .default-content-wrapper p a[title="Facebook"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z'/%3E%3C/svg%3E");
+}
+
+body.blog-article main > .section:nth-of-type(3) .default-content-wrapper p a[title="E-mail"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67z'/%3E%3Cpath d='M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908z'/%3E%3C/svg%3E");
+}
+
+/* ---- Blog Related Posts Cards: top accent border ---- */
+body.blog-article .section.dark.cards-container .cards li {
+  border-top: 3px solid var(--color-gold);
 }
 
 /* ============================================================

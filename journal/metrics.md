@@ -1,33 +1,33 @@
 # Project Metrics
 
 ## Time
-- **Total sessions:** 41 (including backfills)
-- **Total agent time:** ~28h 45m
-- **Total with user margin (10%):** ~31h 45m
+- **Total sessions:** 48 (including backfills)
+- **Total agent time:** ~33h 55m
+- **Total with user margin (10%):** ~37h 25m
 - **Average session length:** ~42m
 
 ## Success Rates
-- **Actions attempted:** 348
-- **First-try success:** 341 (98%)
-- **Required retry:** 6 (2%)
+- **Actions attempted:** 419
+- **First-try success:** 407 (97%)
+- **Required retry:** 11 (3%)
 - **Failed:** 1 (<1%)
 
 ## Problems
-- **Total encountered:** 35
-- **Resolved:** 28 (80%)
+- **Total encountered:** 45
+- **Resolved:** 38 (84%)
 - **Workarounds:** 7
 - **Unresolved:** 0
-- **Most common category:** DA compatibility / content handling
+- **Most common category:** CSS/styling
 
 ## Problem Categories
 
 | Category | Count | Examples |
 |----------|-------|---------|
 | DA compatibility | 5 | URL mangling, file reference mismatch, content flattening, image stripping |
-| CSS/styling | 7 | Tab truncation (multiple attempts), stylelint false positive, fallback font width, body font-size mismatch, mega-panel positioning, announcement bar layout, CTA button decoration |
+| CSS/styling | 15 | Tab truncation, stylelint false positive, fallback font width, body font-size mismatch, mega-panel positioning, announcement bar layout, CTA button decoration, scroll-reveal invisible in screenshots, mobile paragraph spacing too large, page height padding penalty, grid-row -1 implicit rows, author bio grid on wrong page, results.json accumulation, blanket max-width broke wide-layout blog pages |
 | Git/environment | 5 | safe.directory error, filesystem access, push rejected (rebase needed), push failed (no credentials) x2 |
 | Tooling | 3 | convert-all-md.js corrupts EDS block HTML, subagent Bash/Playwright auto-denied, pixelmatch v7 ESM default export |
-| Test infra | 1 | results.json overwritten between Playwright projects (module re-initialization) |
+| Test infra | 3 | results.json overwritten between Playwright projects (module re-initialization), results.json accumulates across test runs, scroll-reveal opacity:0 hides content in screenshots |
 | Lint | 2 | no-use-before-define in image-slider.js, no-descending-specificity in image-slider.css |
 | Performance | 1 | Animation load timeout too slow |
 | File sync | 1 | HTML variants stale after markdown edit |
@@ -81,3 +81,10 @@
 | 038 | 2026-03-06 | ~20m | ~22m | 7 | 100% |
 | 039 | 2026-03-06 | ~20m | ~22m | 6 | 100% |
 | 040 | 2026-03-09 | ~35m | ~39m | 14 | 100% |
+| 041 | 2026-03-09 | ~10m | ~11m | 7 | 100% |
+| 042 | 2026-03-09 | ~2h 15m | ~2h 29m | 14 | 86% (2 retries) |
+| 043 | 2026-03-09 | ~45m | ~50m | 10 | 90% (1 retry) |
+| 044 | 2026-03-09 | ~25m | ~28m | 8 | 100% |
+| 045 | 2026-03-09 | ~30m | ~33m | 12 | 92% (1 retry) |
+| 046 | 2026-03-09 | ~35m | ~39m | 9 | 100% |
+| 047 | 2026-03-09 | ~30m | ~33m | 11 | 100% |
