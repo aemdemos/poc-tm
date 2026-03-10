@@ -711,6 +711,130 @@ main .section.narrow > div {
 }
 
 /* ============================================================
+   TEMPLATE: COMPANY-UTILITY
+   ============================================================ */
+
+/* --- Hide duplicate "Three principles" section (5th) --- */
+body.company-utility main > .section:nth-of-type(5) {
+  display: none;
+}
+
+/* --- Section padding (matching original) --- */
+body.company-utility main > .section:first-of-type {
+  padding-top: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xl);
+}
+
+body.company-utility main > .section:nth-of-type(2) {
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
+}
+
+body.company-utility main > .section:nth-of-type(3),
+body.company-utility main > .section:nth-of-type(4),
+body.company-utility main > .section:nth-of-type(6) {
+  padding-top: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xxl);
+}
+
+/* --- Angled background sections (4 & 7) --- */
+body.company-utility main > .section:nth-of-type(4),
+body.company-utility main > .section:nth-of-type(7) {
+  position: relative;
+  overflow: visible;
+  margin-top: var(--spacing-xxl);
+  margin-bottom: var(--spacing-xxl);
+}
+
+body.company-utility main > .section:nth-of-type(4)::before,
+body.company-utility main > .section:nth-of-type(4)::after,
+body.company-utility main > .section:nth-of-type(7)::before,
+body.company-utility main > .section:nth-of-type(7)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: var(--spacing-xxl);
+  background-color: inherit;
+}
+
+body.company-utility main > .section:nth-of-type(4)::before,
+body.company-utility main > .section:nth-of-type(7)::before {
+  top: calc(-1 * var(--spacing-xxl));
+  clip-path: polygon(0 100%, 100% 0, 100% 100%, 0 100%);
+}
+
+body.company-utility main > .section:nth-of-type(4)::after,
+body.company-utility main > .section:nth-of-type(7)::after {
+  bottom: calc(-1 * var(--spacing-xxl));
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 100%);
+}
+
+/* --- Section 4: Three principles — light purple background --- */
+body.company-utility main > .section:nth-of-type(4) {
+  background-color: var(--color-ink-blue-5);
+}
+
+/* --- Section 6: Milestones — logo images in horizontal row --- */
+body.company-utility main > .section:nth-of-type(6) .default-content-wrapper {
+  text-align: center;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.company-utility main > .section:nth-of-type(6) .default-content-wrapper > p:has(> picture) {
+  display: inline-block;
+  margin: var(--spacing-s) var(--spacing-m);
+  vertical-align: middle;
+}
+
+body.company-utility main > .section:nth-of-type(6) .default-content-wrapper > p:has(> picture) picture img {
+  max-height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* --- Section 7: Awards — gold background, centered badges --- */
+body.company-utility main > .section:nth-of-type(7) {
+  background-color: var(--color-gold);
+  text-align: center;
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.company-utility main > .section:nth-of-type(7) .default-content-wrapper > p:has(> picture) {
+  display: inline-block;
+  margin: var(--spacing-s);
+  vertical-align: top;
+}
+
+body.company-utility main > .section:nth-of-type(7) .default-content-wrapper > p:has(> picture) picture img {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* --- Section 8: Leadership — bottom padding, side-by-side buttons --- */
+body.company-utility main > .section:nth-of-type(8) {
+  padding-top: var(--spacing-xl);
+  padding-bottom: 150px;
+}
+
+body.company-utility main > .section:nth-of-type(8) .default-content-wrapper .button-container {
+  display: inline-block;
+  margin-right: var(--spacing-s);
+}
+
+/* --- Eyebrow styling for first-child paragraphs before h2 --- */
+body.company-utility main > .section:nth-of-type(6) .default-content-wrapper > p:first-child,
+body.company-utility main > .section:nth-of-type(8) .default-content-wrapper > p:first-child {
+  font-size: var(--eyebrow-font-size);
+  font-weight: 400;
+  line-height: 22px;
+  margin-bottom: var(--spacing-xs);
+}
+
+/* ============================================================
    BLOG / ARTICLE LAYOUT
    ============================================================ */
 
