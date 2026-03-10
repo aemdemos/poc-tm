@@ -858,7 +858,15 @@ body.built-for-audience main > .section:first-of-type .default-content-wrapper >
 /* --- Hero section: constrain text width to leave room for image --- */
 body.built-for-audience main > .section:first-of-type {
   padding-top: var(--spacing-xxl);
-  padding-bottom: 0;
+  padding-bottom: var(--spacing-xl);
+}
+
+/* Hero description: 20px / 32.5px to match original */
+/* stylelint-disable-next-line no-descending-specificity */
+body.built-for-audience main > .section:first-of-type .default-content-wrapper > p {
+  font-size: 20px;
+  line-height: 1.625;
+  margin-bottom: 32px;
 }
 
 @media (width >= 900px) {
@@ -874,9 +882,26 @@ body.built-for-audience main > .section {
   padding-bottom: var(--spacing-xl);
 }
 
-/* --- Metadata section: hide --- */
+/* --- By the Numbers section (third section): centered counter layout --- */
+body.built-for-audience main > .section:nth-of-type(3) .default-content-wrapper {
+  text-align: center;
+}
+
+/* Counter description text: paragraphs after h2, displayed as centered inline items */
+/* stylelint-disable-next-line no-descending-specificity */
+body.built-for-audience main > .section:nth-of-type(3) .default-content-wrapper > h2 ~ p {
+  display: inline-block;
+  margin: var(--spacing-l) var(--spacing-l) 0;
+  font-size: var(--body-font-size-m);
+  line-height: 1.625;
+}
+
+/* --- Hide empty section (metadata processed) --- */
+/* stylelint-disable-next-line no-descending-specificity */
+body.built-for-audience main > .section:empty,
 body.built-for-audience main > .section.metadata-container {
   display: none;
+  padding: 0;
 }
 
 /* ============================================================
