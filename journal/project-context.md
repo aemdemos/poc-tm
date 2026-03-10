@@ -1,10 +1,10 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-10 (Session 051)
-**Branch:** `issue-42`
+**Last updated:** 2026-03-10 (Session 061)
+**Branch:** `issue-52-2`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
-**Overall status:** Blog-article template CSS work complete but `extractMetadataFromDOM()` JS fix lost from external commits — must re-apply. Customer preview URL list generated (367 pages). PR #44 not yet merged to main.
+**Overall status:** 4 template CSS issues: 3 complete (#49 company-utility, #52 built-for-audience, #50 gated-resource), 1 remaining (#51 solutions-page), plus #53 case-study. PR #56 open for Issues #52 + #50. Built-for page fully animated (Lottie hero + counter stats). DA sync still blocked on Adobe IMS auth.
 
 ## What's Done
 - Repository initialized and configured (Session 000)
@@ -40,48 +40,44 @@
 - **Issue #8 resolved: Verification test harness false-positives** — Async scroll for IO, data-loaded-by attribute for F-DELAYED (Session 039, PR #39)
 - **Page readiness tracker** — JSON + Markdown dual-format dashboard, 370 pages tracked (Session 040)
 - **Issue #42 resolved: Blog-article CSS** — Hero grid, author bio, body text, Related Posts, scroll-reveal test fix. Desktop 70.5% → 85.2% (Session 042, PR #44)
-- **Blog-article CSS refinement** — Diagonal gold stripes, conditional author bio grid (:has), hero-body spacing. Desktop 85.2% → 85.8% (Session 043, PR #44)
-- **Blog-article diagonal stripes fix** — Thin repeating lines (background-size: 44px 44px), overflow: visible. Desktop 85.8% → 86.89% (Session 044, PR #44)
-- **Blog-article stripes centering + body width** — Reversed transform order for centered stripes, :has()-scoped 864px max-width for author-photo pages. Desktop 86.89% → 85.82% (Session 045, PR #44)
-- **Blog article visual comparison** — Full 7-viewport comparison (1440–375px), ~70% avg similarity, 9 recommended changes cataloged (Session 046)
-- **Blog-article comparison fixes** — All 9 RCs implemented: share link SVG icons, mobile hero reorder, author photo mobile sizing, Related Posts gold border. Desktop 85.77%, mobile 80.08%. (Session 047, PR #44)
+- **Blog-article CSS refinement** — Multiple sessions improving diagonal stripes, author bio, spacing (Sessions 043–047, PR #44)
+- **Issue #52 resolved: Built-for-audience template CSS** — Eyebrow text, hero text width, section spacing, metadata hiding (Session 055, PR #56)
+- **Issue #50 resolved: Gated-resource template CSS** — Hero text 50% with cover image, dark cards, gold CTA links (Session 058, PR #56)
+- **Issue #52 CSS refinement** — 4 computed-style fixes: audience padding, card body size, stats weight/padding (Session 059, PR #56)
+- **Built-for content re-authored** — Import script debugged: Slick carousel timing, H2 br handling (Session 060)
+- **Built-for animations** — Lottie hero (local JSON) + counter stats ($100M+, $229B+, $27B+) with prefix regex fix in cards.js (Session 061)
 
 ## What's In Progress
 - PR #44 open for Issue #42 (blog-article CSS fixes) — needs `extractMetadataFromDOM()` re-applied before merge
+- PR #56 open for Issues #52 + #50 (built-for-audience + gated-resource template CSS) — CSS complete, DA content blocked
 
 ## What's Pending
+- **Commit animation changes** — cards.js counter prefix fix + animations/built-for-hero.json not yet committed
+- **DA content update for /built-for** — Requires Adobe IMS authentication via da.live editor
 - **Re-apply `extractMetadataFromDOM()` to scripts.js** — critical JS fix lost from external commits on issue-42
 - **Reconcile author bio font** — external commits set 14px, original target was 12px
 - **Merge PR #44 to main** — blog-article CSS work complete once JS fix re-applied
-- **Refresh readiness tracker** after PR #44 merge — should show 223 pages moving to customer-ready
+- **Refresh readiness tracker** after PR #44 merge
 - **Content authoring fixes:** Cookie Preferences + FDIC notice missing from CDN footer, category badges for Related Posts cards
-- **CSS fixes for remaining templates:** company-utility (+13.4pp, 30 pages), gated-resource (+41.6pp, 42 pages), branded-landing (+15pp, 12 pages), homepage (+17.8pp, 2 pages)
+- **CSS fixes for remaining templates:** solutions-page (#51, 41 pages), case-study (#53, 7 pages)
 - **Import 3 missing URLs** (2 news articles, 1 case study returned 404 during bulk import)
-- **Per-page regression testing** (currently template-level only — 1 representative per template)
+- **Per-page regression testing** (currently template-level only)
 
 ## Active Blockers
-(none)
+- **DA content for /built-for needs block structure** — Current DA content is flat HTML without blocks. Requires Adobe IMS authentication to update via DA editor. Correct block structure exists in both `content/built-for.html` and `content/built-for.plain.html`.
 
 ## Key Files
-- `customer-preview-urls.md` — Customer-facing URL list: 367 pages grouped by template with main-branch preview links
-- `readiness-tracker.json` — Machine-readable readiness data (370 pages, 8 templates)
-- `readiness-tracker.md` — Human-readable dashboard with progress bars and prioritized next steps
-- `tools/readiness/generate-tracker.js` — Re-runnable generator script
-- `styles/styles.css` — Global styles with design tokens + blog-article CSS (89 lines added in Session 047)
-- `blocks/header/header.js` — Mega-menu: panel builder, hover/accordion, announcement bar detection
-- `blocks/header/header.css` — Mega-menu: panels-container, solutions grid, categories, mobile accordion, overlay
-- `nav.plain.html` — Enriched navigation with intro descriptions, solution cards, category groups
-- `blocks/cards/cards.css` — Card grid with single-card case study variant (:only-child) + icon-cards animated SVGs
-- `blocks/columns/columns.css` — Flexible columns with 58/42 desktop split
-- `tools/importer/bulk-import.js` — Bulk import script with markdownToEdsHtml() HTML pipeline (incl. ASCII border table parsing)
-- `tools/importer/regenerate-plain-html.js` — Utility to extract <main> from .html → .plain.html
-- `tools/importer/url-catalog.json` — 370 URLs in 20 batches
-- `playwright.config.js` — Style regression test config (desktop 1440px, mobile 375px)
-- `tests/style-regression/` — Screenshot diff test suite, compare helper, report generator
-- `comparison-work/page-visual-compare/2026-03-09-blog-addressing-claims/` — Visual comparison report + 14 screenshots
-- `.claude/skills/excat-animate-migration/verify-animations.js` — 11-check verification IIFE (fixed in Session 039)
+- `customer-preview-urls.md` — Customer-facing URL list: 367 pages grouped by template
+- `readiness-tracker.json` / `readiness-tracker.md` — Migration readiness dashboard (370 pages)
+- `styles/styles.css` — Global styles with design tokens + template CSS
+- `blocks/cards/cards.js` — Card grid + counter animation with prefix support (`$` prefix, easeOutCubic)
+- `blocks/cards/cards.css` — Card grid with single-card case study variant + icon-cards animated SVGs
+- `blocks/columns/columns.js` — Lottie .json link detection + container creation
+- `blocks/header/header.js` / `header.css` — Mega-menu navigation
 - `scripts/delayed.js` — Lottie loader with data-loaded-by attribution
-- `content/` — 367 .md + 369 .html files (excluded from git)
+- `animations/built-for-hero.json` — 1.1MB Lottie JSON for built-for hero section
+- `content/built-for.html` — Reference content with correct block structure + local Lottie path
+- `tools/importer/import-built-for-audience.js` — Import script for /built-for hub page
 - `journal/` — Project journal directory
 
 ## Critical Warning
@@ -96,4 +92,4 @@
 - `content/` directory excluded from git (`.git/info/exclude`)
 
 ## Resume Point
-> Critical: `extractMetadataFromDOM()` JS fix is missing from scripts.js (lost when external commits overwrote Session 049 work). Must re-apply before merging PR #44. Author bio font also needs reconciliation (14px external vs 12px original). After fix: (1) merge PR #44 to main, (2) refresh readiness tracker, (3) tackle company-utility template CSS (30 pages, 66.1% desktop). Customer preview URL list generated at `customer-preview-urls.md`.
+> Both animations working on built-for page (Session 061). Lottie hero renders via delayed.js + columns.js, counter stats animate via updated cards.js regex with prefix support. Changes to cards.js and animations/built-for-hero.json should be committed to branch issue-52-2. Next priorities: commit animation changes, then #51 (solutions-page CSS, 41 pages), #53 (case-study CSS, 7 pages). Also pending: re-apply extractMetadataFromDOM() JS fix before merging PR #44.

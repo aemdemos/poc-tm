@@ -835,6 +835,232 @@ body.company-utility main > .section:nth-of-type(8) .default-content-wrapper > p
 }
 
 /* ============================================================
+   TEMPLATE: BUILT-FOR-AUDIENCE
+   ============================================================ */
+
+/* --- Section spacing --- */
+/* stylelint-disable-next-line no-descending-specificity */
+body.built-for-audience main > .section {
+  padding-top: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xl);
+}
+
+/* --- Eyebrow text: first <p> in sections with default content before blocks --- */
+/* stylelint-disable-next-line no-descending-specificity */
+body.built-for-audience main > .section .default-content-wrapper > p:first-child {
+  font-size: var(--eyebrow-font-size);
+  font-weight: 400;
+  line-height: 22px;
+  margin-bottom: var(--spacing-xs);
+}
+
+/* --- Hero section (columns block): text + Lottie animation --- */
+body.built-for-audience main > .section:first-of-type {
+  padding-top: var(--spacing-xxl);
+  padding-bottom: 0;
+}
+
+/* Hero description paragraph */
+/* stylelint-disable-next-line no-descending-specificity */
+body.built-for-audience main > .section:first-of-type .columns p {
+  font-size: 20px;
+  line-height: 1.625;
+  margin-bottom: 32px;
+}
+
+/* Hero CTA button */
+body.built-for-audience main > .section:first-of-type .columns a.button {
+  background-color: var(--color-bright-blue);
+  border-color: var(--color-bright-blue);
+  color: var(--color-white);
+  padding: 13px 33px;
+  border-radius: 3px;
+  font-size: var(--body-font-size-xl);
+}
+
+/* --- Use Cases section (columns block): text + key-points checklist --- */
+body.built-for-audience main > .section.columns-container:nth-of-type(2) .columns h3 {
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 1.39;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.built-for-audience main > .section.columns-container:nth-of-type(2) .columns li {
+  font-size: var(--body-font-size-m);
+  line-height: 1.625;
+  padding-left: 4px;
+}
+
+/* --- Audience Cards section (light bg) --- */
+body.built-for-audience main > .section.light {
+  background-color: var(--color-ink-blue-5);
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+body.built-for-audience main > .section.light .cards .cards-card-body h3 {
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 1.39;
+  color: var(--text-color);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.built-for-audience main > .section.light .cards .cards-card-body p {
+  font-size: 16px;
+  line-height: 1.625;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.built-for-audience main > .section.light .cards .cards-card-body a {
+  color: var(--color-bright-blue);
+  font-weight: 400;
+  font-size: var(--body-font-size-m);
+  text-decoration: none;
+}
+
+/* Override auto-button styling on audience card links */
+body.built-for-audience main > .section.light .cards .cards-card-body a.button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  color: var(--color-bright-blue);
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  display: inline;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.built-for-audience main > .section.light .cards > ul > li {
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.built-for-audience main > .section.light .cards > ul > li:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+/* --- By the Numbers section (center, stat cards) --- */
+body.built-for-audience main > .section.center {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+body.built-for-audience main > .section.center .default-content-wrapper {
+  text-align: center;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.built-for-audience main > .section.center .cards .cards-card-body > p:first-child {
+  font-weight: 400;
+}
+
+/* --- Hide empty section (metadata processed) --- */
+/* stylelint-disable-next-line no-descending-specificity */
+body.built-for-audience main > .section:empty,
+body.built-for-audience main > .section.metadata-container {
+  display: none;
+  padding: 0;
+}
+
+/* ============================================================
+   TEMPLATE: GATED-RESOURCE
+   ============================================================ */
+
+/* --- Hero section: tighten spacing, constrain text --- */
+body.gated-resource main > .section:first-of-type {
+  padding-bottom: var(--spacing-s);
+}
+
+@media (width >= 900px) {
+  body.gated-resource main > .section:first-of-type .default-content-wrapper {
+    max-width: 50%;
+  }
+
+  /* Cover image: float right beside the title */
+  body.gated-resource main > .section:first-of-type .default-content-wrapper p:has(picture) {
+    float: right;
+    width: 45%;
+    margin-top: -80px;
+  }
+
+  body.gated-resource main > .section:first-of-type .default-content-wrapper p:has(picture) picture img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  /* Clearfix for float */
+  body.gated-resource main > .section:first-of-type .default-content-wrapper::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+/* --- Embed section: reduce top spacing, flow from hero --- */
+body.gated-resource main > .section.embed-container {
+  padding-top: var(--spacing-l);
+  padding-bottom: var(--spacing-xxl);
+}
+
+/* Description paragraph above form heading */
+/* stylelint-disable-next-line no-descending-specificity */
+body.gated-resource main > .section.embed-container .default-content-wrapper > p:first-child {
+  font-size: var(--body-font-size-xl);
+  line-height: 1.625;
+  margin-bottom: var(--spacing-l);
+}
+
+/* "Downloadable White Paper" h2 */
+body.gated-resource main > .section.embed-container h2 {
+  font-size: var(--heading-font-size-xl);
+  margin-bottom: var(--spacing-m);
+}
+
+/* --- Dark cards section: Related Resources --- */
+body.gated-resource main > .section.dark {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+body.gated-resource main > .section.dark h2 {
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Card title: increase from default 14px strong to readable size */
+/* stylelint-disable-next-line no-descending-specificity */
+body.gated-resource main > .section.dark .cards .cards-card-body p strong {
+  font-size: var(--heading-font-size-l);
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-white);
+}
+
+/* Card body text */
+/* stylelint-disable-next-line no-descending-specificity */
+body.gated-resource main > .section.dark .cards .cards-card-body p {
+  font-size: var(--body-font-size-s);
+  line-height: 1.5;
+}
+
+/* Card CTA link */
+/* stylelint-disable-next-line no-descending-specificity */
+body.gated-resource main > .section.dark .cards .cards-card-body a {
+  color: var(--color-gold);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+body.gated-resource main > .section.dark .cards .cards-card-body a:hover {
+  text-decoration: underline;
+}
+
+/* ============================================================
    BLOG / ARTICLE LAYOUT
    ============================================================ */
 
@@ -1042,6 +1268,7 @@ body.blog-article main > .section:first-of-type .columns p {
 }
 
 /* ---- Blog Cards (Related Posts): title/description separation ---- */
+/* stylelint-disable-next-line no-descending-specificity */
 body.blog-article .section.dark.cards-container .cards li {
   border-radius: 8px;
   overflow: hidden;
@@ -1049,6 +1276,7 @@ body.blog-article .section.dark.cards-container .cards li {
   border-top: 3px solid var(--color-gold);
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 body.blog-article .section.dark.cards-container .cards-card-body strong {
   display: block;
   font-size: var(--heading-font-size-l);
@@ -1061,6 +1289,7 @@ body.blog-article .section.dark.cards-container .cards-card-body p {
   color: rgb(248 249 250 / 85%);
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 body.blog-article .section.dark.cards-container .cards-card-body a.button {
   background: transparent;
   border: none;
@@ -1137,6 +1366,7 @@ body.blog-article main > .section:nth-of-type(3) .default-content-wrapper p {
   color: var(--color-text);
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 body.blog-article main > .section:nth-of-type(3) .default-content-wrapper p a {
   display: inline-flex;
   align-items: center;

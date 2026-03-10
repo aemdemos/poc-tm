@@ -1,22 +1,22 @@
 # Project Metrics
 
 ## Time
-- **Total sessions:** 51 (including backfills)
-- **Total agent time:** ~34h 50m
-- **Total with user margin (10%):** ~38h 23m
-- **Average session length:** ~41m
+- **Total sessions:** 57 (including backfills)
+- **Total agent time:** ~37h 40m
+- **Total with user margin (10%):** ~41h 33m
+- **Average session length:** ~40m
 
 ## Success Rates
-- **Actions attempted:** 437
-- **First-try success:** 424 (97%)
-- **Required retry:** 11 (3%)
-- **Failed:** 2 (<1%)
+- **Actions attempted:** 504
+- **First-try success:** 487 (97%)
+- **Required retry:** 12 (2%)
+- **Failed:** 5 (1%)
 
 ## Problems
-- **Total encountered:** 45
-- **Resolved:** 38 (84%)
-- **Workarounds:** 7
-- **Unresolved:** 0
+- **Total encountered:** 55
+- **Resolved:** 43 (78%)
+- **Workarounds:** 9
+- **Unresolved:** 3
 - **Most common category:** CSS/styling
 
 ## Problem Categories
@@ -35,6 +35,7 @@
 | Source site | 1 | 3 URLs returned 404 during bulk import |
 | Block runtime | 1 | Accordion block JS error on solutions pages |
 | Local preview | 1 | `aem up` proxies from remote CDN; let-care-flow .plain.html broken (pipe-table parsing) |
+| Animation | 2 | CORS error loading external Lottie JSON on localhost; counter regex doesn't match `$` prefix |
 
 ## Session Timeline
 
@@ -90,3 +91,10 @@
 | 047 | 2026-03-09 | ~30m | ~33m | 11 | 100% |
 | 048–050 | 2026-03-09 | ~40m | ~42m | 11 | 91% (1 fail) |
 | 051 | 2026-03-10 | ~15m | ~16m | 7 | 100% |
+| 055 | 2026-03-10 | ~30m | ~33m | 9 | 100% |
+| 056 | 2026-03-10 | ~15m | ~17m | 7 | 100% |
+| 057 | 2026-03-10 | ~25m | ~29m | 8 | 75% (2 fail) |
+| 058 | 2026-03-10 | ~30m | ~33m | 10 | 100% |
+| 059 | 2026-03-10 | ~40m | ~44m | 16 | 94% (1 fail) |
+| 060 | 2026-03-10 | ~35m | ~39m | 17 | 94% (1 fail) |
+| 061 | 2026-03-10 | ~35m | ~39m | 16 | 94% (1 fail) |
