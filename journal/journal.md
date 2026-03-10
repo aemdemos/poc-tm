@@ -2233,3 +2233,91 @@
 
 ### Carry-Forward
 > All 9 comparison report fixes addressed. Blog-article regression scores stable: desktop 85.77%, mobile 80.08%. PR #44 pushed. Next steps: (1) merge PR #44 to main, (2) refresh readiness tracker (223 pages should move to customer-ready), (3) tackle company-utility template CSS (30 pages, 66.6% desktop). Content authoring tasks: add Cookie Preferences + FDIC notice to CDN footer, add category badges to Related Posts cards.
+
+---
+
+## Sessions 048–050 — 2026-03-09 — [BACKFILL] Blog hero/author/spacing fixes + commit attempt
+
+**Branch:** `issue-42`
+**Duration:** ~40m (agent) + 5% = ~42m
+**Session goal:** Fix blog hero font, author bio size, section spacing; commit and push
+
+> **Note:** Sessions 048–050 occurred in a prior conversation that ran out of context. Journal entries were written to disk in that session but were subsequently overwritten by external commits. This backfill is reconstructed from the conversation summary.
+
+### Actions
+- [x] Scrape original page computed styles for hero h1, author bio, spacing (~5m) — pass
+- [x] Navigate local preview and extract computed styles for comparison (~5m) — pass
+- [x] Discover root cause: `body.blog-article` class not applied — metadata extraction timing (~5m) — pass
+- [x] Fix scripts.js: add `extractMetadataFromDOM()` before `decorateTemplateAndTheme()` (~3m) — pass
+- [x] Fix styles.css: blog hero h1 `font-weight: 700` (~2m) — pass
+- [x] Fix styles.css: author bio paragraph `font-size: 12px; line-height: 1.625` (~2m) — pass
+- [x] Fix styles.css: blog section 2 `padding-top: var(--spacing-xl)` (48px) (~2m) — pass
+- [x] Verify at desktop viewport (1280px): all fixes confirmed via computed styles (~3m) — pass
+- [x] Fix stylelint: merge duplicate `.cards li` selector, add disable comment (~3m) — pass
+- [x] Commit as `c43977e` (~1m) — pass
+- [x] Push to remote (~1m) — fail (no credentials)
+
+### Outcomes
+- **Completed:** `extractMetadataFromDOM()` JS fix, hero font-weight 700, author bio 12px, section spacing 48px, lint fixes. Committed as `c43977e`.
+- **Partial:** Push failed — no GitHub credentials in environment
+
+### Problems Encountered
+
+| Problem | Severity | Resolved? | Resolution | Related Action # |
+|---------|----------|-----------|------------|-----------------|
+| `body.blog-article` class never applied — metadata block processed after `decorateTemplateAndTheme()` | blocker | yes | Added `extractMetadataFromDOM()` in scripts.js | #3, #4 |
+| Git push failed: no credentials | major | no | User needs to push manually | #11 |
+
+### Key Decisions
+- Used `font-weight: 700` for blog h1 (project's bold variant) instead of matching original's "Avenir LT Pro Bold" at weight 500
+- `extractMetadataFromDOM()` benefits ALL pages with template metadata, not just blog articles
+
+### Files Changed
+- `scripts/scripts.js` — Added `extractMetadataFromDOM()` function
+- `styles/styles.css` — Hero h1 bold, author bio 12px, section spacing 48px, lint fixes
+
+### Commits
+- `c43977e` — Fix blog-article template: metadata extraction timing, hero font, author bio size, section spacing
+
+### Carry-Forward
+> **IMPORTANT:** Commit `c43977e` was created but NOT pushed. Subsequently, 5 external commits by Tyler Morris were pushed to `issue-42` (337416b..4a02682, "updates space between hero/author/main text"). These external commits made their own spacing adjustments (28px/50px padding, 14px author bio) but the critical `extractMetadataFromDOM()` JS fix is MISSING from the current codebase. This fix must be re-applied before merging PR #44.
+
+---
+
+## Session 051 — 2026-03-10 — Daily status checkup + customer preview URL list
+
+**Branch:** `issue-42`
+**Duration:** 15m (agent) + 5% = ~16m
+**Session goal:** Run daily status checkup, assess project state, generate customer-ready URL list
+
+### Actions
+- [x] Read all journal data sources (project-context, journal, index, metrics, problems-reference, time-tracking) (~3m) — pass
+- [x] Check git status and recent commits on issue-42 and main (~2m) — pass
+- [x] Discover Session 049 `extractMetadataFromDOM()` fix missing from codebase (~2m) — pass
+- [x] Verify external commits (Tyler Morris) overwrote Session 049 work (~2m) — pass
+- [x] Read readiness-tracker.json for page counts and template scores (~2m) — pass
+- [x] Generate customer-preview-urls.md with all 367 imported pages grouped by template (~3m) — pass
+- [x] Write session journal entry (~1m) — pass
+
+### Outcomes
+- **Completed:** Full status briefing delivered, customer preview URL list generated (367 pages across 8 templates)
+- **Key finding:** `extractMetadataFromDOM()` JS fix from Session 049 is missing — must be re-applied
+
+### Problems Encountered
+
+| Problem | Severity | Resolved? | Resolution | Related Action # |
+|---------|----------|-----------|------------|-----------------|
+| Session 049 commit `c43977e` not in git history — overwritten by external commits | major | no | Needs re-application of `extractMetadataFromDOM()` to scripts.js | #3, #4 |
+
+### Key Decisions
+- Used `https://main--poc-tm--aemdemos.aem.page/` as base URL for customer preview list (main branch)
+- Noted PR #44 must merge before blog improvements appear on main
+
+### Files Changed
+- `customer-preview-urls.md` — New file: 367 imported page URLs grouped by template with main-branch preview links
+
+### Commits
+(none — read-only session)
+
+### Carry-Forward
+> Customer preview URL list generated at `customer-preview-urls.md`. Critical finding: `extractMetadataFromDOM()` JS fix is missing from current codebase (lost when external commits overwrote Session 049 work). Must re-apply before merging PR #44. Next steps: (1) re-add `extractMetadataFromDOM()` to scripts.js, (2) reconcile author bio font (14px external vs 12px original), (3) merge PR #44 to main, (4) refresh readiness tracker, (5) tackle company-utility template CSS (30 pages, 66.1% desktop).
