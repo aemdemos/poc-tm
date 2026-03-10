@@ -112,11 +112,38 @@ export function decorateMain(main) {
 }
 
 /**
+ * Extract metadata from the metadata block table in the DOM before decoration.
+ * This ensures template/theme meta tags are available for decorateTemplateAndTheme().
+ */
+function extractMetadataFromDOM() {
+  const metadataBlock = document.querySelector('main .metadata');
+  if (!metadataBlock) return;
+  metadataBlock.querySelectorAll(':scope > div').forEach((row) => {
+    const cells = [...row.children];
+    if (cells.length >= 2) {
+      const key = cells[0].textContent.trim().toLowerCase();
+      const value = cells[1].textContent.trim();
+      if (key && value && !document.querySelector(`meta[name="${key}"]`)) {
+        if (key === 'title') {
+          document.title = value;
+        } else {
+          const tag = document.createElement('meta');
+          tag.setAttribute('name', key);
+          tag.setAttribute('content', value);
+          document.head.appendChild(tag);
+        }
+      }
+    }
+  });
+}
+
+/**
  * Loads everything needed to get to LCP.
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
   document.documentElement.lang = 'en';
+  extractMetadataFromDOM();
   decorateTemplateAndTheme();
   if (getMetadata('breadcrumbs').toLowerCase() === 'true') {
     doc.body.dataset.breadcrumbs = true;

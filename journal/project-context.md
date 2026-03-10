@@ -1,10 +1,10 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-09 (Session 047, commit af80abb)
+**Last updated:** 2026-03-10 (Session 051)
 **Branch:** `issue-42`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
-**Overall status:** Blog-article template at 85.77% desktop, 80.08% mobile. All 9 comparison report fixes implemented. 223 pages eligible for customer-ready status. PR #44 updated.
+**Overall status:** Blog-article template CSS work complete but `extractMetadataFromDOM()` JS fix lost from external commits — must re-apply. Customer preview URL list generated (367 pages). PR #44 not yet merged to main.
 
 ## What's Done
 - Repository initialized and configured (Session 000)
@@ -47,10 +47,12 @@
 - **Blog-article comparison fixes** — All 9 RCs implemented: share link SVG icons, mobile hero reorder, author photo mobile sizing, Related Posts gold border. Desktop 85.77%, mobile 80.08%. (Session 047, PR #44)
 
 ## What's In Progress
-- PR #44 open for Issue #42 (blog-article CSS fixes) — ready to merge
+- PR #44 open for Issue #42 (blog-article CSS fixes) — needs `extractMetadataFromDOM()` re-applied before merge
 
 ## What's Pending
-- **Merge PR #44 to main** — blog-article CSS work complete
+- **Re-apply `extractMetadataFromDOM()` to scripts.js** — critical JS fix lost from external commits on issue-42
+- **Reconcile author bio font** — external commits set 14px, original target was 12px
+- **Merge PR #44 to main** — blog-article CSS work complete once JS fix re-applied
 - **Refresh readiness tracker** after PR #44 merge — should show 223 pages moving to customer-ready
 - **Content authoring fixes:** Cookie Preferences + FDIC notice missing from CDN footer, category badges for Related Posts cards
 - **CSS fixes for remaining templates:** company-utility (+13.4pp, 30 pages), gated-resource (+41.6pp, 42 pages), branded-landing (+15pp, 12 pages), homepage (+17.8pp, 2 pages)
@@ -61,6 +63,7 @@
 (none)
 
 ## Key Files
+- `customer-preview-urls.md` — Customer-facing URL list: 367 pages grouped by template with main-branch preview links
 - `readiness-tracker.json` — Machine-readable readiness data (370 pages, 8 templates)
 - `readiness-tracker.md` — Human-readable dashboard with progress bars and prioritized next steps
 - `tools/readiness/generate-tracker.js` — Re-runnable generator script
@@ -93,4 +96,4 @@
 - `content/` directory excluded from git (`.git/info/exclude`)
 
 ## Resume Point
-> All 9 comparison report fixes implemented and pushed to PR #44 (commit `bb1957d`). Blog-article: desktop 85.77%, mobile 80.08%. Next steps: (1) merge PR #44 to main, (2) refresh readiness tracker (223 pages to customer-ready), (3) tackle company-utility template CSS (30 pages, 66.6% desktop). Content authoring tasks deferred: Cookie Preferences + FDIC notice in CDN footer, category badges in Related Posts cards.
+> Critical: `extractMetadataFromDOM()` JS fix is missing from scripts.js (lost when external commits overwrote Session 049 work). Must re-apply before merging PR #44. Author bio font also needs reconciliation (14px external vs 12px original). After fix: (1) merge PR #44 to main, (2) refresh readiness tracker, (3) tackle company-utility template CSS (30 pages, 66.1% desktop). Customer preview URL list generated at `customer-preview-urls.md`.
