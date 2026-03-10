@@ -895,8 +895,8 @@ body.built-for-audience main > .section.columns-container:nth-of-type(2) .column
 /* --- Audience Cards section (light bg) --- */
 body.built-for-audience main > .section.light {
   background-color: var(--color-ink-blue-5);
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 body.built-for-audience main > .section.light .cards .cards-card-body h3 {
@@ -908,7 +908,7 @@ body.built-for-audience main > .section.light .cards .cards-card-body h3 {
 
 /* stylelint-disable-next-line no-descending-specificity */
 body.built-for-audience main > .section.light .cards .cards-card-body p {
-  font-size: var(--body-font-size-m);
+  font-size: 16px;
   line-height: 1.625;
 }
 
@@ -945,8 +945,18 @@ body.built-for-audience main > .section.light .cards > ul > li:hover {
 }
 
 /* --- By the Numbers section (center, stat cards) --- */
+body.built-for-audience main > .section.center {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
 body.built-for-audience main > .section.center .default-content-wrapper {
   text-align: center;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.built-for-audience main > .section.center .cards .cards-card-body > p:first-child {
+  font-weight: 400;
 }
 
 /* --- Hide empty section (metadata processed) --- */
@@ -999,6 +1009,7 @@ body.gated-resource main > .section.embed-container {
 }
 
 /* Description paragraph above form heading */
+/* stylelint-disable-next-line no-descending-specificity */
 body.gated-resource main > .section.embed-container .default-content-wrapper > p:first-child {
   font-size: var(--body-font-size-xl);
   line-height: 1.625;
