@@ -1,0 +1,35 @@
+{
+  "templates": [
+    {
+      "name": "built-for-audience",
+      "description": "Built-for audience hub page with hero columns (text + Lottie animation), use cases columns (text + key points), audience cards, and stat counters",
+      "urls": [
+        "https://www.zelis.com/built-for/"
+      ],
+      "blocks": [
+        {
+          "name": "columns",
+          "instances": [
+            ".block--hero",
+            ".block--key-points-wrapper"
+          ]
+        },
+        {
+          "name": "cards",
+          "instances": [
+            ".block--audience-cards",
+            ".block--counter-stats"
+          ]
+        },
+        {
+          "name": "section-metadata",
+          "instances": [
+            ".audience-section",
+            ".stats-section"
+          ]
+        }
+      ],
+      "sections": []
+    }
+  ]
+}
