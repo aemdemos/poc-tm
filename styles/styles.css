@@ -488,7 +488,8 @@ main > .section:first-of-type {
 
 /* Light section (lavender tint) */
 main .section.light,
-main .section.highlight {
+main .section.highlight,
+main .section.lavender {
   background-color: var(--color-ink-blue-5);
   padding: var(--section-spacing) 0 var(--spacing-xl) 0;
 }

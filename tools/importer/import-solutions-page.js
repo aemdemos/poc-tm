@@ -515,12 +515,15 @@ function buildTestimonialsSection(document, section, main) {
       }
     }
 
+    // Build attribution div (separate row for quote block decorator)
+    const attrDiv = document.createElement('div');
+
     if (attribution) {
       const attrP = document.createElement('p');
       const em = document.createElement('em');
       em.textContent = attribution;
       attrP.appendChild(em);
-      quoteDiv.appendChild(attrP);
+      attrDiv.appendChild(attrP);
     }
 
     if (caseStudyLink) {
@@ -529,14 +532,13 @@ function buildTestimonialsSection(document, section, main) {
       a.href = stripDomain(caseStudyLink.getAttribute('href'));
       a.textContent = 'View case study';
       linkP.appendChild(a);
-      quoteDiv.appendChild(linkP);
+      attrDiv.appendChild(linkP);
     }
 
     if (quoteDiv.childNodes.length > 0) {
-      main.appendChild(WebImporter.DOMUtils.createTable([
-        ['Quote'],
-        [quoteDiv],
-      ], document));
+      const rows = [['Quote'], [quoteDiv]];
+      if (attrDiv.childNodes.length > 0) rows.push([attrDiv]);
+      main.appendChild(WebImporter.DOMUtils.createTable(rows, document));
     }
   });
 
@@ -595,6 +597,7 @@ function buildCtaSection(document, section, main) {
     if (ctaP) main.appendChild(ctaP);
   }
 
+  main.appendChild(createSectionMetadata(document, 'dark'));
   main.appendChild(document.createElement('hr'));
 }
 
