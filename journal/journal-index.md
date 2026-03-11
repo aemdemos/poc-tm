@@ -64,3 +64,10 @@
 | 064 | 2026-03-10 | Rewrite case-study import script with section classifier | ~50m | 9 completed, 3 problems (2 resolved) |
 | 065 | 2026-03-11 | Context recovery and session journaling | ~5m | 4 completed, 0 problems |
 | 066 | 2026-03-11 | Case-study CSS refinement: 72% → 95.8% visual similarity | ~1h 39m | 11 completed, 3 problems (2 resolved, 1 workaround) |
+| 067 | 2026-03-11 | Case-study section-by-section visual revalidation | ~11m | 5 completed, 0 problems |
+| 068 | 2026-03-11 | Case-study aem.page comparison + hero button delta | ~17m | 6 completed, 1 problem (resolved in 069) |
+| 069 | 2026-03-11 | Fix case-study hero CTA buttons side-by-side | ~28m | 9 completed (1 fail: push), 1 problem (no credentials) |
+| 070 | 2026-03-11 | Push PR #57, merge, plan next steps | ~5m | 4 completed, 0 problems |
+| 071 | 2026-03-11 | Re-run regression tests + refresh readiness tracker | ~17m | 6 completed, 1 problem (resolved) |
+| 072 | 2026-03-11 | Context recovery, daily status checkup, Confluence report | ~11m | 5 completed, 0 problems |
+| 073 | 2026-03-11 | Issue #51 solutions-page deep analysis | ~33m | 10 completed, 2 problems (unresolved — content gaps) |
