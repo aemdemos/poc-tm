@@ -1,10 +1,10 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-10 (Session 061)
-**Branch:** `issue-52-2`
+**Last updated:** 2026-03-11 (Session 066)
+**Branch:** `issue-53`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
-**Overall status:** 4 template CSS issues: 3 complete (#49 company-utility, #52 built-for-audience, #50 gated-resource), 1 remaining (#51 solutions-page), plus #53 case-study. PR #56 open for Issues #52 + #50. Built-for page fully animated (Lottie hero + counter stats). DA sync still blocked on Adobe IMS auth.
+**Overall status:** 5 template CSS issues: 3 complete (#49 company-utility, #52 built-for-audience, #50 gated-resource), 1 at 95.8% similarity (#53 case-study), 1 remaining (#51 solutions-page). PR #56 open for Issues #52 + #50. PR #57 open for Issue #53 (case-study CSS + import script rewrite). Built-for page fully animated. DA sync still blocked on Adobe IMS auth.
 
 ## What's Done
 - Repository initialized and configured (Session 000)
@@ -46,22 +46,26 @@
 - **Issue #52 CSS refinement** — 4 computed-style fixes: audience padding, card body size, stats weight/padding (Session 059, PR #56)
 - **Built-for content re-authored** — Import script debugged: Slick carousel timing, H2 br handling (Session 060)
 - **Built-for animations** — Lottie hero (local JSON) + counter stats ($100M+, $229B+, $27B+) with prefix regex fix in cards.js (Session 061)
+- **Issue #53: Case-study template CSS** — Import script + ~130 lines template CSS (hero, quote, lavender, gold CTA, cards) (Session 062)
+- **Issue #53: Import script rewrite** — Content-based section classifier handles both newer and older WordPress templates; 6 pages fully imported (Session 064)
+- **Issue #53: CSS refinement** — Quote blocks styled with CSS-only approach: 72% → 95.8% visual similarity (Session 066)
 
 ## What's In Progress
 - PR #44 open for Issue #42 (blog-article CSS fixes) — needs `extractMetadataFromDOM()` re-applied before merge
 - PR #56 open for Issues #52 + #50 (built-for-audience + gated-resource template CSS) — CSS complete, DA content blocked
+- PR #57 open for Issue #53 (case-study CSS + import script rewrite) — 95.8% visual similarity achieved
 
 ## What's Pending
-- **Commit animation changes** — cards.js counter prefix fix + animations/built-for-hero.json not yet committed
 - **DA content update for /built-for** — Requires Adobe IMS authentication via da.live editor
 - **Re-apply `extractMetadataFromDOM()` to scripts.js** — critical JS fix lost from external commits on issue-42
 - **Reconcile author bio font** — external commits set 14px, original target was 12px
 - **Merge PR #44 to main** — blog-article CSS work complete once JS fix re-applied
 - **Refresh readiness tracker** after PR #44 merge
 - **Content authoring fixes:** Cookie Preferences + FDIC notice missing from CDN footer, category badges for Related Posts cards
-- **CSS fixes for remaining templates:** solutions-page (#51, 41 pages), case-study (#53, 7 pages)
-- **Import 3 missing URLs** (2 news articles, 1 case study returned 404 during bulk import)
+- **CSS fixes for remaining template:** solutions-page (#51, 41 pages)
+- **Import 2 missing URLs** (2 news articles returned 404 during bulk import)
 - **Per-page regression testing** (currently template-level only)
+- **Commit and push session 066 CSS changes** to PR #57
 
 ## Active Blockers
 - **DA content for /built-for needs block structure** — Current DA content is flat HTML without blocks. Requires Adobe IMS authentication to update via DA editor. Correct block structure exists in both `content/built-for.html` and `content/built-for.plain.html`.
@@ -69,14 +73,13 @@
 ## Key Files
 - `customer-preview-urls.md` — Customer-facing URL list: 367 pages grouped by template
 - `readiness-tracker.json` / `readiness-tracker.md` — Migration readiness dashboard (370 pages)
-- `styles/styles.css` — Global styles with design tokens + template CSS
+- `styles/styles.css` — Global styles with design tokens + template CSS (case-study at 95.8%)
 - `blocks/cards/cards.js` — Card grid + counter animation with prefix support (`$` prefix, easeOutCubic)
 - `blocks/cards/cards.css` — Card grid with single-card case study variant + icon-cards animated SVGs
 - `blocks/columns/columns.js` — Lottie .json link detection + container creation
 - `blocks/header/header.js` / `header.css` — Mega-menu navigation
 - `scripts/delayed.js` — Lottie loader with data-loaded-by attribution
-- `animations/built-for-hero.json` — 1.1MB Lottie JSON for built-for hero section
-- `content/built-for.html` — Reference content with correct block structure + local Lottie path
+- `tools/importer/import-case-study.js` — Import script with content-based section classifier (8 builders: hero, resource-hero, media-callout, lavender, gold-cta, stats, related, content)
 - `tools/importer/import-built-for-audience.js` — Import script for /built-for hub page
 - `journal/` — Project journal directory
 
@@ -84,6 +87,7 @@
 - **NEVER use `convert-all-md.js`** for EDS content files — it corrupts block HTML
 - **`aem up` proxies content from remote CDN** — local content files in `content/` are NOT used for preview
 - **Scroll-reveal hides content in screenshots** — Override `.scroll-reveal { opacity: 1; transform: none; }` before capturing full-page screenshots
+- **Two separate import pipelines** — `bulk-import.js` (parseCaseStudy at line 244) vs `import-case-study.js` (bundled, used by different runner). They are completely independent.
 
 ## Git Notes
 - Remote: `https://github.com/aemdemos/poc-tm.git`
@@ -92,4 +96,4 @@
 - `content/` directory excluded from git (`.git/info/exclude`)
 
 ## Resume Point
-> Both animations working on built-for page (Session 061). Lottie hero renders via delayed.js + columns.js, counter stats animate via updated cards.js regex with prefix support. Changes to cards.js and animations/built-for-hero.json should be committed to branch issue-52-2. Next priorities: commit animation changes, then #51 (solutions-page CSS, 41 pages), #53 (case-study CSS, 7 pages). Also pending: re-apply extractMetadataFromDOM() JS fix before merging PR #44.
+> Session 066 completed. Case-study CSS at 95.8% visual similarity. CSS changes may need committing and pushing to PR #57. Next: (1) commit/push CSS if needed, (2) merge PR #57, (3) tackle Issue #51 solutions-page CSS (41 pages, ~49.6% desktop similarity), (4) re-apply extractMetadataFromDOM() JS fix before merging PR #44.

@@ -59,3 +59,8 @@
 | 059 | 2026-03-10 | Built-for CSS refinement: 4 computed-style fixes + DA content blocker confirmed | ~44m | 14 completed, 1 failed (DA auth), 3 problems (1 resolved) |
 | 060 | 2026-03-10 | Re-author built-for page via content import pipeline (fixed Slick carousel + H2 br bug) | ~39m | 15 completed, 1 failed (first import), 3 problems (3 resolved) |
 | 061 | 2026-03-10 | Animate built-for page: Lottie hero + counter stats (prefix regex fix) | ~39m | 16 completed, 1 failed (CORS), 2 problems (2 resolved) |
+| 062 | 2026-03-10 | Case-study template CSS and import script (Issue #53) | ~39m | 10 completed, 3 problems (0 resolved, 3 minor/workaround) |
+| 063 | 2026-03-10 | Case-study comparison audit + PR #57 (Issue #53) | ~44m | 7 completed, 3 problems (0 resolved) |
+| 064 | 2026-03-10 | Rewrite case-study import script with section classifier | ~50m | 9 completed, 3 problems (2 resolved) |
+| 065 | 2026-03-11 | Context recovery and session journaling | ~5m | 4 completed, 0 problems |
+| 066 | 2026-03-11 | Case-study CSS refinement: 72% → 95.8% visual similarity | ~1h 39m | 11 completed, 3 problems (2 resolved, 1 workaround) |

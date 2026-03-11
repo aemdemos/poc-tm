@@ -1409,6 +1409,556 @@ body.blog-article main > .section:nth-of-type(3) .default-content-wrapper p a[ti
 }
 
 /* ============================================================
+   TEMPLATE: CASE-STUDY
+   ============================================================ */
+
+/* --- Section spacing defaults --- */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section {
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
+}
+
+/* ---- HERO SECTION (1) ---- */
+body.case-study main > .section:first-of-type {
+  padding-top: var(--spacing-l);
+  padding-bottom: var(--spacing-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hero H1: bold italic like original */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:first-of-type h1 {
+  font-style: italic;
+  font-weight: 700;
+  font-size: var(--heading-font-size-xxl);
+  line-height: 1.15;
+  margin-bottom: var(--spacing-s);
+}
+
+/* Hero subtitle */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:first-of-type .columns p:not(.button-container) {
+  font-size: var(--body-font-size-xl);
+  line-height: 1.5;
+  color: var(--color-dark-gray);
+}
+
+/* Hero buttons: style strong>a as primary and em>a as secondary */
+/* stylelint-disable no-descending-specificity */
+body.case-study main > .section:first-of-type .columns p strong a,
+body.case-study main > .section:first-of-type .columns p em a {
+  display: inline-block;
+  padding: var(--button-padding);
+  border-radius: var(--button-border-radius);
+  font-family: var(--body-font-family);
+  font-weight: 400;
+  font-size: var(--button-font-size);
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: var(--button-transition);
+  margin-right: var(--spacing-s);
+  margin-top: var(--spacing-s);
+}
+/* stylelint-enable no-descending-specificity */
+
+/* Primary button (strong > a) */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:first-of-type .columns p strong a {
+  background-color: var(--button-primary-bg);
+  border: var(--button-border-width) solid var(--button-primary-border);
+  color: var(--color-white);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:first-of-type .columns p strong a:hover {
+  background-color: var(--button-primary-hover-bg);
+  border-color: var(--button-primary-hover-border);
+}
+
+/* Secondary button (em > a) */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:first-of-type .columns p em a {
+  background-color: transparent;
+  border: var(--button-border-width) solid var(--color-bright-blue);
+  color: var(--color-bright-blue);
+  font-style: normal;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:first-of-type .columns p em a:hover {
+  background-color: var(--color-bright-blue);
+  color: var(--color-white);
+}
+
+/* Hero CTA buttons: display side-by-side like original */
+body.case-study main > .section:first-of-type .columns p.button-container {
+  display: inline;
+}
+
+/* Hero column proportions: 50/50 like original */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:first-of-type .columns > div > div:first-child:nth-last-child(2) {
+  flex: 0 0 50%;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:first-of-type .columns > div > div:last-child:nth-child(2) {
+  flex: 0 0 calc(50% - var(--spacing-xl));
+}
+
+/* Hero image column: video thumbnail styling */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:first-of-type .columns .columns-img-col {
+  position: relative;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:first-of-type .columns .columns-img-col img {
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgb(35 0 75 / 15%);
+}
+
+/* Diagonal gold lines decoration behind hero image */
+body.case-study main > .section:first-of-type .columns .columns-img-col::after {
+  content: "";
+  position: absolute;
+  right: -60px;
+  top: 30px;
+  width: 300px;
+  height: 400px;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 5px,
+    var(--color-gold) 5px,
+    var(--color-gold) 6px
+  );
+  opacity: 0.6;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ---- QUOTE BLOCK: case-study styling ---- */
+
+/* Pull quote blocks tight against the columns above to appear inline */
+body.case-study .quote-wrapper {
+  margin-top: calc(-1 * var(--spacing-xl));
+}
+
+body.case-study .quote blockquote {
+  padding: 0 0 var(--spacing-s) 48px;
+  border-left: none;
+  max-width: none;
+  margin: 0 0 16px;
+  position: relative;
+}
+
+/* Large decorative opening quote mark — matches original (80px, lavender) */
+body.case-study .quote blockquote .quote-quotation::before {
+  content: "\201C";
+  font-size: 80px;
+  font-family: var(--serif-font-family);
+  color: rgb(193 196 238);
+  position: absolute;
+  left: 0;
+  top: -20px;
+  line-height: 1;
+}
+
+body.case-study .quote blockquote .quote-quotation {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.625;
+  color: var(--color-ink-blue-100);
+  padding-left: 0;
+}
+
+/* Remove the default quote block pseudo-element quotes */
+body.case-study .quote blockquote .quote-quotation p:first-child::before,
+body.case-study .quote blockquote .quote-quotation p:last-child::after {
+  content: none;
+}
+
+/* Hide duplicate attribution in quote-quotation (real one is in quote-attribution) */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study .quote blockquote .quote-quotation p:last-child:not(:first-child) {
+  display: none;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study .quote blockquote .quote-attribution {
+  padding-left: 0;
+  margin-top: var(--spacing-xs);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study .quote blockquote .quote-attribution p {
+  font-size: 18px;
+  font-style: normal;
+  color: var(--color-ink-blue-100);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study .quote blockquote .quote-attribution strong {
+  color: var(--color-ink-blue-100);
+  font-weight: 700;
+}
+
+/* ---- SECTION 2: Ditching the paper chase ---- */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:nth-of-type(2) {
+  padding-top: var(--spacing-l);
+  padding-bottom: var(--spacing-xl);
+}
+
+/* Section 2 quote: align with right text column (offset by image width) */
+body.case-study main > .section:nth-of-type(2) .quote-wrapper {
+  margin-left: 42%;
+  margin-right: 0;
+}
+
+/* Section 2 column proportions: image ~42%, text ~58% */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:nth-of-type(2) .columns > div > div:first-child:nth-last-child(2) {
+  flex: 0 0 42%;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:nth-of-type(2) .columns > div > div:last-child:nth-child(2) {
+  flex: 0 0 calc(58% - var(--spacing-xl));
+}
+
+/* Section 2 image: rounded with subtle shadow */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:nth-of-type(2) .columns .columns-img-col img {
+  border-radius: 8px;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:nth-of-type(2) h2 {
+  font-size: var(--heading-font-size-xl);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: var(--spacing-m);
+}
+
+/* ---- LAVENDER SECTION (3): angled purple background ---- */
+body.case-study main > .section.lavender {
+  background-color: var(--color-ink-blue-5);
+  position: relative;
+  overflow: visible;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
+}
+
+body.case-study main > .section.lavender::before,
+body.case-study main > .section.lavender::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: inherit;
+}
+
+body.case-study main > .section.lavender::before {
+  top: -60px;
+  clip-path: polygon(0 100%, 100% 0, 100% 100%, 0 100%);
+}
+
+body.case-study main > .section.lavender::after {
+  bottom: -60px;
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 100%);
+}
+
+/* Lavender section quote: align with left text column (50% width) */
+body.case-study main > .section.lavender .quote-wrapper {
+  margin-left: 0;
+  margin-right: 50%;
+}
+
+/* Lavender column proportions: text ~50%, card ~50% */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section.lavender .columns > div > div:first-child:nth-last-child(2) {
+  flex: 0 0 50%;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section.lavender .columns > div > div:last-child:nth-child(2) {
+  flex: 0 0 calc(50% - var(--spacing-xl));
+}
+
+/* Lavender H2: large bold */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section.lavender h2 {
+  font-size: var(--heading-font-size-xl);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: var(--spacing-m);
+}
+
+/* Right column card styling: white card with shadow + gold corner */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section.lavender .columns > div > div:last-child {
+  background-color: var(--color-white);
+  border-radius: 5px;
+  box-shadow: 0 4px 20px rgb(35 0 75 / 10%);
+  padding: var(--spacing-m);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gold corner decoration */
+body.case-study main > .section.lavender .columns > div > div:last-child::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-top: 40px solid var(--color-gold);
+}
+
+/* Checkmark list items in lavender section */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section.lavender ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section.lavender li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: var(--spacing-s);
+  line-height: 1.5;
+}
+
+body.case-study main > .section.lavender li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  color: var(--color-bright-blue);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* Card H3 */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section.lavender h3 {
+  font-size: var(--heading-font-size-m);
+  font-weight: 700;
+  margin-bottom: var(--spacing-s);
+}
+
+/* Card image: rounded */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section.lavender .columns img {
+  border-radius: 4px;
+}
+
+/* ---- SECTION 4: The Payoff ---- */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:nth-of-type(4) {
+  padding-top: var(--spacing-l);
+  padding-bottom: var(--spacing-l);
+  position: relative;
+}
+
+/* Red dot pattern decoration */
+body.case-study main > .section:nth-of-type(4) .columns .columns-img-col::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  background-image: radial-gradient(circle, var(--color-red) 2px, transparent 2px);
+  background-size: 16px 16px;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:nth-of-type(4) .columns .columns-img-col {
+  position: relative;
+}
+
+/* Payoff H2 */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:nth-of-type(4) h2 {
+  font-size: var(--heading-font-size-xl);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: var(--spacing-m);
+}
+
+/* Payoff columns: image 42%, text 58% like original */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:nth-of-type(4) .columns > div > div:first-child:nth-last-child(2) {
+  flex: 0 0 42%;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:nth-of-type(4) .columns > div > div:last-child:nth-child(2) {
+  flex: 0 0 calc(58% - var(--spacing-xl));
+}
+
+/* ---- HIGHLIGHT/CTA SECTION (5): gold background ---- */
+body.case-study main > .section.highlight {
+  background-color: var(--color-gold);
+  color: var(--color-ink-blue-100);
+  padding: var(--spacing-xl) 0;
+  text-align: center;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section.highlight h2 {
+  color: var(--color-ink-blue-100);
+  font-size: var(--heading-font-size-xl);
+  font-weight: 700;
+}
+
+/* Eyebrow text above H2 in CTA */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section.highlight .default-content-wrapper > p:first-child {
+  font-size: var(--eyebrow-font-size);
+  font-weight: 500;
+  margin-bottom: var(--spacing-xs);
+}
+
+/* CTA button on gold background */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section.highlight a.button {
+  background-color: var(--color-bright-blue);
+  border-color: var(--color-bright-blue);
+  color: var(--color-white);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section.highlight a.button:hover {
+  background-color: var(--link-hover-color);
+  border-color: var(--link-hover-color);
+}
+
+/* ---- RELATED RESOURCES SECTION ---- */
+body.case-study main > .section:nth-last-of-type(2) {
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study main > .section:nth-last-of-type(2) > .default-content-wrapper h2 {
+  font-size: var(--heading-font-size-xl);
+  font-weight: 400;
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Card category eyebrow "Case Studies" with decorative line */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study .cards .cards-card-body > p:first-child {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-s);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  color: var(--color-ink-blue-100);
+  margin-bottom: var(--spacing-s);
+}
+
+body.case-study .cards .cards-card-body > p:first-child em {
+  font-style: normal;
+  font-size: var(--body-font-size-m);
+  color: var(--color-ink-blue-100);
+  white-space: nowrap;
+}
+
+/* Decorative line after "Case Studies" */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study .cards .cards-card-body > p:first-child::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: var(--color-ink-blue-100);
+  display: block;
+}
+
+/* Card container: subtle border */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study .cards > ul > li {
+  border: 1px solid var(--color-light-gray);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Card title */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study .cards .cards-card-body h3 {
+  font-size: var(--heading-font-size-l);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: var(--spacing-s);
+}
+
+/* Card description */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study .cards .cards-card-body p {
+  font-size: var(--body-font-size-s);
+  line-height: 1.5;
+}
+
+/* Card CTA: text link style, NOT button */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study .cards .cards-card-body > p:last-child a {
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--color-bright-blue);
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: var(--body-font-size-m);
+  display: inline;
+  white-space: normal;
+}
+
+/* Override button class on card links */
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study .cards .cards-card-body > p:last-child a.button {
+  background-color: transparent;
+  border: none;
+  color: var(--color-bright-blue);
+  padding: 0;
+  margin: 0;
+  font-size: var(--body-font-size-m);
+  text-align: left;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+body.case-study .cards .cards-card-body > p:last-child a.button:hover {
+  background-color: transparent;
+  text-decoration: underline;
+  color: var(--link-hover-color);
+}
+
+/* Hide broken images from CDN cache */
+body.case-study img[src="about:error"] {
+  display: none;
+}
+
+/* Hide metadata section */
+body.case-study main > .section:last-of-type:has(.metadata) {
+  display: none;
+}
+
+/* ============================================================
    RESPONSIVE ADJUSTMENTS
    ============================================================ */
 
