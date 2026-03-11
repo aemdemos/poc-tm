@@ -32,9 +32,13 @@ var CustomImportScript = (() => {
     if (!href) return "";
     return href.replace("https://www.zelis.com", "").replace("https://zelisstg.wpengine.com", "") || "/";
   }
+  function normalizeImageUrl(src) {
+    if (!src) return src;
+    return src.replace("https://zelisstg.wpengine.com", "https://www.zelis.com");
+  }
   function createImage(document, src, alt) {
     const img = document.createElement("img");
-    img.src = src;
+    img.src = normalizeImageUrl(src);
     img.alt = alt || "";
     return img;
   }
@@ -55,7 +59,33 @@ var CustomImportScript = (() => {
     const processChildren = (parent, target) => {
       Array.from(parent.children).forEach((child) => {
         if (child.classList.contains("wp-block-spacer")) return;
-        if (child.tagName === "BLOCKQUOTE") return;
+        if (child.tagName === "BLOCKQUOTE") {
+          const quotePs = child.querySelectorAll("p");
+          const cite = child.querySelector("cite");
+          quotePs.forEach((qp) => {
+            const text2 = qp.textContent.trim();
+            if (text2) {
+              const pEl = document.createElement("p");
+              pEl.textContent = text2;
+              target.appendChild(pEl);
+            }
+          });
+          if (cite) {
+            const attrP = document.createElement("p");
+            const em = document.createElement("em");
+            const strongEl = document.createElement("strong");
+            const citeText = cite.textContent.trim();
+            const commaParts = citeText.split(",");
+            strongEl.textContent = commaParts[0].trim();
+            em.appendChild(strongEl);
+            if (commaParts.length > 1) {
+              em.appendChild(document.createTextNode(`, ${commaParts.slice(1).join(",").trim()}`));
+            }
+            attrP.appendChild(em);
+            target.appendChild(attrP);
+          }
+          return;
+        }
         if (/^H[1-6]$/i.test(child.tagName)) {
           const h = document.createElement(child.tagName.toLowerCase());
           h.textContent = child.textContent.trim();
@@ -280,7 +310,6 @@ var CustomImportScript = (() => {
     main.appendChild(document.createElement("hr"));
   }
   function buildMediaCalloutSection(document, section, main) {
-    var _a;
     const callout = section.querySelector(".block--media-callout");
     if (!callout) {
       buildContentSection(document, section, main);
@@ -343,7 +372,7 @@ var CustomImportScript = (() => {
       const videoEl = callout.querySelector("video");
       if (videoEl) {
         const source = videoEl.querySelector("source");
-        const src = (source == null ? void 0 : source.getAttribute("src")) || videoEl.getAttribute("src") || "";
+        const src = source?.getAttribute("src") || videoEl.getAttribute("src") || "";
         if (src) {
           const a = document.createElement("a");
           a.href = src;
@@ -355,7 +384,7 @@ var CustomImportScript = (() => {
     if (!mediaCol.childNodes.length) {
       const bgEl = callout.querySelector('.video[data-src], [style*="background"]');
       if (bgEl) {
-        const bgStyle = ((_a = bgEl.style) == null ? void 0 : _a.backgroundImage) || "";
+        const bgStyle = bgEl.style?.backgroundImage || "";
         const match = bgStyle.match(/url\(["']?([^"')]+)["']?\)/);
         if (match) mediaCol.appendChild(createImage(document, match[1], ""));
       }
@@ -380,13 +409,6 @@ var CustomImportScript = (() => {
           ["Columns"],
           rowCells
         ], document));
-        cols.forEach((col) => {
-          const bq = col.querySelector("blockquote");
-          if (bq) {
-            const quoteBlock = buildQuoteBlock(document, bq);
-            if (quoteBlock) main.appendChild(quoteBlock);
-          }
-        });
       } else if (cols.length === 1) {
         const content = extractColumnDiv(document, cols[0]);
         while (content.firstChild) main.appendChild(content.firstChild);
@@ -526,13 +548,6 @@ var CustomImportScript = (() => {
             ["Columns"],
             rowCells
           ], document));
-          cols.forEach((col) => {
-            const bq = col.querySelector("blockquote");
-            if (bq) {
-              const quoteBlock = buildQuoteBlock(document, bq);
-              if (quoteBlock) main.appendChild(quoteBlock);
-            }
-          });
         } else if (cols.length === 1) {
           const content = extractColumnDiv(document, cols[0]);
           while (content.firstChild) main.appendChild(content.firstChild);
@@ -583,12 +598,9 @@ var CustomImportScript = (() => {
     main.appendChild(document.createElement("hr"));
   }
   function buildMetadataBlock(document, main) {
-    const getMeta = (name) => {
-      var _a;
-      return ((_a = document.querySelector(
-        `meta[property="${name}"], meta[name="${name}"]`
-      )) == null ? void 0 : _a.getAttribute("content")) || "";
-    };
+    const getMeta = (name) => document.querySelector(
+      `meta[property="${name}"], meta[name="${name}"]`
+    )?.getAttribute("content") || "";
     const meta = {};
     meta.title = getMeta("og:title") || document.title || "";
     meta.description = getMeta("description") || getMeta("og:description") || "";

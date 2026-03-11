@@ -96,6 +96,41 @@ function a11yLinks(main) {
 }
 
 /**
+ * Fix broken images served as about:error from CDN cache.
+ * Fetches the local .plain.html source to recover original image URLs.
+ */
+async function fixBrokenImages(main) {
+  const broken = main.querySelectorAll('img[src="about:error"]');
+  if (!broken.length) return;
+  try {
+    const path = window.location.pathname.replace(/\/$/, '');
+    const localPath = `/content${path}.plain.html`;
+    const resp = await fetch(localPath);
+    if (!resp.ok) return;
+    const html = await resp.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const localImgs = doc.querySelectorAll('img');
+    const localSrcs = [...localImgs]
+      .map((img) => img.getAttribute('src'))
+      .filter((src) => src && src.startsWith('http'));
+    const servedImgs = main.querySelectorAll('img');
+    let srcIdx = 0;
+    servedImgs.forEach((img) => {
+      if (img.src === 'about:error' && srcIdx < localSrcs.length) {
+        img.src = localSrcs[srcIdx];
+        img.style.display = '';
+        srcIdx += 1;
+      } else if (img.src !== 'about:error') {
+        srcIdx += 1;
+      }
+    });
+  } catch (e) {
+    // silently fail if local content not available
+  }
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -109,6 +144,8 @@ export function decorateMain(main) {
   decorateBlocks(main);
   // add aria-label to links
   a11yLinks(main);
+  // fix CDN cached broken images
+  fixBrokenImages(main);
 }
 
 /**

@@ -34,9 +34,14 @@ function stripDomain(href) {
     .replace('https://zelisstg.wpengine.com', '') || '/';
 }
 
+function normalizeImageUrl(src) {
+  if (!src) return src;
+  return src.replace('https://zelisstg.wpengine.com', 'https://www.zelis.com');
+}
+
 function createImage(document, src, alt) {
   const img = document.createElement('img');
-  img.src = src;
+  img.src = normalizeImageUrl(src);
   img.alt = alt || '';
   return img;
 }
@@ -69,9 +74,39 @@ function extractColumnDiv(document, colEl) {
 
   const processChildren = (parent, target) => {
     Array.from(parent.children).forEach((child) => {
-      // Skip spacers and blockquotes
+      // Skip spacers
       if (child.classList.contains('wp-block-spacer')) return;
-      if (child.tagName === 'BLOCKQUOTE') return;
+
+      // Blockquotes — include inline as formatted quote text
+      if (child.tagName === 'BLOCKQUOTE') {
+        const quotePs = child.querySelectorAll('p');
+        const cite = child.querySelector('cite');
+
+        quotePs.forEach((qp) => {
+          const text = qp.textContent.trim();
+          if (text) {
+            const pEl = document.createElement('p');
+            pEl.textContent = text;
+            target.appendChild(pEl);
+          }
+        });
+
+        if (cite) {
+          const attrP = document.createElement('p');
+          const em = document.createElement('em');
+          const strongEl = document.createElement('strong');
+          const citeText = cite.textContent.trim();
+          const commaParts = citeText.split(',');
+          strongEl.textContent = commaParts[0].trim();
+          em.appendChild(strongEl);
+          if (commaParts.length > 1) {
+            em.appendChild(document.createTextNode(`, ${commaParts.slice(1).join(',').trim()}`));
+          }
+          attrP.appendChild(em);
+          target.appendChild(attrP);
+        }
+        return;
+      }
 
       // Headings
       if (/^H[1-6]$/i.test(child.tagName)) {
@@ -481,15 +516,6 @@ function buildLavenderSection(document, section, main) {
         ['Columns'],
         rowCells,
       ], document));
-
-      // Extract blockquotes as separate Quote blocks
-      cols.forEach((col) => {
-        const bq = col.querySelector('blockquote');
-        if (bq) {
-          const quoteBlock = buildQuoteBlock(document, bq);
-          if (quoteBlock) main.appendChild(quoteBlock);
-        }
-      });
     } else if (cols.length === 1) {
       // Single column — extract as default content
       const content = extractColumnDiv(document, cols[0]);
@@ -678,15 +704,6 @@ function buildContentSection(document, section, main) {
           ['Columns'],
           rowCells,
         ], document));
-
-        // Extract blockquotes as separate Quote blocks
-        cols.forEach((col) => {
-          const bq = col.querySelector('blockquote');
-          if (bq) {
-            const quoteBlock = buildQuoteBlock(document, bq);
-            if (quoteBlock) main.appendChild(quoteBlock);
-          }
-        });
       } else if (cols.length === 1) {
         // Single column — extract as default content
         const content = extractColumnDiv(document, cols[0]);
