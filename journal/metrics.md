@@ -1,21 +1,21 @@
 # Project Metrics
 
 ## Time
-- **Total sessions:** 57 (including backfills)
-- **Total agent time:** ~37h 40m
-- **Total with user margin (10%):** ~41h 33m
+- **Total sessions:** 62 (including backfills)
+- **Total agent time:** ~41h 15m
+- **Total with user margin (10%):** ~45h 30m
 - **Average session length:** ~40m
 
 ## Success Rates
-- **Actions attempted:** 504
-- **First-try success:** 487 (97%)
-- **Required retry:** 12 (2%)
+- **Actions attempted:** 549
+- **First-try success:** 530 (97%)
+- **Required retry:** 14 (3%)
 - **Failed:** 5 (1%)
 
 ## Problems
-- **Total encountered:** 55
-- **Resolved:** 43 (78%)
-- **Workarounds:** 9
+- **Total encountered:** 64
+- **Resolved:** 48 (75%)
+- **Workarounds:** 13
 - **Unresolved:** 3
 - **Most common category:** CSS/styling
 
@@ -32,10 +32,13 @@
 | Performance | 1 | Animation load timeout too slow |
 | File sync | 1 | HTML variants stale after markdown edit |
 | Test harness | 2 | Sync scroll doesn't trigger IO, F-DELAYED false positive |
-| Source site | 1 | 3 URLs returned 404 during bulk import |
+| Source site | 2 | 3 URLs returned 404 during bulk import, tpa-eliminated case study 404 |
 | Block runtime | 1 | Accordion block JS error on solutions pages |
-| Local preview | 1 | `aem up` proxies from remote CDN; let-care-flow .plain.html broken (pipe-table parsing) |
+| Local preview | 2 | `aem up` proxies from remote CDN; let-care-flow .plain.html broken (pipe-table parsing); CDN content sparse for case studies |
 | Animation | 2 | CORS error loading external Lottie JSON on localhost; counter regex doesn't match `$` prefix |
+| Content structure | 3 | Simpler case study pages lack quote/lavender/CTA sections; import script designed for newer format (resolved: rewritten with section classifier) |
+| Import/scraping | 3 | Bundle script flag syntax; save-51k key-takeaways 3-col flattened; browser caching returned wrong page content for 2 agents |
+| Import pipeline | 3 | import-case-study.js changes had no effect (bulk-import.js uses own parser); .plain.html CDN-served and immutable; esbuild strips comments from bundle |
 
 ## Session Timeline
 
@@ -98,3 +101,8 @@
 | 059 | 2026-03-10 | ~40m | ~44m | 16 | 94% (1 fail) |
 | 060 | 2026-03-10 | ~35m | ~39m | 17 | 94% (1 fail) |
 | 061 | 2026-03-10 | ~35m | ~39m | 16 | 94% (1 fail) |
+| 062 | 2026-03-10 | ~35m | ~39m | 10 | 100% |
+| 063 | 2026-03-10 | ~40m | ~44m | 7 | 100% |
+| 064 | 2026-03-10 | ~45m | ~50m | 9 | 100% |
+| 065 | 2026-03-11 | ~5m | ~5m | 4 | 100% |
+| 066 | 2026-03-11 | ~1h 30m | ~1h 39m | 11 | 100% |
