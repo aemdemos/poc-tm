@@ -1494,6 +1494,11 @@ body.case-study main > .section:first-of-type .columns p em a:hover {
   color: var(--color-white);
 }
 
+/* Hero CTA buttons: display side-by-side like original */
+body.case-study main > .section:first-of-type .columns p.button-container {
+  display: inline;
+}
+
 /* Hero column proportions: 50/50 like original */
 /* stylelint-disable-next-line no-descending-specificity */
 body.case-study main > .section:first-of-type .columns > div > div:first-child:nth-last-child(2) {
