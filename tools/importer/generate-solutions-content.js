@@ -176,7 +176,13 @@ async function processUrl(url, importScript) {
   }
 
   // Convert tables to div-based block format (what aem up expects)
-  const plainHtml = tablesToDivs(rawHtml);
+  let plainHtml = tablesToDivs(rawHtml);
+
+  // Rewrite Lottie JSON URLs from zelis.com to local /lottie/ paths (avoid CORS)
+  plainHtml = plainHtml.replace(
+    /https:\/\/www\.zelis\.com\/wp-content\/uploads\/json\/([^"<]+\.json)/g,
+    '/lottie/$1',
+  );
 
   // Write .plain.html (no boilerplate — aem up serves these directly)
   const plainPath = urlToContentPath(url, '.plain.html');

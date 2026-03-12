@@ -437,6 +437,13 @@ function buildSolutionsSuiteSection(document, section, main) {
     main.appendChild(WebImporter.DOMUtils.createTable(rows, document));
   }
 
+  // Product screenshot image — often in a column alongside the accordion
+  const sectionImg = section.querySelector('figure img, .wp-block-image img');
+  if (sectionImg) {
+    const imgEl = createImage(document, sectionImg.src, sectionImg.alt || '');
+    main.appendChild(imgEl);
+  }
+
   // Optional stat counter (e.g., "0 total cost savings")
   const statH3 = section.querySelector('h3[data-value], .stat h3');
   if (statH3) {
@@ -463,6 +470,20 @@ function buildSolutionsSuiteSection(document, section, main) {
 }
 
 function buildTestimonialsSection(document, section, main) {
+  // Lottie animation background for testimonials section
+  const lottiePlayer = section.querySelector('lottie-player');
+  if (lottiePlayer) {
+    const jsonSrc = lottiePlayer.getAttribute('src');
+    if (jsonSrc) {
+      const p = document.createElement('p');
+      const a = document.createElement('a');
+      a.href = normalizeImageUrl(jsonSrc);
+      a.textContent = a.href;
+      p.appendChild(a);
+      main.appendChild(p);
+    }
+  }
+
   // Blockquote carousel: extract all quotes into Quote blocks
   // Structure: figure.testimonial > blockquote (direct text) + figcaption (attribution + case study link)
   const figures = section.querySelectorAll('figure.testimonial, figure');
@@ -558,15 +579,29 @@ function buildDeepDiveSection(document, section, main) {
 function buildCtaSection(document, section, main) {
   const container = section.querySelector('.acf-innerblocks-container') || section;
 
+  // Check for media-callout image (e.g., woman holding laptop)
+  const mediaCallout = section.querySelector('[class*="media-callout"]');
+  const ctaImg = mediaCallout
+    ? mediaCallout.querySelector('.image-wrapper img, figure img, img')
+    : section.querySelector('figure img, .image-wrapper img');
+
+  // Build text content column
+  const textCol = document.createElement('div');
+
   // Eyebrow
+  const eyebrowEl = mediaCallout
+    ? mediaCallout.querySelector('.has-lead-font-size, .leader')
+    : null;
   const allPs = container.querySelectorAll('p');
-  const eyebrow = Array.from(allPs).find(
+  const eyebrowFromP = Array.from(allPs).find(
     (p) => p.textContent.trim() === 'Request a Meeting',
   );
-  if (eyebrow) {
+  const eyebrowText = eyebrowEl?.textContent?.trim()
+    || eyebrowFromP?.textContent?.trim();
+  if (eyebrowText) {
     const p = document.createElement('p');
-    p.textContent = eyebrow.textContent.trim();
-    main.appendChild(p);
+    p.textContent = eyebrowText;
+    textCol.appendChild(p);
   }
 
   // H2
@@ -574,7 +609,7 @@ function buildCtaSection(document, section, main) {
   if (h2) {
     const heading = document.createElement('h2');
     heading.textContent = h2.textContent.trim();
-    main.appendChild(heading);
+    textCol.appendChild(heading);
   }
 
   // Body text
@@ -583,10 +618,11 @@ function buildCtaSection(document, section, main) {
     if (text === 'Request a Meeting') return;
     if (p.querySelector('a.btn, .wp-block-button__link')) return;
     if (p.closest('.wp-block-buttons')) return;
+    if (p.classList?.contains('has-lead-font-size')) return;
     if (text && text.length > 10) {
       const pEl = document.createElement('p');
       pEl.textContent = text;
-      main.appendChild(pEl);
+      textCol.appendChild(pEl);
     }
   });
 
@@ -594,7 +630,20 @@ function buildCtaSection(document, section, main) {
   const btn = container.querySelector('.wp-block-button__link, .btn, a[class*="button"]');
   if (btn) {
     const ctaP = createCTA(document, btn, false);
-    if (ctaP) main.appendChild(ctaP);
+    if (ctaP) textCol.appendChild(ctaP);
+  }
+
+  // If there's a CTA image, create a Columns block with image | text
+  if (ctaImg) {
+    const imgCol = document.createElement('div');
+    imgCol.appendChild(createImage(document, ctaImg.src, ctaImg.alt || ''));
+    main.appendChild(WebImporter.DOMUtils.createTable([
+      ['Columns'],
+      [imgCol, textCol],
+    ], document));
+  } else {
+    // No image — just append text content directly
+    while (textCol.firstChild) main.appendChild(textCol.firstChild);
   }
 
   main.appendChild(createSectionMetadata(document, 'dark'));

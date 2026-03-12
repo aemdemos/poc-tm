@@ -1974,3 +1974,176 @@ body.case-study main > .section:last-of-type:has(.metadata) {
     padding: 0 32px;
   }
 }
+
+/* ============================================================
+   SOLUTIONS-PAGE TEMPLATE
+   ============================================================ */
+
+/* Angled lavender sections for solutions-page (same as case-study) */
+body.solutions-page main > .section.lavender {
+  background-color: var(--color-ink-blue-5);
+  position: relative;
+  overflow: visible;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
+}
+
+body.solutions-page main > .section.lavender::before,
+body.solutions-page main > .section.lavender::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--color-ink-blue-5);
+  z-index: -1;
+}
+
+body.solutions-page main > .section.lavender::before {
+  top: -60px;
+  clip-path: polygon(0 100%, 100% 0, 100% 100%, 0 100%);
+}
+
+body.solutions-page main > .section.lavender::after {
+  bottom: -60px;
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 100%);
+}
+
+/* Lavender column proportions for solutions-page */
+body.solutions-page main > .section.lavender .columns > div > div:first-child:nth-last-child(2) {
+  flex: 0 0 50%;
+}
+
+body.solutions-page main > .section.lavender .columns > div > div:last-child:nth-child(2) {
+  flex: 0 0 calc(50% - var(--spacing-xl));
+}
+
+/* Right column card styling for solutions-page: white card with shadow + gold corner */
+body.solutions-page main > .section.lavender .columns > div > div:last-child {
+  background-color: var(--color-white);
+  border-radius: 5px;
+  padding: var(--spacing-l);
+  box-shadow: 0 4px 24px rgb(0 0 0 / 8%);
+  position: relative;
+  overflow: hidden;
+}
+
+body.solutions-page main > .section.lavender .columns > div > div:last-child::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+  background: var(--color-gold);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+
+/* Checkmark list items in lavender section */
+body.solutions-page main > .section.lavender ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+body.solutions-page main > .section.lavender li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.6;
+}
+
+body.solutions-page main > .section.lavender li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-purple);
+  font-weight: 700;
+}
+
+/* ---- Accordion section with product image ---- */
+/* Product image in its own default-content-wrapper after the accordion */
+body.solutions-page main > .section:has(.accordion-wrapper) > .default-content-wrapper:last-of-type img {
+  display: block;
+  max-width: 500px;
+  margin: var(--spacing-l) auto 0;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgb(0 0 0 / 15%);
+}
+
+@media (width >= 900px) {
+  /* Grid the section so accordion + image sit side-by-side */
+  body.solutions-page main > .section:has(.accordion-wrapper) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--spacing-xl);
+  }
+
+  /* Eyebrow + heading span full width */
+  body.solutions-page main > .section:has(.accordion-wrapper) > .default-content-wrapper:first-child {
+    grid-column: 1 / -1;
+  }
+
+  /* Accordion in left column */
+  body.solutions-page main > .section:has(.accordion-wrapper) > .accordion-wrapper {
+    grid-column: 1;
+  }
+
+  /* Product image in right column, centered vertically */
+  body.solutions-page main > .section:has(.accordion-wrapper) > .default-content-wrapper:last-of-type {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+  }
+
+  body.solutions-page main > .section:has(.accordion-wrapper) > .default-content-wrapper:last-of-type img {
+    max-width: 100%;
+    margin-top: 0;
+  }
+
+  /* Section metadata spans full width */
+  body.solutions-page main > .section:has(.accordion-wrapper) > .section-metadata-wrapper {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---- Lottie section background ---- */
+.lottie-section-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Sections with lottie bg need relative positioning */
+.section:has(.lottie-section-bg) {
+  position: relative;
+}
+
+/* Ensure section content sits above the Lottie background */
+.section:has(.lottie-section-bg) > .default-content-wrapper,
+.section:has(.lottie-section-bg) > .quote-wrapper,
+.section:has(.lottie-section-bg) > .section-metadata-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- CTA columns (image + text) for solutions-page dark section ---- */
+body.solutions-page main > .section.dark .columns > div > div:first-child img {
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+body.solutions-page main > .section.dark .columns > div > div:last-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

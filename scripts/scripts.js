@@ -131,6 +131,26 @@ async function fixBrokenImages(main) {
 }
 
 /**
+ * Convert standalone Lottie JSON links (outside of blocks) into animation containers.
+ * Links inside blocks (e.g., columns) are handled by their own decorators.
+ * @param {Element} main The main element
+ */
+function decorateLottieLinks(main) {
+  main.querySelectorAll('a[href$=".json"]').forEach((link) => {
+    // Skip links already inside a decorated block
+    if (link.closest('.block')) return;
+    const href = link.getAttribute('href') || '';
+    if (!href.endsWith('.json')) return;
+    const container = document.createElement('div');
+    container.dataset.lottiePath = href;
+    container.dataset.lottieLoop = 'true';
+    container.classList.add('lottie-section-bg');
+    const wrapper = link.closest('p') || link;
+    wrapper.replaceWith(container);
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -142,6 +162,8 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  // convert standalone Lottie JSON links into animation containers
+  decorateLottieLinks(main);
   // add aria-label to links
   a11yLinks(main);
   // fix CDN cached broken images
