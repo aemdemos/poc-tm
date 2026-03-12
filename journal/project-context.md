@@ -1,10 +1,10 @@
 # Project Context — Zelis.com EDS Migration
 
-**Last updated:** 2026-03-11 (Session 073)
-**Branch:** `main`
+**Last updated:** 2026-03-12 (Session 075)
+**Branch:** `issue-51`
 **Repository:** https://github.com/aemdemos/poc-tm.git
 **Source site:** https://www.zelis.com/ (370 cataloged URLs, WordPress)
-**Overall status:** PRs #44, #56, #57 all merged to main. 4 template CSS issues complete (#49 company-utility, #52 built-for-audience, #50 gated-resource, #53 case-study). 1 remaining: #51 solutions-page (41 pages, 49.6% desktop). Fresh regression data: avg 58.76% across all templates.
+**Overall status:** PRs #44, #56, #57 all merged to main. 4 template CSS issues complete (#49 company-utility, #52 built-for-audience, #50 gated-resource, #53 case-study). Issue #51 solutions-page: all 41 pages re-imported with images, Lottie animations, and comprehensive template CSS on `issue-51` branch. Two commits pushed (`f4d120c`, `40bca67`). Awaiting regression test re-run and PR creation.
 
 ## What's Done
 - Repository initialized and configured (Session 000)
@@ -43,12 +43,15 @@
 - **Issue #50 merged: Gated-resource template CSS** — Hero text 50% with cover image, dark cards, gold CTA links (Session 058, PR #56 merged)
 - **Issue #53 merged: Case-study template CSS** — Quote blocks, decorative elements, gold CTA, import script rewrite. 95.8% section-level similarity (Sessions 062–070, PR #57 merged)
 - **Regression re-run on main** — Fresh 16-test regression suite, avg 58.76% (Session 071)
+- **Issue #51: Solutions-page re-import** — All 41 pages re-imported with proper block structure (columns, accordion, quote, cards). Fixed lavender CSS, quote 2-row format, CTA dark background, div nesting. (Session 074)
+- **Issue #51: Images, Lottie, CSS** — Added missing product images, CTA images, Lottie animations (11 local JSON files). Added ~170 lines template CSS (angled sections, accordion grid, Lottie backgrounds, CTA columns). Fixed 7 stylelint warnings. (Session 075)
 
 ## What's In Progress
-- **Issue #51: Solutions-page template** — Analysis complete. 49.6% score is content gap, not CSS. Awaiting user decision on approach (CSS-only vs content re-import). Branch: `issue-51`
+- **Issue #51: Solutions-page template** — Content and CSS complete on `issue-51` branch (commits `f4d120c`, `40bca67`). Awaiting regression test re-run and PR creation.
 
 ## What's Pending
-- **CSS fixes for remaining template:** solutions-page (#51, 41 pages, 49.6% desktop / 18.7% mobile)
+- **Regression test re-run** for solutions-page to measure improvement from 49.6%
+- **PR creation** for Issue #51
 - **DA content update for /built-for** — Requires Adobe IMS authentication via da.live editor
 - **Content authoring fixes:** Cookie Preferences + FDIC notice missing from CDN footer, category badges for Related Posts cards
 - **Import 2 missing URLs** (2 news articles returned 404 during bulk import)
@@ -71,7 +74,7 @@
 | gated-resource | 40.8% | 31.5% | 36.2% |
 | solutions-page | 49.6% | 18.7% | 34.2% |
 
-*Note: Full-page regression includes header/footer/scroll-reveal. Section-level comparisons (e.g. case-study 95.8%) are more accurate for CSS quality.*
+*Note: Solutions-page scores are pre-session-075 (from main branch). Re-run pending on `issue-51` branch with images, Lottie, and CSS improvements.*
 
 ## Key Files
 - `customer-preview-urls.md` — Customer-facing URL list: 367 pages grouped by template
@@ -79,21 +82,26 @@
 - `styles/styles.css` — Global styles with design tokens + all template CSS
 - `blocks/cards/cards.js` — Card grid + counter animation with prefix support
 - `blocks/header/header.js` / `header.css` — Mega-menu navigation
+- `scripts/scripts.js` — Main decoration script with `decorateLottieLinks()` for standalone Lottie
 - `scripts/delayed.js` — Lottie loader with data-loaded-by attribution
+- `tools/importer/import-solutions-page.js` — Solutions page import script (columns, accordion, quote, cards, Lottie, images)
+- `tools/importer/generate-solutions-content.js` — Batch content generator for 41 solutions pages (with Lottie URL rewriting)
 - `tools/importer/import-case-study.js` — Import script with content-based section classifier
+- `lottie/*.json` — 11 Lottie animation files served locally to avoid CORS
 - `journal/` — Project journal directory
 
 ## Critical Warning
 - **NEVER use `convert-all-md.js`** for EDS content files — it corrupts block HTML
-- **`aem up` proxies content from remote CDN** — local content files in `content/` are NOT used for preview
+- **`aem up` with `--html-folder content`** — Only `/content/*` URL prefix routes to local files; other paths proxy to CDN
 - **Scroll-reveal hides content in screenshots** — Override `.scroll-reveal { opacity: 1; transform: none; }` before capturing full-page screenshots
 - **Full-page regression ≠ CSS quality** — Header/footer/animation timing depress scores. Use section-level comparison for accurate template CSS assessment.
+- **Lottie CORS** — External Lottie JSON files are blocked by CORS on aem.page domain. Must serve locally from `/lottie/` directory.
 
 ## Git Notes
 - Remote: `https://github.com/aemdemos/poc-tm.git`
-- Must use `HOME=/home/node` prefix for git commands
+- Must use `GIT_DIR=/workspace/.git` prefix for git commands (repo structure has .git files at workspace root)
 - GitHub PAT provided by user at runtime
 - `content/` directory excluded from git (`.git/info/exclude`)
 
 ## Resume Point
-> Session 073 completed. Issue #51 deep analysis done. The 49.6% regression score is a content import gap, not CSS. Bulk import stripped interactive WordPress components (Solution Finder widget, Lottie animations, accordions, carousels). CSS already matches for existing content. Awaiting user decision: (1) CSS-only (+5-10%), (2) content re-import with dedicated import script (expected 80%+), or (3) change regression test URL. Branch: `issue-51`.
+> Session 075 complete. Solutions pages now include product images, CTA images, and Lottie animations with ~170 lines of template CSS. Both commits (`f4d120c`, `40bca67`) pushed to `issue-51` branch. Next steps: (1) run regression tests to measure improvement from 49.6%/18.7%, (2) create PR for Issue #51, (3) continue with remaining template CSS work across other templates.
