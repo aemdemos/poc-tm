@@ -136,13 +136,18 @@ async function fixBrokenImages(main) {
  * @param {Element} main The main element
  */
 function decorateLottieLinks(main) {
-  main.querySelectorAll('a[href$=".json"]').forEach((link) => {
+  main.querySelectorAll('a[href*="/lottie/"]').forEach((link) => {
     // Skip links already inside a decorated block
     if (link.closest('.block')) return;
     const href = link.getAttribute('href') || '';
-    if (!href.endsWith('.json')) return;
+    // AEM mangles .json → -json (e.g., /lottie/Hero9-Main.json → /lottie/hero9-main-json)
+    // Match either the original .json extension or the mangled -json suffix
+    if (!href.endsWith('.json') && !href.match(/-json$/)) return;
+    // Reconstruct the actual .json path from the link text if available
+    const text = link.textContent.trim();
+    const lottiePath = text.endsWith('.json') ? text : href;
     const container = document.createElement('div');
-    container.dataset.lottiePath = href;
+    container.dataset.lottiePath = lottiePath;
     container.dataset.lottieLoop = 'true';
     container.classList.add('lottie-section-bg');
     const wrapper = link.closest('p') || link;

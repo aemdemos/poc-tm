@@ -301,7 +301,7 @@ function buildHeroSection(document, section, main) {
     ['Columns'],
     [leftCol, rightCol],
   ], document));
-  main.appendChild(createSectionMetadata(document, 'dark'));
+  // Hero section has white/transparent background on the original site — no dark style
   main.appendChild(document.createElement('hr'));
 }
 
